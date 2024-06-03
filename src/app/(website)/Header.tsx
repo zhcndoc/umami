@@ -11,31 +11,31 @@ import styles from './Header.module.css';
 
 const mobileMenuItems = [
   {
-    label: 'Home',
+    label: '首页',
     value: '/',
   },
   {
-    label: 'Features',
+    label: '特点',
     value: '/features',
   },
   {
-    label: 'Pricing',
+    label: '价格',
     value: '/pricing',
   },
   {
-    label: 'Docs',
+    label: '文档',
     value: '/docs',
   },
   {
-    label: 'Blog',
+    label: '博客',
     value: '/blog',
   },
   {
-    label: 'Community',
+    label: '社区',
     value: '/community',
   },
   {
-    label: 'Developers',
+    label: '开发者',
     value: '/developers',
   },
 ];
@@ -54,18 +54,18 @@ export default function Header() {
           <nav className={styles.links}>
             <PopupTrigger action="hover">
               <div className={styles.dropdown}>
-                <Text>Product</Text>
+                <Text>产品</Text>
                 <Icon>
                   <Icons.ChevronDown />
                 </Icon>
               </div>
               <Popup>{close => <ProductMenu onClose={close} />}</Popup>
             </PopupTrigger>
-            <Link href="/blog">Blog</Link>
+            <Link href="/blog">博客</Link>
             <Link href="/docs" prefetch={false}>
-              Docs
+              文档
             </Link>
-            <Link href="/pricing">Pricing</Link>
+            <Link href="/pricing">定价</Link>
           </nav>
           <div className={styles.buttons}>
             <Link href={GITHUB_URL} target="_blank" className={styles.github}>
@@ -79,14 +79,14 @@ export default function Header() {
               className={styles.login}
               data-umami-event="login-button-header"
             >
-              Log in
+              登录
             </Link>
             <LinkButton
               href={`https://cloud.umami.is/signup${query}`}
               variant="primary"
               data-umami-event="signup-button-header"
             >
-              Sign up
+              注册
             </LinkButton>
           </div>
           <div className={styles.hamburger}>
@@ -102,26 +102,26 @@ const ProductMenu = ({ onClose }) => {
   return (
     <nav className={styles.menu} onClick={onClose}>
       <div className={styles.column}>
-        <header>Analytics</header>
-        <Link href="/features">Features</Link>
+        <header>分析</header>
+        <Link href="/features">特点</Link>
         <Link href="/docs" prefetch={false}>
-          Self-hosting
+          自部署
         </Link>
         <Link href="/docs/cloud">Cloud</Link>
       </div>
       <div className={styles.column}>
-        <header>Learn</header>
-        <Link href="/community">Community</Link>
-        <Link href="/developers">Developers</Link>
+        <header>学习</header>
+        <Link href="/community">社区</Link>
+        <Link href="/developers">开发者</Link>
         <Link href="https://github.com/umami-software/umami/discussions" target="_blank">
-          Discussions
+          讨论
         </Link>
       </div>
       <div className={styles.column}>
-        <header>Used by</header>
-        <Link href="/product/creators">Creators</Link>
-        <Link href="/product/marketers">Marketers</Link>
-        <Link href="/product/agencies">Agencies</Link>
+        <header>使用</header>
+        <Link href="/product/creators">创作者</Link>
+        <Link href="/product/marketers">营销人员</Link>
+        <Link href="/product/agencies">机构</Link>
       </div>
     </nav>
   );

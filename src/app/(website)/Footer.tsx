@@ -9,41 +9,41 @@ import { DISCORD_URL, GITHUB_URL, LINKEDIN_URL, X_URL } from 'lib/constants';
 
 const data = [
   {
-    title: 'Product',
+    title: '产品',
     items: [
-      { text: 'Features', href: '/features' },
-      { text: 'Pricing', href: '/pricing' },
+      { text: '特点', href: '/features' },
+      { text: '定价', href: '/pricing' },
       { text: 'Cloud', href: 'https://cloud.umami.is/?ref=umami-nav-footer' },
     ],
   },
   {
-    title: 'Learn',
+    title: '学习',
     items: [
-      { text: 'Docs', href: '/docs' },
-      { text: 'Guides', href: '/docs/guides' },
-      { text: 'API Reference', href: '/docs/api' },
-      { text: 'Release Notes', href: 'https://github.com/umami-software/umami/releases' },
+      { text: '文档', href: '/docs' },
+      { text: '指南', href: '/docs/guides' },
+      { text: 'API 参考', href: '/docs/api' },
+      { text: '发布说明', href: 'https://github.com/umami-software/umami/releases' },
     ],
   },
   {
-    title: 'Resources',
+    title: '资源',
     items: [
-      { text: 'Developers', href: '/developers' },
-      { text: 'Community', href: '/community' },
+      { text: '开发者', href: '/developers' },
+      { text: '社区', href: '/community' },
       { text: 'GitHub', href: GITHUB_URL },
       { text: 'Discord', href: DISCORD_URL },
       { text: 'X', href: X_URL },
     ],
   },
   {
-    title: 'About',
+    title: '关于',
     items: [
-      { text: 'Company', href: '/about' },
-      { text: 'Blog', href: '/blog' },
-      { text: 'Contact us', href: '/contact' },
-      { text: 'LinkedIn', href: LINKEDIN_URL },
-      { text: 'Privacy', href: '/privacy' },
-      { text: 'Terms', href: '/terms' },
+      { text: '公司', href: '/about' },
+      { text: '博客', href: '/blog' },
+      { text: '联系我们', href: '/contact' },
+      { text: '领英', href: LINKEDIN_URL },
+      { text: '隐私', href: '/privacy' },
+      { text: '条款', href: '/terms' },
     ],
   },
 ];

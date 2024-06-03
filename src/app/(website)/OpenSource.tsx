@@ -5,7 +5,7 @@ export default function OpenSource() {
   return (
     <section>
       <PageHeader>
-        <h1>Powered by Open Source</h1>
+        <h1>由开源提供支持</h1>
       </PageHeader>
       <GitHubStats />
     </section>

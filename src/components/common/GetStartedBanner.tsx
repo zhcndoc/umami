@@ -9,7 +9,7 @@ export default function GetStartedBanner() {
 
   return (
     <div className={styles.banner}>
-      <div className={styles.text}>Are you ready for better analytics?</div>
+      <div className={styles.text}>你准备好接受更好的分析了吗？</div>
       <div className={styles.buttons}>
         <LinkButton
           href={`${CLOUD_URL}/signup${query}`}
@@ -17,7 +17,7 @@ export default function GetStartedBanner() {
           variant="primary"
           size="lg"
         >
-          Try 14-day free trial
+          尝试 14 天免费试用
         </LinkButton>
       </div>
     </div>

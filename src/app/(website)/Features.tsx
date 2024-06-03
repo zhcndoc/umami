@@ -19,16 +19,16 @@ export default function Features() {
   return (
     <section className={styles.features}>
       <PageHeader>
-        <h1>All the features you need</h1>
+        <h1>你所需要的所有功能</h1>
         <p>
-          Umami is packed with amazing features that enable you to better
-          <br /> understand your website traffic.
+          Umami充满了令人惊叹的功能，让你能更好地
+          <br /> 了解您的网站流量。
         </p>
       </PageHeader>
       <ScrollBlock items={items} />
       <Flexbox justifyContent="center" alignItems="center">
         <LinkButton href="/features" variant="secondary">
-          <Text>Explore more features </Text>
+          <Text>探索更多功能</Text>
           <Icon>
             <Icons.ArrowRight />
           </Icon>

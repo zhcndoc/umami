@@ -6,35 +6,35 @@ import styles from './Features.module.css';
 
 const features = [
   {
-    label: 'Data',
-    items: [['Ingest (included)', '10K', '100K to 20M', 'Custom']],
+    label: '数据',
+    items: [['摄取（包括）', '10K', '100K to 20M', 'Custom']],
   },
   {
-    label: 'Analytics',
+    label: '分析',
     items: [
-      ['Websites', 'Up to 3', 'Unlimited', 'Unlimited'],
-      ['Teams', false, true, true],
-      ['Custom events', true, true, true],
-      ['Custom data', true, true, true],
-      ['API access', false, true, true],
+      ['网站', '最多 3 个', '无限制', '无限制'],
+      ['团队', false, true, true],
+      ['自定义事件', true, true, true],
+      ['自定义数据', true, true, true],
+      ['API 访问', false, true, true],
     ],
   },
   {
-    label: 'Monitoring',
+    label: '监视',
     items: [
-      ['Realtime events', true, true, true],
-      ['Custom dashboards', true, true, true],
-      ['Email alerts', false, false, true],
+      ['实时事件', true, true, true],
+      ['自定义仪表板', true, true, true],
+      ['电子邮件提醒', false, false, true],
     ],
   },
   {
-    label: 'Support',
+    label: '支持',
     items: [
-      ['Community support', true, true, true],
-      ['Email support', false, true, true],
-      ['Uptime SLA', false, false, true],
-      ['Onboarding support', false, false, true],
-      ['Designated support engineer', false, false, true],
+      ['社区支持', true, true, true],
+      ['电子邮件支持', false, true, true],
+      ['正常运行时间 SLA', false, false, true],
+      ['顾客引导支持', false, false, true],
+      ['指定支持工程师', false, false, true],
     ],
   },
 ];
@@ -46,9 +46,9 @@ export default function Features() {
         <thead>
           <tr>
             <th></th>
-            <th>Hobby</th>
-            <th>Pro</th>
-            <th>Enterprise</th>
+            <th>爱好</th>
+            <th>专业</th>
+            <th>企业</th>
           </tr>
         </thead>
         <tbody>

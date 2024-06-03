@@ -6,31 +6,28 @@ import styles from './Questions.module.css';
 
 const questions = [
   {
-    question: 'Does Umami Cloud have a free tier?',
-    answer: `Yes! Umami Cloud's Hobby plan is completely free. Great for personal projects and low traffic websites.`,
+    question: 'Umami Cloud 有免费套餐吗？',
+    answer: `是的！Umami Cloud 的爱好计划是完全免费的，非常适合个人项目和低流量网站。`,
   },
   {
-    question: 'How does the free trial work?',
-    answer: `Umami Cloud's free trial will last for 14 days from the purchase date. The trial gives you full access to all features in that plan.
-      At the end of the trial, you will be billed the regular amount. You can cancel your trial at any time within the trial period for no cost.`,
+    question: '免费试用是如何进行的？',
+    answer: `Umami Cloud 的免费试用将从购买之日起持续 14 天。试用版可让您完全访问该计划中的所有功能。在试用期结束时，您将收到常规金额的账单。您可以在试用期内随时免费取消试用。`,
   },
   {
-    question: 'How will I be billed?',
-    answer: `Billing occurs on either a monthly or annual basis. 
-    If you upgraded to a paid plan via a trial, your first invoice will arrive after your trial period ends.`,
+    question: '我将如何收到账单？',
+    answer: `按月或按年计费。如果您通过试用升级到付费计划，您的第一张发票将在试用期结束后到达。`,
   },
   {
-    question: 'How is usage measured?',
-    answer: `Usage is measured by counting hits to a website and any custom events or custom event data stored. Each website hit counts as one event. If you save
-    event data, each data property stored counts as one event.`,
+    question: '我的使用量如何计算？',
+    answer: `使用量通过对网站的点击次数以及存储的任何自定义事件或自定义事件数据进行计算。每个网站访问都算作一个事件。如果您保存了事件数据，每个存储的数据属性也都会被视为一个事件。`,
   },
   {
-    question: 'Where are your servers located?',
-    answer: `Umami Cloud servers are located in the US and EU and adhere to GDPR and CCPA regulations.`,
+    question: '您的服务器位于哪里？',
+    answer: `Umami 云服务器位于美国和欧盟，并遵守 GDPR 和 CCPA 法规。`,
   },
   {
-    question: 'Can I export my data?',
-    answer: `Yes, all of your data can be exported from Umami Cloud.`,
+    question: '我可以导出我的数据吗？',
+    answer: `是的，您的所有数据都可以从 Umami Cloud 导出。`,
   },
 ];
 
@@ -38,7 +35,7 @@ export default function Questions() {
   return (
     <>
       <SectionHeader>
-        <h1>Frequently asked questions</h1>
+        <h1>常见问题</h1>
       </SectionHeader>
       <div className={styles.questions}>
         {questions.map(({ question, answer }) => {

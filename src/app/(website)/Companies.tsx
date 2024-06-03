@@ -16,7 +16,7 @@ const items = [
 export default function Companies() {
   return (
     <TextBlock align="center">
-      <h1>Trusted by thousands of companies</h1>
+      <h1>受到成千上万家公司的信任</h1>
       <div className={styles.logos}>
         {items.map(({ name, title }) => {
           return <img key={name} src={`/images/logo-${name}.png`} alt={title} />;

@@ -6,20 +6,20 @@ import styles from './Personas.module.css';
 
 const items = [
   {
-    title: 'Creators',
-    description: 'Measure everything you need to help improve your website.',
+    title: '创作者',
+    description: '衡量您所需的一切，以帮助改进您的网站。',
     image: '/images/creators.jpg',
     url: '/product/creators',
   },
   {
-    title: 'Marketers',
-    description: 'Easily measure the effectiveness of your campaigns.',
+    title: '营销人员',
+    description: '轻松衡量您的活动的有效性。',
     image: '/images/marketers.jpg',
     url: '/product/marketers',
   },
   {
-    title: 'Agencies',
-    description: 'Bring value to your clients by delivering insights into their data',
+    title: '机构',
+    description: '通过提供对客户数据的深入洞察，为您的客户带来价值。',
     image: '/images/agencies.jpg',
     url: '/product/agencies',
   },
@@ -29,7 +29,7 @@ export default function Personas() {
   return (
     <section className={styles.container}>
       <TextBlock align="center" size="lg">
-        <h1>Built for you</h1>
+        <h1>为你打造</h1>
       </TextBlock>
       <div className={styles.items}>
         {items.map(({ title, description, image, url }) => {
@@ -44,7 +44,7 @@ export default function Personas() {
               </TextBlock>
               <div className={styles.button}>
                 <LinkButton href={url} variant="secondary">
-                  <Text>Learn more </Text>
+                  <Text>了解更多</Text>
                   <Icon>
                     <Icons.ArrowRight />
                   </Icon>

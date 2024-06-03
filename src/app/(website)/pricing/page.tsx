@@ -10,9 +10,9 @@ export default function PricingPage() {
   return (
     <article>
       <PageHeader>
-        <h1>Pricing</h1>
+        <h1>定价</h1>
         <p>
-          <strong>Umami Cloud</strong> is a reliable, high-performance hosted solution
+          <strong>Umami Cloud</strong> 是一个可靠、高性能的托管解决方案
         </p>
       </PageHeader>
       <Plans />
@@ -25,5 +25,5 @@ export default function PricingPage() {
 }
 
 export const metadata: Metadata = {
-  title: 'Pricing',
+  title: '定价',
 };

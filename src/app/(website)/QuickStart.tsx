@@ -12,29 +12,29 @@ export default function QuickStart() {
 
   return (
     <TextBlock align="center" className={styles.container}>
-      <h1>Get up and running in minutes</h1>
+      <h1>在几分钟内启动并运行</h1>
       <div className={styles.steps}>
         <div className={styles.step}>
           <div>1</div>
-          <h3>Sign up</h3>
+          <h3>注册</h3>
           <p>
-            Create a <Link href={url}>free</Link> account on Umami Cloud.
+            在 Umami Cloud 上创建一个 <Link href={url}>免费</Link> 账户。
           </p>
         </div>
         <div className={styles.step}>
           <div>2</div>
-          <h3>Install tracking code</h3>
-          <p>Add our privacy-friendly tracking code to your website.</p>
+          <h3>安装跟踪代码</h3>
+          <p>将我们的隐私友好型跟踪代码添加到您的网站上。</p>
         </div>
         <div className={styles.step}>
           <div>3</div>
-          <h3>View your data</h3>
-          <p>Data will start appearing on your dashboard immediately. It&apos;s that easy.</p>
+          <h3>查看您的数据</h3>
+          <p>数据将立即开始出现在您的仪表板上，就是这么简单。</p>
         </div>
       </div>
       <div className={styles.action}>
         <LinkButton href={url} variant="primary">
-          Get started
+          开始使用
         </LinkButton>
       </div>
     </TextBlock>

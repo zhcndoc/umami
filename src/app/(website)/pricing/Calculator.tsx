@@ -34,12 +34,12 @@ export default function Calculator() {
   return (
     <div className={styles.calculator}>
       <div className={styles.body}>
-        <h1>Pro plan pricing</h1>
+        <h1>专业计划定价</h1>
         <div className={styles.billing}>
           <RadioGroup
             className={styles.radio}
             name="billing"
-            items={['Monthly', 'Annual']}
+            items={['月度', '年度']}
             selectedKey={billing}
             onSelect={handleBillingSelect}
             layout="horizontal"
@@ -48,7 +48,7 @@ export default function Calculator() {
               return <Radio key={item}>{item}</Radio>;
             }}
           </RadioGroup>
-          {isAnnual && <div className={styles.tag}>20% savings</div>}
+          {isAnnual && <div className={styles.tag}>20% 节省</div>}
         </div>
         <div className={styles.slider}>
           <input
@@ -84,7 +84,7 @@ export default function Calculator() {
         </div>
         <div className={styles.result}>
           <div className={styles.events}>
-            Up to <strong>{selected.events}</strong> events / month
+            最多 <strong>{selected.events}</strong> 活动 / 月
           </div>
           <div className={styles.price}>
             {isAnnual && selected.price !== null && (
@@ -93,9 +93,9 @@ export default function Calculator() {
             <strong>
               {selected.price !== null
                 ? `$${Math.floor(selected.price * (isAnnual ? 12 * 0.8 : 1)).toLocaleString()}`
-                : 'Contact us'}
+                : '联系我们'}
             </strong>
-            {selected.price !== null && <span>{` / ${isAnnual ? 'year' : 'month'}`}</span>}
+            {selected.price !== null && <span>{` / ${isAnnual ? '年' : '月'}`}</span>}
           </div>
         </div>
       </div>

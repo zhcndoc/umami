@@ -11,47 +11,42 @@ export default function Plans() {
 
   const plans = [
     {
-      name: 'Hobby',
+      name: '爱好',
       price: (
         <>
-          <strong>$0</strong> / month
+          <strong>$0</strong> / 月
         </>
       ),
-      description: 'Up to 10K monthly events',
-      features: ['Up to 3 websites', '1 year data retention', 'Community support'],
+      description: '每月高达 10,000 个活动',
+      features: ['多达 3 个网站', '1 年数据保留', '社区支持'],
       url: `${CLOUD_URL}/signup${query}&plan=hobby`,
-      button: 'Get started',
+      button: '开始',
     },
     {
-      name: 'Pro',
+      name: '专业',
       price: (
         <>
-          From <strong>$9</strong> / month
+          <strong>$9</strong> / 月起
         </>
       ),
-      description: 'Simple usage based pricing',
-      features: [
-        'Unlimited websites',
-        'Unlimited team members',
-        '5 year data retention',
-        'Email support',
-      ],
+      description: '基于使用量的简单定价',
+      features: ['无限的网站', '无限的团队成员', '5 年数据保留', '电子邮件支持'],
       url: `${CLOUD_URL}/signup${query}&plan=pro`,
-      button: 'Try 14-day free trial',
+      button: '尝试 14 天免费试用',
     },
     {
-      name: 'Enterprise',
-      price: <strong>Custom</strong>,
-      description: 'Tailored for your business',
+      name: '企业',
+      price: <strong>自定义</strong>,
+      description: '为您的业务量身定制',
       features: [
-        'Unlimited websites',
-        'Unlimited team members',
-        'Custom data retention',
-        'Onboarding support',
-        'Designated support engineer',
+        '无限的网站',
+        '无限的团队成员',
+        '自定义数据保留',
+        '顾客引导支持',
+        '指定支持工程师',
       ],
       url: 'mailto:sales@umami.is?subject=Umami Cloud enterprise pricing',
-      button: 'Contact us',
+      button: '联系我们',
     },
   ];
 
