@@ -8,14 +8,14 @@ title: 在 Neon Postgres 上运行
 
 ## 设置
 
-1. 在 Neon 上创建一个名为给定名称的项目，选择一个靠近您将托管 Umami 项目的区域。
-   - 您也可以使用 Neon CLI 创建 Neon 项目：`npx neonctl projects create`。连接字符串将打印到控制台上。
+1. 在 Neon 上创建一个名为给定名称的项目，选择一个靠近你将托管 Umami 项目的区域。
+   - 你也可以使用 Neon CLI 创建 Neon 项目：`npx neonctl projects create`。连接字符串将打印到控制台上。
 2. 获取启用了连接池的数据库连接字符串。它应该类似于这样：`postgres://user:passwd@endpoint-pooler.region.aws.neon.build/neondb`。
-   - 您也可以使用 Neon CLI 获取连接字符串：`npx neonctl connection-string --project-id <project-id> --pooled`。
+   - 你也可以使用 Neon CLI 获取连接字符串：`npx neonctl connection-string --project-id <project-id> --pooled`。
 3. **重要：**在刚刚复制的连接字符串中添加 `?pgbouncer=true&connect_timeout=10`。
-4. 将 `DATABASE_URL` 添加到您的 `.env` 文件中：
+4. 将 `DATABASE_URL` 添加到你的 `.env` 文件中：
    ```text
    DATABASE_URL=postgres://user:passwd@endpoint-pooler.region.aws.neon.build/neondb?pgbouncer=true&connect_timeout=10
    ```
-5. 您现在应该能够检查数据库连接并更新模式（`yarn run build-db && yarn run update-db`）。
+5. 你现在应该能够检查数据库连接并更新模式（`yarn run build-db && yarn run update-db`）。
 6. 从[登录](/docs/login)步骤开始遵循**入门指南**，并确保更改默认密码。

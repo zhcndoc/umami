@@ -32,7 +32,7 @@ const nextConfig = {
   },
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   reactStrictMode: false,
-  output: 'standalone',
+  output: undefined,
   eslint: {
     ignoreDuringBuilds: true,
   },

@@ -7,19 +7,19 @@ import styles from './Personas.module.css';
 const items = [
   {
     title: '创作者',
-    description: '衡量您所需的一切，以帮助改进您的网站。',
+    description: '衡量你所需的一切，以帮助改进你的网站。',
     image: '/images/creators.jpg',
     url: '/product/creators',
   },
   {
     title: '营销人员',
-    description: '轻松衡量您的活动的有效性。',
+    description: '轻松衡量你的活动的有效性。',
     image: '/images/marketers.jpg',
     url: '/product/marketers',
   },
   {
     title: '机构',
-    description: '通过提供对客户数据的深入洞察，为您的客户带来价值。',
+    description: '通过提供对客户数据的深入洞察，为你的客户带来价值。',
     image: '/images/agencies.jpg',
     url: '/product/agencies',
   },

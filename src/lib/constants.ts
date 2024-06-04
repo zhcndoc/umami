@@ -8,7 +8,7 @@ import Code from 'assets/code.svg';
 
 export const CLOUD_URL = 'https://cloud.umami.is';
 export const GITHUB_URL = 'https://github.com/umami-software/umami';
-export const DISCORD_URL = 'https://umami.is/discord';
+export const DISCORD_URL = 'https://umami.zhcndoc.com/discord';
 export const X_URL = 'https://twitter.com/umami_software';
 export const LINKEDIN_URL = 'https://www.linkedin.com/company/umami-software/';
 export const GITHUB_STARS = '20k';
@@ -39,12 +39,12 @@ export const Blocks = {
   filters: {
     title: '强大的过滤器',
     description:
-      '使用易于应用的过滤器深入了解您的数据。按浏览器、操作系统和国家/地区等任何指标细分您的用户。',
+      '使用易于应用的过滤器深入了解你的数据。按浏览器、操作系统和国家/地区等任何指标细分你的用户。',
     image: '/images/preview-filters.png',
   },
   realtimeData: {
     title: '实时数据',
-    description: '获取您当前网站流量的实时视图。查看访问者落地的确切页面。',
+    description: '获取你当前网站流量的实时视图。查看访问者落地的确切页面。',
     image: '/images/preview-realtime.png',
   },
   multiLanguage: {
@@ -54,12 +54,12 @@ export const Blocks = {
   },
   mobileFriendly: {
     title: '移动端友好',
-    description: 'Umami 界面已针对移动设备进行优化，您可以随时随地查看您的统计数据。',
+    description: 'Umami 界面已针对移动设备进行优化，你可以随时随地查看你的统计数据。',
     image: '/images/preview-mobile.png',
   },
   unlimitedWebsites: {
     title: '无限的网站',
-    description: `Umami 能够跟踪无限数量的网站。您甚至可以跟踪子域和单个 URL。`,
+    description: `Umami 能够跟踪无限数量的网站。你甚至可以跟踪子域和单个 URL。`,
     icon: Infinite,
   },
   multipleAccounts: {
@@ -70,17 +70,17 @@ export const Blocks = {
   },
   bypassAdBlockers: {
     title: '绕过广告拦截器',
-    description: 'Umami 由您托管在自己的域名下，因此您可以可靠地避免与谷歌分析不同的广告拦截器。',
+    description: 'Umami 由你托管在自己的域名下，因此你可以可靠地避免与谷歌分析不同的广告拦截器。',
     icon: Block,
   },
   lightWeight: {
     title: '轻量级',
-    description: '跟踪脚本很小（只有2KB），加载速度快如闪电。它永远不会减慢您的网站速度。',
+    description: '跟踪脚本很小（只有2KB），加载速度快如闪电。它永远不会减慢你的网站速度。',
     icon: Feather,
   },
   shareData: {
     title: '轻松共享数据',
-    description: '您可以通过安全的、独一无二的生成的 URL 轻松地与他人分享您的统计数据。',
+    description: '你可以通过安全的、独一无二的生成的 URL 轻松地与他人分享你的统计数据。',
     icon: Share,
   },
   darkMode: {
@@ -90,27 +90,27 @@ export const Blocks = {
   },
   maximizeValue: {
     title: '最大化价值，最小化时间',
-    description: `Umami 帮助您快速入职客户，减少价值时间，保护代理利润率。只需点击几下即可实现 Umami，并在单个页面中获得关键指标和见解。可共享的链接和报告节省了昂贵的配置时间，为客户留出更多时间。`,
+    description: `Umami 帮助你快速入职客户，减少价值时间，保护代理利润率。只需点击几下即可实现 Umami，并在单个页面中获得关键指标和见解。可共享的链接和报告节省了昂贵的配置时间，为客户留出更多时间。`,
     image: '/images/preview-website-stats.png',
   },
   focusOnResults: {
     title: '专注于结果，而不是废话',
-    description: `Umami 在复杂性和简单性之间取得了恰到好处的平衡。直观的分析，易于定制的事件跟踪以及实时访客见解，帮助您清晰地传达对客户重要的内容，并且不会被过于复杂的功能集所分散注意力。`,
+    description: `Umami 在复杂性和简单性之间取得了恰到好处的平衡。直观的分析，易于定制的事件跟踪以及实时访客见解，帮助你清晰地传达对客户重要的内容，并且不会被过于复杂的功能集所分散注意力。`,
     image: '/images/preview-events.png',
   },
   protectClientCompliance: {
     title: '保护客户合规性',
-    description: `Umami 注重隐私的模式确保您尊重客户和用户的隐私。Umami 不收集任何个人信息，不使用 Cookie，不跟踪用户在网站间的活动，并符合 GDPR 要求。`,
+    description: `Umami 注重隐私的模式确保你尊重客户和用户的隐私。Umami 不收集任何个人信息，不使用 Cookie，不跟踪用户在网站间的活动，并符合 GDPR 要求。`,
     icon: Lock,
   },
   openSource: {
     title: '开源',
-    description: `Umami 致力于开源开发，您永远不需要担心数据所有权或供应商锁定。`,
+    description: `Umami 致力于开源开发，你永远不需要担心数据所有权或供应商锁定。`,
     icon: Code,
   },
   reports: {
     title: '稳健的报告',
-    description: 'Umami 内置了报告，可帮助您更深入地了解数据。',
+    description: 'Umami 内置了报告，可帮助你更深入地了解数据。',
     image: '/images/preview-reports.png',
   },
 };

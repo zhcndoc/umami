@@ -24,12 +24,12 @@ export default function QuickStart() {
         <div className={styles.step}>
           <div>2</div>
           <h3>安装跟踪代码</h3>
-          <p>将我们的隐私友好型跟踪代码添加到您的网站上。</p>
+          <p>将我们的隐私友好型跟踪代码添加到你的网站上。</p>
         </div>
         <div className={styles.step}>
           <div>3</div>
-          <h3>查看您的数据</h3>
-          <p>数据将立即开始出现在您的仪表板上，就是这么简单。</p>
+          <h3>查看你的数据</h3>
+          <p>数据将立即开始出现在你的仪表板上，就是这么简单。</p>
         </div>
       </div>
       <div className={styles.action}>

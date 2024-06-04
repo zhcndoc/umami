@@ -25,7 +25,7 @@ export default function CampaignLayout({ children }) {
         <meta name="theme-color" content="#ffffff" />
         {process.env.NODE_ENV === 'production' && (
           <>
-            <script
+            {/* <script
               defer
               data-website-id="86d4095c-a2a8-4fc8-9521-103e858e2b41"
               data-domains="umami.is"
@@ -34,7 +34,7 @@ export default function CampaignLayout({ children }) {
             <script async src="https://www.googletagmanager.com/gtag/js?id=AW-11312352810"></script>
             <script>
               {`window.dataLayer = window.dataLayer || [];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'AW-11312352810');`}
-            </script>
+            </script> */}
           </>
         )}
       </head>

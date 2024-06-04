@@ -74,7 +74,17 @@ export default function Footer() {
         <div className={styles.bottom}>
           <SocialMedia />
           <div className={styles.copy}>
-            <div>&copy; {new Date().getFullYear()} Umami Software, Inc.</div>
+            <div>
+              &copy; {new Date().getFullYear()} Umami Software, Inc.
+              <a
+                style={{ marginLeft: '12px' }}
+                rel="nofollow"
+                target="__blank"
+                href="https://beian.miit.gov.cn"
+              >
+                沪ICP备2024070610号-3
+              </a>
+            </div>
           </div>
         </div>
       </Container>

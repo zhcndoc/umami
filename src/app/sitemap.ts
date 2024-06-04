@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 
-const ROOT = 'https://umami.is';
+const ROOT = 'https://umami.zhcndoc.com';
 const URLS = [
   '',
   '/docs',

@@ -22,7 +22,7 @@ export default function Features() {
         <h1>你所需要的所有功能</h1>
         <p>
           Umami充满了令人惊叹的功能，让你能更好地
-          <br /> 了解您的网站流量。
+          <br /> 了解你的网站流量。
         </p>
       </PageHeader>
       <ScrollBlock items={items} />

@@ -36,7 +36,7 @@ import styles from './Features.module.css';
 const items = [
   {
     title: '分析',
-    description: `Umami 收集您关心的所有指标，以帮助您做出更好的决策。`,
+    description: `Umami 收集你关心的所有指标，以帮助你做出更好的决策。`,
     items: [
       {
         title: '访客信息',
@@ -50,7 +50,7 @@ const items = [
       },
       {
         title: '跳出率',
-        description: ['查看哪些页面让您的访问者参与其中，而不是他们放弃的页面。'],
+        description: ['查看哪些页面让你的访问者参与其中，而不是他们放弃的页面。'],
         icon: <Bounce />,
       },
       {
@@ -60,42 +60,42 @@ const items = [
       },
       {
         title: '位置',
-        description: ['了解您的访客来自哪里，包括城市、地区和国家。'],
+        description: ['了解你的访客来自哪里，包括城市、地区和国家。'],
         icon: <Location />,
       },
       {
         title: '设备',
-        description: ['查看访问者使用的最受欢迎的设备，以帮助您优化页面。'],
+        description: ['查看访问者使用的最受欢迎的设备，以帮助你优化页面。'],
         icon: <Device />,
       },
       {
         title: '语言',
-        description: ['了解哪些语言在您的访问者中最受欢迎，以帮助您定制内容。'],
+        description: ['了解哪些语言在你的访问者中最受欢迎，以帮助你定制内容。'],
         icon: <Language />,
       },
       {
         title: '过滤',
-        description: ['通过应用国家、浏览器和 URL 等过滤器，进一步了解您的数据。'],
+        description: ['通过应用国家、浏览器和 URL 等过滤器，进一步了解你的数据。'],
         icon: <Filter />,
       },
       {
         title: '实时数据',
-        description: [`数据在几秒钟内可用，而不是几天内。Umami 收集的数据立即在您的仪表板上可用`],
+        description: [`数据在几秒钟内可用，而不是几天内。Umami 收集的数据立即在你的仪表板上可用`],
         icon: <Realtime />,
       },
       {
         title: '团队',
-        description: ['团队功能允许您与不同的团队成员安全地共享网站访问权限。'],
+        description: ['团队功能允许你与不同的团队成员安全地共享网站访问权限。'],
         icon: <Team />,
       },
       {
         title: '自定义事件',
-        description: ['使用自定义事件跟踪您网站上发生的一切，例如注册和购物车结账。'],
+        description: ['使用自定义事件跟踪你网站上发生的一切，例如注册和购物车结账。'],
         icon: <Bolt />,
       },
       {
         title: '自定义数据',
-        description: ['使用自定义数据属性来帮助您进一步分析数据。'],
+        description: ['使用自定义数据属性来帮助你进一步分析数据。'],
         icon: <Data />,
       },
       {
@@ -106,23 +106,23 @@ const items = [
 
       {
         title: '共享',
-        description: ['通过安全、唯一生成的 URL 轻松与他人共享您的统计数据。'],
+        description: ['通过安全、唯一生成的 URL 轻松与他人共享你的统计数据。'],
         icon: <Share />,
       },
       {
         title: '报告',
-        description: ['为特定网站和日期范围构建报告，以满足您的所有数据需求。'],
+        description: ['为特定网站和日期范围构建报告，以满足你的所有数据需求。'],
         icon: <Graph />,
       },
     ],
   },
   {
     title: '报告',
-    description: 'Umami 附带开箱即用的报告，使您能够从所有网站数据中获得深刻的见解。',
+    description: 'Umami 附带开箱即用的报告，使你能够从所有网站数据中获得深刻的见解。',
     items: [
       {
         title: '洞察',
-        description: ['通过使用分段和过滤器深入了解您的数据。'],
+        description: ['通过使用分段和过滤器深入了解你的数据。'],
         icon: <Lightbulb />,
       },
       {
@@ -132,24 +132,24 @@ const items = [
       },
       {
         title: '保留',
-        description: ['通过跟踪用户返回的频率来衡量您的网站粘性。'],
+        description: ['通过跟踪用户返回的频率来衡量你的网站粘性。'],
         icon: <Magnet />,
       },
       {
         title: '目标',
-        description: ['跟踪您的页面浏览量和事件目标。'],
+        description: ['跟踪你的页面浏览量和事件目标。'],
         icon: <Target />,
       },
       {
         title: 'UTM',
-        description: ['通过 UTM 参数跟踪您的活动。'],
+        description: ['通过 UTM 参数跟踪你的活动。'],
         icon: <Tag />,
       },
     ],
   },
   {
     title: '隐私',
-    description: `默认情况下，Umami 是私有的，可帮助您遵守数据隐私法。`,
+    description: `默认情况下，Umami 是私有的，可帮助你遵守数据隐私法。`,
     items: [
       {
         title: 'GDPR & CCPA',
@@ -169,7 +169,7 @@ const items = [
       {
         title: '数据所有权',
         description: [
-          `数据始终由您与 Umami 控制。您可以在自己的基础设施上自我托管或从 Umami Cloud 导出数据。`,
+          `数据始终由你与 Umami 控制。你可以在自己的基础设施上自我托管或从 Umami Cloud 导出数据。`,
         ],
         icon: <Key />,
       },
@@ -182,19 +182,19 @@ const items = [
     items: [
       {
         title: '全面托管',
-        description: [`当您专注于您的网站时，请将升级、数据库调优和备份管理留给我们。`],
+        description: [`当你专注于你的网站时，请将升级、数据库调优和备份管理留给我们。`],
         icon: <Gear />,
       },
       {
         title: '高性能',
         description: [
-          `无论您有数百万或数十亿的记录，我们的平台都是为速度而设计的，并将提供快速的结果。`,
+          `无论你有数百万或数十亿的记录，我们的平台都是为速度而设计的，并将提供快速的结果。`,
         ],
         icon: <Gauge />,
       },
       {
         title: '数据导入',
-        description: [`想要将您现有的数据迁移到 Umami 吗？只需使用我们的内置导入工具。`],
+        description: [`想要将你现有的数据迁移到 Umami 吗？只需使用我们的内置导入工具。`],
         icon: <Import />,
       },
       {

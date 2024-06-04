@@ -4,11 +4,11 @@ title: 认证
 
 # 认证
 
-以下认证方法仅适用于自托管的 Umami。对于 Umami 云，您只需要生成 [API 密钥](/docs/cloud/api-key)。
+以下认证方法仅适用于自托管的 Umami。对于 Umami 云，你只需要生成 [API 密钥](/docs/cloud/api-key)。
 
 ## POST /api/auth/login
 
-首先，您需要获取一个 _token_ 以进行 API 请求。您需要向 `/api/auth/login` 端点发出 `POST` 请求，并提供以下数据：
+首先，你需要获取一个 _token_ 以进行 API 请求。你需要向 `/api/auth/login` 端点发出 `POST` 请求，并提供以下数据：
 
 ```json
 {
@@ -17,7 +17,7 @@ title: 认证
 }
 ```
 
-如果成功，您会得到以下类似的响应：
+如果成功，你会得到以下类似的响应：
 
 ```json
 {
@@ -30,7 +30,7 @@ title: 认证
 }
 ```
 
-请保存 token 值，并在所有数据请求中使用 `Bearer <token>` 作为您的 `Authorization` 请求头。您的请求头应该类似于：
+请保存 token 值，并在所有数据请求中使用 `Bearer <token>` 作为你的 `Authorization` 请求头。你的请求头应该类似于：
 
 ```http request
 Authorization: Bearer eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A
@@ -50,7 +50,7 @@ curl https://{yourserver}/api/websites
 
 ## POST /api/auth/verify
 
-您可以验证令牌是否仍然有效。
+你可以验证令牌是否仍然有效。
 
 **示例响应**
 

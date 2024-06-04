@@ -37,7 +37,7 @@ export default function Plans() {
     {
       name: '企业',
       price: <strong>自定义</strong>,
-      description: '为您的业务量身定制',
+      description: '为你的业务量身定制',
       features: [
         '无限的网站',
         '无限的团队成员',

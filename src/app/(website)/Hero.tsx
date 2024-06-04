@@ -17,7 +17,7 @@ export default function Hero() {
           保护隐私
         </h1>
         <p className={styles.subtitle}>
-          Umami 使您可以轻松收集、分析和理解您的网络数据，同时维护
+          Umami 使你可以轻松收集、分析和理解你的网络数据，同时维护
           <strong>访问者的隐私</strong>和<strong>数据所有权</strong>。
         </p>
       </TextBlock>

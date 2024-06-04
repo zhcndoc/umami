@@ -4,13 +4,13 @@ title: 跟踪事件
 
 # 跟踪事件
 
-除了页面浏览量之外，Umami 还能够跟踪在您的网站上发生的事件。在 Umami 中，有两种记录事件的方法，使用 **数据属性** （data attributes）属性或使用 **JavaScript**。
+除了页面浏览量之外，Umami 还能够跟踪在你的网站上发生的事件。在 Umami 中，有两种记录事件的方法，使用 **数据属性** （data attributes）属性或使用 **JavaScript**。
 
 ## 使用数据属性
 
 要启用事件，只需向要跟踪的元素添加特殊的数据属性。
 
-例如，您可能有一个带有以下代码的按钮：
+例如，你可能有一个带有以下代码的按钮：
 
 ```html
 <button id="signup-button">注册</button>
@@ -22,7 +22,7 @@ title: 跟踪事件
 data-umami-event="{事件名称}"
 ```
 
-因此，您的按钮元素现在看起来是这样的：
+因此，你的按钮元素现在看起来是这样的：
 
 ```html
 <button id="signup-button" data-umami-event="注册按钮">注册</button>
@@ -30,7 +30,7 @@ data-umami-event="{事件名称}"
 
 当用户点击此按钮时，Umami 将记录一个名为“注册按钮”的事件。
 
-您还可以使用 **data-umami-event-\*** 注释参数可选地传递 **event_data**。
+你还可以使用 **data-umami-event-\*** 注释参数可选地传递 **event_data**。
 
 ```text
 data-umami-event="注册按钮"
@@ -44,12 +44,12 @@ data-umami-event-id="123"
 
 ### 注意事项
 
-- 使用此方法，所有事件数据将保存为字符串。如果您想将事件数据保存为数字、日期、布尔值等，请使用下面的 JavaScript 方法。
+- 使用此方法，所有事件数据将保存为字符串。如果你想将事件数据保存为数字、日期、布尔值等，请使用下面的 JavaScript 方法。
 - 元素内的其他事件侦听器不会被触发。
 
 ## 使用 JavaScript
 
-您还可以使用 `window.umami` 对象手动记录事件。要完成与上述数据-\* 方法相同的事情，可以这样做：
+你还可以使用 `window.umami` 对象手动记录事件。要完成与上述数据-\* 方法相同的事情，可以这样做：
 
 ```js
 const button = document.getElementById('signup-button');
@@ -59,14 +59,14 @@ button.onclick = () => umami.track('注册按钮');
 
 在这种情况下，Umami 将记录一个名为“注册按钮”的事件。
 
-如果您想记录动态数据，请参阅[跟踪器函数](/docs/tracker-functions)。
+如果你想记录动态数据，请参阅[跟踪器函数](/docs/tracker-functions)。
 
 ## 查看事件
 
-一旦您的事件被记录，它们将在您的网站的 **详情** 页上可用。
+一旦你的事件被记录，它们将在你的网站的 **详情** 页上可用。
 
 <img src="/images/v1/events.png" />
 
 ## 防止跟踪自己
 
-要防止跟踪自己，请将键 `umami.disabled` 添加到您的浏览器的本地存储中，并将其值设置为 `1`。
+要防止跟踪自己，请将键 `umami.disabled` 添加到你的浏览器的本地存储中，并将其值设置为 `1`。

@@ -19,14 +19,14 @@ const statements = [
     title: '拥有你的数据',
     description: `
     数据所有权对于遵守不断变化的隐私法至关重要。
-    请放心，您的数据在您的控制之下。
+    请放心，你的数据在你的控制之下。
     `,
     image: <Shield />,
   },
   {
     title: '尊重数据隐私',
     description: `
-    Umami允许您收集所需的数据，同时尊重用户的隐私。
+    Umami允许你收集所需的数据，同时尊重用户的隐私。
     所有数据都是匿名的，从未收集过任何个人数据。不需要Cookie横幅。
     `,
     image: <Lock />,

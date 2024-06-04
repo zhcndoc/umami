@@ -8,32 +8,32 @@ title: 在 Koyeb 上运行
 
 ## 设置
 
-在本指南中，您需要运行并接受远程连接的 PostgreSQL 数据库服务器。如果您没有数据库，可以查看 [托管](/docs/guides/hosting) 下的 **托管数据库** 部分。
+在本指南中，你需要运行并接受远程连接的 PostgreSQL 数据库服务器。如果你没有数据库，可以查看 [托管](/docs/guides/hosting) 下的 **托管数据库** 部分。
 
-> 您需要按照 [安装](/docs/install) 文档的 **创建数据库表** 部分来设置数据库表。
+> 你需要按照 [安装](/docs/install) 文档的 **创建数据库表** 部分来设置数据库表。
 
-要部署 Umami，我们使用 [Koyeb CLI](https://github.com/koyeb/koyeb-cli)，您也可以使用 [Koyeb 控制面板](https://app.koyeb.com) 进行设置。
+要部署 Umami，我们使用 [Koyeb CLI](https://github.com/koyeb/koyeb-cli)，你也可以使用 [Koyeb 控制面板](https://app.koyeb.com) 进行设置。
 
 ### 创建 Koyeb Secrets
 
-创建一个 Koyeb secrets 来安全存储您的 `DATABASE_URL`。在终端中执行以下命令：
+创建一个 Koyeb secrets 来安全存储你的 `DATABASE_URL`。在终端中执行以下命令：
 
 ```shell
 $ koyeb secret create umami-database-url
-输入您的密码：postgres://<user>:<password>@<host>:<port>/<db-name>?sslmode=require
+输入你的密码：postgres://<user>:<password>@<host>:<port>/<db-name>?sslmode=require
 
 $ openssl rand -hex 32 | koyeb secret create umami-hash-salt --value-from-stdin
 ```
 
 ### 部署 Umami
 
-一旦您创建了 Secrets，就可以部署 Umami。在终端中运行以下命令创建一个新的 Koyeb 应用并部署 Umami 服务：
+一旦你创建了 Secrets，就可以部署 Umami。在终端中运行以下命令创建一个新的 Koyeb 应用并部署 Umami 服务：
 
 ```shell
 koyeb app init umami --docker docker.umami.is/umami-software/umami:postgresql-latest --ports 3000:http --routes /:3000 --env DATABASE_URL=@umami-database-url
 ```
 
-正在部署您的 Umami 服务。要获取 Umami URL，请运行以下命令：
+正在部署你的 Umami 服务。要获取 Umami URL，请运行以下命令：
 
 ```shell
 $ koyeb app get umami

@@ -15,7 +15,7 @@ import 'styles/index.css';
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" data-scroll="0">
+    <html lang="zh-CN" data-scroll="0">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="icon" href="/favicon.ico" />
@@ -29,10 +29,9 @@ export default function RootLayout({ children }) {
         {process.env.NODE_ENV === 'production' && (
           <script
             defer
-            data-website-id="86d4095c-a2a8-4fc8-9521-103e858e2b41"
-            data-domains="umami.is"
-            src="/a/script.js"
-          />
+            src="https://analytics.ikxin.com/script.js"
+            data-website-id="f0e90b0d-e086-4fdc-b173-de4857b71900"
+          ></script>
         )}
       </head>
       <body>
@@ -49,7 +48,7 @@ export default function RootLayout({ children }) {
 
 export const metadata: Metadata = {
   title: {
-    template: '%s – Umami',
-    default: 'Umami',
+    template: '%s – Umami 中文文档',
+    default: 'Umami 中文文档',
   },
 };
