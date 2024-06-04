@@ -1,55 +1,55 @@
 [
   {
-    "label": "Get started",
+    "label": "开始使用",
     "items": [
       {
-        "label": "Overview",
+        "label": "概述",
         "url": "/docs/api"
       },
       {
-        "label": "Authentication",
+        "label": "认证",
         "url": "/docs/api/authentication"
       },
       {
-        "label": "Sending stats",
+        "label": "发送统计数据",
         "url": "/docs/api/sending-stats"
       }
     ]
   },
   {
-    "label": "Endpoints",
+    "label": "端点",
     "items": [
       {
-        "label": "Users",
+        "label": "用户",
         "url": "/docs/api/users-api"
       },
       {
-        "label": "Teams",
+        "label": "团队",
         "url": "/docs/api/teams-api"
       },
       {
-        "label": "Websites",
+        "label": "网站",
         "url": "/docs/api/websites-api"
       },
       {
-        "label": "Website stats",
+        "label": "网站统计",
         "url": "/docs/api/website-stats"
       },
       {
-        "label": "Event data",
+        "label": "事件数据",
         "url": "/docs/api/event-data"
       }
     ]
   },
   {
-    "label": "Clients",
+    "label": "客户端",
     "items": [
       {
-        "label": "API client",
+        "label": "API 客户端",
         "url": "/docs/api/api-client"
       },
       {
-        "label": "Node client",
+        "label": "Node 客户端",
         "url": "/docs/api/node-client"
       }
     ]

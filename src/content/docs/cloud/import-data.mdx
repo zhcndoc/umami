@@ -1,73 +1,73 @@
 ---
-title: Import Data
+title: 导入数据
 ---
 
-# Import data
+# 导入数据
 
-Umami allows you to import your data to Umami Cloud. The import handles a single website at a time.
-If you have a large number of websites or a large amount of data to import please contact [support@umami.is](mailto:support@umami.is).
+Umami 允许您将数据导入到 Umami Cloud。导入一次只能处理一个网站。
+如果您有大量的网站或需要导入大量数据，请联系 [support@umami.is](mailto:support@umami.is)。
 
-## Generating the import file
+## 生成导入文件
 
-The import file is in CSV format with headers and quotes. The columns must be in the format and order below.
-The import will accept data from outside systems as long as the format is followed and the non-optional columns are populated.
-There will be guides below to import your data from a self-hosted version of Umami to Umami Cloud for PostgreSQL and MySQL.
+导入文件采用 CSV 格式，包含标题和引号。列必须按以下格式和顺序提供。
+只要遵循格式并填充非可选列，导入就能接受来自外部系统的数据。
+下面将介绍如何将您的数据从本地托管版本的 Umami 导入到 Umami Cloud（适用于 PostgreSQL 和 MySQL）的指南。
 
-### Format
+### 格式
 
-**Website Event**
+**网站事件**
 
-- `website_id`: (uuid) Website key identifier.
-- `session_id`: (uuid) Session key identifier.
-- `visit_id`: (uuid) Visit key identifier.
-- `event_id`: (uuid) Event key identifier.
-- `hostname`: (string)(optional) Name of host.
-- `browser`: (string)(optional) Name of browser.
-- `os`: (string)(optional) Name of operating system.
-- `device`: (string)(optional) Name of device (ex. Mobile)
-- `screen`: (string)(optional) Screen resolution (ex. "1920x1080")
-- `language`: (string)(optional) Language of visitor (ex. "en-US")
-- `country`: (string)(optional) Name of country.
-- `subdivision1`: (string)(optional) Name of first level region/state/province.
-- `subdivision2`: (string)(optional) Name of second level region/state/province.
-- `city`: (string)(optional) Name of city.
-- `url_path`: (string) Name of URL path.
-- `url_query`: (string)(optional) Name of URL query parameter.
-- `referrer_path`: (string)(optional) Name of referrer path.
-- `referrer_query`: (string)(optional) Name of referrer query parameter.
-- `referrer_domain`: (string)(optional) Name of referrer domain.
-- `page_title`: (string)(optional) Name of page title.
-- `event_type`: (int) 1.Pageview 2.Custom event.
-- `event_name`: (string)(optional) Name of event.
-- `created_at`: (datetime) Timestamp of created date in UTC.
+- `website_id`: (uuid) 网站关键标识符。
+- `session_id`: (uuid) 会话关键标识符。
+- `visit_id`: (uuid) 访问关键标识符。
+- `event_id`: (uuid) 事件关键标识符。
+- `hostname`: (string)(可选) 主机名。
+- `browser`: (string)(可选) 浏览器名称。
+- `os`: (string)(可选) 操作系统名称。
+- `device`: (string)(可选) 设备名称（例如，Mobile）。
+- `screen`: (string)(可选) 屏幕分辨率（例如，"1920x1080"）。
+- `language`: (string)(可选) 访客语言（例如，"en-US"）。
+- `country`: (string)(可选) 国家名称。
+- `subdivision1`: (string)(可选) 第一级地区/州/省名称。
+- `subdivision2`: (string)(可选) 第二级地区/州/省名称。
+- `city`: (string)(可选) 城市名称。
+- `url_path`: (string) URL 路径名称。
+- `url_query`: (string)(可选) URL 查询参数名称。
+- `referrer_path`: (string)(可选) 引荐页面路径名称。
+- `referrer_query`: (string)(可选) 引荐页面查询参数名称。
+- `referrer_domain`: (string)(可选) 引荐页面域名名称。
+- `page_title`: (string)(可选) 页面标题名称。
+- `event_type`: (int) 1. 页面浏览 2. 自定义事件。
+- `event_name`: (string)(可选) 事件名称。
+- `created_at`: (datetime) UTC 时间戳的创建日期。
 
-**Event data**
+**事件数据**
 
-- `website_id`: (uuid) Website key identifier.
-- `session_id`: (uuid) Session key identifier.
-- `event_id`: (uuid) Event key identifier.
-- `url_path`: (string) Name of URL path.
-- `event_name`: (string) Name of event.
-- `event_key`: (string) Name of event key.
-- `string_value`: (string) Event key value in string format.
-- `number_value`: (decimal) Event key value in number format.
-- `date_value`: (string) Event key value in date format.
-- `data_type`: (int) 1.String 2.Number 3.Boolean 4.Date 5.Array
-- `created_at`: (datetime) Timestamp of created date in UTC.
+- `website_id`: (uuid) 网站关键标识符。
+- `session_id`: (uuid) 会话关键标识符。
+- `event_id`: (uuid) 事件关键标识符。
+- `url_path`: (string) URL 路径名称。
+- `event_name`: (string) 事件名称。
+- `event_key`: (string) 事件键名称。
+- `string_value`: (string) 字符串格式的事件键值。
+- `number_value`: (decimal) 数字格式的事件键值。
+- `date_value`: (string) 日期格式的事件键值。
+- `data_type`: (int) 1. 字符串 2. 数字 3. 布尔值 4. 日期 5. 数组
+- `created_at`: (datetime) UTC 时间戳的创建日期。
 
 ### PostgreSQL
 
-You will be leveraging PostgreSQL's [\copy](https://www.postgresql.org/docs/current/sql-copy.html) command.
-To use this command, you will need access to the [psql](https://www.postgresql.org/docs/current/app-psql.html) terminal.
+您将利用 PostgreSQL 的 [\copy](https://www.postgresql.org/docs/current/sql-copy.html) 命令。
+要使用该命令，您需要访问 [psql](https://www.postgresql.org/docs/current/app-psql.html) 终端。
 
 ```shell
-psql -h <hostname or ip address> -p <port number of remote machine> -d <database> -U <username>
+psql -h <主机名或 IP 地址> -p <远程主机的端口号> -d <数据库> -U <用户名>
 ```
 
-`\copy` does not support multi-line SQL statements. To bypass this you will need to create a view before using the command.
-If using a schema other than `public`, you will need to identify the schema in the statement below (ex. `<schema>.website_event`).
+`\copy` 不支持多行 SQL 语句。为了绕过这个问题，您需要在使用该命令之前创建一个视图。
+如果使用的模式不是 `public`，您需要在下面的语句中标识出模式（例如，`<模式>.website_event`）。
 
-**Website Event**
+**网站事件**
 
 ```sql
 CREATE VIEW website_event_import AS
@@ -99,16 +99,16 @@ SELECT we.website_id,
  ON s.session_id = we.session_id;
 ```
 
-You can now use the `\copy` psql command. Replace `website id` and `filepath` in the command below.
-The `website id` can be found by navigating to **Websites** and clicking on the **Edit** button on the self-hosted Umami instance.
+现在您可以使用 `\copy` psql 命令。在下面的命令中替换 `<website id>` 和 `<filepath>`。
+可以通过导航到 **网站** 并单击自托管 Umami 实例上的 **编辑** 按钮来找到 `website id`。
 
 ```shell
 \COPY (SELECT * FROM website_event_import WHERE website_id = '<website id>') TO '<filepath>.csv' WITH (FORMAT CSV, HEADER TRUE, FORCE_QUOTE *)
 ```
 
-**Event data**
+**事件数据**
 
-Same instructions as **Website Event**, but you will need to create its own view.
+与 **网站事件** 相同的说明，但需要创建它自己的视图。
 
 ```sql
 CREATE VIEW event_data_import AS
@@ -128,7 +128,7 @@ JOIN website_event we
 ON we.event_id = ed.website_event_id;
 ```
 
-Copy command
+复制命令
 
 ```shell
 \COPY (SELECT * FROM event_data_import WHERE website_id = '<website id>') TO '<filepath>.csv' WITH (FORMAT CSV, HEADER TRUE, FORCE_QUOTE *)
@@ -136,27 +136,27 @@ Copy command
 
 ### MySQL
 
-You will be leveraging MySQL's [SELECT ... INTO OUTFILE](https://dev.mysql.com/doc/refman/8.0/en/select-into.html) command.
-To use this command, you will need access to the [MySQL](https://dev.mysql.com/doc/refman/8.0/en/connecting.html) client.
+您将利用 MySQL 的 [SELECT ... INTO OUTFILE](https://dev.mysql.com/doc/refman/8.0/en/select-into.html) 命令。
+要使用该命令，您需要访问 [MySQL](https://dev.mysql.com/doc/refman/8.0/en/connecting.html) 客户端。
 
 ```shell
 mysql --host=localhost --user=myname --password=password mydb
 ```
 
-- The file is created on the server host, so you must have the FILE privilege to use this syntax.
-- Alternatively, if the MySQL client software is installed on the remote host,
-  you can use a client command such as mysql -e "SELECT ..." > file_name to generate the file on that host.
-- You will need to generate views first for reusability.
+- 文件是在服务器主机上创建的，因此您必须具有 FILE 特权才能使用此语法。
+- 或者，如果远程主机上安装了 MySQL 客户端软件，
+  您可以使用类似 mysql -e "SELECT ..." > file_name 的客户端命令在该主机上生成文件。
+- 您需要先生成视图以便重用。
 
-Find the correct directory to place the csv. This will be the `OUTFILE` filepath.
+找到正确的目录来放置 csv 文件。这将是 `OUTFILE` 文件路径。
 
 ```sql
 SHOW VARIABLES LIKE "secure_file_priv";
 ```
 
-If this returned `/var/lib/mysql-files/` your filepath can be `/var/lib/mysql-files/my-import.csv`
+如果返回的是 `/var/lib/mysql-files/`，则您的文件路径可以是 `/var/lib/mysql-files/my-import.csv`
 
-**Website Event**
+**网站事件**
 
 ```sql
 CREATE VIEW website_event_import AS
@@ -188,9 +188,9 @@ JOIN session s
 ON s.session_id = we.session_id;
 ```
 
-You can now use the `SELECT ... INTO OUTFILE` MySQL command. Replace `website id` and `filepath` in the command below.
-The `website id` can be found by navigating to **Websites** and clicking on the **Edit** button on the self-hosted Umami instance.
-This command does not support headers, so you will have to hardcode them.
+现在您可以使用 `SELECT ... INTO OUTFILE` MySQL 命令。在下面的命令中替换 `<website id>` 和 `<filepath>`。
+可以通过导航到 **网站** 并单击自托管 Umami 实例上的 **编辑** 按钮来找到 `website id`。
+此命令不支持标题，因此您需要硬编码它们。
 
 ```sql
 SELECT 'website_id',
@@ -226,9 +226,9 @@ FROM website_event_import
 WHERE website_id = '<website id>'
 ```
 
-**Event data**
+**事件数据**
 
-Same instructions as **Website Event**, but you will need to create its own view.
+与 **网站事件** 相同的说明，但需要创建它自己的视图。
 
 ```sql
 CREATE VIEW event_data_import AS
@@ -248,7 +248,7 @@ JOIN website_event we
 ON we.event_id = ed.website_event_id;
 ```
 
-Outfile command
+导出命令
 
 ```sql
 SELECT 'website_id',
@@ -272,17 +272,17 @@ FROM event_data_import
 WHERE website_id = '<website id>';
 ```
 
-## Importing data to Umami Cloud
+## 将数据导入 Umami Cloud
 
-Log into Umami and navigate to **Account**. Click on the **Data** tab and click on the **Import** button.
+登录到 Umami 并转到 **账号**。点击 **数据** 选项卡，然后点击 **导入** 按钮。
 
 <img src="/images/cloud/import-data.png" />
 
-Fill out the form details and click the **Import** button.
+填写表格细节，然后点击 **导入** 按钮。
 
 <img src="/images/cloud/import-form.png" />
 
-A loading spinner will show until the file is completely imported. This may take a while for larger datasets.
-When the import is complete, it should like below.
+导入文件完成后，将显示加载旋转器。对于较大的数据集，这可能需要一些时间。
+完成导入后，应该如下所示。
 
 <img src="/images/cloud/import-form-complete.png" />

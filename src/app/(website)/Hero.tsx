@@ -1,12 +1,12 @@
 'use client';
 import LinkButton from 'components/common/LinkButton';
 import TextBlock from 'components/layout/TextBlock';
-import { CLOUD_URL } from 'lib/constants';
-import useQueryString from 'components/hooks/useQueryString';
+// import { CLOUD_URL } from 'lib/constants';
+// import useQueryString from 'components/hooks/useQueryString';
 import styles from './Hero.module.css';
 
 export default function Hero() {
-  const query = useQueryString({ ref: 'umami-hero' });
+  // const query = useQueryString({ ref: 'umami-hero' });
 
   return (
     <div className={styles.hero}>
@@ -23,7 +23,7 @@ export default function Hero() {
       </TextBlock>
       <div className={styles.buttons}>
         <LinkButton
-          href={`${CLOUD_URL}/signup${query}`}
+          href={`/docs`}
           data-umami-event="get-started-button"
           variant="primary"
           size="lg"
@@ -31,7 +31,7 @@ export default function Hero() {
           开始使用
         </LinkButton>
         <LinkButton
-          href="https://eu.umami.is/share/LGazGOecbDtaIwDr/umami.is"
+          href="https://analytics.ikxin.com/share/aHYOn5YKtcPoS5v7/zhcndoc.com"
           data-umami-event="live-demo-button"
           target="_blank"
           rel="noreferrer"

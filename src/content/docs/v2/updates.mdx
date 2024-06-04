@@ -1,30 +1,30 @@
 ---
-title: Getting updates
+title: 获取更新
 ---
 
-# Getting updates
+# 获取更新
 
-## Source code
+## 源代码
 
-In order to get the latest updates, first pull the changes from the Git repository:
+要获取最新的更新，请先从 Git 仓库拉取更改：
 
 ```shell
 git pull
 ```
 
-Then install any new or updated dependencies:
+然后安装任何新的或更新的依赖项：
 
 ```shell
 yarn install
 ```
 
-Rebuild the project:
+重新构建项目：
 
 ```shell
 yarn build
 ```
 
-Finally, start the application:
+最后，启动应用程序：
 
 ```shell
 yarn start
@@ -32,15 +32,15 @@ yarn start
 
 ## Docker
 
-For Docker, simply pull the latest image for your database configuration.
+对于 Docker，只需拉取适用于您的数据库配置的最新映像。
 
-PostgreSQL:
+PostgreSQL：
 
 ```shell
 docker pull docker.umami.is/umami-software/umami:postgresql-latest
 ```
 
-or MySQL:
+或者 MySQL：
 
 ```shell
 docker pull docker.umami.is/umami-software/umami:mysql-latest

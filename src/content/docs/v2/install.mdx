@@ -1,23 +1,23 @@
 ---
-title: Installation
+title: 安装
 ---
 
-# Installation
+# 安装
 
-## Installing from source
+## 从源码安装
 
-### Requirements
+### 需求
 
-- A server with [Node.js](https://nodejs.org/) version 18.17 or newer.
-- A database. Umami supports [MySQL](https://www.mysql.com/) (minimum v8.0) and [PostgreSQL](https://www.postgresql.org/) (minimum v12.14) databases.
+- 一台安装有 [Node.js](https://nodejs.org/) 版本为 18.17 或更新版本的服务器。
+- 一个数据库。Umami 支持 [MySQL](https://www.mysql.com/)（最低版本 v8.0）和 [PostgreSQL](https://www.postgresql.org/)（最低版本 v12.14）数据库。
 
-### Install Yarn
+### 安装 Yarn
 
 ```shell
 npm install -g yarn
 ```
 
-### Get the source code and install packages
+### 获取源代码并安装软件包
 
 ```shell
 git clone https://github.com/umami-software/umami.git
@@ -25,46 +25,43 @@ cd umami
 yarn install
 ```
 
-### Configure Umami
+### 配置 Umami
 
-Create an `.env` file with the following
-
-```dotenv
-DATABASE_URL={connection url}
-```
-
-The connection url is in the following format:
+创建一个名为 `.env` 的文件，包含以下内容
 
 ```dotenv
-DATABASE_URL=postgresql://username:mypassword@localhost:5432/mydb
-
-DATABASE_URL=mysql://username:mypassword@localhost:3306/mydb
+DATABASE_URL={数据库连接地址}
 ```
 
-### Build the application
+数据库连接地址的格式如下:
+
+```dotenv
+DATABASE_URL=postgresql://用户名:密码@localhost:5432/我的数据库
+
+DATABASE_URL=mysql://用户名:密码@localhost:3306/我的数据库
+```
+
+### 构建应用程序
 
 ```shell
 yarn build
 ```
 
-The first time the build is run, it will create all the required database tables in your database.
-It will also create a login account with username **admin** and password **umami**.
+首次运行构建命令时，它将在数据库中创建所有所需的表格，并创建一个用户名为 **admin**，密码为 **umami** 的登录账户。
 
-### Start the application
+### 启动应用程序
 
 ```shell
 yarn start
 ```
 
-By default this will launch the application on `http://localhost:3000`. You will need to either
-[proxy](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) requests from your web server
-or change the [port](https://nextjs.org/docs/api-reference/cli#production) to serve the application directly.
+默认情况下，应用程序将在 `http://localhost:3000` 上启动。您需要使用 [反向代理](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) 将请求代理到您的 Web 服务器，或者直接更改 [端口](https://nextjs.org/docs/api-reference/cli#production) 来直接提供应用程序。
 
-### Running Umami
+### 运行 Umami
 
-You can simply run `yarn start` to start Umami, but it's highly recommended you use a process manager like [PM2](https://pm2.keymetrics.io/) which will handle restarts for you.
+您可以简单地运行 `yarn start` 来启动 Umami，但强烈建议您使用像 [PM2](https://pm2.keymetrics.io/) 这样的进程管理器来处理重启。
 
-To run with PM2:
+使用 PM2 运行:
 
 ```shell
 yarn global add pm2
@@ -74,23 +71,23 @@ pm2 startup
 pm2 save
 ```
 
-## Installing with Docker
+## 使用 Docker 安装
 
-Umami ships with a docker compose that contains the application and a PostgreSQL database.
+Umami 包含一个包含应用程序和 PostgreSQL 数据库的 Docker Compose 文件。
 
-To build the Docker container and start up with a Postgres database, run:
+要构建 Docker 容器并启动一个带有 Postgres 数据库的实例，请运行:
 
 ```shell
 docker-compose up -d
 ```
 
-Alternatively, if you want to use prebuilt images, you can pull the Umami Docker image with PostgreSQL support:
+或者，如果您想使用预构建的镜像，您可以拉取带有 PostgreSQL 支持的 Umami Docker 镜像:
 
 ```shell
 docker pull docker.umami.is/umami-software/umami:postgresql-latest
 ```
 
-Or with MySQL support:
+或者使用带有 MySQL 支持的镜像:
 
 ```shell
 docker pull docker.umami.is/umami-software/umami:mysql-latest

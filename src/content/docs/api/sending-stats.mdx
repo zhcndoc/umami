@@ -1,31 +1,30 @@
 ---
-title: Sending stats
+title: 发送统计数据
 ---
 
-# Sending stats
+# 发送统计数据
 
 ## POST /api/send
 
-To register an `event`, you need to send a `POST` to `/api/send` with
-the following data:
+要注册一个“事件”，您需要向 `/api/send` 发送一个 `POST` 请求，请求数据如下：
 
-**Parameters**
+**参数**
 
 `payload`
 
-- `hostname`: (string) Name of host.
-- `language`: (string) Language of visitor (ex. "en-US")
-- `referrer`: (string) Referrer URL.
-- `screen`: (string) Screen resolution (ex. "1920x1080")
-- `title`: (string) Page title.
-- `url`: (string) Page URL.
-- `website`: (string) Website ID.
-- `name`: (string) Name of the event.
-- `data`: (object)(optional) Additional data for the event.
+- `hostname`: (字符串) 主机名。
+- `language`: (字符串) 访客的语言 (例如 "en-US")。
+- `referrer`: (字符串) 引荐网址。
+- `screen`: (字符串) 屏幕分辨率 (例如 "1920x1080")。
+- `title`: (字符串) 页面标题。
+- `url`: (字符串) 页面网址。
+- `website`: (字符串) 网站 ID。
+- `name`: (字符串) 事件名称。
+- `data`: (对象)(可选) 事件的附加数据。
 
-`type`: (string) `event` is currently the only type available.
+`type`: (字符串) 目前只有 `event` 类型可用。
 
-**Sample payload**
+**示例请求数据**
 
 ```json
 {
@@ -46,15 +45,13 @@ the following data:
 }
 ```
 
-Note, for `/api/send` requests you do not need to send an
-authentication token.
+注意，在 `/api/send` 请求中，您不需要发送身份验证令牌。
 
-Also, you need to send a proper `User-Agent` HTTP header or
-your request won't be registered.
+另外，您需要发送一个正确的 `User-Agent` HTTP 头部，否则您的请求将无法被注册。
 
-**Programmatically**
+**编程方式**
 
-You can generate most of these values programmatically with JavaScript using the browser APIs. For example:
+您可以使用浏览器 API 通过 JavaScript 编程生成大部分这些值。例如：
 
 ```js
 const data = {

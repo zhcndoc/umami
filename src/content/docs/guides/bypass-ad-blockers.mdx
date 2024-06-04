@@ -1,65 +1,54 @@
 ---
-title: Bypass ad blockers
+title: 绕过广告拦截器
 ---
 
-# Bypass ad blockers
+# 绕过广告拦截器
 
-Even though Umami is a privacy-focused product, it may still get blocked by
-certain ad blockers. Ad blockers use blocklists maintained by many different people.
-Some lists can be overly agressive, for example blocking anything with even
-the word `analytics` in it or simply blocking all tracking products regardless
-of how they operate.
+尽管 Umami 是一个注重隐私的产品，但仍可能被某些广告拦截器拦截。广告拦截器使用由许多不同的人维护的拦截列表。有些列表可能过于激进，例如，阻止任何包含`分析`一词的内容，或者仅仅阻止所有追踪产品，无论其运行方式如何。
 
-Here are few methods you can use to avoid ad blockers.
+以下是几种可以用于绕过广告拦截器的方法。
 
-## Proxying
+## 代理
 
-Proxying is done at the server level so you will need access to your web server to make changes.
-With this method, you can proxy the tracking script itself to hide the actual name and location of
-the original script.
+代理是在服务器级别完成的，因此您需要访问您的 Web 服务器进行更改。使用此方法，您可以代理跟踪脚本本身，隐藏原始脚本的实际名称和位置。
 
-For example, you can have a script on your website that is:
+例如，您可以在您的网站上拥有以下脚本：
 
 `https://your-website.com/script.js`
 
-That is proxying the file at:
+该脚本代理了该位置上的文件：
 
 `https://analytics.umami.is/script.js`
 
-So even if the ad blocker blocks the `analytics.umami.is` domain, your own domain would be safe.
+因此，即使广告拦截器阻止了`analytics.umami.is`域，您自己的域也将是安全的。
 
-Here are some tutorials you can use:
+以下是您可以使用的一些教程：
 
 - [Nginx](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 - [Apache](https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html)
 
-If you are using a framework like [Next.js](https://nextjs.org), you can use their [rewrites](https://nextjs.org/docs/pages/api-reference/next-config-js/rewrites) feature.
+如果您正在使用像 [Next.js](https://nextjs.org) 这样的框架，可以使用它们的 [rewrites](https://nextjs.org/docs/pages/api-reference/next-config-js/rewrites) 功能。
 
-## Hosting the tracker script
+## 托管追踪脚本
 
-If you don't have access to the web server and are unable to proxy the script, you can simply host the entire
-tracker script on your own domain.
+如果您无法访问 web 服务器并且无法代理脚本，您可以简单地在自己的域上托管整个追踪脚本。
 
-1. Open the the script URL in your browser, `https://analytics.umami.is/script.js`.
-2. Save the file.
-3. Upload the file to your domain.
-4. Set the `data-host-url` attribute to send data to the correct location. See [tracker configuration.](https://umami.is/docs/tracker-configuration)
+1. 在浏览器中打开脚本 URL，`https://analytics.umami.is/script.js`。
+2. 保存文件。
+3. 将文件上传到您的域。
+4. 设置 `data-host-url` 属性以将数据发送到正确的位置。参见[追踪器配置](https://umami.is/docs/tracker-configuration)。
 
-Note that this method is not as reliable as proxying and if the tracker script were to change, you would need
-to download and update the script again.
+请注意，这种方法不像代理那样可靠，如果追踪脚本发生更改，您需要下载并更新脚本。
 
-## Using environment variables (self-hosting)
+## 使用环境变量（自托管）
 
-If you are self-hosting Umami, you can configure your instance using [environment variables](/docs/environment-variables).
+如果您正在自托管 Umami，则可以使用[环境变量](/docs/environment-variables)配置您的实例。
 
-There are two sources that could potentially be blocked:
+有两个可能会被阻止的来源：
 
-1. The tracker script at `https://your-umami.com/script.js`
-2. The stats collection endpoint at `https://your-umami.com/api/send`.
+1. 追踪脚本位于 `https://your-umami.com/script.js`
+2. 统计收集终点位于 `https://your-umami.com/api/send`
 
-The `TRACKER_SCRIPT_NAME` variable can be used to rename your tracker script to
-something like `/x.js`. You would then change your script source to `https://your-umami.com/x.js`.
+`TRACKER_SCRIPT_NAME` 变量可以用于将您的追踪脚本重命名为`/x.js`之类的内容。然后，您可以将脚本源更改为`https://your-umami.com/x.js`。
 
-The `COLLECT_API_ENDPOINT` variable can be used to rename your endpoint to something
-like `/api/x`. The tracker script will automatically make calls to your custom endpoint name
-instead of `/api/send`.
+`COLLECT_API_ENDPOINT` 变量可以用于将您的终点重命名为`/api/x`之类的内容。追踪脚本将自动调用您的自定义终点名称，而不是`/api/send`。

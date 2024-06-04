@@ -1,77 +1,77 @@
 ---
-title: Running on Qovery
+title: 在 Qovery 上运行
 ---
 
-# Running on Qovery
+# 在 Qovery 上运行
 
-[Qovery](https://www.qovery.com) is a fully-managed cloud platform that runs on your AWS, Digital Ocean and Scaleway account where you can host static sites, backend APIs, databases, cron jobs, and all your other apps in one place.
+[Qovery](https://www.qovery.com) 是一个完全托管的云平台，运行在您的 AWS、Digital Ocean 和 Scaleway 帐户上，您可以在其中托管静态网站、后端 API、数据库、定时任务以及其他所有应用。
 
-Qovery provides **free hosting** for individual developers and include the following scrollBlock:
+Qovery 为个人开发者提供**免费托管**，并包括以下功能：
 
-- Continuous, automatic builds & deploys from GitHub and GitLab.
-- Automatic SSL certificates through [Let's Encrypt](https://letsencrypt.org).
-- Free managed PostgreSQL.
-- Free SSD storage.
-- Unlimited collaborators.
-- Unlimited [custom domains](https://hub.qovery.com/docs/using-qovery/configuration/application/#domains).
+- 从 GitHub 和 GitLab 进行持续自动构建和部署。
+- 通过 [Let's Encrypt](https://letsencrypt.org) 进行自动 SSL 证书颁发。
+- 免费托管的 PostgreSQL。
+- 免费 SSD 存储。
+- 无限的合作者数量。
+- 无限的[自定义域名](https://hub.qovery.com/docs/using-qovery/configuration/application/#domains)。
 
-## Setup
+## 设置
 
-### 1. Create a Qovery Account
+### 1. 创建 Qovery 账户
 
-Visit the [Qovery dashboard](https://start.qovery.com) to create an account if you don't already have one.
+访问[Qovery 控制台](https://start.qovery.com)创建一个账户（如果您还没有）。
 
-### 2. Create a project
+### 2. 创建项目
 
-- Click on **Create project** and give a name to your project.
-- Click on **Next**.
+- 单击**创建项目**并为您的项目命名。
+- 单击**下一步**。
 
-![Create a project](https://hub.qovery.com/img/heroku/heroku-2.png)
+![创建项目](https://hub.qovery.com/img/heroku/heroku-2.png)
 
-### 3. Create a new environment
+### 3. 创建新环境
 
-- Click on **Create environment** and give a name (e.g. staging, production).
+- 单击**创建环境**并给其命名（例如，staging, production）。
 
-![Create a new environment](https://hub.qovery.com/img/heroku/heroku-3.png)
+![创建新环境](https://hub.qovery.com/img/heroku/heroku-3.png)
 
-### 4. Add your Umami app
+### 4. 添加您的 Umami 应用
 
-- Click on **Create an application**, give a name and select your GitHub or GitLab repository where your Umami app is located.
-- Define the main branch name and the root application path.
-- Click on **Create**.
+- 单击**创建应用程序**，给其命名，并选择您的 Umami 应用所在的 GitHub 或 GitLab 仓库。
+- 定义主分支名称和根应用程序路径。
+- 单击**创建**。
 
-![Add your application](https://hub.qovery.com/img/rust/rust.png)
+![添加应用程序](https://hub.qovery.com/img/rust/rust.png)
 
-After the application is created:
+应用程序创建完成后：
 
-- Navigate to your application **Settings**.
-- Select **Port**.
-- Add port used by your Umami application.
+- 转到您的应用程序**设置**。
+- 选择**端口**。
+- 添加您的 Umami 应用程序使用的端口。
 
-### 5. Deploy a database
+### 5. 部署数据库
 
-Create and deploy a new database PostgreSQL database by [following this guide](https://hub.qovery.com/guides/getting-started/create-a-database).
+按照[此指南](https://hub.qovery.com/guides/getting-started/create-a-database)创建和部署一个新的 PostgreSQL 数据库。
 
-### 6. Add storage
+### 6. 添加存储
 
-To add storage, go to your application **Settings**:
+要添加存储，转到您的应用程序**设置**：
 
-![Add storage](https://hub.qovery.com/img/add-storage.png)
+![添加存储](https://hub.qovery.com/img/add-storage.png)
 
-### 7. Setup your Umami configuration
+### 7. 设置您的 Umami 配置
 
-To use PostgreSQL provided by Qovery, you can use the built-in secrets and environment variables. You can read more about environment variables and secrets in our [configuration section](https://hub.qovery.com/docs/using-qovery/configuration/environment-variable/).
+要使用 Qovery 提供的 PostgreSQL，您可以使用内置的 secrets 和环境变量。您可以在我们的[配置部分](https://hub.qovery.com/docs/using-qovery/configuration/environment-variable/)中了解更多关于环境变量和 secrets 的信息。
 
-### 8. Deploy the app on Qovery
+### 8. 在 Qovery 上部署应用
 
-All you have to do now is to navigate to your application and click on **Deploy**.
+现在，您只需转到您的应用程序，并单击**部署**。
 
-![Deploy the app](https://hub.qovery.com/img/heroku/heroku-1.png)
+![部署应用](https://hub.qovery.com/img/heroku/heroku-1.png)
 
-That's it. Watch the status and wait till the app is deployed.
+就是这样。观察状态并等待应用程序部署完成。
 
-To open the application in your browser, click on **Action** and **Open** in your application overview
+要在浏览器中打开应用程序，请单击应用程序概览中的**操作**和**打开**。
 
-## Support
+## 支持
 
-Chat with Qovery developers on [Discord](https://discord.qovery.com) if you need help.
+如果需要帮助，请在 [Discord](https://discord.qovery.com) 上与 Qovery 开发人员交流。

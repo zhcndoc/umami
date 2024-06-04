@@ -1,54 +1,54 @@
 ---
-title: Funnel report
+title: 漏斗报告
 ---
 
-# Funnel
+# 漏斗
 
-Umami Funnel helps you understand the conversion and drop-off rate of users.
-By analyzing the funnel, users can make informed decisions to optimize the website's user experience and achieve better conversion rates.
+Umami 漏斗帮助您了解用户的转化和流失率。
+通过分析漏斗，用户可以做出明智的决策，优化网站的用户体验，实现更好的转化率。
 
-The report works by displaying the counts of users that reach each URL or event and the drop off rate from the previous step.
-The funnel uses specific order criteria, which requires step completion in a required order.
-The user may navigate to other URLs or events in between the funnel steps, but must complete the funnel steps in order to be counted as a conversion.
+该报告通过显示到达每个URL或事件的用户数量和与前一步的流失率来工作。
+漏斗使用特定的顺序条件，要求按照所要求的顺序完成步骤。
+用户可以在漏斗步骤之间导航到其他URL或事件，但必须按照顺序完成漏斗步骤才能被计算为转化。
 
-## Parameters
+## 参数
 
-- `Website`: (required) The website you want to run the report on.
-- `Date range`: (required) The date range of the report.
-- `Window`: (required) Amount of minutes a user has between funnel steps to be counted as a conversion.
-- `Steps`: (required) Sequential step conditions used in the funnel. Minimum of two is required to run the report.
+- `网站`：（必填）您想要运行报告的网站。
+- `日期范围`：（必填）报告的日期范围。
+- `窗口`：（必填）在漏斗步骤之间用户有多少分钟可以被计算为转化。
+- `步骤`：（必填）漏斗中使用的连续步骤条件。至少需要两个步骤才能运行报告。
 
-## Create a report
+## 创建报告
 
-### Step 1: Choose a website
+### 第1步：选择一个网站
 
 <img src="/images/v2/funnel-website.png" />
 
-### Step 2: Choose a date range
+### 第2步：选择一个日期范围
 
 <img src="/images/v2/funnel-date-range.png" />
 
-### Step 3: Choose a window (minutes)
+### 第3步：选择一个窗口（分钟）
 
 <img src="/images/v2/funnel-window.png" />
 
-### Step 4: Choose your Steps
+### 第4步：选择您的步骤
 
-Click the **plus sign**, choose the step type (URL or Event) and type in the first step condition on the funnel and click the **Add** button.
+点击**加号**，选择步骤类型（URL 或事件），在漏斗上输入第一个步骤条件，然后点击**添加**按钮。
 
 <img src="/images/v2/funnel-url-form.png" />
 
-Continue to add steps until your desired funnel conditions are completed. Umami supports specific URLs, events, and URL wildcards as steps.
+继续添加步骤，直到完成您所需的漏斗条件。Umami 支持特定 URL、事件和URL通配符作为步骤。
 
 <img src="/images/v2/funnel-url-details.png" />
 
-- **Specific URL** : The user must reach this specific URL. (example: `/`)
-- **Event** : The user must generate this specific event . (example: `live-demo-button`)
-- **URL wildcards** : The user must reach any URL that meets the wildcard criteria. Only `Ends with` search is available. (example: `/docs*`)
+- **特定 URL**：用户必须到达这个特定 URL。（例如：`/`）
+- **事件**：用户必须生成这个特定的事件。（例如：`live-demo-button`）
+- **URL通配符**：用户必须到达符合通配符条件的任何URL。只有`以...结束`的搜索可用。（例如：`/docs*`）
 
-### Step 5: Run query and save
+### 第5步：运行查询并保存
 
-Click **Run Query** to see your results. In order to save your report, add a title and description and click **Save**.
-The report along with its parameters will be saved for future use.
+点击**运行查询**以查看结果。为了保存您的报告，添加一个标题和描述，然后点击**保存**。
+报告及其参数将被保存以供将来使用。
 
 <img src="/images/v2/funnel-details.png" />

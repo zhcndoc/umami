@@ -1,24 +1,22 @@
 ---
-title: Exclude my own visits
+title: 排除自己的访问
 ---
 
-# Exclude my own visits
+# 排除自己的访问
 
-You want to visit your own website, but you don't want your visits to appear in
-your stats. To accomplish this, you need to add a setting to your browser.
+你想要访问自己的网站，但又不想让自己的访问在统计数据中显示出来。为了实现这一点，你需要在浏览器中添加一个设置。
 
-Bring up the developer console in your browser: `Settings -> More tools -> Developer tools`
+在浏览器中打开开发者控制台：`设置 -> 更多工具 -> 开发者工具`
 
-In the console, enter the following code and hit `Enter`:
+在控制台中输入以下代码，然后按下 `Enter` 键：
 
 ```javascript
 localStorage.setItem('umami.disabled', 1);
 ```
 
-This setting applies **per website**, so you will need to do this for each website
-you want to be excluded from.
+这个设置是针对**每个网站**生效的，所以你需要对每个需要排除的网站都这样操作。
 
-To remove the setting, enter the following code and hit `Enter`:
+如果要移除这个设置，输入以下代码，然后按下 `Enter` 键：
 
 ```javascript
 localStorage.removeItem('umami.disabled');

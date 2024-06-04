@@ -1,47 +1,41 @@
 ---
-title: Running on DigitalOcean
+title: 在 DigitalOcean 上运行
 ---
 
-# Running on DigitalOcean
+# 在 DigitalOcean 上运行
 
-[DigitalOcean](https://m.do.co/c/c9ebc1c0928d) is an affordable cloud hosting provider that will let you host
-your own Umami setup. In this setup guide we are going to install
-[Ubuntu](https://ubuntu.com/), a [PostgreSQL](https://www.postgresql.org/) or [MySQL](https://www.mysql.com/) database,
-an [Nginx](https://www.nginx.com/) webserver, [Node.js](https://nodejs.org/) and Umami.
-DigitalOcean also has a [NodeJS droplet build](https://marketplace.digitalocean.com/apps/nodejs) that comes with Node.js, Ubuntu and Nginx which can get you started quicker.
+[DigitalOcean](https://m.do.co/c/c9ebc1c0928d) 是一个经济实惠的云主机提供商，可以让你托管你自己的 Umami 设置。在这个设置指南中，我们将安装 [Ubuntu](https://ubuntu.com/)、[PostgreSQL](https://www.postgresql.org/) 或者 [MySQL](https://www.mysql.com/) 数据库、[Nginx](https://www.nginx.com/) web 服务器、[Node.js](https://nodejs.org/) 和 Umami。DigitalOcean 还有一个 [NodeJS droplet build](https://marketplace.digitalocean.com/apps/nodejs)，其中包含了 Node.js、Ubuntu 和 Nginx，可以让你更快地开始。
 
-For personal use, you can start with a single $5 a month cloud server
-and scale up as needed. You can use this **[link](https://m.do.co/c/c9ebc1c0928d)**
-to get a $100 credit for the first 60 days.
+对于个人使用，你可以从每月 $5 起步，并根据需要进行扩展。你可以使用这个**[链接](https://m.do.co/c/c9ebc1c0928d)** 在前60天获得100美元的信用。
 
-Note, these steps can be repeated on any cloud hosting provider that offers Ubuntu.
+注意，这些步骤可以在任何提供 Ubuntu 的云主机提供商上重复。
 
-## Install Ubuntu
+## 安装 Ubuntu
 
-- [Initial server setup with Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
+- [使用 Ubuntu 18.04 进行初始服务器设置](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-18-04)
 
-## Install database (PostgreSQL or MySQL)
+## 安装数据库 (PostgreSQL 或 MySQL)
 
-- [How to install PostgreSQL on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
-- [How to install MySQL on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04)
+- [在 Ubuntu 18.04 上安装 PostgreSQL](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
+- [在 Ubuntu 18.04 上安装 MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-18-04)
 
-## Install Nginx
+## 安装 Nginx
 
-- [How to install Nginx on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04)
+- [在 Ubuntu 18.04 上安装 Nginx](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-18-04)
 
-## Install Node.js
+## 安装 Node.js
 
-- [How to install Node.js on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04)
+- [在 Ubuntu 18.04 上安装 Node.js](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-18-04)
 
-## Install Umami
+## 安装 Umami
 
-- See [Install](/docs/install) under **Getting started**
+- 参见 [开始安装](/docs/install) 的 **安装部分**
 
-## Running Umami
+## 运行 Umami
 
-You can simply run `npm start` to start Umami, but it's highly recommended you use a process manager like [PM2](https://pm2.keymetrics.io/) which will handle restarts for you.
+你可以简单地运行 `npm start` 来启动 Umami，但强烈推荐使用像 [PM2](https://pm2.keymetrics.io/) 这样的进程管理器，它可以为你处理重启。
 
-To run with PM2:
+使用 PM2 运行：
 
 ```shell
 npm install pm2 -g
@@ -50,11 +44,11 @@ pm2 start npm --name umami -- start
 pm2 save
 ```
 
-## Proxying with Nginx
+## 使用 Nginx 进行代理
 
-With Umami now running, you can proxy requests to a domain or subdomain from Nginx to Umami.
+现在 Umami 已经在运行，你可以使用 Nginx 将域名或子域名的请求代理到 Umami。
 
-The following config will send all requests from `umami.yourdomain.com` to your local Umami instance.
+以下配置将把 `umami.yourdomain.com` 的所有请求转发到本地的 Umami 实例。
 
 ```nginx
 server {
@@ -69,8 +63,7 @@ server {
 }
 ```
 
-The following config will allow you to host Umami at a subpath for your domain (eg: website.com/stats).
-This requires setting the enviroment variable `BASE_PATH=/stats` in your `.env` file.
+以下配置将允许你在你的域名的子路径上托管 Umami（例如：website.com/stats）。这需要在你的 `.env` 文件中设置环境变量 `BASE_PATH=/stats`。
 
 ```nginx
 server {
@@ -90,10 +83,10 @@ server {
 }
 ```
 
-## Adding an SSL certificate (optional)
+## 添加 SSL 证书（可选）
 
-- [How To Secure Nginx with Let's Encrypt on Ubuntu 18.04](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)
+- [在 Ubuntu 18.04 上使用 Let's Encrypt 保护 Nginx](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-18-04)
 
-## Finish
+## 完成
 
-That's it! You're now self-hosting Umami on your own server.
+好了！你现在在自己的服务器上自主托管 Umami。

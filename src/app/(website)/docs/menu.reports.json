@@ -1,26 +1,26 @@
 [
   {
-    "label": "Get started",
+    "label": "开始使用",
     "items": [
       {
-        "label": "Overview",
+        "label": "概览",
         "url": "/docs/reports"
       }
     ]
   },
   {
-    "label": "Reports",
+    "label": "报告",
     "items": [
       {
-        "label": "Insights",
+        "label": "洞察",
         "url": "/docs/reports/report-insights"
       },
       {
-        "label": "Funnel",
+        "label": "漏斗",
         "url": "/docs/reports/report-funnel"
       },
       {
-        "label": "Retention",
+        "label": "留存",
         "url": "/docs/reports/report-retention"
       },
       {

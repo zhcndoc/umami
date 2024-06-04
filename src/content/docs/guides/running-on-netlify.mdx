@@ -1,26 +1,23 @@
 ---
-title: Running on Netlify
+title: 在 Netlify 上运行
 ---
 
-# Running on Netlify
+# 在 Netlify 上运行
 
-[Netlify](https://netlify.com/) provides a free hosting service which is ideal for GitHub organizations.
+[Netlify](https://netlify.com/) 提供了一个免费的托管服务，非常适合 GitHub 组织使用。
 
-In this setup, you should already have a database server running and accepting remote connections. If you don't already have a
-database, you can follow the [Running on DigitalOcean](/docs/running-on-digitalocean) guide to get a database up and running. You
-can also check out the **Managed databases** section under [Hosting](/docs/guides/hosting).
+在这个设置中，您应该已经有一个正在运行并接受远程连接的数据库服务器。如果您还没有数据库，可以按照 [在 DigitalOcean 上运行](/docs/running-on-digitalocean) 指南来获取一个数据库并运行起来。您还可以在 [托管](/docs/guides/hosting) 下的 **托管数据库** 部分了解更多信息。
 
-## Setup
+## 设置
 
-[![Deploy with netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/umami-software/umami)
+[![使用 netlify 部署](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/umami-software/umami)
 
-_Automate steps 1-5 using the button above_
+_使用上面的按钮自动化执行步骤 1-5_
 
-1. Fork the [https://github.com/umami-software/umami](https://github.com/umami-software/umami) project to your GitHub account.
-2. Create an account on [Netlify](https://netlify.com/).
-3. From the dashboard page click **Import Project** then specify the URL to your fork of the project on GitHub.
-4. Change build command to **yarn run build**.
-5. Add the required environment variables `DATABASE_URL`. These values are defined in the
-   **Configure Umami** step from [Install](/docs/install).
-6. Deploy and visit your application.
-7. Follow the **Getting started** guide starting from the [Login](/docs/login) step and be sure to change the default password.
+1. 在您的 GitHub 账户中 Fork [https://github.com/umami-software/umami](https://github.com/umami-software/umami) 项目。
+2. 在 [Netlify](https://netlify.com/) 上创建一个账户。
+3. 在仪表板页面上点击 **导入项目**，然后指定 GitHub 上您 fork 的项目的 URL。
+4. 将构建命令更改为 **yarn run build**。
+5. 添加所需的环境变量 `DATABASE_URL`。这些值在 [安装](/docs/install) 中的 **配置 Umami** 步骤中定义。
+6. 部署并访问您的应用程序。
+7. 从 [登录](/docs/login) 步骤开始遵循 **入门指南**，并确保更改默认密码。

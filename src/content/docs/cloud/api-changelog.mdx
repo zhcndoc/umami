@@ -1,28 +1,28 @@
 ---
-title: API Changelog
+title: API 更改日志
 ---
 
-# API Changelog
+# API 更改日志
 
-This page documents changes made to **api.umami.is**.
+本页面记录了对 **api.umami.is** 进行的更改。
 
 ## 2024-03-27
 
-**Websites**
+**网站**
 
-- `POST /websites/[id]/stats`: Renamed UNIQUES to VISITORS. Added VISITS.
+- `POST /websites/[id]/stats`: 将 UNIQUES 重命名为 VISITORS。添加 VISITS。
 
 ## 2024-02-16
 
-**Websites**
+**网站**
 
-- `POST /websites`: Added teamId as an optional parameter
+- `POST /websites`: 添加 teamId 作为可选参数
 
-**Teams**
+**团队**
 
-- `/teams/[id]/websites/[websiteId]`: DEPRECATED
-- `GET /teams/[id]/users/[userId]/index`: Added new GET route
+- `/teams/[id]/websites/[websiteId]`: 已废弃
+- `GET /teams/[id]/users/[userId]/index`: 添加新的 GET 路由
 
-**Reports**
+**报告**
 
-- `GET /reports/index`: Added websiteId and teamId added as query parameters
+- `GET /reports/index`: 添加 websiteId 和 teamId 作为查询参数

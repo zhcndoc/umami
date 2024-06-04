@@ -1,55 +1,55 @@
 ---
-title: API Key
+title: API 密钥
 ---
 
-# API Key
+# API 密钥
 
-In order to access your data using Umami Cloud, you will need to generate an API key.
+为了使用 Umami Cloud 访问您的数据，您需要生成一个 API 密钥。
 
-All API routes in the reference section are available in Umami Cloud using an API key, with the exception of some routes listed in the `Not Allowed` section.
+在参考部分中，除了列在“不允许”部分的一些路由之外，Umami Cloud 中的所有 API 路由都可以使用 API 密钥进行访问。
 
-## Create your key
+## 生成您的密钥
 
-To create a key in Umami Cloud, go to the `Accounts` > `API Keys` and click the `Create key` button.
+要在 Umami Cloud 中创建一个密钥，请转到 `Accounts` > `API Keys` 并点击 `Create key` 按钮。
 
 <img src="/images/cloud/create-api-key.png" />
 
-You can reveal your key by clicking on the `visible` icon in the text input.
+通过点击文本输入框中的 `visible` 图标，您可以显示您的密钥。
 
-## Using your key
+## 使用您的密钥
 
-You can access your Umami Cloud data by querying the following address.
+您可以通过查询以下地址来访问您的 Umami Cloud 数据。
 
 `https://api.umami.is/v1`
 
-Just pass in your API key via a custom header `x-umami-api-key`
+只需通过一个名为 `x-umami-api-key` 的自定义头部传入您的 API 密钥。
 
-For example, with `curl` it would look like this:
+例如，使用 `curl`，您的请求将如下所示：
 
 ```shell
 curl https://api.umami.is/v1/websites
    -H "Accept: application/json"
-   -H "x-umami-api-key <api-key>"
+   -H "x-umami-api-key: <api-key>"
 ```
 
-## Using your key with API Client
+## 使用 API 客户端
 
-Set the following requirement variables to have the API client use your API key.
+设置以下必需变量以便 API 客户端使用您的 API 密钥。
 
 ```dotenv
 UMAMI_API_KEY={Your API key}
 UMAMI_API_CLIENT_ENDPOINT=https://api.umami.is/v1
 ```
 
-More details on using the API client can be found in [API client](/docs/api/api-client).
+有关使用 API 客户端的更多详细信息，请参阅 [API client](/docs/api/api-client)。
 
-## Limits
+## 限制
 
-Each API key is limited to 50 calls every 15 seconds.
+每个 API 密钥在15秒内限制为50次调用。
 
-## Not allowed
+## 不允许
 
-The following API routes are not made available using your API key.
+以下 API 路由不允许使用您的 API 密钥。
 
 ```text
 /me/password
@@ -57,8 +57,8 @@ The following API routes are not made available using your API key.
 /users/*
 ```
 
-## Deleting your key
+## 删除您的密钥
 
-You can delete your key under `Accounts` > `API Keys`, and clicking the `Delete` button for the specific key to be deleted.
+您可以在 `Accounts` > `API Keys` 下删除您的密钥，单击要删除的特定密钥的 `Delete` 按钮。
 
-Once an API key is deleted, it cannot be recovered.
+一旦删除 API 密钥，将无法恢复。

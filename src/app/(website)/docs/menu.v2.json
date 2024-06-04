@@ -1,88 +1,88 @@
 [
   {
-    "label": "Get started",
+    "label": "开始使用",
     "items": [
       {
-        "label": "Overview",
+        "label": "概览",
         "url": "/docs"
       },
       {
-        "label": "Quickstart",
+        "label": "快速开始",
         "url": "/docs/quickstart"
       },
       {
-        "label": "Install",
+        "label": "安装",
         "url": "/docs/install"
       },
       {
-        "label": "Login",
+        "label": "登录",
         "url": "/docs/login"
       },
       {
-        "label": "Add a website",
+        "label": "添加网站",
         "url": "/docs/add-a-website"
       },
       {
-        "label": "Collect data",
+        "label": "收集数据",
         "url": "/docs/collect-data"
       }
     ]
   },
   {
-    "label": "Basics",
+    "label": "基础知识",
     "items": [
       {
-        "label": "Add a user",
+        "label": "添加用户",
         "url": "/docs/add-a-user"
       },
       {
-        "label": "Enable share URL",
+        "label": "启用共享链接",
         "url": "/docs/enable-share-url"
       },
       {
-        "label": "Track events",
+        "label": "追踪事件",
         "url": "/docs/track-events"
       },
       {
-        "label": "Teams",
+        "label": "团队",
         "url": "/docs/teams"
       },
       {
-        "label": "Updates",
+        "label": "更新",
         "url": "/docs/updates"
       },
       {
-        "label": "Languages",
+        "label": "语言",
         "url": "/docs/languages"
       }
     ]
   },
   {
-    "label": "Advanced",
+    "label": "高级",
     "items": [
       {
-        "label": "Tracker configuration",
+        "label": "追踪器配置",
         "url": "/docs/tracker-configuration"
       },
       {
-        "label": "Tracker functions",
+        "label": "追踪器功能",
         "url": "/docs/tracker-functions"
       },
       {
-        "label": "Environment variables",
+        "label": "环境变量",
         "url": "/docs/environment-variables"
       }
     ]
   },
   {
-    "label": "Reference",
+    "label": "参考",
     "items": [
       {
-        "label": "Integrations",
+        "label": "集成",
         "url": "/docs/integrations"
       },
       {
-        "label": "Migrating v1 to v2",
+        "label": "从 v1 迁移到 v2",
         "url": "/docs/migrate-v1-v2"
       }
     ]

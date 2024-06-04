@@ -1,87 +1,87 @@
 [
   {
-    "label": "Get started",
+    "label": "开始使用",
     "items": [
       {
-        "label": "Overview",
+        "label": "概述",
         "url": "/docs/guides"
       }
     ]
   },
   {
-    "label": "How-to",
+    "label": "操作指南",
     "items": [
       {
-        "label": "Exclude my own visits",
+        "label": "排除我的访问",
         "url": "/docs/guides/exclude-my-own-visits"
       },
       {
-        "label": "Bypass ad blockers",
+        "label": "绕过广告拦截器",
         "url": "/docs/guides/bypass-ad-blockers"
       },
       {
-        "label": "Measure campaigns",
+        "label": "衡量活动效果",
         "url": "/docs/guides/measure-campaigns"
       }
     ]
   },
   {
-    "label": "Hosting",
+    "label": "托管",
     "items": [
       {
-        "label": "Overview",
+        "label": "概述",
         "url": "/docs/guides/hosting"
       },
       {
-        "label": "Running on DigitalOcean",
+        "label": "在 DigitalOcean 上运行",
         "url": "/docs/guides/running-on-digitalocean"
       },
       {
-        "label": "Running on Vercel",
+        "label": "在 Vercel 上运行",
         "url": "/docs/guides/running-on-vercel"
       },
       {
-        "label": "Running on Neon Postgres",
+        "label": "在 Neon Postgres 上运行",
         "url": "/docs/guides/running-on-neon"
       },
       {
-        "label": "Running on Netlify",
+        "label": "在 Netlify 上运行",
         "url": "/docs/guides/running-on-netlify"
       },
       {
-        "label": "Running on Heroku",
+        "label": "在 Heroku 上运行",
         "url": "/docs/guides/running-on-heroku"
       },
       {
-        "label": "Running on Railway",
+        "label": "在 Railway 上运行",
         "url": "/docs/guides/running-on-railway"
       },
       {
-        "label": "Running on Supabase",
+        "label": "在 Supabase 上运行",
         "url": "/docs/guides/running-on-supabase"
       },
       {
-        "label": "Running on PlanetScale",
+        "label": "在 PlanetScale 上运行",
         "url": "/docs/guides/running-on-planetscale"
       },
       {
-        "label": "Running on Qovery",
+        "label": "在 Qovery 上运行",
         "url": "/docs/guides/running-on-qovery"
       },
       {
-        "label": "Running on CapRover",
+        "label": "在 CapRover 上运行",
         "url": "/docs/guides/running-on-caprover"
       },
       {
-        "label": "Running on Koyeb",
+        "label": "在 Koyeb 上运行",
         "url": "/docs/guides/running-on-koyeb"
       },
       {
-        "label": "Running on Forge",
+        "label": "在 Forge 上运行",
         "url": "/docs/guides/running-on-forge"
       },
       {
-        "label": "Running on Fly.io",
+        "label": "在 Fly.io 上运行",
         "url": "/docs/guides/running-on-fly-io"
       }
     ]
