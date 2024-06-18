@@ -23,7 +23,8 @@ export const GITHUB_STATS = [
 export const Blocks = {
   simpleAnalytics: {
     title: '简单的分析',
-    description: 'Umami 只测量你关心的重要指标，一切都可以一目了然地轻松获取。',
+    description:
+      'Umami 只测量你关心的重要指标，一切都可以一目了然地轻松获取。',
     image: '/images/preview-website-stats.png',
   },
   visitorInsights: {

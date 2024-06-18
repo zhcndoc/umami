@@ -78,6 +78,10 @@
     "label": "参考",
     "items": [
       {
+        "label": "指标定义",
+        "url": "/docs/metric-definitions"
+      },
+      {
         "label": "集成",
         "url": "/docs/integrations"
       },

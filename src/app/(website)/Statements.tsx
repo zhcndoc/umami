@@ -1,6 +1,6 @@
 'use client';
-import Lock from 'assets/lock.svg';
-import Shield from 'assets/shield.svg';
+import Block from 'assets/block.svg';
+import Code from 'assets/code.svg';
 import Analytics from 'assets/analytics.svg';
 import TextBlock from 'components/layout/TextBlock';
 import styles from './Statements.module.css';
@@ -9,27 +9,23 @@ const statements = [
   {
     title: '易于使用',
     description: `
-    Umami易于使用和理解，无需经过繁杂的设置。
-    许多功能已准备就绪。
-    只需几分钟即可启动并运行。
+Umami 功能强大而简单，易于使用和理解，不需要复杂的设置或标签配置。
     `,
     image: <Analytics />,
   },
   {
-    title: '拥有你的数据',
+    title: 'UTM 和自定义事件',
     description: `
-    数据所有权对于遵守不断变化的隐私法至关重要。
-    请放心，你的数据在你的控制之下。
+Umami 会自动理解带有 UTM 参数的链接，并允许您根据 UTM 查看和过滤您的网站数据。此外，您还可以跟踪网站上的任何事件，例如按钮点击、表单提交、购买、新闻通讯注册等。
     `,
-    image: <Shield />,
+    image: <Code />,
   },
   {
-    title: '尊重数据隐私',
+    title: '没有 Cookie 横幅',
     description: `
-    Umami允许你收集所需的数据，同时尊重用户的隐私。
-    所有数据都是匿名的，从未收集过任何个人数据。不需要Cookie横幅。
+所有数据都经过 Umami 匿名处理，您的网站用户永远不会收集个人信息。您可以在无需选择性接受 Cookie 横幅的情况下跟踪网站的表现，为用户提供更好、更可信赖的体验。Umami 默认符合 GDRP 和 CCPA 标准。
     `,
-    image: <Lock />,
+    image: <Block />,
   },
 ];
 
@@ -38,7 +34,7 @@ export default function Statements() {
     <section className={styles.container}>
       <div className={styles.header}>
         <TextBlock align="center" className={styles.block}>
-          <h1>Umami 是比 Google Analytics 更快、更注重隐私的替代品</h1>
+          <h1>Umami 使分析您的数据变得毫不费力</h1>
         </TextBlock>
       </div>
       <div className={styles.items}>

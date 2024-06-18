@@ -11,14 +11,9 @@ export default function Hero() {
   return (
     <div className={styles.hero}>
       <TextBlock size="xl" align="center">
-        <h1>
-          赋予洞察力
-          <br />
-          保护隐私
-        </h1>
+        <h1>为速度和效率而构建的网站分析</h1>
         <p className={styles.subtitle}>
-          Umami 使你可以轻松收集、分析和理解你的网络数据，同时维护
-          <strong>访问者的隐私</strong>和<strong>数据所有权</strong>。
+          Umami网站分析提供您需要的数据，帮助您实时做出决策。
         </p>
       </TextBlock>
       <div className={styles.buttons}>
@@ -41,9 +36,9 @@ export default function Hero() {
         </LinkButton>
       </div>
       <div className={styles.features}>
-        <div>没有 Cookie</div>
-        <div>GDPR 和 CCPA合规</div>
-        <div>开放源代码</div>
+        <div>没有 Cookie 横幅</div>
+        <div>简化的仪表板</div>
+        <div>轻松设置和使用</div>
       </div>
       <div className={styles.image}>
         <img src="/images/app.jpg" alt="umami" />
