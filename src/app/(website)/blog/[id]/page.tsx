@@ -16,8 +16,8 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
 
   return {
     title: {
-      absolute: `${post?.title} – Umami`,
-      default: 'Blog – Umami',
+      absolute: `${post?.title} – Umami 中文文档`,
+      default: '博客 – Umami 中文文档',
     },
   };
 }

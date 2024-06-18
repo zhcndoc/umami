@@ -13,8 +13,8 @@ export async function generateMetadata({
 
   return {
     title: {
-      absolute: `${doc?.title} – Umami`,
-      default: 'Umami',
+      absolute: `${doc?.title} – Umami 中文文档`,
+      default: 'Umami 中文文档',
     },
   };
 }

@@ -12,9 +12,7 @@ export default function Hero() {
     <div className={styles.hero}>
       <TextBlock size="xl" align="center">
         <h1>为速度和效率而构建的网站分析</h1>
-        <p className={styles.subtitle}>
-          Umami网站分析提供您需要的数据，帮助您实时做出决策。
-        </p>
+        <p className={styles.subtitle}>Umami 网站分析提供您需要的数据，帮助您实时做出决策。</p>
       </TextBlock>
       <div className={styles.buttons}>
         <LinkButton
