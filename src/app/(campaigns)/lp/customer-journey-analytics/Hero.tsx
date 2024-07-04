@@ -1,51 +1,48 @@
 'use client';
 import LinkButton from 'components/common/LinkButton';
 import TextBlock from 'components/layout/TextBlock';
-// import { CLOUD_URL } from 'lib/constants';
-// import useQueryString from 'components/hooks/useQueryString';
-import styles from './Hero.module.css';
+import { CLOUD_URL } from 'lib/constants';
+import useQueryString from 'components/hooks/useQueryString';
+import styles from 'app/(website)/Hero.module.css';
 
 export default function Hero() {
-  // const query = useQueryString({ ref: 'umami-hero' });
+  const query = useQueryString({ ref: 'umami-hero' });
 
   return (
     <div className={styles.hero}>
       <TextBlock size="xl" align="center">
-        <h1>
-          轻松的分析和
-          <br /> 实时洞察
-        </h1>
+        <h1>Customer Journey Analytics</h1>
         <p className={styles.subtitle}>
-          Umami 可以轻松收集、分析和理解您的数据 &mdash; 因此您可以专注于
-          <strong>增长</strong>
+          {`Understand every step of your user's path with actionable analytics that provide 
+          the blueprint for customer journey optimization.`}
         </p>
       </TextBlock>
       <div className={styles.buttons}>
         <LinkButton
-          href={`/docs`}
+          href={`${CLOUD_URL}/signup${query}`}
           data-umami-event="get-started-button"
           variant="primary"
           size="lg"
         >
-          开始使用
+          Get started
         </LinkButton>
         <LinkButton
-          href="https://analytics.ikxin.com/share/aHYOn5YKtcPoS5v7/zhcndoc.com"
+          href="https://eu.umami.is/share/LGazGOecbDtaIwDr/umami.is"
           data-umami-event="live-demo-button"
           target="_blank"
           rel="noreferrer"
           size="lg"
         >
-          查看演示
+          View demo
         </LinkButton>
       </div>
       <div className={styles.features}>
-        <div>没有 Cookie 横幅</div>
-        <div>简化的仪表板</div>
-        <div>轻松设置和使用</div>
+        <div>No cookie banners</div>
+        <div>Streamlined dashboard</div>
+        <div>Effortless setup and use</div>
       </div>
       <div className={styles.image}>
-        <img src="/images/app.jpg" alt="umami" />
+        <img src="/images/blog/user-journey.png" />
       </div>
     </div>
   );

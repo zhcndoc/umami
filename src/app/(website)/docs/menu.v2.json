@@ -44,6 +44,10 @@
         "url": "/docs/track-events"
       },
       {
+        "label": "比较",
+        "url": "/docs/compare"
+      },
+      {
         "label": "团队",
         "url": "/docs/teams"
       },

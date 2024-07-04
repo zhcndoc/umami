@@ -6,11 +6,17 @@ title: API 更改日志
 
 本页面记录了对 **api.umami.is** 进行的更改。
 
+## 2024-05-23
+
+**网站**
+
+- `GET /websites/[id]/stats`: Renamed `change` to `prev`.
+
 ## 2024-03-27
 
 **网站**
 
-- `POST /websites/[id]/stats`: 将 UNIQUES 重命名为 VISITORS。添加 VISITS。
+- `GET /websites/[id]/stats`: 将 `uniques` 重命名为 `visitors`。添加 `visits`。
 
 ## 2024-02-16
 
@@ -21,8 +27,8 @@ title: API 更改日志
 **团队**
 
 - `/teams/[id]/websites/[websiteId]`: 已废弃
-- `GET /teams/[id]/users/[userId]/index`: 添加新的 GET 路由
+- `GET /teams/[id]/users/[userId]/index`: 添加新的 `GET` 路由
 
 **报告**
 
-- `GET /reports/index`: 添加 websiteId 和 teamId 作为查询参数
+- `GET /reports/index`: 添加 `websiteId` 和 `teamId` 作为查询参数

@@ -40,6 +40,10 @@
         "url": "/docs/cloud/teams"
       },
       {
+        "label": "电子邮件报告",
+        "url": "/docs/cloud/email-reports"
+      },
+      {
         "label": "删除账户",
         "url": "/docs/cloud/delete-account"
       }
