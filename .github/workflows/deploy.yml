@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Server
+        uses: easingthemes/ssh-deploy@main
+        with:
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_KEY }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_PORT: ${{ secrets.SERVER_PORT }}
+          SOURCE: "./"
+          EXCLUDE: "/.git/"
+          ARGS: "-azr --delete"
+          TARGET: "/www/web/umami/"
+          SCRIPT_AFTER: |
+            cd /www/web/umami
+            /www/server/nodejs/v20.16.0/bin/pnpm install
+            /www/server/nodejs/v20.16.0/bin/pnpm run build

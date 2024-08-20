@@ -8,7 +8,7 @@ import Code from 'assets/code.svg';
 
 export const CLOUD_URL = 'https://cloud.umami.is';
 export const GITHUB_URL = 'https://github.com/umami-software/umami';
-export const DISCORD_URL = 'https://umami.zhcndoc.com/discord';
+export const DISCORD_URL = 'https://discord.gg/4dz4zcXYrQ';
 export const X_URL = 'https://twitter.com/umami_software';
 export const LINKEDIN_URL = 'https://www.linkedin.com/company/umami-software/';
 export const GITHUB_STARS = '20.4k';
@@ -23,8 +23,7 @@ export const GITHUB_STATS = [
 export const Blocks = {
   simpleAnalytics: {
     title: '简单的分析',
-    description:
-      'Umami 只测量你关心的重要指标，一切都可以一目了然地轻松获取。',
+    description: 'Umami 只测量你关心的重要指标，一切都可以一目了然地轻松获取。',
     image: '/images/preview-website-stats.png',
   },
   visitorInsights: {
