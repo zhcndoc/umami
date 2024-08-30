@@ -44,6 +44,10 @@
         "url": "/docs/track-events"
       },
       {
+        "label": "会话",
+        "url": "/docs/sessions"
+      },
+      {
         "label": "比较",
         "url": "/docs/compare"
       },
