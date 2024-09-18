@@ -1,29 +1,5 @@
-# umami.is
+## Umami 中文文档
 
-This is the repository of the [Umami](https://umami.is) website built using [Next.js](https://nextjs.org/).
+本项目由[简中文档](https://www.zhcndoc.com/)社区提供翻译和维护。
 
-## About 
-Umami is a simple, easy to use, self-hosted web analytics solution. 
-The goal is to provide you with a friendlier, privacy-focused alternative 
-to Google Analytics and a free, open source alternative to paid solutions.
-Umami collects only the metrics you care about and respects the privacy of your users.
-
-## Starting the project 👨‍💻
-
-```shell
-# using npm
-npm install
-
-npm run dev
-```
-```shell
-# using yarn
-yarn
-
-yarn dev
-```
-
-## Contributions
-
-Would be happy to take contributions to improve the website. Help is needed especially in the [**Guides**](https://umami.zhcndoc.com/docs/guides/hosting) section.
-If you know how to configure or deploy Umami in different environments, please share your knowledge. 
+上游仓库地址：https://github.com/umami-software/website

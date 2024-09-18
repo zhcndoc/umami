@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import { Suspense } from 'react';
 import { AxiomWebVitals } from 'next-axiom';
 import Header from './Header';
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
             data-website-id="f0e90b0d-e086-4fdc-b173-de4857b71900"
           ></script>
         )}
+        <GoogleAnalytics gaId="G-HYH4TH7PWM" />
       </head>
       <body>
         <Suspense>

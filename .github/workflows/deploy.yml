@@ -24,8 +24,8 @@ jobs:
           SOURCE: "./"
           EXCLUDE: "/.git/"
           ARGS: "-azr --delete"
-          TARGET: "/www/web/umami/"
+          TARGET: "${{ secrets.SERVER_PATH }}/umami/"
           SCRIPT_AFTER: |
-            cd /www/web/umami
-            /www/server/nodejs/v20.16.0/bin/pnpm install
-            /www/server/nodejs/v20.16.0/bin/pnpm run build
+            cd ${{ secrets.SERVER_PATH }}/umami
+            pnpm install
+            pnpm run build

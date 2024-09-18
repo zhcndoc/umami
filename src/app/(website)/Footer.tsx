@@ -66,7 +66,9 @@ export default function Footer() {
           <SocialMedia />
           <div className={styles.copy}>
             <div>
-              &copy; {new Date().getFullYear()} Umami Software, Inc.
+              <a target="__blank" href="https://www.zhcndoc.com/?ref=umami">
+                简中文档
+              </a>
               <a
                 style={{ marginLeft: '12px' }}
                 rel="nofollow"
