@@ -27,5 +27,5 @@ jobs:
           TARGET: "${{ secrets.SERVER_PATH }}/umami/"
           SCRIPT_AFTER: |
             cd ${{ secrets.SERVER_PATH }}/umami
-            pnpm install
-            pnpm run build
+            /www/server/nodejs/v20.16.0/bin/pnpm install
+            /www/server/nodejs/v20.16.0/bin/pnpm run build
