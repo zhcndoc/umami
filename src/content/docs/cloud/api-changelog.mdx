@@ -6,6 +6,31 @@ title: API 更改日志
 
 本页面记录了对 **api.umami.is** 进行的更改。
 
+## 2024-09-09
+
+**网站**
+
+- `GET /websites/[id]/pageviews`: 将 `region` 参数设置为可选的。
+- `GET /websites/[id]/events`: 将结果集更改为给定时间范围内的网站事件详细信息。
+- `GET /websites/[id]/events/series`: 新的活动度量端点（以前是 `GET /websites/[id]/events`）。
+
+**事件数据**
+
+- `GET /event-data/events` : **迁移**到 `/websites/[id]/event-data/events`.
+- `GET /event-data/fields` : **迁移**到 `/websites/[id]/event-data/fields`.
+- `GET /event-data/stats` : **迁移**到 `/websites/[id]/event-data/stats`.
+- `GET /websites/[id]/event-data/values` : **新增**
+
+**会话**
+
+- `GET /websites/:websiteId/sessions` : **新增**
+- `GET /websites/:websiteId/sessions/stats` : **新增**
+- `GET /websites/:websiteId/sessions/:sessionId` : **新增**
+- `GET /websites/:websiteId/sessions/:sessionId/activity` : **新增**
+- `GET /websites/:websiteId/sessions/:sessionId/properties` : **新增**
+- `GET /websites/:websiteId/session-data/properties` : **新增**
+- `GET /websites/:websiteId/session-data/values` : **新增**
+
 ## 2024-05-23
 
 **网站**
@@ -22,13 +47,13 @@ title: API 更改日志
 
 **网站**
 
-- `POST /websites`: 添加 teamId 作为可选参数
+- `POST /websites`: 添加 teamId 作为可选参数.
 
 **团队**
 
-- `/teams/[id]/websites/[websiteId]`: 已废弃
-- `GET /teams/[id]/users/[userId]/index`: 添加新的 `GET` 路由
+- `/teams/[id]/websites/[websiteId]`: **已弃用**
+- `GET /teams/[id]/users/[userId]/index`: **新增**
 
 **报告**
 
-- `GET /reports/index`: 添加 `websiteId` 和 `teamId` 作为查询参数
+- `GET /reports/index`: 添加 `websiteId` 和 `teamId` 作为查询参数.
