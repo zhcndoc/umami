@@ -1,12 +1,12 @@
 'use client';
 import PageHeader from 'components/layout/PageHeader';
-import ScrollBlock from 'components/layout/ScrollBlock';
 import { Blocks } from 'lib/constants';
 import LinkButton from 'components/common/LinkButton';
 import { Flexbox, Icon, Icons, Text } from 'react-basics';
 import styles from './Features.module.css';
+import ScrollBlock from 'components/layout/ScrollBlock';
 
-const items = [
+const items: any = [
   Blocks.simpleAnalytics,
   Blocks.visitorInsights,
   Blocks.customEvents,

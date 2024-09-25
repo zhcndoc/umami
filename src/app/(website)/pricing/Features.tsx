@@ -6,35 +6,63 @@ import styles from './Features.module.css';
 
 const features = [
   {
-    label: '数据',
-    items: [['摄取（包括）', '10K', '100K to 20M', 'Custom']],
+    label: 'Data',
+    items: [
+      ['Events (included)', '100K', '1 million', 'Custom'],
+      ['Additional events', false, '$0.00002 per event', 'Custom'],
+      ['Data import', true, true, true],
+      ['Data export', true, true, true],
+    ],
   },
   {
     label: '分析',
     items: [
-      ['网站', '最多 3 个', '无限制', '无限制'],
-      ['团队', false, true, true],
-      ['自定义事件', true, true, true],
-      ['自定义数据', true, true, true],
-      ['API 访问', false, true, true],
+      ['Websites', 'Up to 3', 'Unlimited', 'Unlimited'],
+      ['Teams', false, true, true],
+      ['Team members', false, 'Unlimited', 'Unlimited'],
+      ['Custom events', true, true, true],
+      ['Event properties', true, true, true],
+      ['Session properties', true, true, true],
+      ['API access', 'Limited', true, true],
+    ],
+  },
+  {
+    label: 'Reports',
+    items: [
+      ['Insights', true, true, true],
+      ['Funnel Analysis', true, true, true],
+      ['User Retention', true, true, true],
+      ['UTM parameters', true, true, true],
+      ['Goals', true, true, true],
+      ['User Journey', true, true, true],
     ],
   },
   {
     label: '监视',
     items: [
-      ['实时事件', true, true, true],
-      ['自定义仪表板', true, true, true],
-      ['电子邮件提醒', false, false, true],
+      ['Realtime events', true, true, true],
+      ['Custom dashboards', true, true, true],
+      ['Email reports', false, true, true],
+    ],
+  },
+  {
+    label: 'Privacy',
+    items: [
+      ['GDPR compliant', true, true, true],
+      ['CCPR compliant', true, true, true],
+      ['No cookie banners required', true, true, true],
     ],
   },
   {
     label: '支持',
     items: [
-      ['社区支持', true, true, true],
-      ['电子邮件支持', false, true, true],
-      ['正常运行时间 SLA', false, false, true],
-      ['顾客引导支持', false, false, true],
-      ['指定支持工程师', false, false, true],
+      ['Community support', true, true, true],
+      ['Email support', false, true, true],
+      ['Enterprise support', false, false, true],
+      ['Uptime SLA', false, false, true],
+      ['Invoice billing', false, false, true],
+      ['Onboarding assistance', false, false, true],
+      ['Designated support engineer', false, false, true],
     ],
   },
 ];
@@ -56,9 +84,7 @@ export default function Features() {
             return (
               <Fragment key={label}>
                 <tr>
-                  <td className={styles.header}>
-                    <h2>{label}</h2>
-                  </td>
+                  <td className={styles.header}>{label}</td>
                 </tr>
                 {items.map((item, index) => {
                   return (

@@ -6,20 +6,18 @@ import styles from './Questions.module.css';
 
 const questions = [
   {
-    question: 'Umami Cloud 有免费套餐吗？',
-    answer: `是的！Umami Cloud 的爱好计划是完全免费的，非常适合个人项目和低流量网站。`,
+    question: 'How is usage measured?',
+    answer: `Usage is measured by counting hits to a website and any custom events or custom event properties stored. Each website hit counts as one event. If you save
+    event properties, each data property stored counts as one event.`,
   },
   {
     question: '免费试用是如何进行的？',
     answer: `Umami Cloud 的免费试用将从购买之日起持续 14 天。试用版可让你完全访问该计划中的所有功能。在试用期结束时，你将收到常规金额的账单。你可以在试用期内随时免费取消试用。`,
   },
   {
-    question: '我将如何收到账单？',
-    answer: `按月或按年计费。如果你通过试用升级到付费计划，你的第一张发票将在试用期结束后到达。`,
-  },
-  {
-    question: '我的使用量如何计算？',
-    answer: `使用量通过对网站的点击次数以及存储的任何自定义事件或自定义事件数据进行计算。每个网站访问都算作一个事件。如果你保存了事件数据，每个存储的数据属性也都会被视为一个事件。`,
+    question: 'How will I be billed?',
+    answer: `Billing occurs on a monthly basis and you can cancel at any time. 
+    If you upgraded to a paid plan via a trial, your first invoice git checkout dwill arrive after your trial period ends.`,
   },
   {
     question: '你的服务器位于哪里？',
@@ -55,11 +53,11 @@ const Question = ({ question, children }) => {
 
   return (
     <div className={styles.question} onClick={() => setExpanded(state => !state)}>
-      <div>
-        <Icon className={styles.icon} rotate={expanded ? 0 : -90}>
+      <div className={styles.text}>
+        {question}
+        <Icon className={styles.icon} rotate={expanded ? 180 : 0}>
           <Icons.ChevronDown />
         </Icon>
-        {question}
       </div>
       {expanded ? <div className={styles.answer}>{children}</div> : null}
     </div>
