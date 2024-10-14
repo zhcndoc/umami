@@ -14,6 +14,7 @@ import 'styles/variables.css';
 import 'styles/index.css';
 import '@umami/react-zen/dist/zen.css';
 import '@umami/react-zen/dist/styles.css';
+import 'react-basics/dist/styles.css';
 
 export default function RootLayout({ children }) {
   return (
