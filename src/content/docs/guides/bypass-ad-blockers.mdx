@@ -2,9 +2,11 @@
 title: 绕过广告拦截器
 ---
 
-# 绕过广告拦截器
-
-尽管 Umami 是一个注重隐私的产品，但仍可能被某些广告拦截器拦截。广告拦截器使用由许多不同的人维护的拦截列表。有些列表可能过于激进，例如，阻止任何包含`分析`一词的内容，或者仅仅阻止所有追踪产品，无论其运行方式如何。
+Even though Umami is a privacy-focused product, it may still get blocked by
+certain ad blockers. Ad blockers use blocklists maintained by many different people.
+Some lists can be overly agressive, for example blocking anything with even
+the word `analytics` in it or simply blocking all tracking products regardless
+of how they operate.
 
 以下是几种可以用于绕过广告拦截器的方法。
 
@@ -18,9 +20,9 @@ title: 绕过广告拦截器
 
 该脚本代理了该位置上的文件：
 
-`https://analytics.umami.is/script.js`
+`https://cloud.umami.is/script.js`
 
-因此，即使广告拦截器阻止了`analytics.umami.is`域，你自己的域也将是安全的。
+So even if the ad blocker blocks the `cloud.umami.is` domain, your own domain would be safe.
 
 以下是你可以使用的一些教程：
 
@@ -33,10 +35,10 @@ title: 绕过广告拦截器
 
 如果你无法访问 web 服务器并且无法代理脚本，你可以简单地在自己的域上托管整个追踪脚本。
 
-1. 在浏览器中打开脚本 URL，`https://analytics.umami.is/script.js`。
-2. 保存文件。
-3. 将文件上传到你的域。
-4. 设置 `data-host-url` 属性以将数据发送到正确的位置。参见[追踪器配置](https://umami.zhcndoc.com/docs/tracker-configuration)。
+1. Open the the script URL in your browser, `https://cloud.umami.is/script.js`.
+2. Save the file.
+3. Upload the file to your domain.
+4. Set the `data-host-url` attribute to send data to the correct location. See [tracker configuration.](https://umami.is/docs/tracker-configuration)
 
 请注意，这种方法不像代理那样可靠，如果追踪脚本发生更改，你需要下载并更新脚本。
 

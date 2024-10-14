@@ -1,7 +1,7 @@
 'use client';
 import { Icon, Icons, Text } from 'react-basics';
-import TextBlock from 'components/layout/TextBlock';
-import LinkButton from 'components/common/LinkButton';
+import TextBlock from '@/components/TextBlock';
+import LinkButton from '@/components/LinkButton';
 import styles from './Personas.module.css';
 
 const items = [

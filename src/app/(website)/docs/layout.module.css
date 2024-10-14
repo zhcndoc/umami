@@ -8,15 +8,20 @@
 }
 
 .docs h1 {
-  font-size: 50px;
+  font-size: 32px;
   font-weight: 800;
-  letter-spacing: -2px;
+  letter-spacing: -0.025em;
   margin: 0 0 20px 0;
 }
 
 .docs h2 {
-  font-weight: 800;
-  letter-spacing: -1px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.docs h3 {
+  font-weight: 700;
+  letter-spacing: -0.025em;
 }
 
 .docs img {
@@ -24,14 +29,6 @@
   max-width: 100%;
   margin: 4rem auto;
   box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.1);
-}
-
-.docs a {
-  color: var(--primary400);
-}
-
-.docs a:hover {
-  color: var(--primary500);
 }
 
 .content {

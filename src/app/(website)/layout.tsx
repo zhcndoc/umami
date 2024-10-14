@@ -9,10 +9,11 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/700.css';
 import '@fontsource/inter/800.css';
 import '@fontsource/jetbrains-mono/400.css';
-import 'react-basics/dist/styles.css';
 import 'styles/github-dark.css';
 import 'styles/variables.css';
 import 'styles/index.css';
+import '@umami/react-zen/dist/zen.css';
+import '@umami/react-zen/dist/styles.css';
 
 export default function RootLayout({ children }) {
   return (

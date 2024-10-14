@@ -1,5 +1,6 @@
 'use client';
-import TextBlock from 'components/layout/TextBlock';
+import TextBlock from '@/components/TextBlock';
+import ContentImage from '@/components/ContentImage';
 import styles from './Companies.module.css';
 
 const items = [
@@ -19,7 +20,7 @@ export default function Companies() {
       <h1>受到成千上万家公司的信任</h1>
       <div className={styles.logos}>
         {items.map(({ name, title }) => {
-          return <img key={name} src={`/images/logo-${name}.png`} alt={title} />;
+          return <ContentImage key={name} src={`/images/logo-${name}.png`} alt={title} />;
         })}
       </div>
     </TextBlock>

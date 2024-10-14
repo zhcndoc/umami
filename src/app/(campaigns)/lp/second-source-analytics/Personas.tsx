@@ -1,6 +1,6 @@
 'use client';
-import TextBlock from 'components/layout/TextBlock';
-import styles from 'app/(website)/Personas.module.css';
+import TextBlock from '@/components/TextBlock';
+import styles from '@/app/(website)/Personas.module.css';
 
 const items = [
   {

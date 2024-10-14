@@ -1,9 +1,9 @@
 'use client';
-import LinkButton from 'components/common/LinkButton';
-import TextBlock from 'components/layout/TextBlock';
+import LinkButton from '@/components/LinkButton';
+import TextBlock from '@/components/TextBlock';
 import { CLOUD_URL } from 'lib/constants';
 import useQueryString from 'components/hooks/useQueryString';
-import styles from 'app/(website)/Hero.module.css';
+import styles from '@/app/(website)/Hero.module.css';
 
 export default function Hero() {
   const query = useQueryString({ ref: 'umami-hero' });

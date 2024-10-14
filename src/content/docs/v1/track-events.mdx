@@ -2,8 +2,6 @@
 title: Track events
 ---
 
-# Track events
-
 Besides pageviews, Umami is also able to track events that occur on your website. There are two ways to record
 events in Umami, using **CSS classes** or using **JavaScript**.
 
@@ -20,8 +18,8 @@ For example, you might have a button with the following code:
 
 Add a class with the following format:
 
-```
-umami--<event>--<event-name>
+```html
+umami--<event>--<event-name></event-name></event>
 ```
 
 So your button element would now look like this:
@@ -56,4 +54,4 @@ If you want to use your own event type instead of `custom`, see [Tracker functio
 
 Once your events are recorded, they will be available on your website **Details** page.
 
-<img src="/images/v1/events.png" />
+![image](/images/docs/v1/events.png)

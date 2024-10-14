@@ -2,8 +2,8 @@
 import Block from 'assets/block.svg';
 import Code from 'assets/code.svg';
 import Analytics from 'assets/analytics.svg';
-import TextBlock from 'components/layout/TextBlock';
-import styles from 'app/(website)/Statements.module.css';
+import TextBlock from '@/components/TextBlock';
+import styles from '@/app/(website)/Statements.module.css';
 
 const statements = [
   {
@@ -23,7 +23,7 @@ Umami automatically understands links with UTM parameters and lets you view and 
   {
     title: 'No Cookie Banners',
     description: `
-All data is anonymized with Umami, and no personal information is ever collected on your website's users. You can track your website's performance without needing opt-in cookie banners, providing your users with a better and more trusted experience. Umami is GDRP and CCPA compliant by default.
+All data is anonymized with Umami, and no personal information is ever collected on your website's users. You can track your website's performance without needing opt-in cookie banners, providing your users with a better and more trusted experience. Umami is GDPR and CCPA compliant by default.
     `,
     image: <Block />,
   },

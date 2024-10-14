@@ -2,10 +2,8 @@
 title: 导入数据
 ---
 
-# 导入数据
-
-Umami 允许你将数据导入到 Umami Cloud。导入一次只能处理一个网站。
-如果你有大量的网站或需要导入大量数据，请联系 [support@umami.is](mailto:support@umami.is)。
+Umami allows you to import your data to Umami Cloud. The import handles a single website at a time.
+If you have a large number of websites or a large amount of data to import please contact [support@umami.is](mailto:support@umami.is).
 
 ## 生成导入文件
 
@@ -162,7 +160,7 @@ SHOW VARIABLES LIKE "secure_file_priv";
 CREATE VIEW website_event_import AS
 SELECT we.website_id,
       we.session_id,
-      we.visit_id
+      we.visit_id,
       we.event_id,
       COALESCE(s.hostname, '') hostname,
       COALESCE(s.browser, '') browser,
@@ -223,7 +221,7 @@ SELECT *
 INTO OUTFILE '<filepath>.csv'
 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n'
 FROM website_event_import
-WHERE website_id = '<website id>'
+WHERE website_id = '<website id>';
 ```
 
 **事件数据**
@@ -276,13 +274,13 @@ WHERE website_id = '<website id>';
 
 登录到 Umami 并转到 **账号**。点击 **数据** 选项卡，然后点击 **导入** 按钮。
 
-<img src="/images/cloud/import-data.png" />
+![image](/images/cloud/import-data.png)
 
 填写表格细节，然后点击 **导入** 按钮。
 
-<img src="/images/cloud/import-form.png" />
+![image](/images/cloud/import-form.png)
 
 导入文件完成后，将显示加载旋转器。对于较大的数据集，这可能需要一些时间。
 完成导入后，应该如下所示。
 
-<img src="/images/cloud/import-form-complete.png" />
+![image](/images/cloud/import-form-complete.png)

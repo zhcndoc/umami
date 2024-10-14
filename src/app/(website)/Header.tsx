@@ -1,11 +1,12 @@
 'use client';
 import { Container, Popup, PopupTrigger, Text, useScroll, Icon, Icons } from 'react-basics';
 import Link from 'next/link';
-import CompanyLogo from 'components/common/CompanyLogo';
-import HamburgerButton from 'components/common/HamburgerButton';
-import LinkButton from 'components/common/LinkButton';
-import useQueryString from 'components/hooks/useQueryString';
-import { GITHUB_STARS, GITHUB_URL } from 'lib/constants';
+import AnnouncementBanner from './AnnouncementBanner';
+import CompanyLogo from '@/components/CompanyLogo';
+import HamburgerButton from '@/components/HamburgerButton';
+import LinkButton from '@/components/LinkButton';
+import useQueryString from '@/components/hooks/useQueryString';
+import { GITHUB_STARS, GITHUB_URL } from '@/lib/constants';
 import GitHub from 'assets/github.svg';
 import styles from './Header.module.css';
 
@@ -46,6 +47,15 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
+      <AnnouncementBanner name="webinar_signup_oct_2024">
+        <a
+          href="https://us06web.zoom.us/webinar/register/7317266823230/WN_gqPPuXNvScexi8-Dwg0fSw"
+          target="_blank"
+          data-umami-event="webinar-signup"
+        >
+          What&apos;s new with Umami? Join our webinar on Oct. 16th!
+        </a>
+      </AnnouncementBanner>
       <Container>
         <div className={styles.row}>
           <div className={styles.title}>
