@@ -1,127 +1,127 @@
 ---
-title: Optimizing Conversion Paths Using the Funnel Report
-description: Understanding conversion paths and user journeys is the first step to optimizing them.
+title: 使用漏斗报告优化转化路径
+description: 了解转化路径和用户旅程是优化它们的第一步。
 author: Nick Andrews
 date: 2024-08-15
 ---
 
-Understanding conversion paths and user journeys is the first step to optimizing them. If you have already defined those paths, the Umami Funnel report, one report in a suite of product analytics reports, is for you. The Funnel report allows you to analyze users' conversion and drop-off rates at each step of a defined process, surfacing data that can be used to improve user experience, conversion rates, product feature adoption, etc.
+了解转化路径和用户旅程是优化它们的第一步。如果您已经定义了这些路径，Umami 漏斗报告（产品分析报告系列中的一部分）就适合您。漏斗报告允许您分析用户在定义过程每一步的转化和流失率，提供可以用来改善用户体验、转化率、产品特性采用率等的数据。
 
-If you don’t have those paths defined and are unsure what paths users take to complete an action, the User Journey report, a complementary report to the Funnel report, might make sense as a starting point. Not to go too deep on the Journey report, but you can simply define a starting point, ending point, and the number of steps in between, and the report will show you the user journey. You can adjust the number of steps and re-run the report to expand your view if needed. This report provides a broader view of user interactions, helping you understand users' various paths before they reach a conversion point.
+如果您还没有定义这些路径，且不确定用户完成某个操作所采取的路径，用户旅程报告（漏斗报告的补充报告）可能是一个合适的起点。这里不深入探讨旅程报告，但您只需定义起点、终点和中间步骤的数量，报告就会显示用户旅程。如果需要，您可以调整步骤数量并重新运行报告，以扩大您的视野。该报告提供用户交互的更广阔视图，帮助您理解用户在达到转化点之前的多种路径。
 
-However, this blog post focuses on the Funnel report, which allows teams to visualize and analyze how users move through specific sequences of actions or pages. It identifies where users drop off, thus surfacing opportunities for optimization. Combining this data with insights from other Umami reports gives you a clearer picture of your performance and user behavior.
+然而，本文侧重于漏斗报告，该报告允许团队可视化并分析用户如何通过特定的动作或页面序列进行移动。它识别用户流失的地方，从而揭示优化的机会。将这些数据与其他 Umami 报告的见解结合起来，您可以更清晰地了解您的表现和用户行为。
 
-Let’s jump in.
+让我们开始吧。
 
-# Funnel Report Key Features
+# 漏斗报告关键特性
 
-To effectively use the Umami Funnel report, you really need to have custom events set up on your product or website beforehand. Custom events are specific user actions you define, such as 'product added to cart,'' payment information entered, '' signed up for the newsletter,’ etc. Umami then tracks these events, which can be used to create Funnel reports that can be infinitely nuanced to your specific situation. Before we jump into the use cases, let's look at some key features of the Funnel report:
+要有效使用 Umami 漏斗报告，您需要提前在您的产品或网站上设置自定义事件。自定义事件是您定义的特定用户行为，例如“产品添加到购物车”、“输入付款信息”、“注册新闻通讯”等。Umami 会跟踪这些事件，这些事件可以用于创建无尽具体情况的漏斗报告。在我们开始具体用例之前，先来看一下漏斗报告的一些关键特性：
 
-1. **Flexible Step Definition**: Define specific funnel steps using URLs, events, or URL wildcards.
+1. **灵活的步骤定义**: 使用 URL、事件或 URL 通配符定义特定的漏斗步骤。
 
-2. **Time**: Set the time users must complete the funnel steps. This includes both date range (up to 90 days) and time window (amount of minutes a user has between funnel steps to be counted as a conversion).
+2. **时间**: 设置用户必须完成漏斗步骤的时间。这包括日期范围（最长可达 90 天）和时间窗口（用户在漏斗步骤之间必须在几分钟内完成才能计为转化）。
 
-3. **Ordered Step Completion**: Analyze user progression through steps in a specific order.
+3. **有序步骤完成**: 分析用户通过特定顺序的步骤进行的进程。
 
-4. **Detailed Drop-off Analysis**: This displays the number of users reaching each step and the drop-off rate from the previous step. It also visually shows a progress bar and percent complete for instant analysis.
+4. **详细的流失分析**: 显示达到每一步的用户数量和从上一步的流失率。它还通过可视化的进度条和完成百分比提供即时分析。
 
-# Funnel Report Use Cases
+# 漏斗报告用例
 
-This section breaks down a few use cases for the Funnel report to get the ideas rolling. However, there are an infinite number of ways to use the Funnel report to uncover insights about your users and product.
-Use Case Example: Analyzing Sign-up to Activation Process
+本节列出了一些漏斗报告的用例，以激发您的想法。然而，使用漏斗报告发掘用户和产品的见解几乎是无穷无尽的。
+用例示例：分析注册到激活过程
 
-Product teams need to understand how new users progress from initial sign-up to becoming active users. Here's how you can use the Funnel report for this purpose:
+产品团队需要了解新用户如何从初始注册进展为活跃用户。以下是您可以为此目的使用漏斗报告的方法：
 
-## Setup
+## 设置
 
-1. Define the steps in your sign-up to activation process. The report needs at least two steps. I have tested it with up to 10 steps. If you have more than ten steps, email us and let us know your use case. It sounds really interesting!
+1. 定义您注册到激活过程中的步骤。报告至少需要两个步骤。我已经测试过最多 10 个步骤。如果您有超过十个步骤，请给我们发邮件告诉我们您的用例。这听起来真的很有趣！
 
-2. Create a Funnel report with these steps, using URLs or events to represent each stage.
+2. 创建一个包含这些步骤的漏斗报告，使用 URL 或事件来表示每个阶段。
 
-3. Set an appropriate time window for users to complete the funnel.
+3. 设置适当的时间窗口，让用户完成漏斗。
 
-## Analysis Approach
+## 分析方法
 
-Once you've set up the Funnel report, you can analyze the data in several ways:
+一旦您设置了漏斗报告，您可以通过以下几种方式分析数据：
 
-1. Identify the stages where you're losing the most users, indicating potential areas for improvement.
+1. 确定您流失最多用户的阶段，从而指示潜在的改进领域。
 
-2. Compare conversion rates between user segments or acquisition channels to understand which sources provide the most valuable users.
+2. 比较用户细分或获取渠道之间的转化率，以了解哪些来源提供了最有价值的用户。
 
-3. Analyze how sign-up or onboarding process changes impact conversion rates over time.
+3. 分析注册或入门过程的变更如何影响转换率。
 
-4. Use the insights to prioritize product improvements or user education efforts.
+4. 利用这些见解来优先考虑产品改进或用户教育工作。
 
-Using the Funnel report can help you optimize your sign-up and activation process, improving user retention and product adoption.
+使用漏斗报告可以帮助您优化注册和激活过程，提高用户保留率和产品采用率。
 
-# Use Case Example: E-commerce Checkout Optimization
+# 用例示例：电商结账优化
 
-For teams focused on improving e-commerce conversion rates, the Funnel report can be used to understand and optimize the checkout process. Here's how you could approach this:
+对于专注于提高电商转化率的团队，漏斗报告可以用于理解和优化结账过程。以下是您可以采取的方式：
 
-## Setup
+## 设置
 
-1. Define the stages in your checkout process (e.g., add to cart, enter shipping info, enter payment info, confirm order).
+1. 定义您结账过程中的阶段（例如，添加到购物车、输入送货信息、输入付款信息、确认订单）。
 
-2. Create a Funnel report with these stages as steps.
+2. 创建一个包含这些阶段作为步骤的漏斗报告。
 
-3. Set an appropriate time window that allows for a typical checkout duration.
+3. 设置适当的时间窗口，以适应典型的结账持续时间。
 
-## Example Implementation
+## 示例实施
 
-Let's say you're analyzing the checkout process for an e-commerce website. We might set up the following Funnel report:
+假设您正在分析一个电商网站的结账过程。我们可以设置以下漏斗报告：
 
-- Step 1: 'Add to Cart' button click event
-- Step 2: Checkout page URL
-- Step 3: Shipping information page URL
-- Step 4: Payment information page URL
-- Step 5: 'Order Confirmation' button click event
+- 步骤 1: “添加到购物车”按钮点击事件
+- 步骤 2: 结账页面 URL
+- 步骤 3: 送货信息页面 URL
+- 步骤 4: 付款信息页面 URL
+- 步骤 5: “订单确认”按钮点击事件
 
-## Analysis Approach
+## 分析方法
 
-With this Funnel report in place, we can:
+在此漏斗报告的基础上，我们可以：
 
-1. Identify the checkout stages with the highest drop-off rates, highlighting areas for immediate improvement.
+1. 确定具有最高流失率的结账阶段，突出需要立即改进的领域。
 
-2. Compare conversion rates across different product categories, user segments, or devices to understand varying user behaviors.
+2. 比较不同产品类别、用户细分或设备之间的转化率，以了解不同的用户行为。
 
-3. Analyze how changes to the checkout process (e.g., adding a guest checkout option) impact overall conversion rates.
+3. 分析对结账过程的更改（例如，添加游客结账选项）如何影响整体转化率。
 
-4. Use the insights to make data-driven decisions about checkout page design, form simplification, or adding reassurance elements at critical stages.
+4. 利用见解做出关于结账页面设计、表单简化或在关键阶段添加保证元素的基于数据的决策。
 
-This analysis can break down how the checkout funnel is flowing and gives you a blue print for optimizing conversion rates. What’s interesting for this example is that you can get really granular and setup this process for an individual product, or use wild cards in your Funnel report to view product categories or all products.
+此分析可以拆分结账漏斗的流向，为优化转化率提供蓝图。值得注意的是，您可以非常详细地设置此过程用于单个产品，或者在您的漏斗报告中使用通配符查看产品类别或所有产品。
 
-# Use Case Example: Feature Adoption Funnel
+# 用例示例：功能采用漏斗
 
-For teams looking to increase the adoption of a specific feature, the Funnel report can offer insights into the user journey toward feature engagement. Here's how you can use it:
+对于希望增加特定功能采用的团队，漏斗报告可以提供有关用户旅程朝向功能参与的见解。以下是您可以如何使用它的方式：
 
-## Setup
+## 设置
 
-1. Identify the key steps to feature adoption (e.g., feature discovery, initial interaction, repeated use).
+1. 确定功能采用的关键步骤（例如，功能发现、初始交互、重复使用）。
 
-2. Create events or use URLs that represent these steps.
+2. 创建事件或使用表示这些步骤的 URL。
 
-3. Set up a Funnel report with these steps, using an appropriate time window for your product's usage patterns.
+3. 设置一个包含这些步骤的漏斗报告，并根据您产品的使用模式选择适当的时间窗口。
 
-## Analysis Approach
+## 分析方法
 
-Suppose you work at a SaaS company and want to increase the adoption of a new feature. You could use the Funnel report to:
+假设您在一家 SaaS 公司工作，希望增加新功能的采用。您可以使用漏斗报告来：
 
-1. Analyze the number of users who discover the feature (e.g., through a product tour button click, etc. You might need to setup multiple funnels for different discovery entry points.) and go on to use it for the first time.
+1. 分析发现该功能的用户数量（例如，通过点击产品导览按钮等，您可能需要为不同的发现入口点设置多个漏斗）并首次使用它。
 
-2. Identify the drop-off between first use and repeated engagement, highlighting potential usability issues.
+2. 确定首次使用与重复参与之间的流失，突出潜在的可用性问题。
 
-3. Compare adoption rates across user segments or onboarding paths to understand what factors contribute to successful adoption.
+3. 比较用户细分或入门路径之间的采用率，以了解成功采用的因素。
 
-4. Use the insights to refine feature introduction strategies, improve in-product guidance, or target specific user groups for additional support or encouragement.
+4. 利用这些见解完善功能引入策略、改善产品内指导或针对特定用户群体提供额外支持或鼓励。
 
-This approach can help you make data-driven decisions about feature development, prioritizing your product roadmap, user education, and product design to encourage adoption and engagement.
+这种方式可以帮助您根据数据做出决策，推动功能开发、优先制定产品路线图、用户教育和产品设计，鼓励采用和参与。
 
-The Umami Funnel report can enhance your product analytics capabilities by allowing you to visualize and analyze specific user paths through your product. Understanding these conversion funnels will enable you to identify bottlenecks, optimize critical processes, and improve user experience and conversion rates.
+Umami 漏斗报告可以通过允许您可视化和分析用户在您的产品中具体路径来增强您的产品分析能力。理解这些转化漏斗将使您能够识别瓶颈、优化关键流程，并改善用户体验和转化率。
 
-The use cases outlined here are just some of the many ways to use the Funnel report for your team. Its flexibility allows it to adapt to the nuances of your product and requirements, ensuring it can be a fit for your analytics needs.
+这里概述的用例只是使用漏斗报告来为您的团队提供见解的众多方式之一。其灵活性使其能够适应产品和需求的细微差别，确保其满足您的分析需求。
 
-Combining data from the Funnel report with insights from other Umami reports and your broader analytics stack, you can understand your users' behavior and make data-driven decisions to improve your product.
+通过将漏斗报告的数据与其他 Umami 报告和您的更广泛分析堆栈中的见解结合，您可以了解用户的行为，并做出基于数据的决策来改善您的产品。
 
-Using Umami, particularly its Funnel report, as a complementary tool alongside your existing analytics stack can enhance your data confidence and insights. By setting up parallel tracking for key conversion funnels and regularly comparing results between Umami and your other analytics platforms, you can validate data accuracy, identify potential blind spots in your tracking, and reinforce the validity of your findings.
+将 Umami，特别是其漏斗报告，作为您现有分析堆栈的补充工具，可以增强您的数据信心和见解。通过为关键转化漏斗设置平行跟踪，并定期比较 Umami 和其他分析平台之间的结果，您可以验证数据的准确性，识别跟踪中的潜在盲点，并增强您发现的有效性。
 
-The Funnel report comes standard with all Umami plans. If you have any issues with it or have any questions, please contact us at <a href="mailto:support@umami.is">support@umami.is</a>. We're here to help you get the most out of your Umami account!
+漏斗报告在所有 Umami 计划中均为标准功能。如果您在使用时遇到任何问题或有任何疑问，请通过 <a href="mailto:support@umami.is">support@umami.is</a> 联系我们。我们在这里帮助您充分利用您的 Umami 账户！

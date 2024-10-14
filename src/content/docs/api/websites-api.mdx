@@ -2,7 +2,7 @@
 title: 网站
 ---
 
-Operations around Website management and statistics.
+与网站管理和统计相关的操作。
 
 **端点**
 
@@ -19,14 +19,14 @@ POST /api/websites/:websiteId/reset
 
 ## GET /api/websites
 
-返回所有的跟踪网站。
+返回所有被跟踪的网站。
 
 **参数**
 
 - `query`: （可选字符串）搜索文本。
-- `page`: （可选数字，默认值为1）确定页码。
-- `pageSize`: （可选字符串）确定要返回的结果数量。
-- `orderBy`: （可选字符串，默认为`name`）按列名排序。
+- `page`: （可选数字，默认值 1）确定页码。
+- `pageSize`: （可选字符串）确定返回多少结果。
+- `orderBy`: （可选字符串，默认值 `name`）按列名排序。
 
 **示例响应**
 
@@ -50,14 +50,14 @@ POST /api/websites/:websiteId/reset
 
 ## POST /api/websites
 
-创建网站。
+创建一个网站。
 
 **参数**
 
-- `domain`: （字符串）跟踪网站的完整域名。
-- `name`: （字符串）在 Umami 中的网站名称。
-- `shareId`: （可选字符串）用于启用共享 URL 的唯一字符串。设置为 `null` 取消共享。
-- `teamId`: （可选字符串）将创建网站的团队的 ID。
+- `domain`: （字符串）被跟踪网站的完整域名。
+- `name`: （字符串）Umami 中的网站名称。
+- `shareId`: （可选字符串）一个唯一字符串以启用共享 URL。设置为 `null` 以取消共享。
+- `teamId`: （可选字符串）创建网站所在团队的 ID。
 
 **示例响应**
 
@@ -107,9 +107,9 @@ POST /api/websites/:websiteId/reset
 
 **参数**
 
-- `name`: （可选字符串）在 Umami 中的网站名称。
-- `domain`: （可选字符串）跟踪网站的完整域名。
-- `shareId`: （可选字符串）用于启用共享 URL 的唯一字符串。设置为 `null` 取消共享。
+- `name`: （可选字符串）Umami 中的网站名称。
+- `domain`: （可选字符串）被跟踪网站的完整域名。
+- `shareId`: （可选字符串）一个唯一字符串以启用共享 URL。设置为 `null` 以取消共享。
 
 **示例响应**
 
@@ -131,7 +131,7 @@ POST /api/websites/:websiteId/reset
 
 ## DELETE /api/websites/:websiteId
 
-删除网站。
+删除一个网站。
 
 **参数**
 
@@ -147,7 +147,7 @@ ok
 
 ## POST /api/websites/:websiteId/reset
 
-重置网站，删除与网站相关的所有数据。
+通过移除与网站相关的所有数据重置网站。
 
 **参数**
 

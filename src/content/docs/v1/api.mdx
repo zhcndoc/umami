@@ -2,18 +2,17 @@
 title: API
 ---
 
-Umami allows you to pull data directly by calling the API endpoints.
-The endpoints are available at `http://<your-umami>/api`.
-All data is returned as JSON.
+Umami 允许您直接通过调用 API 端点来获取数据。
+这些端点可在 `http://<your-umami>/api` 找到。
+所有数据以 JSON 格式返回。
 
-Any operation you can do through the Umami admin panel is available in the API, but it might not yet be documented.
+通过 Umami 管理面板可以执行的任何操作也可以在 API 中使用，但可能尚未文档化。
 
-## Authentication
+## 身份验证
 
 ## POST /api/auth/login
 
-First you need to get a _token_ in order to make API requests. You need to make a
-`POST` request to the `/api/auth/login` endpoint with the following data:
+首先，您需要获取一个 _token_ 以便进行 API 请求。您需要向 `/api/auth/login` 端点发送一个 `POST` 请求，数据格式如下：
 
 ```json
 {
@@ -22,7 +21,7 @@ First you need to get a _token_ in order to make API requests. You need to make 
 }
 ```
 
-If successful you should get a response like the following:
+如果成功，您应收到类似以下的响应：
 
 ```json
 {
@@ -30,13 +29,13 @@ If successful you should get a response like the following:
 }
 ```
 
-Save the token value and send an `Authorization` header with all your data requests with the value `Bearer <token>`. Your request header should look something like this:
+保存 token 值，并在所有数据请求中发送一个 `Authorization` 头，值为 `Bearer <token>`。您的请求头应类似如下格式：
 
 ```http request
 Authorization: Bearer eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A
 ```
 
-For example, with `curl` it would look like this:
+例如，使用 `curl` 时，可以这样写：
 
 ```shell
 curl https://yoursever/api/websites
@@ -44,31 +43,31 @@ curl https://yoursever/api/websites
    -H "Authorization: Bearer <token>"
 ```
 
-Prior to v1.26.0, Umami used cookies. If using an older version, you would do the following instead:
+在 v1.26.0 之前，Umami 使用 cookies。如果使用旧版本，您需要执行以下操作：
 
-Save the token value and pass it as a _cookie_ with all your data requests.
-The cookie name is `umami.auth`. Your request header should look something like this:
+保存 token 值并将其作为 _cookie_ 传递到所有数据请求中。
+cookie 名称为 `umami.auth`。您的请求头应类似如下格式：
 
 ```http request
 Cookie: umami.auth=eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A
 ```
 
-## Websites
+## 网站
 
-Operations around Websites that Umami is tracking.
+与 Umami 跟踪的网站相关的操作。
 
 ## POST /api/websites
 
-Creates a website.
+创建一个网站。
 
-**Parameters**
+**参数**
 
-- `domain`: (string) The full domain of the tracked website
-- `name`: (string) The name of the website in Umami
-- `enable_share_url`: (boolean) Enables a public URL for the stats for this Website
-- `public`: (boolean) false by default
+- `domain`: (字符串) 被跟踪网站的完整域名
+- `name`: (字符串) 在 Umami 中网站的名称
+- `enable_share_url`: (布尔值) 启用该网站的统计公共 URL
+- `public`: (布尔值) 默认值为 false
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -84,13 +83,13 @@ Creates a website.
 
 ## GET /api/websites
 
-Returns all tracked websites.
+返回所有被跟踪的网站。
 
-**Parameters**
+**参数**
 
-None
+无
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -106,25 +105,24 @@ None
 ]
 ```
 
-Prior to v1.39 some fields had a different name. If using an old version, use `website_id` instead of `id`, and rewrite the other fields in snake case (for example `share_id` instead of `shareId`).
+在 v1.39 之前，一些字段名称不同。如果使用旧版本，请使用 `website_id` 而不是 `id`，并将其他字段重写为蛇形命名（例如 `share_id` 而不是 `shareId`）。
 
-## Getting stats
+## 获取统计信息
 
-There are several endpoints your can call to get stats for your website. All the
-stats endpoints require sending a `GET` request with the `Bearer <token>` (post v1.26.0) or `umami.auth` authentication cookie.
+您可以调用多个端点以获取网站的统计信息。所有统计信息端点都需要发送带有 `Bearer <token>`（post v1.26.0）或 `umami.auth` 身份验证 cookie 的 `GET` 请求。
 
 ## GET /api/websites/{websiteUuid}/stats
 
-Gets summarized website statistics.
+获取汇总的网站统计信息。
 
-**Query Parameters**
+**查询参数**
 
-- `start_at`: Timestamp (in ms) of starting date
-- `end_at`: Timestamp (in ms) of end date
+- `start_at`: 开始日期的时间戳（毫秒）
+- `end_at`: 结束日期的时间戳（毫秒）
 
-**Sample response**
+**示例响应**
 
-GET (with Authorization header) from url: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/stats?start_at=1656679719687&end_at=1656766119687`
+从 URL `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/stats?start_at=1656679719687&end_at=1656766119687` 的 GET 请求（带 Authorization 头）：
 
 ```json
 {
@@ -135,23 +133,23 @@ GET (with Authorization header) from url: `https://umami.mydomain.com/api/websit
 }
 ```
 
-- `pageviews`: Pages hits
-- `uniques`: Number of unique visitor
-- `bounces`: Number of visitors who only visit a single page
-- `totaltime`: Time spent on the website
+- `pageviews`: 页面点击数
+- `uniques`: 独立访客数量
+- `bounces`: 仅访问单一页面的访客数量
+- `totaltime`: 在网站上花费的时间
 
 ## GET /api/websites/{websiteUuid}/pageviews
 
-Gets pageviews within a given time range.
+在给定时间范围内获取页面浏览量。
 
-**Parameters**
+**参数**
 
-- `start_at`: Timestamp (in ms) of starting date
-- `end_at`: Timestamp (in ms) of end date
-- `unit`: Time unit (year | month | hour | day)
-- `tz`: Timezone (ex. America/Los_Angeles)
+- `start_at`: 开始日期的时间戳（毫秒）
+- `end_at`: 结束日期的时间戳（毫秒）
+- `unit`: 时间单位（年 | 月 | 小时 | 天）
+- `tz`: 时区（例如 America/Los_Angeles）
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -168,16 +166,16 @@ Gets pageviews within a given time range.
 
 ## GET /api/websites/{websiteUuid}/events
 
-Gets events within a given time range.
+在给定时间范围内获取事件。
 
-**Parameters**
+**参数**
 
-- `start_at`: Timestamp (in ms) of starting date
-- `end_at`: Timestamp (in ms) of end date
-- `unit`: Time unit (year | month | hour | day)
-- `tz`: Timezone (ex. America/Los_Angeles)
+- `start_at`: 开始日期的时间戳（毫秒）
+- `end_at`: 结束日期的时间戳（毫秒）
+- `unit`: 时间单位（年 | 月 | 小时 | 天）
+- `tz`: 时区（例如 America/Los_Angeles）
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -188,15 +186,15 @@ Gets events within a given time range.
 
 ## GET /api/websites/{websiteUuid}/metrics
 
-Gets metrics for a given time range.
+获取给定时间范围内的指标。
 
-**Parameters**
+**参数**
 
-- `start_at`: Timestamp (in ms) of starting date
-- `end_at`: Timestamp (in ms) of end date
-- `type`: Metrics type (url | referrer | browser | os | device | country | event)
+- `start_at`: 开始日期的时间戳（毫秒）
+- `end_at`: 结束日期的时间戳（毫秒）
+- `type`: 指标类型（url | referrer | browser | os | device | country | event）
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -206,12 +204,11 @@ Gets metrics for a given time range.
 ]
 ```
 
-## Sending stats
+## 发送统计信息
 
 ## POST /api/collect
 
-To register a `pageview` or `event`, you need to send a `POST` to `/api/collect` with
-the following data:
+要注册一个 `pageview` 或 `event`，您需要向 `/api/collect` 发送一个 `POST` 请求，数据如下：
 
 ```json
 {
@@ -227,7 +224,7 @@ the following data:
 }
 ```
 
-For events, from v1.37 onwards, you would send:
+对于事件，从 v1.37 开始，您需要发送：
 
 ```json
 {
@@ -243,7 +240,7 @@ For events, from v1.37 onwards, you would send:
 }
 ```
 
-Prior to v1.37, the `event_name` was separated into two different fields: `event_type` and `event_value`:
+在 v1.37 之前，`event_name` 分为两个不同的字段：`event_type` 和 `event_value`：
 
 ```json
 {
@@ -260,8 +257,6 @@ Prior to v1.37, the `event_name` was separated into two different fields: `event
 }
 ```
 
-Note, for `/api/collect` requests you do not need to send an
-authentication token.
+请注意，对于 `/api/collect` 请求，您不需要发送身份验证 token。
 
-Also, you need to send a proper `User-Agent` HTTP header or
-your request won't be registered.
+另外，您需要发送一个合适的 `User-Agent` HTTP 头，否则您的请求将不会被注册。

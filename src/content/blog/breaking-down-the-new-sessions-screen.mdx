@@ -1,81 +1,79 @@
 ---
-title: Breaking down the new Sessions Screen
-description: As part of the latest release of Umami, v2.13.0, we are introducing a new screen called Sessions.
+title: 分析新的会话页面
+description: 在Umami最新版本v2.13.0中，我们推出了一个新的页面，称为会话。
 author: Nick Andrews
 date: 2024-09-01
 ---
 
-As part of the latest release of Umami, v2.13.0, we are introducing a new screen called Sessions. The purpose of the new report is to make analyzing session data, analyzing user behavior, and spotting traffic patterns significantly easier.
+在Umami最新版本v2.13.0中，我们推出了一个新的页面，称为会话。这个新报告的目的是让分析会话数据、用户行为及发现流量模式变得更加简单。
 
-Also, just below the main Sessions report, you will see new features called Activity and Properties. Activity is a stream of all of the sessions happening grouped by user. Directly next to the Activity tab is the Properties tab. We're introducing support for saving session data, which works similarly to custom event data and opens up new possibilities for user tracking and analysis.
+此外，在主要的会话报告下方，您将看到新的功能，称为活动和属性。活动是按用户分组的所有正在进行的会话流。紧挨着活动标签的是属性标签。我们引入了保存会话数据的支持，这与自定义事件数据类似，为用户跟踪和分析开辟了新的可能性。
 
 ![image](/images/blog/sessions-screen.png)
 
-# Session Report Features
+# 会话报告功能
 
-The Sessions report offers several features designed to give you a more nuanced understanding of your traffic:
+会话报告提供了多个旨在让您更深入了解流量的功能：
 
-1. **Weekly Session Breakdown**: The report visually represents session data by day and hour. Using blue circles, you can quickly identify high-traffic periods (larger circles) and low-traffic periods (smaller circles) throughout the week.
-2. **Hourly Traffic Breakdown**: This feature shows you an hourly traffic breakdown during a week, allowing you to pinpoint your website or app's busiest times. For example, if you spot a large blue circle Monday at 2:00 p.m., that means there is a traffic spike and potentially an area to drill into more using other Umami reports.
-3. **Activity Tab**: If you scroll down from the main report, you'll find the Activity tab. This tab displays a real-time data stream of sessions and each user has a profile.
-4. **User Profiles**: By clicking on any avatar in the activity stream below the report, you can access a detailed page about that particular visitor, including their activity history over time.
-5. **Properties Tab**: Next to the Activity tab, you'll find the new Properties tab. This tab displays saved session data that you've saved using the new session data saving feature.
-6. **Save Session Data**: We've introduced support for saving session data, opening up new user tracking and analysis possibilities. This feature works
-   similarly to custom event data, allowing you to store and analyze more detailed user information. You can now use the identify function from the
-   tracker script to save data about the current session; that data will appear in the new Properties tab.
+1. **每周会话细分**：该报告按天和小时直观地表示会话数据。使用蓝色圆圈，您可以快速识别出高流量期间（较大的圆圈）和低流量期间（较小的圆圈）。
+2. **每小时流量细分**：该功能显示了一周内的每小时流量细分，使您能够确定您网站或应用程序的高峰时段。例如，如果您在周一下午2点看到一个大蓝圈，那么这意味着流量激增，这可能是使用其他Umami报告深入分析的领域。
+3. **活动标签**：如果您从主报告向下滚动，您将找到活动标签。该标签显示会话的实时数据流，并且每个用户都有一个个人资料。
+4. **用户个人资料**：通过点击报告下方活动流中的任何头像，您可以访问该特定访客的详细页面，包括他们随着时间推移的活动历史。
+5. **属性标签**：在活动标签旁边，您会找到新的属性标签。该标签显示您使用新会话数据保存功能保存的会话数据。
+6. **保存会话数据**：我们引入了支持保存会话数据的功能，开辟了新的用户跟踪和分析可能性。此功能的运作方式类似于自定义事件数据，允许您存储和分析更详尽的用户信息。现在，您可以使用跟踪器脚本中的识别功能来保存当前会话的数据；这些数据将出现在新的属性标签中。
 
-For example:
+例如：
 
 ```javascript
 umami.identify({ email: 'bob@aol.com' });
 ```
 
-# How to Use the Sessions Report
+# 如何使用会话报告
 
-The Sessions report is designed to be user-friendly and easily accessible. Here's how you can start using it:
+会话报告设计为用户友好且易于访问。以下是如何开始使用它：
 
-1. Log in to your Umami Cloud account
-2. Navigate to the Websites section
-3. Select the Sessions report
+1. 登录到您的Umami Cloud帐户
+2. 导航到网站部分
+3. 选择会话报告
 
-From here, you can:
+从这里，您可以：
 
-1. View the weekly and hourly breakdown of your session data
-2. Analyze traffic patterns across different days and times
-3. Scroll down to access the Activity and Properties tabs
-4. Click on visitor avatars to view detailed profiles
-5. Implement session data saving for more in-depth user analysis
+1. 查看会话数据的每周和每小时细分
+2. 分析不同日期和时间的流量模式
+3. 向下滚动以访问活动和属性标签
+4. 点击访客头像以查看详细个人资料
+5. 实施会话数据保存以进行更深入的用户分析
 
-# Saving Session Data
+# 保存会话数据
 
-To take full advantage of the new session data-saving feature, you can use the identify function from the tracker script. This allows you to save custom data about the current session.
+为了充分利用新的会话数据保存功能，您可以使用跟踪器脚本中的识别功能。这使您能够保存有关当前会话的自定义数据。
 
-This saved session data will appear in the Properties tab and in each user profile, providing deeper insights about your users.
+这些保存的会话数据将出现在属性标签和每个用户个人资料中，为您提供有关用户的更深入见解。
 
-## Use Cases for the Sessions Report
+## 会话报告的用例
 
-Here are some use cases that demonstrate how different teams can use the Sessions screen:
+以下是一些用例，展示了不同团队如何使用会话页面：
 
-### Content Strategy Optimization
+### 内容策略优化
 
-Your content team can use the hourly traffic breakdown to identify peak engagement times, which can help inform future content releases. For instance, if you notice a surge in traffic every weekday at 9 AM, consider publishing your most important content before this time to catch the wave of user activity.
+您的内容团队可以使用每小时流量细分来识别峰值参与时间，这可以帮助指导未来的内容发布。例如，如果您注意到每个工作日早上9点流量激增，请考虑在此之前发布您最重要的内容，以便抓住用户活动的涨潮。
 
-### Server Resource Management
+### 服务器资源管理
 
-For dev and ops teams, the weekly session breakdown provides insights for resource allocation. By identifying high-traffic periods, you can ensure your servers are prepared to handle increased loads. This proactive approach can help prevent slowdowns or outages during crucial periods of user activity.
+对于开发和运维团队，每周会话细分提供了资源分配的见解。通过识别高流量期间，您可以确保您的服务器准备好处理增加的负载。这种主动的方法可以帮助防止在关键的用户活动期间出现缓慢或中断。
 
-### Personalized User Experience
+### 个性化用户体验
 
-Marketing and product teams can leverage the new session data-saving feature to create more personalized experiences. By saving and analyzing user-specific data in the Properties tab, you can tailor your website's content, offers, or functionality to individual users. For example, if a user has shown interest in a particular product category, you could use this information to display relevant recommendations on their next visit. Or, sync up with the sales team and let them know which customers or prospects are potentially interested in what.
+营销和产品团队可以利用新的会话数据保存功能创建更个性化的体验。通过在属性标签中保存和分析用户特定的数据，您可以根据个别用户量身定制网站内容、优惠或功能。例如，如果某个用户对特定产品类别表现出兴趣，您可以利用这些信息在他们下次访问时显示相关推荐。或者，与销售团队同步，让他们知道哪些客户或潜在客户可能对什么感兴趣。
 
-### User Journey Analysis
+### 用户旅程分析
 
-Product managers and UX designers can use the visitor profiles feature and the Activity tabto understand individual user journeys better. By examining the activity history of specific users, you can identify common paths through your website, potential pain points, and opportunities for improvement in your user experience design.
+产品经理和用户体验设计师可以使用访客个人资料功能和活动标签，更好地理解个体用户的旅程。通过检查特定用户的活动历史，您可以识别出通过您网站的常见路径、潜在痛点以及改进用户体验设计的机会。
 
-### Real-Time Engagement Monitoring
+### 实时参与监测
 
-Using the Activity tab, your team can monitor user engagement in real time. This can be useful during product launches, marketing campaigns, or when troubleshooting issues.
+使用活动标签，您的团队可以实时监测用户参与。这在产品发布、营销活动或故障排除期间非常有用。
 
-The Sessions report can be helpful in a range of ways for a range of teams. Whether optimizing content strategy, managing server resources, personalizing user experiences, or refining your product design, the Sessions report offers the insights you need to make data-driven decisions.
+会话报告可以为各种团队提供多种帮助。无论是优化内容策略、管理服务器资源、个性化用户体验还是完善您的产品设计，会话报告都提供了数据驱动决策所需的见解。
 
-Have questions about the new Sessions report or need help implementing session data saving? Don't hesitate to reach out to our support team at support@umami.is. We're here to help you get the most out of Umami!
+对新的会话报告有疑问或需要帮助实施会话数据保存功能？请随时联系我们的支持团队，邮箱为 support@umami.is。我们随时为您提供帮助，以充分利用Umami！

@@ -1,77 +1,71 @@
 ---
-title: A New Screen for Viewing Events
-description: Understanding user behavior goes beyond how users discover and start using your product.
+title: 新的事件查看屏幕
+description: 理解用户行为不仅仅是了解用户如何发现和开始使用你的产品。
 author: Nick Andrews
 date: 2024-08-31
 ---
 
-Hey, where did the events chart and metrics table go? It’s not on summer vacation, it moved to its own dedicated screen called Events and can now be found
-under the website menu in your Umami dashboard. The Events screen provides a quick snapshot of the [custom events](https://umami.is/docs/track-events)
-that are being triggered for a given time period.
+嘿，事件图表和指标表去哪儿了？它不是在暑假，而是移动到了一个独立的屏幕，称为事件（Events），现在可以在你的 Umami 仪表板的网页菜单下找到。事件屏幕提供了在给定时间段内触发的 [自定义事件](https://umami.is/docs/track-events) 的快速快照。
 
 ![image](/images/blog/events-screen.png)
 
-Also, if you scroll down a little from the main Events chart, you will see new features called Activity and Properties. Activity is a stream of all custom
-events and page views happening on your website or app in real-time. Directly next to the Acitvity tab is the Properties tab.
-We're introducing support for [saving session data](https://umami.is/docs/sessions#view-session-properties) which works similarly to custom event data and opens up new possibilities for user
-tracking and analysis. You can now use the identify function from the tracker script to save data about the current session;
-that data will appear in the new Properties tab.
+此外，如果你从主事件图表向下滚动一点，你会看到新的功能，叫做活动（Activity）和属性（Properties）。活动是你的网站或应用上实时发生的所有自定义事件和页面浏览的流。活动选项卡旁边是属性选项卡。我们引入了对 [保存会话数据](https://umami.is/docs/sessions#view-session-properties) 的支持，其工作方式类似于自定义事件数据，并为用户跟踪和分析开辟了新可能性。你现在可以使用跟踪脚本中的 identify 函数来保存当前会话的数据；这些数据将出现在新的属性选项卡中。
 
-For example:
+例如：
 
 ```javascript
 umami.identify({ email: 'bob@aol.com' });
 ```
 
-# What is the new Events screen?
+# 什么是新的事件屏幕？
 
-The Events screen offers two key features:
+事件屏幕提供了两个关键功能：
 
-1. **Reporting on Custom Events**: The report shows all the custom events that have occurred within a specified timeframe. Select "Today" to show the events happening in real-time today; this might be useful if you have a big campaign launching and want to get a sense of how it's performing.
-2. **Activity Stream**: If you scroll down from the main report, there is a section called Activity. Activity is a stream of data - that combines both custom events and page views - that are happening.
+1. **报告自定义事件**：报告显示在指定时间范围内发生的所有自定义事件。选择“今天”以显示今天实时发生的事件；如果你有一个大型活动即将推出并想了解其表现，这可能会很有用。
+2. **活动流**：如果你从主报告向下滚动，会有一个名为活动的部分。活动是发生的数据流-结合了自定义事件和页面观看。
 
-# How to Use the Events Report
+# 如何使用事件报告
 
-The Events report is easy to use and access. To access the Events report:
+事件报告简单易用且易于访问。要访问事件报告：
 
-1. Log in to your Umami Cloud account
-2. Navigate to the Websites section
-3. Select the Events report
+1. 登录你的 Umami Cloud 账户
+2. 导航到网站部分
+3. 选择事件报告
 
-From here, you can:
+从这里，你可以：
 
-1. View all custom events within your chosen timeframe.
-2. See the activity stream, which includes both custom events and page views.
-3. Click into the Activity stream for additional information. Clicking on any avatar in the activity stream opens a new page showing details about that particular visitor.
+1. 查看你选择的时间范围内的所有自定义事件。
+2. 查看活动流，其中包括自定义事件和页面浏览。
+3. 点击活动流获取更多信息。在活动流中点击任何头像会打开一个新页面，显示该特定访客的详细信息。
 
-# Use Cases for Events
+# 事件的用例
 
-Now that we've covered how to access and use the Events screen, let's explore some possible use cases that demonstrate how different teams within your organization can use the Events screen.
+现在我们已经介绍了如何访问和使用事件屏幕，让我们探讨一些可能的用例，展示你组织内不同团队如何使用事件屏幕。
 
-## Feature Adoption Tracking
+## 功能采用跟踪
 
-Your product team has just launched a new feature and wants to track adoption. Set up custom events for key actions within the new feature. For example, if you've launched a new collaborative editing tool, you might track events like "collaboration_started," "document_shared," or "comment_added."
+你的产品团队刚刚推出一项新功能，并希望跟踪其采用情况。为新功能内的关键操作设置自定义事件。例如，如果你推出了一种新的协作编辑工具，你可能会跟踪事件，如“collaboration_started”、“document_shared”或“comment_added”。
 
-Use the Events report to monitor the frequency of these events over time or in real-time to see if your new feature launch aligns with a marketing push to promote it. This will give you insights into how quickly users adopt the new feature and which aspects they use most. By analyzing this data, you can identify which parts of the feature are most popular and which might need improvement. You can also use this information to inform future feature development and prioritize your product roadmap based on actual user behavior.
+使用事件报告监控这些事件在时间上的频率，或实时查看你新功能的推出是否与市场推广相一致。这将让你洞察用户采用新功能的速度，以及他们使用哪些方面最多。通过分析这些数据，你可以识别功能中最受欢迎的部分，以及哪些部分可能需要改进。你还可以利用这些信息来指导未来的功能开发，并根据实际用户行为优先考虑你的产品路线图。
 
-## User Journey Optimization
+## 用户旅程优化
 
-To understand and optimize the path users take from signing up to becoming active users, create custom events for each significant step in the user journey, such as "account_created," "profile_completed," "first_project_created," "invited_team_member," etc.
+为了理解和优化用户从注册到成为活跃用户所经历的路径，为用户旅程中的每一个重要步骤创建自定义事件，例如“account_created”、“profile_completed”、“first_project_created”、“invited_team_member”等。
 
-Use the Events report to see the frequency and order of these events. This can help you identify where users might need help or drop off in their journey to becoming active users. For instance, if you notice users aren't completing their profiles, you might consider simplifying the process or offering incentives.
+使用事件报告查看这些事件的频率和顺序。这可以帮助你识别用户在成为活跃用户的旅程中可能需要帮助或中途退出的地方。例如，如果你注意到用户没有完成他们的个人资料，你可能会考虑简化流程或提供激励。
 
-## Campaign Performance Tracking
+## 活动表现跟踪
 
-When your marketing team runs a campaign and sends traffic to a landing page, they can track its performance in real time by setting up custom events for each critical touchpoint. For example, "button_clicked" (get as granular as you’d like and add an event for each button), "landing_page_viewed," "demo_requested," "whitepaper_downloaded," “newsletter_signup,” etc.
+当你的市场团队运行一个活动并向一个落地页发送流量时，他们可以通过为每个关键接触点设置自定义事件来实时跟踪其表现。例如，“button_clicked”（尽可能细化，为每个按钮添加事件）、“landing_page_viewed”、“demo_requested”、“whitepaper_downloaded”、“newsletter_signup”等。
 
-Use the Events report, particularly the Activity stream, to monitor these events in real time as the campaign launches. This allows for quick adjustments to the campaign strategy if certain channels (you could create multiple versions of the landing page and tag it for specific channels. I.e., send the email campaign to the email version of the landing page to guage that one specific channel vs others) or touchpoints are underperforming. For instance, if you notice that the "demo_requested" event is occurring less frequently than expected, you might decide to tweak your landing page copy, adjust your call-to-action, change the position or color of the button, etc. The real-time nature of this data allows for agile marketing, enabling your team to optimize campaigns on the fly.
+使用事件报告，特别是活动流，实时监控这些事件，以便在活动启动时及时调整策略。如果某些渠道（你可以创建多个版本的落地页并为特定渠道标记它们。例如，将电子邮件活动发送到电子邮件版本的落地页以衡量这个特定渠道与其他渠道的表现）或接触点表现不佳，你可以迅速调整。例如，如果你注意到“demo_requested”事件发生的频率低于预期，你可能会决定调整落地页文案，修改号召性用语，改变按钮的位置或颜色等。数据的实时性使得营销更具灵活性，使你的团队能够即时优化活动。
 
-## Error Monitoring and Debugging
+## 错误监控和调试
 
-For development teams looking to track and respond to errors in real time, set up custom events for different types of errors or exceptions in your application; for example, "api_error," "payment_processing_failed," "database_connection_lost," etc.
+为了让开发团队实时跟踪和应对错误，可以为应用中的不同类型的错误或异常设置自定义事件；例如，“api_error”、“payment_processing_failed”、“database_connection_lost”等。
 
-Use the Activity stream in the Events report to monitor these error events in real time. This allows developers to quickly identify and respond to issues as they occur, improving the overall stability and user experience of the application. Over time, analyzing the frequency and patterns of these error events can help identify recurring issues or bottlenecks in your system, informing your long-term development and infrastructure decisions.
+使用事件报告中的活动流实时监控这些错误事件。这使开发人员能够迅速识别并应对出现的问题，从而提高应用的整体稳定性和用户体验。随着时间的推移，分析这些错误事件的频率和模式可以帮助识别系统中的重复性问题或瓶颈，从而指导你的长期开发和基础设施决策。
 
-These are just some ideas on how different teams in your organization can use the new Events screen. Hopefully, this got the ideas flowing for you! Whether optimizing user experiences, refining marketing strategies, or enhancing application stability, the Events report provides the real-time data you need to move fast.
+这些只是你组织内不同团队如何使用新事件屏幕的一些想法。希望这能激发你的思路！无论是优化用户体验、完善营销策略，还是增强应用稳定性，事件报告提供了你所需的实时数据以快速行动。
 
-Have questions about the new Events report or need help setting up custom events? Don't hesitate to reach out to our support team at support@umami.is. We're here to help you get the most out of Umami!
+对新事件报告有疑问或需要帮助设置自定义事件？请随时通过 support@umami.is 联系我们的支持团队。我们在这里帮助你充分利用 Umami！

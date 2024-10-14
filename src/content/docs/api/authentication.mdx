@@ -1,55 +1,54 @@
 ---
-title: 认证
+title: 身份验证
 ---
 
-The following authentication method is only for self-hosted Umami. For **Umami Cloud**, you simply
-need to generate an [API key](/docs/cloud/api-key).
+以下身份验证方法仅适用于自托管的 Umami。对于 **Umami Cloud**，您只需生成一个 [API 密钥](/docs/cloud/api-key)。
 
 ## POST /api/auth/login
 
-首先，你需要获取一个 _token_ 以进行 API 请求。你需要向 `/api/auth/login` 端点发出 `POST` 请求，并提供以下数据：
+首先，您需要获取一个 _token_ 才能进行 API 请求。您需要向 `/api/auth/login` 端点发送一个 `POST` 请求，数据如下：
 
 ```json
 {
-  "username": "your-username",
-  "password": "your-password"
+  "username": "您的用户名",
+  "password": "您的密码"
 }
 ```
 
-如果成功，你会得到以下类似的响应：
+如果成功，您应该会收到如下响应：
 
 ```json
 {
   "token": "eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A",
   "user": {
     "id": "cd33a605-d785-42a1-9365-d6cad3b7befd",
-    "username": "your-username",
+    "username": "您的用户名",
     "createdAt": "2020-04-20 01:00:00"
   }
 }
 ```
 
-请保存 token 值，并在所有数据请求中使用 `Bearer <token>` 作为你的 `Authorization` 请求头。你的请求头应该类似于：
+保存 token 值，并在所有数据请求中发送 `Authorization` 头，值为 `Bearer <token>`。您的请求头应如下所示：
 
 ```http request
 Authorization: Bearer eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A
 ```
 
-例如，使用 `curl` 进行请求时，应该是这样的：
+例如，使用 `curl` 时如下所示：
 
 ```shell
-curl https://{yourserver}/api/websites
+curl https://{您的服务器}/api/websites
    -H "Accept: application/json"
    -H "Authorization: Bearer <token>"
 ```
 
-每个需要权限的 API 调用都需要带有授权令牌。
+授权 token 在每一个需要权限的 API 调用中都是必须的。
 
 ---
 
 ## POST /api/auth/verify
 
-你可以验证令牌是否仍然有效。
+您可以验证 token 是否仍然有效。
 
 **示例响应**
 

@@ -1,126 +1,124 @@
 ---
-title: Understanding Custom Events - Umami vs. Google Analytics 4
-description: Data can drive improvements in user experience, inform product development roadmaps, and ultimately contribute to business growth.
+title: 理解自定义事件 - Umami 与 Google Analytics 4
+description: 数据可以推动用户体验的改善，指导产品开发路线图，并最终促进业务增长。
 author: Nick Andrews
 date: 2024-10-04
 ---
 
-Custom events such as button clicks, form submissions, video plays, purchases, or any other user action you can think of,
-is critical data to track so you can gain insight into how users engage with your website or application. This data can
-drive improvements in user experience, inform product development roadmaps, and ultimately contribute to business growth.
+自定义事件，如按钮点击、表单提交、视频播放、购买或任何其他用户行为，
+是追踪的重要数据，以便您可以深入了解用户如何与您的网站或应用程序互动。这些数据可以
+推动用户体验的改善，指导产品开发路线图，并最终促进业务增长。
 
-This piece compares the custom event tracking capabilities of Umami and Google Analytics (GA4), explores how each platform
-approaches custom event tracking, the setup processes, data analysis tools, and more.
+本文比较了 Umami 和 Google Analytics (GA4) 的自定义事件追踪能力，探讨了每个平台
+如何处理自定义事件追踪、设置过程、数据分析工具等。
 
-# Understanding Custom Events
+# 理解自定义事件
 
-Let's clarify what we mean by custom events. In the context of web analytics, and what we will be referring to in this blog post, custom events are user interactions that you specifically define and track. Unlike standard events (such as page views) that are automatically tracked by most analytics platforms (including both GA4 and Umami), custom events require you to set up tracking for specific actions that are important to your business.
+让我们明确一下自定义事件的含义。在网络分析的上下文中，以及我们在此博客文章中要提及的内容，自定义事件是您具体定义并追踪的用户互动。与大多数分析平台（包括 GA4 和 Umami）自动追踪的标准事件（例如页面浏览）不同，自定义事件需要您为对业务重要的特定行为设置追踪。
 
-Note that GA4 does automatically collect certain events beyond pageviews that fall into what most would consider a custom event category such as button clicks, video views, form submits, etc. However, GA4 does not do a perfect job here, and explicitly creating your own custom events is recommended. For example, form submissions can be processed in a million different ways, and GA4 might not capture them correctly via its automatic events capture. Do a Google search for “ga4 form submission automatic events does not work,” and you’ll find a lot of complaints. The point is it’s not perfect, so don’t leave it to chance and manually configure it. You can review their documentation for more information on GA4’s automatically collected events.
+值得注意的是，GA4 确实自动收集一些超出页面浏览的事件，这些事件大多被认为属于自定义事件类别，如按钮点击、视频观看、表单提交等。然而，GA4 在这方面的表现并不完美，建议您明确创建自己的自定义事件。例如，表单提交可以以千种不同的方式处理，而 GA4 可能无法通过其自动事件捕获正确捕获它们。进行一次 Google 搜索，搜索“ga4 表单提交自动事件无法工作”，您会发现很多投诉。关键在于，它并不完美，因此不要留于偶然，手动配置它。您可以查阅他们的文档以获取有关 GA4 自动收集事件的更多信息。
 
-# Setting Up Custom Event Tracking
-
-## Umami
-
-Once you've installed the Umami script on your site, you can start tracking custom events in two ways: using the data attributes property or using JavaScript. Umami's approach is simple, flexible, and you can track any type of custom event this way.
-
-Even without a technical background, setting up custom events in Umami is easy so long as you have access to the code portion of your website. Refer to our [event tracking documentation](https://umami.is/docs/track-events) for detailed instructions on setting up custom events using Umami.
-
-## GA4
-
-GA4 also allows for custom event tracking, but the setup process is a bit more involved. You might get lucky and have some of your custom events captured automatically. Alternatively, you can implement a custom event in GA4 a few different ways, depending on how you set up your website or app. The options include gtag.js (for websites), Tag Manager (for websites), or Google Analytics for Firebase (for mobile apps).
-
-The implementation details for custom events in GA4 are different depending on how you set up your website or app and will need to refer to the developer documentation for more details. Without a technical background, this can get confusing.
-
-# Analyzing Custom Event Data
+# 设置自定义事件追踪
 
 ## Umami
 
-You can access a summary of all your custom events from the Umami dashboard using the Events screen. You can see event counts broken out by event for a timeframe that you define. In addition to the Events screen, many of Umami’s custom reporting tools have the ability to report on custom events. For example, the Goals report can incorporate custom event data into its reporting so you can set custom goal tracking reports for specific custom events. The Journey and Funnel reports can also integrate custom event data, allowing you to slice your data through the lens of custom events.
+一旦您在网站上安装了 Umami 脚本，您可以通过两种方式开始追踪自定义事件：使用数据属性属性或使用 JavaScript。Umami 的方法简单灵活，通过这种方式，您可以追踪任何类型的自定义事件。
 
-Jumping back to the Events Screen, if you scroll down a little from the main Events chart, you will see a feature called Activity. Activity is a stream of all real-time custom events being triggered and page views happening on your website or app. You can click on the user's profile picture associated with the custom event to learn more about that user and their session that triggered the event.
+即使没有技术背景，只要您能访问网站的代码部分，设置 Umami 中的自定义事件也是简单的。请参考我们的 [事件追踪文档](https://umami.is/docs/track-events)，获取使用 Umami 设置自定义事件的详细说明。
 
 ## GA4
 
-After implementing a custom event in GA4, you can use the Events report in the Reports section to view your data. This report displays the event frequency and other relevant information within your specified date range.
+GA4 也允许自定义事件追踪，但设置过程稍微复杂一些。您可能会幸运地自动捕获到一些自定义事件。或者，您可以根据如何设置您的网站或应用，通过几种不同方式在 GA4 中实施自定义事件。选项包括 gtag.js（用于网站）、标签管理器（用于网站）或 Google Analytics for Firebase（用于移动应用）。
 
-You can select an event name to access a detailed report. This expanded view provides parameter specifics, demographic data about users who triggered the event, and metrics on how many users activated each event and its associated parameters.
+GA4 中自定义事件的实施细节因您如何设置网站或应用而异，需要查阅开发者文档以获取更多详细信息。没有技术背景时，这可能会让人感到困惑。
 
-# Data Sampling
-
-What exactly is data sampling? Data sampling is a technique that analyzes a subset of data to make inferences about the entire dataset. In regards to website analytics, analytics tools can use data sampling (GA4 in some cases) in order to save memory and resources. So, what you see in GA4 in some cases might only be an inference based on a subset of your data, which might not provide 100% accurate results.
+# 分析自定义事件数据
 
 ## Umami
 
-Umami does not use data sampling for custom events. This means that when you're looking at your reports, you're seeing 100% of your custom event data, not just a sample.
+您可以通过 Umami 仪表板的事件屏幕访问所有自定义事件的摘要。您可以查看按您定义的时间范围划分的事件计数。除了事件屏幕，Umami 的许多自定义报告工具也能够报告自定义事件。例如，目标报告可以将自定义事件数据纳入其报告，以便您可以为特定自定义事件设置自定义目标跟踪报告。旅程报告和漏斗报告也可以整合自定义事件数据，使您能够通过自定义事件的视角切分数据。
+
+返回到事件屏幕，如果您向下滚动一下主事件图表，您会看到一个叫做活动的功能。活动是您网站或应用中触发的所有实时自定义事件和页面浏览的流。您可以点击与自定义事件关联的用户头像，以了解更多关于该用户及其触发事件的会话信息。
 
 ## GA4
 
-While GA4 doesn't use sampling for most standard reports, it does use sampling for more complex queries in tools like Exploration. This means that for advanced analyses, you might be working with only a subset of your data.
+在 GA4 中实施自定义事件后，您可以使用报告部分的事件报告查看您的数据。此报告显示您指定日期范围内的事件频率和其他相关信息。
 
-In their own words, “In Google Analytics, data sampling may occur when the number of events used to create a report, exploration, or request exceeds the quota limit for your property. When this happens, Analytics uses a portion of the data and then scales up to provide directionally accurate results that are representative of all your data.”
+您可以选择一个事件名称以访问详细报告。此扩展视图提供参数细节、触发事件的用户的人口统计数据，以及多少用户激活了每个事件及相关参数的指标。
 
-# Privacy Considerations
+# 数据抽样
 
-Privacy has become an important consideration in web analytics and in business in general. This is particularly true when implementing custom event tracking, as you may be collecting detailed information about user behavior.
+数据抽样到底是什么？数据抽样是一种分析数据子集以推断整个数据集的技术。在网站分析中，分析工具可能会使用数据抽样（在某些情况下为 GA4）以节省内存和资源。因此，您在 GA4 中看到的某些情况可能仅仅是基于您的数据子集的推断，这可能无法提供 100% 的准确结果。
 
 ## Umami
 
-Umami takes a privacy-first approach to analytics. Umami doesn't use cookies to track users, which means you don't need to show a cookie consent banner. By default, Umami doesn't collect any personal data about your users. Umami offers the option to self-host, giving you complete control over your data. With Umami, you own your data entirely. It's not used for any other purposes or shared with third parties. This approach can be good if you're operating in regions with strict data protection laws, such as areas covered by GDPR or CCPA.
+Umami 不对自定义事件使用数据抽样。这意味着当您查看报告时，您看到的是 100% 的自定义事件数据，而不是仅仅一个样本。
 
 ## GA4
 
-GA4, while making improvements in privacy compared to Universal Analytics (the old version of Google Analytics), still collects more data by default. GA4 uses first-party cookies to track users across sessions. GA4 collects IP addresses by default, although this can be disabled. By default, GA4 shares data with Google to improve their services, although this can be adjusted in the settings. Data is stored on Google's servers, which may have implications for data ownership and compliance with certain privacy regulations. These factors may require more careful consideration and potentially more complex setup to ensure compliance with privacy regulations.
+虽然 GA4 对于大多数标准报告不使用抽样，但在像探索这样的更复杂查询中，它确实使用抽样。这意味着在进行高级分析时，您可能仅在处理数据的一个子集。
 
-# Custom Event Tracking for Startups: Umami vs GA4
+用他们自己的话来说：“在 Google Analytics 中，当用于创建报告、探索或请求的事件数量超过您财产的配额限制时，可能会发生数据抽样。当发生这种情况时，Analytics 会使用一部分数据，然后进行扩展，以提供方向性准确的结果，代表您所有数据的特征。”
 
-For startups, choosing the right analytics platform is crucial. You need a solution that provides valuable insights without overwhelming your team or your budget. Let's compare how startups might use Umami and GA4 for custom event tracking, and why Umami often emerges as the better choice.
+# 隐私考虑
 
-# Ease of Implementation
+隐私已成为网络分析和商业中一个重要的考量。这在实施自定义事件追踪时尤其如此，因为您可能会收集有关用户行为的详细信息。
 
-Umami's setup process is straightforward. Once you've added the Umami script to your site, you can start tracking custom events immediately. The syntax for tracking events is simple and intuitive, requiring minimal or no time from a developer. If you have access to the code portion of your website, you can use the documentation to guide you on how set up custom events. There's no need for additional configuration in a separate interface to make use of custom event parameters (i.e., having to set up Google Tag Manager).
+## Umami
 
-GA4, on the other hand, has a steeper learning curve with a lot of documentation aimed at developers. While basic event tracking is relatively simple, making full use of custom parameters requires additional setup in the GA4 interface. The more complex features of GA4 often require significant time investment to understand and implement effectively. For a startup looking to quickly implement meaningful analytics, Umami's simplicity can be a significant advantage.
+Umami 采取隐私优先的分析方法。Umami 不使用 cookie 来跟踪用户，这意味着您不需要显示 cookie 同意横幅。默认情况下，Umami 不收集有关用户的任何个人数据。Umami 提供自我托管的选项，使您对数据拥有完全控制权。使用 Umami，您完全拥有自己的数据。它不用于其他目的，也不会与第三方分享。这种方法在数据保护法律严格的地区，诸如 GDPR 或 CCPA 覆盖的区域，可能是个不错的选择。
 
-# Flexibility and Scalability
+## GA4
 
-Startups often pivot and evolve rapidly, and their analytics needs can change just as quickly. Umami offers great flexibility. There are no limits on the types of custom events you can track. As your startup grows, you can easily expand your event tracking without worrying about hitting limits or incurring additional costs.
+虽然 GA4 在隐私方面相比于 Universal Analytics（旧版 Google Analytics）有所改进，但默认情况下仍然收集更多数据。GA4 使用第一方 cookie 跟踪用户跨会话的活动。GA4 默认收集 IP 地址，虽然这一功能可以被禁用。GA4 默认与 Google 分享数据，以改进其服务，虽然这在设置中可以调整。数据存储在 Google 的服务器上，这可能对数据所有权和遵守某些隐私法规产生影响。这些因素可能需要更仔细的考虑，并可能需要更复杂的设置来确保遵循隐私法规。
 
-GA4 has some limitations that could become problematic as a startup scales. The limit of [500 distinct events per property](https://support.google.com/analytics/answer/9267744?sjid=6324832446679205096-NA) could become restrictive as your tracking needs grow more complex. GA4 also has [limitations on character counts for naming events](https://support.google.com/analytics/answer/9267744?hl=en) with which you will want to familiarize yourself with.
+# 初创公司自定义事件追踪：Umami 与 GA4
 
-# Data Accuracy and Completeness
+对于初创公司而言，选择合适的分析平台至关重要。您需要一种提供有价值见解而不压垮您的团队或预算的解决方案。让我们比较初创公司如何使用 Umami 和 GA4 进行自定义事件追踪，以及为什么 Umami 往往是更好的选择。
 
-Umami provides 100% data collection without sampling, ensuring you have complete data for analysis. It also offers real-time data, allowing for immediate insights and quick response to trends. You can also use the Events screen to instantly analyze your custom events in real-time or for a given time period that you define.
+# 实施的简便性
 
-GA4's approach may pose challenges. Data sampling in more complex analyses could lead to incomplete insights, especially problematic when dealing with smaller data sets typical of many startups.
+Umami 的设置过程简单明了。一旦您将 Umami 脚本添加到您的网站，就可以立即开始追踪自定义事件。追踪事件的语法简单直观，所需开发者时间最小或为零。如果您可以访问网站的代码部分，您可以使用文档指导您设置自定义事件。无需在单独的界面中进行额外配置即可利用自定义事件参数（即不需要设置 Google Tag Manager）。
 
-# Privacy and Data Ownership
+而 GA4 的学习曲线则更陡峭，很多文档都针对开发人员。尽管基本的事件追踪相对简单，但充分利用自定义参数需要在 GA4 界面中额外设置。GA4 的更复杂功能通常需要投入大量时间来理解和有效实施。对于希望快速实施有效分析的初创公司来说，Umami 的简便性可以是一个显著优势。
 
-Umami's privacy-first approach offers several advantages. There's no need for cookie consent banners, simplifying your user experience. Umami offers full data ownership and the option for self-hosting, which can be appealing to privacy-conscious users and investors. It also allows for simpler compliance with privacy regulations like GDPR and CCPA, as Umami is compliant by default.
+# 灵活性与可扩展性
 
-GA4's data practices may present challenges. The need for cookie consent could impact user experience and potentially conversion rates. Data sharing with Google might be a concern for some users or in certain industries. Compliance with strict privacy regulations may require more complex setup and management.
+初创公司往往快速变换和发展，其分析需求也可能同样迅速变化。Umami 提供极大的灵活性。您可以追踪的自定义事件类型没有限制。随着初创公司的增长，您可以轻松扩展事件追踪，而不必担心达到限制或产生额外费用。
 
-# Cost Considerations
+相对而言，GA4 有一些限制，在初创公司扩展时可能会变得棘手。每个属性限制 [500 个不同事件](https://support.google.com/analytics/answer/9267744?sjid=6324832446679205096-NA)，这在您的追踪需求日益复杂时可能会变得具有约束力。GA4 还对事件命名的字符数 [有限制](https://support.google.com/analytics/answer/9267744?hl=en)，您需要对此熟悉。
 
-For cash-conscious startups, the cost of analytics can be a significant factor. Umami is open-source and can be self-hosted for free, and it also offers a free tier for its Cloud version allowing you to just sign up on the website and get started. Even Umami's paid cloud offering is often more cost-effective than equivalent services, with predictable pricing as you scale.
+# 数据的准确性和完整性
 
-GA4, while free to start with, may incur costs as you grow. While the basic GA4 is free, more advanced features and higher data volumes may require upgrading to paid Google Analytics solutions. The potential need for a data analytics specialist to make full use of GA4's advanced features could present large costs such as hiring a data people and accruing technical debt.
+Umami 提供 100% 的数据收集，无需抽样，确保您拥有完整的数据进行分析。它还提供实时数据，允许您对趋势进行即时洞察和快速反应。您还可以使用事件屏幕实时分析您自定义事件，或在您定义的特定时间段内分析。
 
-# Why Umami is Often the Better Choice for Startups
+GA4 的方法可能带来挑战。在更复杂的分析中的数据抽样可能导致洞察不完整，尤其在处理许多初创公司典型的小数据集时问题更为突出。
 
-We might be biased, but we hope you also see why Umami can be a better choice for startups in regards to custom-event tracking. So many default to Google Analytics because it is what is known, but that doesn’t mean it’s the best choice and can frequently lead to getting bogged down due to its many over-complexities.
+# 隐私与数据所有权
 
-We have additional resource that startups can explore that touch on different aspects of Umami:
+Umami 的隐私优先方法提供了几个优势。无需 cookie 同意横幅，简化了用户体验。Umami 提供完全的数据所有权和自我托管选项，这对关注隐私的用户和投资者可能很有吸引力。在遵循隐私法规，如 GDPR 和 CCPA 时，它也允许更简单的合规，因 Umami 默认符合相关要求。
 
-- [Analytics for Startups - Why GA4 is not ideal](https://umami.is/blog/analytics-for-startups)
-- [Umami for Startup Performance Marketing](https://umami.is/blog/umami-for-startup-performance-marketing)
-- [Analytics Needs at Different Startup Stages](https://umami.is/blog/analytics-needs-at-different-startup-stages)
-- [The Lean Startup Approach to Website Analytics](https://umami.is/blog/the-lean-startup-approach-to-website-analytics)
+GA4 的数据实践可能带来挑战。对 cookie 同意的需求可能影响用户体验，并可能影响转化率。与 Google 的数据共享可能在某些用户或某些行业中引发关注。遵循严格隐私法规可能需要更复杂的设置和管理。
 
-The best analytics tool is the one that you'll actually use effectively. Whether you choose Umami, GA4, or another platform, the key is to implement custom event tracking that provides actionable insights for your organization.
+# 成本考虑
 
-Are you ready to get started with Umami? You can try it free to get a feel for the user interface and set up custom events. Umami can run alongside your existing website analytics tool without disruption, allowing you to test.
+对于资金有限的初创公司而言，分析的费用可能是一个重要因素。Umami 是开源的，可以免费自我托管，还提供免费的云版本，让您可以直接在网站上注册并开始使用。即使 Umami 的付费云服务通常也比同类服务更具性价比，随着您扩展，定价也是可预测的。
 
-If you have any questions about Umami, please contact our support team at support@umami.is
+GA4 虽然起步免费，但随着您的成长可能会产生费用。尽管基本 GA4 是免费的，但更高级的功能和更高的数据量可能需要升级到付费的 Google Analytics 解决方案。为了充分利用 GA4 的高级功能，潜在的聘请数据分析师的需求可能导致高费用，比如招聘数据人才和累积技术负担。
 
+# 为什么 Umami 通常是初创公司的更好选择
 
+我们可能有偏见，但我们希望您也能看到 Umami 在自定义事件追踪方面为何对初创公司更具吸引力。许多人选择 Google Analytics，因为这是大家熟知的，但这并不意味着它是最佳选择，经常会因其众多复杂性而陷入困境。
+
+我们还有其他资源供初创公司探索，涉及 Umami 的不同方面：
+
+- [初创公司的分析 - 为什么 GA4 不理想](https://umami.is/blog/analytics-for-startups)
+- [Umami 适用于初创公司绩效营销](https://umami.is/blog/umami-for-startup-performance-marketing)
+- [不同初创阶段的分析需求](https://umami.is/blog/analytics-needs-at-different-startup-stages)
+- [精益创业方法与网站分析](https://umami.is/blog/the-lean-startup-approach-to-website-analytics)
+
+最佳的分析工具是您实际能够有效使用的工具。无论您选择 Umami、GA4 还是其他平台，关键是实施能够为您的组织提供可操作见解的自定义事件追踪。
+
+您准备好开始使用 Umami 吗？您可以免费试用，感受用户界面并设置自定义事件。Umami 可以与您现有的网站分析工具无缝运行，让您进行测试。
+
+如果您对 Umami 有任何疑问，请联系我们的支持团队：support@umami.is

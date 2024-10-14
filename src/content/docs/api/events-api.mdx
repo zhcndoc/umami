@@ -1,10 +1,10 @@
 ---
-title: Events
+title: 事件
 ---
 
-Operations around Events and Event data.
+关于事件及事件数据的操作。
 
-**Endpoints**
+**端点**
 
 ```text
 GET /api/websites/:websiteId/events
@@ -18,18 +18,18 @@ GET /api/websites/:websiteId/event-data/stats
 
 ## GET /api/websites/:websiteId/events
 
-Gets website event details within a given time range.
+获取给定时间范围内的网站事件详细信息。
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
-- `query`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
-- `orderBy`: (optional string) Order by column name.
+- `startAt`: 开始日期的时间戳（毫秒）。
+- `endAt`: 结束日期的时间戳（毫秒）。
+- `query`: （可选字符串）搜索文本。
+- `page`: （可选数字，默认为 1）确定页码。
+- `pageSize`: （可选字符串）确定返回多少结果。
+- `orderBy`: （可选字符串）按列名排序。
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/events?startAt=1725580800000&endAt=1725667199999&query=&page=1&pageSize=20`
 
@@ -46,7 +46,7 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
       "referrerPath": "/docs/api",
       "referrerQuery": "",
       "referrerDomain": "",
-      "pageTitle": "Overview – Umami",
+      "pageTitle": "总览 – Umami",
       "eventType": 1,
       "eventName": ""
     },
@@ -75,15 +75,15 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 ## GET /api/websites/:websiteId/event-data/events
 
-Gets event data names, properties, and counts
+获取事件数据名称、属性和计数。
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
-- `event`: (optional) Event name filter.
+- `startAt`: 开始日期的时间戳（毫秒）。
+- `endAt`: 结束日期的时间戳（毫秒）。
+- `event`: （可选）事件名称过滤。
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/event-data/events?startAt=1692115200000&endAt=169220159999`
 
@@ -99,15 +99,15 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 ## GET /api/websites/:websiteId/event-data/fields
 
-Gets event data property and value counts within a given time range.
+获取给定时间范围内事件数据属性和值的计数。
 
-**Parameters**
+**参数**
 
-- `websiteId`: (uuid) Website key identifier.
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
+- `websiteId`: （uuid）网站的唯一标识符。
+- `startAt`: 开始日期的时间戳（毫秒）。
+- `endAt`: 结束日期的时间戳（毫秒）。
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/event-data/fields?startAt=1692115200000&endAt=169220159999`
 
@@ -124,16 +124,16 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 ## GET /api/websites/:websiteId/event-data/values
 
-Gets event data counts for a given event and property
+获取给定事件和属性的事件数据计数。
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
-- `eventName`: Event name.
-- `propertyName`: Property name.
+- `startAt`: 开始日期的时间戳（毫秒）。
+- `endAt`: 结束日期的时间戳（毫秒）。
+- `eventName`: 事件名称。
+- `propertyName`: 属性名称。
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/event-data/values?startAt=1717916400000&endAt=1725692399999&eventName=survey&propertyName=gender`
 
@@ -148,14 +148,14 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 ## GET /api/websites/:websiteId/event-data/stats
 
-Gets summarized website events, fields, and records within a given time range.
+获取给定时间范围内总结的网站事件、字段和记录。
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
+- `startAt`: 开始日期的时间戳（毫秒）。
+- `endAt`: 结束日期的时间戳（毫秒）。
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/event-data/stats?startAt=1725580800000&endAt=1725667199999`
 

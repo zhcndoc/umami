@@ -1,118 +1,125 @@
 ---
-title: How to use the Goals Report to Drive Feature Usage, Adoption, and Conversions
-description: Product analytics teams constantly seek ways to understand user journeys and product performance.
+title: 如何使用目标报告推动功能使用、采用和转化
+description: 产品分析团队不断寻求理解用户旅程和产品性能的方法。
 author: Nick Andrews
 date: 2024-07-24
 ---
 
-Product analytics teams constantly seek ways to understand user journeys and product performance. The Umami Goals report,
-one report in a suite of product analytics reports, allows product teams to track metrics by visualizing progress toward key objectives.
+产品分析团队不断寻求理解用户旅程和产品性能的方法。Umami 目标报告，作为一系列产品分析报告中的一项，允许产品团队通过可视化进度来跟踪关键目标的指标。
 
-The Goals report allows teams to define and monitor objectives based on various metrics, including URLs, events,
-and custom event data properties. Combining these metrics enables product teams to create more sophisticated goals
-that align with complex product strategies.
+目标报告允许团队根据各种指标（包括 URL、事件和自定义事件数据属性）定义和监控目标。结合这些指标，产品团队可以创建更复杂的目标，以符合复杂的产品策略。
 
-When viewed with data from other Umami reports like Funnel, Retention, Journeys, UTMs, and Insights, data from the Goals
-report can provide a comprehensive view of your product's performance.
+结合来自其他 Umami 报告（如渠道、留存、旅程、UTM 和洞察）的数据查看目标报告的数据，可以为你提供产品性能的全面视图。
 
-This blog post explores key features and use cases of the Umami goals report for product teams.
+本文探讨了 Umami 目标报告的关键功能和产品团队的使用案例。
 
-# Goals Report Key Features
+# 目标报告关键特性
 
-To get the maximum benefit out of the Goals report, it is recommended that you have [custom events setup](https://umami.is/docs/track-events)
-on your product before hand. Before we jump into the use cases, let's look at some key features of the Goals report:
+为了从目标报告中获得最大收益，建议你提前在你的产品上设置[自定义事件](https://umami.is/docs/track-events)。在我们跳入使用案例之前，先来看一下目标报告的一些关键特性：
 
-1. **Flexible Metric Combinations**: Combine different metrics (URLs, events, and event data) to create complex, custom goals that reflect
-the nuances of your product.
+1. **灵活的指标组合**：结合不同的指标（URL、事件和事件数据），创建反映你产品细微差别的复杂自定义目标。
 
-2. **Customizable Time Frames**: Analyzing goal performance across various periods allows you to understand short-term and long-term trends.
+2. **可定制的时间框架**：在不同时间段内分析目标性能，帮助你理解短期和长期趋势。
 
-3. **Visual Progress Tracking**: The report provides visualizations of progress over time, which is helpful for analysis and communicating insights to stakeholders.
+3. **可视化进度追踪**：该报告提供随时间推移的进度可视化，便于分析并与利益相关者沟通见解。
 
-# Goals Report Use Cases
+# 目标报告使用案例
 
-This section will cover various use cases that product analytics teams will likely find interesting. There are an infinite number of
-ways to use the Goals report to determine the nuances of your team and product. Hopefully, these ideas will help get you started.
+本节将涵盖产品分析团队可能会发现有趣的各种使用案例。使用目标报告来确定你团队和产品的细微差别有无数种方法。希望这些想法能够帮助你入手。
 
-## Use Case: Feature Adoption Across User Segments
+## 使用案例：跨用户细分的功能采用
 
-Product teams need to understand how different user segments interact with certain product features. Here's how you can use the Goals
-report for this purpose:
+产品团队需要理解不同用户细分与某些产品功能的交互方式。以下是如何使用目标报告实现这一目的：
 
-### Setup
+### 设置
 
-1. Define key user segments.
-2. Create goals for feature adoption rates within each segment.
-3. Based on available metrics (URL, Event, Event Data), set up goals that correlate to feature usage.
+1. 定义关键用户细分。
+2. 为每个细分创建功能采用率的目标。
+3. 根据可用指标（URL、事件、事件数据）设置与功能使用相关的目标。
 
-### Analysis Approach
+### 分析方法
 
-Once these goals are set, you can use the Goals report to track progress. Here are some ways you might analyze the data:
+一旦设置了这些目标，你可以使用目标报告跟踪进度。以下是你可以分析数据的一些方法：
 
-1. Compare adoption rates between segments via goal percent completion in your report to identify any disparities or to understand how quickly specific segments adopt certain features. This could tell you who is using your features more and can inform marketing, sales, and feature roadmap decisions. For example, suppose there is an “Add Teamembers” feature in your product. For the free version of your app, you can create an event for that button one way, but for the paid version of your app you can create an event for that button a different way. By adding both of these events to a single Goals report, you can determine if adding teammembers is an important feature to these two segments, which can then inform your pricing strategy.
-2. Look for patterns in how quickly different user types reach key usage milestones.
-3. Analyze the correlation between feature adoption and retention rates to assess the feature's stickiness. Perhaps when accounts reach a certain volume of users retention skyrockets.
-4. Use the event data property to assign monetary value to specific events so you can then calculate lifetime value data to make a case for further investment in the feature or to target specific user segments for upselling.
+1. 比较细分之间的采用率，通过报告中的目标完成百分比识别任何差异，或理解特定细分如何快速采用某些功能。比如，假设你的产品中有一个“添加团队成员”功能。对于免费版的应用，你可以为那个按钮创建一种事件，但对于付费版的应用，你可以以不同的方式为那个按钮创建事件。通过将这两个事件添加到一个目标报告中，你可以确定添加团队成员是否对这两个细分来说是一个重要的功能，这可以为你的定价策略提供信息。
 
-Using the Goals report in this way can help you gain nuanced insights into feature performance across different user segments. This data can inform decisions about feature refinement, targeted marketing, or overall product strategy.
+2. 寻找不同用户类型达到关键使用里程碑的速度模式。
 
-## Use Case: Product-Led Growth Funnel Analysis
+3. 分析功能采用与留存率之间的相关性，以评估功能的粘性。也许当账户达到一定数量的用户时，留存率会飙升。
 
-For those working on products with a product-led growth (PLG) strategy, the Goals report can be a powerful tool for analyzing the conversion funnel. Here's how you might approach this:
+4. 使用事件数据属性为特定事件分配货币价值，以便计算终身价值数据，为对该功能的进一步投资，或针对特定用户细分进行增值销售提供依据。
 
-### Setup
+以这种方式使用目标报告可以帮助你深入理解功能在不同用户细分中的表现。这些数据可以为功能优化、目标营销或整体产品策略提供决策支持。
 
-1. Map out the key stages of the PLG funnel (e.g., signup, activation, conversion to paid)
-2. Create goals for how many conversions you want for each stage.
-3. Add all the goals into a single Goals report to analyze the entire PLG funnel in a single view.
+## 使用案例：以产品为导向的增长漏斗分析
 
-### Example Implementation
+对于那些在以产品为导向的增长（PLG）战略下工作的产品，目标报告可以作为分析转化漏斗的强大工具。以下是你可以采用的方式：
 
-Let's say you're analyzing the PLG funnel for a B2B SaaS company. We might set up the following Goals report:
+### 设置
 
-1. Define each stage's (e.g., signup, activation, conversion to paid) conversion URL or conversion Event. For example, a URL of /signup-complete or an event named signup-complete
-2. How many successful signups do you want in the given time frame? What are your goals? For example, you may want 100 signups per week, or 500 people per month moving from signup to activated.
-3. Set up the additional steps in your funnel and put them into your Goals report.
+1. 绘制 PLG 漏斗的关键阶段（例如，注册、激活、转化为付费）。
+2. 为每个阶段创建你想要的转化目标。
+3. 将所有目标添加到一个目标报告中，以便在单一视图中分析整个 PLG 漏斗。
 
-Suppose your product was segmented by user persona, and you had different URLs or events for these personas. In that case,you can then duplicate the Goals report for different personas to identify which user types are most likely to convert.
+### 示例实现
 
-### Analysis Approach
+假设你在分析一个 B2B SaaS 公司的 PLG 漏斗。我们可以设置以下目标报告：
 
-With these goals in place, we can use the Goals report to:
+1. 定义每个阶段的转化 URL 或转化事件（例如，/signup-complete 或命名为 signup-complete 的事件）。
+2. 在给定的时间框架内，你希望有多少成功注册？你的目标是什么？例如，你可能希望每周有 100 次注册，或每月有 500 人从注册转至激活。
 
-1. Identify bottlenecks in the funnel by comparing conversion rates between stages.
-2. Analyze how quickly users are reaching key activation events and how this correlates with long-term retention.
-3. Compare conversion rates across different user personas to inform sales, marketing, or product efforts.
-4. Track how changes to the onboarding process impact time to first value and overall conversion rates.
+3. 设置漏斗中的其他步骤，并将其放入目标报告中。
 
-This analysis can provide valuable insights for optimizing our PLG funnel and improving conversion rates.
-Use Case: A/B Testing Product Features
+假设你的产品按用户角色细分，你有这些角色的不同 URL 或事件。在这种情况下，你可以为不同的角色复制目标报告，以识别哪些用户类型更容易转化。
 
-For teams using A/B testing techniques, the Goals report can be valuable for tracking the impact of new product features. Here's how you can leverage it:
+### 分析方法
 
-### Setup
+确定这些目标后，我们可以使用目标报告来：
 
-1. Setup each variant URL as a goal with the number of users required to reach statistical significance. In this instance, the Goals report will keep track of how many users have been exposed to each variant.
-2. Create goals for each variant in an A/B test. For instance, the A version of the test can have an event named conversion-a and the B version of the test can have an event named conversion-b.
-3. Use segmentation to analyze how different features affect overall product performance. For example, different marketing channels or in-app alerts can drive traffic to different variants of the A/B test.
+1. 通过比较阶段之间的转化率来识别漏斗中的瓶颈。
 
-### Analysis Approach
+2. 分析用户达到关键激活事件的速度以及这与长期留存之间的相关性。
 
-Suppose you work at a tech company and want to understand how different segments of users react to a new product feature. You could segment your email database and send one version of an email to one segment and a different version of an email to a different segment. Each version of the email would drive to either the A or B version. You can use the Goals report to:
+3. 比较不同用户角色的转化率，以便为销售、营销或产品工作提供信息。
 
-1. Compare events which indicate product usage and engagement across different test variants. This will give you an understanding of how different segments of users like the new feature. Consider tagging the link or button to get support as well which could indicate there is confusion on the new feature.
-2. Analyze how different combinations of features impact overall user satisfaction and key business metrics.
-3. Identify which user segments respond best to certain features or changes.
-4. Track the long-term impact of implemented changes to ensure they continue to provide value over time.
+4. 跟踪入职流程的变化对首次价值时间和整体转化率的影响。
 
-This approach allows us to make more informed decisions about which features to roll out broadly and how to optimize them for different user segments. As we alluded to one of the use cases above, the data gathered from the Goals report isn’t just for product teams. Sales and marketing are also going to be interested in these types of reports.
+这种分析可以为优化我们的 PLG 漏斗和提高转化率提供宝贵的见解。
 
-The Umami Goals report can take your product analytics capabilities to the next level by allowing you to gain deeper insights into user behavior, customer journeys, and product performance and visualize the outcomes of your decisions for instant analysis.
+## 使用案例：A/B 测试产品功能
 
-The use cases outlined here are just some of the many ways to use the Goals report for your team. It’s flexible enough to adapt to the nuances of your product and requirements.
+对于使用 A/B 测试技术的团队，目标报告对于跟踪新产品功能的影响非常有价值。以下是你可以利用它的方法：
 
-Combining data from the Goals report with insights from other Umami reports and your broader analytics stack, you can build a comprehensive understanding of your product's performance and make data-driven decisions.
+### 设置
 
-Using Umami, particularly its Goals report, as a complementary tool alongside your existing analytics stack (if you are already running something other than Umami) can significantly enhance your data confidence and insights.
+1. 将每个变体 URL 设置为目标，并要求达到统计显著性所需的用户数量。在这种情况下，目标报告将跟踪每个变体暴露的用户数量。
 
-By setting up parallel tracking for key metrics and regularly comparing results between Umami and your other product analytics platform, you can validate data accuracy, identify potential blind spots in your tracking, and reinforce the validity of your findings. This approach is a valuable cross-check mechanism, often revealing discrepancies that can lead to important discoveries about your tracking implementation or user behavior.
+2. 为 A/B 测试中的每个变体创建目标。例如，测试的 A 版本可以有一个命名为 conversion-a 的事件，而 B 版本可以有一个命名为 conversion-b 的事件。
+
+3. 使用细分分析不同功能如何影响总体产品表现。例如，不同的营销渠道或应用内提醒可以将流量引导到 A/B 测试的不同变体。
+
+### 分析方法
+
+假设你在一家科技公司工作，想了解不同用户细分如何对新产品功能做出反应。你可以细分你的电子邮件数据库，将一个版本的电子邮件发送给一个细分，同时将不同版本的电子邮件发送给另一个细分。每个版本的电子邮件将引导至 A 或 B 版本。你可以使用目标报告来：
+
+1. 比较不同测试变体的产品使用和参与的事件。这将帮助你了解不同用户细分如何喜欢新功能。考虑为获取支持的链接或按钮进行标记，以指示新功能是否存在困惑。
+
+2. 分析不同功能组合如何影响整体用户满意度和关键业务指标。
+
+3. 确定哪些用户细分对某些功能或变化反应最好。
+
+4. 跟踪实施变化的长期影响，以确保它们在一段时间后仍然提供价值。
+
+这种方法使我们能够更明智地决定哪些功能可以广泛推出，以及如何为不同用户细分进行优化。
+
+如我们在上面提到的某个使用案例，目标报告收集的数据不仅仅供产品团队使用。销售和营销也会对这类报告感兴趣。
+
+Umami 目标报告可以将你的产品分析能力提升到新的水平，使你能够深入洞察用户行为、客户旅程和产品性能，并可视化你决策的结果以进行即时分析。
+
+这里列出的使用案例只是使用目标报告为你的团队服务的多种方式之一。它具有足够的灵活性，以适应你产品和需求的细微差别。
+
+结合目标报告的数据与来自其他 Umami 报告和你更广大分析工具的数据，你可以构建对产品性能的全面理解，并做出基于数据的决策。
+
+将 Umami，特别是其目标报告，作为与你现有分析工具（如果你已经在运行其他工具）并行使用的补充工具，可以显著增强你的数据信心和洞察力。
+
+通过为关键指标设置平行跟踪，并定期比较 Umami 和其他产品分析平台的结果，你可以验证数据的准确性，识别跟踪中的潜在盲点，并加强你的发现的有效性。这种方法是一种有价值的交叉检查机制，通常会揭示出可能导致你对跟踪实施或用户行为的重要发现的差异。

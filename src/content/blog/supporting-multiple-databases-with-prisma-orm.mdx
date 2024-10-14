@@ -1,64 +1,48 @@
 ---
-title: Supporting multiple databases with Prisma ORM
-description: How do we support multiple databases in one project?
+title: 使用 Prisma ORM 支持多数据库
+description: 如何在一个项目中支持多个数据库？
 author: Brian Cao
 date: 2024-01-10
 ---
 
-Umami Analytics currently supports both [MySQL](https://www.mysql.com/) and [PostgreSQL](https://www.postgresql.org/)
-as options to store your data. So how does a small development team ensure feature parity in an application that supports
-two databases? Enter Prisma ORM.
+Umami Analytics 目前支持 [MySQL](https://www.mysql.com/) 和 [PostgreSQL](https://www.postgresql.org/) 作为存储数据的选项。那么，一个小型开发团队如何确保在支持两个数据库的应用程序中的功能兼容性呢？这就要提到 Prisma ORM 了。
 
-# What is Prisma?
+# 什么是 Prisma？
 
-[Prisma](https://prisma.io) is an open-source ORM focused on making it easy for Node.js and TypeScript applications to
-work with databases. Queries can be written as object trees, where the Prisma Query Engine converts the object into SQL queries
-for the respective database. Those results are returned to the Prisma Client, where the data can be used in node.
+[Prisma](https://prisma.io) 是一个开源 ORM，旨在使 Node.js 和 TypeScript 应用程序与数据库的交互更加简单。查询可以作为对象树编写，由 Prisma 查询引擎将该对象转换为相应数据库的 SQL 查询。这些结果返回给 Prisma 客户端，数据可以在节点中使用。
 
-# How we use it
+# 我们如何使用它
 
-We first determine which database is being used by looking at the Prisma `DATABASE_URL` environment variable.
-A connection string for MySQL will start with `mysql://` and PostgreSQL will start with `postgresql://`.
+我们首先通过查看 Prisma 的 `DATABASE_URL` 环境变量来确定使用的是哪个数据库。MySQL 的连接字符串以 `mysql://` 开头，而 PostgreSQL 以 `postgresql://` 开头。
 
-All of our migrations are stored in a DB folder. We copy the relevant `migrations` and `schema` files into the `/prisma` folder,
-and deploy the migrations all in our `build` command using the `npm-run-all` package.
+我们所有的迁移都存储在一个 DB 文件夹中。我们将相关的 `migrations` 和 `schema` 文件复制到 `/prisma` 文件夹，并在 `build` 命令中使用 `npm-run-all` 包一次性部署所有迁移。
 
 ![image](/images/prisma-migration-folder.png)
 
-At the end of the day, PostgreSQL and MySQL are relational databases that use the same database design. As a result, we can use
-Prisma queries to perform most of our CRUD operations.
+归根结底，PostgreSQL 和 MySQL 都是使用相同数据库设计的关系数据库。因此，我们可以使用 Prisma 查询来执行大多数 CRUD 操作。
 
-The following Prisma query finds a website by ID and will work with both databases out of the box.
+以下 Prisma 查询通过 ID 查找网站，并可即刻与这两个数据库兼容使用。
 
 ![image](/images/prisma-find-website.png)
 
-# Raw SQL
+# 原始 SQL
 
-But there are times when you need to just write your own SQL to get the job done, and that's where a custom solution is required.
-The following is a custom query for getting Website stats, which calculates the total views, visitors, bounce rate,
-and average visitor time.
+有时您需要自己编写 SQL 来完成任务，这时就需要自定义解决方案。以下是获取网站统计信息的自定义查询，用于计算总浏览量、访客数量、跳出率和平均访客时间。
 
 ![image](/images/prisma-query-example.png)
 
-Notice the functions `getAddIntervalQuery`, `getTimestampDiffQuery`, and `getDateQuery`. While the method of querying
-the data between databases is very similar, the syntax of how to arrive to those dates differs.
+请注意函数 `getAddIntervalQuery`、`getTimestampDiffQuery` 和 `getDateQuery`。尽管不同数据库之间查询数据的方法非常相似，但得到这些日期的语法存在差异。
 
-Using the same method to determine which database type is being used, we can can write functions to inject the
-appropriate SQL before running the query.
+使用相同的方法来确定使用的是哪种数据库类型，我们可以编写函数在运行查询之前注入适当的 SQL。
 
 ![image](/images/prisma-function-example.png)
 
-# Challenges
+# 挑战
 
-We rarely had any major issues with Prisma itself. Most of the challenges we faced were around trying to support
-the unique feature sets of different databases and database versions.
+我们很少在 Prisma 本身上遇到重大问题。我们面临的大多数挑战都与支持不同数据库及其版本的独特功能集有关。
 
-In Umami v1, we released migrations that worked in more later versions of MySQL and PostgreSQL, but not older versions.
-Once migrations are released to the public, they were impossible to roll back. Getting users to run custom scripts to
-back out of certain migrations, and re-writing history of current migrations created weeks of support work for us.
-We've since been very careful in Umami v2 and do not take migrations lightly.
+在 Umami v1 中，我们发布了适用于更高版本的 MySQL 和 PostgreSQL 的迁移，但不支持旧版本。一旦迁移对公众发布，就无法回滚。让用户运行自定义脚本以撤回某些迁移，以及重写当前迁移的历史，这为我们带来了数周的支持工作。此后，我们在 Umami v2 中非常谨慎，绝不轻视迁移。
 
-# Thoughts
+# 想法
 
-Prisma has been a fantastic tool for us. We continue to use more and more of it's
-features like `Read Replica` and `Multiple Database Schema` and look forward to the future of Prisma.
+Prisma 对我们来说是一个非常棒的工具。我们继续使用越来越多的功能，例如 `Read Replica` 和 `Multiple Database Schema`，并期待 Prisma 的未来。

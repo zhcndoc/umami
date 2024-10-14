@@ -1,11 +1,8 @@
 ---
-title: 跟踪器函数
+title: 跟踪器功能
 ---
 
-The Umami tracker exposes a function that you can call on your website if you want
-more control over your tracking. By default everything is automatically collected, but you can
-disable this using `data-auto-track="false"` and sending the data yourself.
-See [Tracker configuration](/docs/tracker-configuration).
+Umami 跟踪器提供了一个可以在网站上调用的函数，如果您想要对跟踪进行更多控制的话。默认情况下，一切都是自动收集的，但您可以使用 `data-auto-track="false"` 禁用此功能，并自行发送数据。请参见 [跟踪器配置](/docs/tracker-configuration)。
 
 ## 函数
 
@@ -17,39 +14,39 @@ umami.track(event_name, [event_data]);
 umami.identify([session_data]);
 ```
 
-## 页面浏览量
+## 页面浏览
 
-跟踪页面浏览量。
+跟踪页面浏览。
 
 ```js
 umami.track();
 ```
 
-默认情况下，跟踪器会自动收集以下属性:
+默认情况下，跟踪器会自动收集以下属性：
 
 - `hostname`: 服务器的主机名
 - `language`: 浏览器语言
-- `referrer`: 页面的引用页
+- `referrer`: 页面引荐
 - `screen`: 屏幕尺寸（例如 1920x1080）
 - `title`: 页面标题
 - `url`: 页面 URL
-- `website`: 网站 ID（必需）
+- `website`: 网站 ID（必填）
 
-如果你想要发送自定义的数据，将对象传递给函数:
+如果您希望发送自己的自定义载荷，可以将对象传递给该函数：
 
 ```js
-umami.track({ website: 'e676c9b4-11e4-4ef1-a4d7-87001773e9f2', url: '/home', title: 'Home page' });
+umami.track({ website: 'e676c9b4-11e4-4ef1-a4d7-87001773e9f2', url: '/home', title: '主页' });
 ```
 
-上述代码只会发送 `website`、`url` 和 `title` 属性。如果你想包含现有的属性，可以传递一个函数:
+上述代码仅会发送属性 `website`、`url` 和 `title`。如果您想包括现有的属性，请传递一个函数：
 
 ```js
-umami.track(props => ({ ...props, url: '/home', title: 'Home page' }));
+umami.track(props => ({ ...props, url: '/home', title: '主页' }));
 ```
 
 ## 事件
 
-跟踪一个具有给定名称的事件。
+根据给定名称跟踪事件。
 
 ```js
 umami.track('signup-button');
@@ -57,14 +54,14 @@ umami.track('signup-button');
 
 ## 事件数据
 
-跟踪带有动态数据的事件。
+跟踪具有动态数据的事件。
 
 ```js
 umami.track('signup-button', { name: 'newsletter', id: 123 });
 ```
 
-跟踪事件时，会将默认属性包含在 payload 中。
-相当于执行以下代码:
+在跟踪事件时，默认属性会包含在载荷中。
+这相当于运行：
 
 ```js
 umami.track(props => ({
@@ -79,16 +76,16 @@ umami.track(props => ({
 
 ## 事件数据限制
 
-事件数据可以与任何 JSON 数据一起使用。为了保持性能，有一些规则需要遵守。
+事件数据可以与任何 JSON 数据一起使用。为了保持性能，有一些规则：
 
 - 数字的最大精度为 4。
 - 字符串的最大长度为 500。
-- 数组转换为字符串，具有相同的最大长度 500。
-- 对象最多有 50 个属性。将数组视为 1 个属性。
+- 数组会被转换为字符串，最大长度也为 500。
+- 对象的最大属性数为 50。数组算作 1 个属性。
 
 ## 会话数据
 
-跟踪具有动态数据的会话。您将从跟踪器脚本中调用标识函数，以保存有关当前会话的数据。
+跟踪具有动态数据的会话。您可以从跟踪器脚本调用身份函数，以保存有关当前会话的数据。
 
 ```js
 umami.identify({ email: 'bob@aol.com' });

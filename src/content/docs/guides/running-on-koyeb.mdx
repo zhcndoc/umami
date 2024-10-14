@@ -2,36 +2,36 @@
 title: 在 Koyeb 上运行
 ---
 
-[Koyeb](https://www.koyeb.com) is a developer-friendly serverless platform to deploy apps globally. The platform lets you seamlessly run Docker containers, web apps, and APIs with git-based deployment, native autoscaling, free SSL, a global edge network, and built-in service mesh and discovery.
+[Koyeb](https://www.koyeb.com) 是一个开发者友好的无服务器平台，用于全球部署应用程序。该平台使您能够无缝运行 Docker 容器、Web 应用和 API，支持基于 Git 的部署、原生自动扩展、免费 SSL、全球边缘网络以及内置的服务网格和发现。
 
 ## 设置
 
-在本指南中，你需要运行并接受远程连接的 PostgreSQL 数据库服务器。如果你没有数据库，可以查看 [托管](/docs/guides/hosting) 下的 **托管数据库** 部分。
+在本指南中，您需要有一个运行的 PostgreSQL 数据库服务器并接受远程连接。如果您还没有数据库，可以查看 [Hosting](/docs/guides/hosting) 下的 **Managed database** 部分。
 
-> 你需要按照 [安装](/docs/install) 文档的 **创建数据库表** 部分来设置数据库表。
+> 您需要按照 [Install](/docs/install) 文档中的 **Create database tables** 部分设置数据库表。
 
-要部署 Umami，我们使用 [Koyeb CLI](https://github.com/koyeb/koyeb-cli)，你也可以使用 [Koyeb 控制面板](https://app.koyeb.com) 进行设置。
+要部署 Umami，我们使用 [Koyeb CLI](https://github.com/koyeb/koyeb-cli)，您也可以使用 [Koyeb 控制面板](https://app.koyeb.com) 来完成设置。
 
 ### 创建 Koyeb Secrets
 
-创建一个 Koyeb secrets 来安全存储你的 `DATABASE_URL`。在终端中执行以下命令：
+创建一个 Koyeb secrets 来安全存储您的 `DATABASE_URL`。在终端中执行以下命令：
 
 ```shell
 $ koyeb secret create umami-database-url
-输入你的密码：postgres://<user>:<password>@<host>:<port>/<db-name>?sslmode=require
+Enter your secret: postgres://<user>:<password>@<host>:<port>/<db-name>?sslmode=require
 
 $ openssl rand -hex 32 | koyeb secret create umami-hash-salt --value-from-stdin
 ```
 
 ### 部署 Umami
 
-一旦你创建了 Secrets，就可以部署 Umami。在终端中运行以下命令创建一个新的 Koyeb 应用并部署 Umami 服务：
+创建秘密后，您可以部署 Umami。在您的终端中运行以下命令以创建一个新的 Koyeb App 并部署 Umami 服务：
 
 ```shell
 koyeb app init umami --docker docker.umami.is/umami-software/umami:postgresql-latest --ports 3000:http --routes /:3000 --env DATABASE_URL=@umami-database-url
 ```
 
-正在部署你的 Umami 服务。要获取 Umami URL，请运行以下命令：
+您的 Umami 服务正在部署中。要检索 Umami 的 URL，请运行：
 
 ```shell
 $ koyeb app get umami
@@ -39,4 +39,4 @@ ID                                  	NAME     	DOMAINS                         	
 30de8301-05b1-4131-a842-28e608900000	umami   	umami-<YOUR_KOYEB_ORG>.koyeb.app	2021-07-06 11:58:01.143967 +0000 UTC
 ```
 
-打开 URL 来访问 Umami，并按照 **入门指南** 从 [登录](/docs/login) 步骤开始。
+打开该 URL 以访问 Umami，并按照 [Login](/docs/login) 步骤开始 **Getting started** 指南。

@@ -2,9 +2,9 @@
 title: Node 客户端
 ---
 
-## Overview
+## 概述
 
-Umami node 客户端允许你在服务器端向 Umami 发送数据。
+Umami Node 客户端允许您在服务器端向 Umami 发送数据。
 
 ## 安装
 
@@ -12,27 +12,27 @@ Umami node 客户端允许你在服务器端向 Umami 发送数据。
 npm install @umami/node
 ```
 
-## 使用方法
+## 使用
 
 ```js
 import umami from '@umami/node';
 
 umami.init({
-  websiteId: '50429a93-8479-4073-be80-d5d29c09c2ec', // 你的网站 id
-  hostUrl: 'https://umami.mywebsite.com', // Umami 实例的 URL
+  websiteId: '50429a93-8479-4073-be80-d5d29c09c2ec', // 您的网站 ID
+  hostUrl: 'https://umami.mywebsite.com', // 您 Umami 实例的 URL
 });
 
 umami.track({ url: '/home' });
 ```
 
-如果使用 Umami Cloud，你可以使用 `https://cloud.umami.is` 作为 host URL。
+如果使用 Umami Cloud，您可以将 `https://cloud.umami.is` 作为主机 URL。
 
-你可以使用 `.track` 函数发送的属性有：
+您可以使用 `.track` 函数发送的属性有：
 
-- **hostname**: 服务器主机名
-- **language**: 客户端语言 (例如：en-US)
-- **referrer**: 页面引用来源
-- **screen**: 屏幕尺寸 (例如：1920x1080)
+- **hostname**: 服务器的主机名
+- **language**: 客户端语言（例如：en-US）
+- **referrer**: 页面引荐来源
+- **screen**: 屏幕尺寸（例如：1920x1080）
 - **title**: 页面标题
 - **url**: 页面 URL
 - **name**: 事件名称（用于自定义事件）

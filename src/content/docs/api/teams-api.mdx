@@ -2,9 +2,9 @@
 title: 团队
 ---
 
-Operations around Team management.
+团队管理相关操作。
 
-**端点**
+**接口**
 
 ```text
 POST /api/teams
@@ -29,7 +29,7 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `name`: (string) 团队的名称。
+- `name`: (字符串) 团队名称。
 
 **示例响应**
 
@@ -39,13 +39,13 @@ GET /api/teams/:teamId/websites
     "accessCode": "xxwtoY8pzKjDIUQi",
     "createdAt": "2023-04-13T20:22:55.756Z",
     "id": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
-    "name": "My Team",
+    "name": "我的团队",
     "updatedAt": null
   },
   {
     "createdAt": "2023-04-13T20:22:55.756Z",
     "id": "a9b1fbbc-ac22-4422-aa74-b2a2751ad87d",
-    "role": "team-owner",
+    "role": "团队拥有者",
     "teamId": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
     "updatedAt": null,
     "userId": "1a457e1a-121a-11ee-be56-0242ac120002"
@@ -61,10 +61,10 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `query`: (可选 string) 搜索文本。
-- `page`: (可选 number, 默认为 1) 确定页码。
-- `pageSize`: (可选 string) 确定返回结果的数量。
-- `orderBy`: (可选 string, 默认为 `name`) 按列名排序。
+- `query`: (可选字符串) 搜索文本。
+- `page`: (可选数字，默认1) 确定页码。
+- `pageSize`: (可选字符串) 确定返回多少结果。
+- `orderBy`: (可选字符串，默认 `name`) 按列名排序。
 
 **示例响应**
 
@@ -74,12 +74,12 @@ GET /api/teams/:teamId/websites
     "accessCode": "xxwtoY8pzKjDIUQi",
     "createdAt": "2023-04-13T20:22:55.756Z",
     "id": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
-    "name": "My Team",
+    "name": "我的团队",
     "teamUser": [
       {
         "createdAt": "2023-04-13T20:22:55.756Z",
         "id": "a9b1fbbc-ac22-4422-aa74-b2a2751ad87d",
-        "role": "team-owner",
+        "role": "团队拥有者",
         "teamId": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
         "updatedAt": null,
         "user": { "id": "1a457e1a-121a-11ee-be56-0242ac120002", "username": "admin" },
@@ -98,7 +98,7 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `accessCode`: (string) 团队的访问码。
+- `accessCode`: (字符串) 团队的访问代码。
 
 **示例响应**
 
@@ -108,12 +108,12 @@ GET /api/teams/:teamId/websites
     "accessCode": "xxwtoY8pzKjDIUQi",
     "createdAt": "2023-04-13T20:22:55.756Z",
     "id": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
-    "name": "My Team",
+    "name": "我的团队",
     "teamUser": [
       {
         "createdAt": "2023-04-13T20:22:55.756Z",
         "id": "a9b1fbbc-ac22-4422-aa74-b2a2751ad87d",
-        "role": "team-owner",
+        "role": "团队拥有者",
         "teamId": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
         "updatedAt": null,
         "user": { "id": "1a457e1a-121a-11ee-be56-0242ac120002", "username": "admin" },
@@ -139,7 +139,7 @@ GET /api/teams/:teamId/websites
 ```json
 {
   "id": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
-  "name": "My Team2",
+  "name": "我的团队2",
   "accessCode": "LCh5C6SyoHCFcxaJ",
   "createdAt": "2023-04-13T20:22:55.756Z",
   "updatedAt": "2023-04-13T20:59:10.335Z"
@@ -154,8 +154,8 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `name`: (可选 string) 团队的名称。
-- `accessCode`: (可选 string) 团队的访问码。
+- `name`: (可选字符串) 团队名称。
+- `accessCode`: (可选字符串) 团队访问代码。
 
 **示例响应**
 
@@ -164,7 +164,7 @@ GET /api/teams/:teamId/websites
   "accessCode": "xxwtoY8pzKjDIUQi",
   "createdAt": "2023-04-13T20:22:55.756Z",
   "id": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
-  "name": "My Team",
+  "name": "我的团队",
   "updatedAt": null
 }
 ```
@@ -193,10 +193,10 @@ ok
 
 **参数**
 
-- `query`: (可选 string) 搜索文本。
-- `page`: (可选 number, 默认为 1) 确定页码。
-- `pageSize`: (可选 string) 确定返回结果的数量。
-- `orderBy`: (可选 string, 默认为 `name`) 按列名排序。
+- `query`: (可选字符串) 搜索文本。
+- `page`: (可选数字，默认1) 确定页码。
+- `pageSize`: (可选字符串) 确定返回多少结果。
+- `orderBy`: (可选字符串，默认 `name`) 按列名排序。
 
 **示例响应**
 
@@ -206,7 +206,7 @@ ok
     "id": "a9b1fbbc-ac22-4422-aa74-b2a2751ad87d",
     "teamId": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
     "userId": "1a457e1a-121a-11ee-be56-0242ac120002",
-    "role": "team-owner",
+    "role": "团队拥有者",
     "createdAt": "2023-04-13T20:22:55.756Z",
     "updatedAt": null,
     "user": {
@@ -221,12 +221,12 @@ ok
 
 ## POST /api/teams/:teamId/users
 
-将用户添加到一个团队。
+将用户添加到团队。
 
 **参数**
 
-- `userId`: 要添加的用户的 ID。
-- `role`: 用户将被添加为的角色 (`member` 或 `view-only`)。
+- `userId`: 要添加的用户的ID。
+- `role`: 用户将添加的角色（`member`或`view-only`）。
 
 **示例响应**
 
@@ -235,7 +235,7 @@ ok
   "id": "a9b1fbbc-ac22-4422-aa74-b2a2751ad87d",
   "teamId": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
   "userId": "1a457e1a-121a-11ee-be56-0242ac120002",
-  "role": "team-owner",
+  "role": "团队拥有者",
   "createdAt": "2023-04-13T20:22:55.756Z",
   "updatedAt": null
 }
@@ -258,7 +258,7 @@ ok
   "id": "a9b1fbbc-ac22-4422-aa74-b2a2751ad87d",
   "teamId": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
   "userId": "1a457e1a-121a-11ee-be56-0242ac120002",
-  "role": "team-owner",
+  "role": "团队拥有者",
   "createdAt": "2023-04-13T20:22:55.756Z",
   "updatedAt": null
 }
@@ -268,11 +268,11 @@ ok
 
 ## POST /api/teams/:teamId/users/:userId
 
-更新一个用户在团队中的角色。
+更新用户在团队中的角色。
 
 **参数**
 
-- `role`: 用户将被添加为的角色 (`member` 或 `view-only`)。
+- `role`: 用户将添加的角色（`member`或`view-only`）。
 
 **示例响应**
 
@@ -284,7 +284,7 @@ ok
 
 ## DELETE /api/teams/:teamId/users/:userId
 
-从团队中移除一个用户。
+从团队中移除用户。
 
 **参数**
 
@@ -304,10 +304,10 @@ ok
 
 **参数**
 
-- `query`: (可选 string) 搜索文本。
-- `page`: (可选 number, 默认为 1) 确定页码。
-- `pageSize`: (可选 string) 确定返回结果的数量。
-- `orderBy`: (可选 string, 默认为 `name`) 按列名排序。
+- `query`: (可选字符串) 搜索文本。
+- `page`: (可选数字，默认1) 确定页码。
+- `pageSize`: (可选字符串) 确定返回多少结果。
+- `orderBy`: (可选字符串，默认 `name`) 按列名排序。
 
 **示例响应**
 
@@ -315,7 +315,7 @@ ok
 [
   {
     "id": "40743097-fb48-411c-98bb-efb2aa7d3946",
-    "name": "website",
+    "name": "网站",
     "domain": "website.com",
     "shareId": "C36MKJqBlRT9UQgq",
     "resetAt": "2023-10-25T17:29:44.340Z",
@@ -340,7 +340,7 @@ ok
               "id": "3509ece6-3f7d-4a45-8842-2c070f1138e3",
               "teamId": "66c8f87c-dec0-46d1-b267-886833d78982",
               "userId": "a36560ed-e21c-4ed9-84aa-c86654460cae",
-              "role": "team-owner",
+              "role": "团队拥有者",
               "createdAt": "2022-04-03T05:50:28.601Z",
               "updatedAt": null
             }

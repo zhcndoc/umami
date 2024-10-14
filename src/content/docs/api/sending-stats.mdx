@@ -1,30 +1,30 @@
 ---
-title: 发送统计数据
+title: 发送统计信息
 ---
 
 ## POST /api/send
 
-要注册一个“事件”，你需要向 `/api/send` 发送一个 `POST` 请求，请求数据如下：
+要注册一个 `event`，您需要发送一个 `POST` 请求到 `/api/send`，并附上以下数据：
 
-对于 **Umami Cloud**，发送一个 POST 请求到 `https://cloud.umami.is/api/send`。
+对于 **Umami Cloud**，请发送 POST 请求到 `https://cloud.umami.is/api/send`。
 
 **参数**
 
 `payload`
 
-- `hostname`: (字符串) 主机名。
-- `language`: (字符串) 访客的语言 (例如 "en-US")。
-- `referrer`: (字符串) 引荐网址。
-- `screen`: (字符串) 屏幕分辨率 (例如 "1920x1080")。
+- `hostname`: (字符串) 主机名称。
+- `language`: (字符串) 访问者的语言（例如 "zh-CN"）。
+- `referrer`: (字符串) 引荐 URL。
+- `screen`: (字符串) 屏幕分辨率（例如 "1920x1080"）。
 - `title`: (字符串) 页面标题。
-- `url`: (字符串) 页面网址。
+- `url`: (字符串) 页面 URL。
 - `website`: (字符串) 网站 ID。
 - `name`: (字符串) 事件名称。
 - `data`: (对象)(可选) 事件的附加数据。
 
-`type`: (字符串) 目前只有 `event` 类型可用。
+`type`: (字符串) 当前唯一可用的类型是 `event`。
 
-**示例请求数据**
+**示例负载**
 
 ```json
 {
@@ -45,13 +45,13 @@ title: 发送统计数据
 }
 ```
 
-注意，在 `/api/send` 请求中，你不需要发送身份验证令牌。
+注意，对于 `/api/send` 请求，您无需发送身份验证令牌。
 
-另外，你需要发送一个正确的 `User-Agent` HTTP 头部，否则你的请求将无法被注册。
+另外，您需要发送一个正确的 `User-Agent` HTTP 头，否则您的请求将不会被注册。
 
-**编程方式**
+**程序化操作**
 
-你可以使用浏览器 API 通过 JavaScript 编程生成大部分这些值。例如：
+您可以使用 JavaScript 和浏览器 APIs 程序化生成这些值。例如：
 
 ```js
 const data = {

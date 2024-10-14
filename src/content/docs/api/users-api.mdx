@@ -2,9 +2,9 @@
 title: 用户
 ---
 
-Operations around User management.
+用户管理相关的操作。
 
-**接口**
+**端点**
 
 ```text
 POST /api/users
@@ -43,7 +43,7 @@ GET /api/users/:userId/teams
 
 ## GET /api/admin/users
 
-返回所有用户。需要管理员权限。
+返回所有用户。需要管理权限。
 
 **参数**
 
@@ -54,7 +54,7 @@ GET /api/users/:userId/teams
 ```json
 [
   {
-    "id:" "1a457e1a-121a-11ee-be56-0242ac120002",
+    "id": "1a457e1a-121a-11ee-be56-0242ac120002",
     "username": "umami",
     "role": "admin",
     "createdAt": "2023-04-13T20:22:55.756Z"
@@ -66,7 +66,7 @@ GET /api/users/:userId/teams
 
 ## GET /api/users/:userId
 
-通过用户ID获取用户。
+根据 ID 获取用户。
 
 **参数**
 
@@ -86,7 +86,7 @@ GET /api/users/:userId/teams
 
 ## POST /api/users/:userId
 
-更新用户信息。
+更新一个用户。
 
 **参数**
 
@@ -109,7 +109,7 @@ GET /api/users/:userId/teams
 
 ## DELETE /api/users/:userId
 
-删除用户。
+删除一个用户。
 
 **参数**
 
@@ -130,9 +130,9 @@ ok
 **参数**
 
 - `query`: (可选字符串) 搜索文本。
-- `page`: (可选数字，默认为1) 确定页码。
-- `pageSize`: (可选字符串) 确定返回结果的数量。
-- `orderBy`: (可选字符串, 默认为`name`) 按列名排序。
+- `page`: (可选数字，默认 1) 确定页码。
+- `pageSize`: (可选字符串) 确定返回多少结果。
+- `orderBy`: (可选字符串，默认 `name`) 按列名排序。
 
 **示例响应**
 
@@ -142,7 +142,7 @@ ok
     "id": "02d89813-7a72-41e1-87f0-8d668f85008b",
     "userId": "1a457e1a-121a-11ee-be56-0242ac120002",
     "domain": "mywebsite.com",
-    "name": "My Website",
+    "name": "我的网站",
     "shareId": null,
     "createdAt": "2023-04-10T23:06:44.250Z",
     "deletedAt": null,
@@ -161,9 +161,9 @@ ok
 **参数**
 
 - `query`: (可选字符串) 搜索文本。
-- `page`: (可选数字，默认为1) 确定页码。
-- `pageSize`: (可选字符串) 确定返回结果的数量。
-- `orderBy`: (可选字符串, 默认为`name`) 按列名排序。
+- `page`: (可选数字，默认 1) 确定页码。
+- `pageSize`: (可选字符串) 确定返回多少结果。
+- `orderBy`: (可选字符串，默认 `name`) 按列名排序。
 
 **示例响应**
 
@@ -171,7 +171,7 @@ ok
 [
   {
     "id": "02d89813-7a72-41e1-87f0-8d668f85008b",
-    "name": "My Team",
+    "name": "我的团队",
     "createdAt": "2023-04-10T23:06:44.250Z",
     "deletedAt": null,
     "updatedAt": null

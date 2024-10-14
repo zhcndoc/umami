@@ -2,55 +2,52 @@
 title: 绕过广告拦截器
 ---
 
-Even though Umami is a privacy-focused product, it may still get blocked by
-certain ad blockers. Ad blockers use blocklists maintained by many different people.
-Some lists can be overly agressive, for example blocking anything with even
-the word `analytics` in it or simply blocking all tracking products regardless
-of how they operate.
+尽管 Umami 是一个以隐私为中心的产品，但它仍然可能被某些广告拦截器阻止。广告拦截器使用由许多不同的人维护的黑白名单。有些名单可能过于激进，例如，阻止任何包含 `analytics` 一词的内容，或者简单地阻止所有跟踪产品，而不管它们的工作方式。
 
-以下是几种可以用于绕过广告拦截器的方法。
+以下是您可以使用的几种避免广告拦截器的方法。
 
 ## 代理
 
-代理是在服务器级别完成的，因此你需要访问你的 Web 服务器进行更改。使用此方法，你可以代理跟踪脚本本身，隐藏原始脚本的实际名称和位置。
+代理是在服务器级别进行的，因此您需要访问您的网络服务器以进行更改。
+通过这种方法，您可以代理跟踪脚本本身，以隐藏原始脚本的实际名称和位置。
 
-例如，你可以在你的网站上拥有以下脚本：
+例如，您可以在您的网站上有一个脚本，地址是：
 
 `https://your-website.com/script.js`
 
-该脚本代理了该位置上的文件：
+该脚本代理了位于：
 
 `https://cloud.umami.is/script.js`
 
-So even if the ad blocker blocks the `cloud.umami.is` domain, your own domain would be safe.
+因此，即使广告拦截器阻止了 `cloud.umami.is` 域，您自己的域也会是安全的。
 
-以下是你可以使用的一些教程：
+以下是一些可以使用的教程：
 
 - [Nginx](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)
 - [Apache](https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html)
 
-如果你正在使用像 [Next.js](https://nextjs.org) 这样的框架，可以使用它们的 [rewrites](https://nextjs.org/docs/pages/api-reference/next-config-js/rewrites) 功能。
+如果您使用像 [Next.js](https://nextjs.org) 这样的框架，您可以使用其 [重写](https://nextjs.org/docs/pages/api-reference/next-config-js/rewrites) 功能。
 
-## 托管追踪脚本
+## 托管跟踪脚本
 
-如果你无法访问 web 服务器并且无法代理脚本，你可以简单地在自己的域上托管整个追踪脚本。
+如果您没有访问网络服务器的权限，无法代理脚本，您可以简单地将整个跟踪脚本托管在您自己的域上。
 
-1. Open the the script URL in your browser, `https://cloud.umami.is/script.js`.
-2. Save the file.
-3. Upload the file to your domain.
-4. Set the `data-host-url` attribute to send data to the correct location. See [tracker configuration.](https://umami.is/docs/tracker-configuration)
+1. 在浏览器中打开脚本 URL，`https://cloud.umami.is/script.js`。
+2. 保存该文件。
+3. 将文件上传到您的域。
+4. 设置 `data-host-url` 属性，将数据发送到正确的位置。请参见 [跟踪器配置](https://umami.is/docs/tracker-configuration)。
 
-请注意，这种方法不像代理那样可靠，如果追踪脚本发生更改，你需要下载并更新脚本。
+请注意，这种方法没有代理那么可靠，如果跟踪脚本发生更改，您需要再次下载并更新脚本。
 
 ## 使用环境变量（自托管）
 
-如果你正在自托管 Umami，则可以使用[环境变量](/docs/environment-variables)配置你的实例。
+如果您正在自托管 Umami，则可以使用 [环境变量](/docs/environment-variables) 配置您的实例。
 
-有两个可能会被阻止的来源：
+可能被阻止的有两个来源：
 
-1. 追踪脚本位于 `https://your-umami.com/script.js`
-2. 统计收集终点位于 `https://your-umami.com/api/send`
+1. 跟踪脚本 `https://your-umami.com/script.js`
+2. 统计收集端点 `https://your-umami.com/api/send`。
 
-`TRACKER_SCRIPT_NAME` 变量可以用于将你的追踪脚本重命名为`/x.js`之类的内容。然后，你可以将脚本源更改为`https://your-umami.com/x.js`。
+`TRACKER_SCRIPT_NAME` 变量可用于将您的跟踪脚本重命名为类似 `/x.js` 的内容。然后，您将更改您的脚本源为 `https://your-umami.com/x.js`。
 
-`COLLECT_API_ENDPOINT` 变量可以用于将你的终点重命名为`/api/x`之类的内容。追踪脚本将自动调用你的自定义终点名称，而不是`/api/send`。
+`COLLECT_API_ENDPOINT` 变量可用于将您的端点重命名为类似 `/api/x` 的内容。跟踪脚本将自动调用您自定义的端点名称，而不是 `/api/send`。

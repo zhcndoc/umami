@@ -1,10 +1,10 @@
 ---
-title: Website statistics
+title: 网站统计
 ---
 
-Operations around Website statistics.
+有关网站统计的操作。
 
-**Endpoints**
+**端点**
 
 ```text
 GET /api/websites/:websiteId/active
@@ -14,29 +14,29 @@ GET /api/websites/:websiteId/metrics
 GET /api/websites/:websiteId/stats
 ```
 
-**Unit Parameter**
+**单位参数**
 
-The unit parameter buckets the data returned. The unit is automatically converted to the next largest applicable time unit if the maximum is exceeded.
+单位参数将返回的数据分组。如果超过最大值，单位会自动转换为下一个更大的适用时间单位。
 
-- `minute`: Up to 60 minutes.
-- `hour`: Up to 48 hours.
-- `day`: Up to 12 months.
-- `month`: No limit.
-- `year`: No limit.
+- `minute`: 最多 60 分钟。
+- `hour`: 最多 48 小时。
+- `day`: 最多 12 个月。
+- `month`: 无限制。
+- `year`: 无限制。
 
 ---
 
 ## GET /api/websites/:websiteId/active
 
-Gets the number of active users on a website.
+获取网站上活跃用户的数量。
 
-**Parameters**
+**参数**
 
-None
+无
 
-**Sample response**
+**示例响应**
 
-GET from url: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/active`
+从网址获取：`https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/active`
 
 ```json
 {
@@ -44,34 +44,34 @@ GET from url: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-1
 }
 ```
 
-- `x`: Number of unique visitors within the last 5 minutes
+- `x`: 在过去 5 分钟内的唯一访客数量
 
 ---
 
 ## GET /api/websites/:websiteId/events/series
 
-Gets events within a given time range.
+获取给定时间范围内的事件。
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
-- `unit`: Time unit (year | month | hour | day).
-- `timezone`: Timezone (ex. America/Los_Angeles).
-- `url`: (optional) Name of URL.
-- `referrer`: (optional) Name of referrer.
-- `title`: (optional) Name of page title.
-- `host`: (optional) Name of hostname.
-- `os`: (optional) Name of operating system.
-- `browser`: (optional) Name of browser.
-- `device`: (optional) Name of device (ex. Mobile)
-- `country`: (optional) Name of country.
-- `region`: (optional) Name of region/state/province.
-- `city`: (optional) Name of city.
+- `startAt`: 起始日期的时间戳（以毫秒为单位）。
+- `endAt`: 结束日期的时间戳（以毫秒为单位）。
+- `unit`: 时间单位（year | month | hour | day）。
+- `timezone`: 时区（例如，美国/洛杉矶）。
+- `url`: （可选）网址名称。
+- `referrer`: （可选）引用来源名称。
+- `title`: （可选）页面标题名称。
+- `host`: （可选）主机名名称。
+- `os`: （可选）操作系统名称。
+- `browser`: （可选）浏览器名称。
+- `device`: （可选）设备名称（例如，移动设备）。
+- `country`: （可选）国家名称。
+- `region`: （可选）地区/省/州名称。
+- `city`: （可选）城市名称。
 
-**Sample response**
+**示例响应**
 
-URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/events/series?startAt=1683262800000&endAt=1683349199999&unit=hour&timezone=America%2FLos_Angeles`
+网址：`https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/events/series?startAt=1683262800000&endAt=1683349199999&unit=hour&timezone=America%2FLos_Angeles`
 
 ```json
 [
@@ -83,34 +83,34 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 ]
 ```
 
-- `x`: Event name.
-- `t`: Timestamp.
-- `y`: Number of events.
+- `x`: 事件名称。
+- `t`: 时间戳。
+- `y`: 事件数量。
 
 ---
 
 ## GET /api/websites/:websiteId/pageviews
 
-Gets pageviews within a given time range.
+获取给定时间范围内的页面浏览量。
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
-- `unit`: Time unit (year | month | hour | day).
-- `timezone`: Timezone (ex. America/Los_Angeles).
-- `url`: (optional) Name of URL.
-- `referrer`: (optional) Name of referrer.
-- `title`: (optional) Name of page title.
-- `host`: (optional) Name of hostname.
-- `os`: (optional) Name of operating system.
-- `browser`: (optional) Name of browser.
-- `device`: (optional) Name of device (ex. Mobile)
-- `country`: (optional) Name of country.
-- `region`: (optional) Name of region/state/province.
-- `city`: (optional) Name of city.
+- `startAt`: 起始日期的时间戳（以毫秒为单位）。
+- `endAt`: 结束日期的时间戳（以毫秒为单位）。
+- `unit`: 时间单位（year | month | hour | day）。
+- `timezone`: 时区（例如，美国/洛杉矶）。
+- `url`: （可选）网址名称。
+- `referrer`: （可选）引用来源名称。
+- `title`: （可选）页面标题名称。
+- `host`: （可选）主机名名称。
+- `os`: （可选）操作系统名称。
+- `browser`: （可选）浏览器名称。
+- `device`: （可选）设备名称（例如，移动设备）。
+- `country`: （可选）国家名称。
+- `region`: （可选）地区/省/州名称。
+- `city`: （可选）城市名称。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -125,35 +125,35 @@ Gets pageviews within a given time range.
 }
 ```
 
-- `x`: Timestamp.
-- `y`: Number of visitors.
+- `x`: 时间戳。
+- `y`: 访客数量。
 
 ---
 
 ## GET /api/websites/:websiteId/stats
 
-Gets summarized website statistics.
+获取总结的网站统计信息。
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
-- `url`: (optional) Name of URL.
-- `referrer`: (optional) Name of referrer.
-- `title`: (optional) Name of page title.
-- `query`: (optional) Name of query.
-- `event`: (optional) Name of event.
-- `host`: (optional) Name of hostname.
-- `os`: (optional) Name of operating system.
-- `browser`: (optional) Name of browser.
-- `device`: (optional) Name of device (ex. Mobile)
-- `country`: (optional) Name of country.
-- `region`: (optional) Name of region/state/province.
-- `city`: (optional) Name of city.
+- `startAt`: 起始日期的时间戳（以毫秒为单位）。
+- `endAt`: 结束日期的时间戳（以毫秒为单位）。
+- `url`: （可选）网址名称。
+- `referrer`: （可选）引用来源名称。
+- `title`: （可选）页面标题名称。
+- `query`: （可选）查询名称。
+- `event`: （可选）事件名称。
+- `host`: （可选）主机名名称。
+- `os`: （可选）操作系统名称。
+- `browser`: （可选）浏览器名称。
+- `device`: （可选）设备名称（例如，移动设备）。
+- `country`: （可选）国家名称。
+- `region`: （可选）地区/省/州名称。
+- `city`: （可选）城市名称。
 
-**Sample response**
+**示例响应**
 
-URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/stats?startAt=1656679719687&endAt=1656766119687`
+网址：`https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/stats?startAt=1656679719687&endAt=1656766119687`
 
 ```json
 {
@@ -165,39 +165,39 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 }
 ```
 
-- `pageviews`: Pages hits
-- `visitors`: Number of unique visitors
-- `visits`: Number of sessions
-- `bounces`: Number of visitors who only visit a single page
-- `totaltime`: Time spent on the website
+- `pageviews`: 页面浏览量
+- `visitors`: 唯一访客数量
+- `visits`: 会话数量
+- `bounces`: 仅访问单个页面的访客数量
+- `totaltime`: 在网站上花费的时间
 
 ---
 
 ## GET /api/websites/:websiteId/metrics
 
-Gets metrics for a given time range.
+获取给定时间范围的指标。
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
-- `type`: Metrics type (url | referrer | browser | os | device | country | event).
-- `url`: (optional) Name of URL.
-- `referrer`: (optional) Name of referrer.
-- `title`: (optional) Name of page title.
-- `query`: (optional) Name of query.
-- `host`: (optional) Name of hostname.
-- `os`: (optional) Name of operating system.
-- `browser`: (optional) Name of browser.
-- `device`: (optional) Name of device (ex. Mobile)
-- `country`: (optional) Name of country.
-- `region`: (optional) Name of region/state/province.
-- `city`: (optional) Name of city.
-- `language`: (optional) Name of language.
-- `event`: (optional) Name of event.
-- `limit`: (optional, default 500) Number of events returned.
+- `startAt`: 起始日期的时间戳（以毫秒为单位）。
+- `endAt`: 结束日期的时间戳（以毫秒为单位）。
+- `type`: 指标类型（url | referrer | browser | os | device | country | event）。
+- `url`: （可选）网址名称。
+- `referrer`: （可选）引用来源名称。
+- `title`: （可选）页面标题名称。
+- `query`: （可选）查询名称。
+- `host`: （可选）主机名名称。
+- `os`: （可选）操作系统名称。
+- `browser`: （可选）浏览器名称。
+- `device`: （可选）设备名称（例如，移动设备）。
+- `country`: （可选）国家名称。
+- `region`: （可选）地区/省/州名称。
+- `city`: （可选）城市名称。
+- `language`: （可选）语言名称。
+- `event`: （可选）事件名称。
+- `limit`: （可选，默认 500）返回的事件数量。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -207,5 +207,5 @@ Gets metrics for a given time range.
 ]
 ```
 
-- `x`: Unique value, depending on metric type (url | referrer | browser | os | device | country | event).
-- `y`: Number of visitors.
+- `x`: 独特值，取决于指标类型（url | referrer | browser | os | device | country | event）。
+- `y`: 访客数量。

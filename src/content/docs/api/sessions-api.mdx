@@ -1,10 +1,10 @@
 ---
-title: Sessions
+title: 会话
 ---
 
-Operations around Sessions and Session data.
+关于会话及会话数据的操作。
 
-**Endpoints**
+**端点**
 
 ```text
 GET /api/websites/:websiteId/sessions
@@ -20,18 +20,18 @@ GET /api/websites/:websiteId/session-data/values
 
 ## GET /api/websites/:websiteId/sessions
 
-Gets website session details within a given time range.
+获取给定时间范围内的网站会话详情。
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
-- `query`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
-- `orderBy`: (optional string) Order by column name.
+- `startAt`: 开始日期的时间戳（毫秒）。
+- `endAt`: 结束日期的时间戳（毫秒）。
+- `query`: （可选字符串）搜索文本。
+- `page`: （可选数字，默认为1）确定页码。
+- `pageSize`: （可选字符串）确定返回多少条结果。
+- `orderBy`: （可选字符串）按列名排序。
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/sessions?page=1&startAt=1725865200000&endAt=1725951599999&pageSize=20`
 
@@ -85,26 +85,26 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 ## GET /api/websites/:websiteId/sessions/stats
 
-Gets summarized website session statistics.
+获取概述的网站会话统计信息。
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
-- `url`: (optional) Name of URL.
-- `referrer`: (optional) Name of referrer.
-- `title`: (optional) Name of page title.
-- `query`: (optional) Name of query.
-- `event`: (optional) Name of event.
-- `host`: (optional) Name of hostname.
-- `os`: (optional) Name of operating system.
-- `browser`: (optional) Name of browser.
-- `device`: (optional) Name of device (ex. Mobile)
-- `country`: (optional) Name of country.
-- `region`: (optional) Name of region/state/province.
-- `city`: (optional) Name of city.
+- `startAt`: 开始日期的时间戳（毫秒）。
+- `endAt`: 结束日期的时间戳（毫秒）。
+- `url`: （可选）URL名称。
+- `referrer`: （可选）引荐来源名称。
+- `title`: （可选）页面标题名称。
+- `query`: （可选）查询名称。
+- `event`: （可选）事件名称。
+- `host`: （可选）主机名。
+- `os`: （可选）操作系统名称。
+- `browser`: （可选）浏览器名称。
+- `device`: （可选）设备名称（如手机）。
+- `country`: （可选）国家名称。
+- `region`: （可选）区域/省/州名称。
+- `city`: （可选）城市名称。
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/sessions/stats?startAt=1656679719687&endAt=1656766119687`
 
@@ -118,23 +118,23 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 }
 ```
 
-- `pageviews`: Pages hits
-- `visitors`: Number of unique visitors
-- `visits`: Number of sessions
-- `countries`: Number of unique countries
-- `events`: Number of custom events
+- `pageviews`: 页面点击数
+- `visitors`: 唯一访客数量
+- `visits`: 会话数量
+- `countries`: 唯一国家数量
+- `events`: 自定义事件数量
 
 ---
 
 ## GET /api/websites/:websiteId/sessions/:sessionId
 
-Gets session details for a individual session
+获取单个会话的详情
 
-**Parameters**
+**参数**
 
-None
+无
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/sessions/a35fe227-2fe9-5147-85a0-15f0fd48faed`
 
@@ -164,14 +164,14 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 ## GET /api/websites/:websiteId/sessions/:sessionId/activity
 
-Gets session activity for a individual session
+获取单个会话的活动记录
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
+- `startAt`: 开始日期的时间戳（毫秒）。
+- `endAt`: 结束日期的时间戳（毫秒）。
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/sessions/a35fe227-2fe9-5147-85a0-15f0fd48faed/activity?startAt=1725905521000&endAt=1725905528000`
 
@@ -204,13 +204,13 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 ## GET /api/websites/:websiteId/sessions/:sessionId/properties
 
-Gets session properties for a individual session
+获取单个会话的属性
 
-**Parameters**
+**参数**
 
-None
+无
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/sessions/a35fe227-2fe9-5147-85a0-15f0fd48faed/properties`
 
@@ -241,14 +241,14 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 ## GET /api/websites/:websiteId/session-data/properties
 
-Gets session data counts by property name
+按属性名称获取会话数据计数
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
+- `startAt`: 开始日期的时间戳（毫秒）。
+- `endAt`: 结束日期的时间戳（毫秒）。
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/session-data/properties?startAt=1717916400000&endAt=1725692399999`
 
@@ -277,15 +277,15 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 ## GET /api/websites/:websiteId/session-data/values
 
-Gets session data counts for a given property
+获取给定属性的会话数据计数
 
-**Parameters**
+**参数**
 
-- `startAt`: Timestamp (in ms) of starting date.
-- `endAt`: Timestamp (in ms) of end date.
-- `propertyName`: Property name.
+- `startAt`: 开始日期的时间戳（毫秒）。
+- `endAt`: 结束日期的时间戳（毫秒）。
+- `propertyName`: 属性名称。
 
-**Sample response**
+**示例响应**
 
 URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/session-data/values?startAt=1717916400000&endAt=1725692399999&propertyName=region`
 

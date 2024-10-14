@@ -1,44 +1,40 @@
 ---
-title: Track events
+title: 跟踪事件
 ---
 
-Besides pageviews, Umami is also able to track events that occur on your website. There are two ways to record
-events in Umami, using **CSS classes** or using **JavaScript**.
+除了页面浏览量，Umami 还能够跟踪您网站上发生的事件。有两种方式可以在 Umami 中记录事件，分别是使用 **CSS 类** 或者使用 **JavaScript**。
 
-## Using CSS classes
+## 使用 CSS 类
 
-To enable events, simply add a
-special CSS class to the element you want to track.
+要启用事件，只需向您想要跟踪的元素添加一个特殊的 CSS 类。
 
-For example, you might have a button with the following code:
+例如，您可能有一个按钮，其代码如下：
 
 ```html
-<button id="signup-button" class="button">Sign up</button>
+<button id="signup-button" class="button">注册</button>
 ```
 
-Add a class with the following format:
+添加一个格式如下的类：
 
 ```html
 umami--<event>--<event-name></event-name></event>
 ```
 
-So your button element would now look like this:
+所以您的按钮元素现在看起来像这样：
 
 ```html
-<button id="signup-button" class="button umami--click--signup-button">Sign up</button>
+<button id="signup-button" class="button umami--click--signup-button">注册</button>
 ```
 
-When the user clicks on this button, Umami will record an event named `signup-button` with an event type of `click`.
+当用户点击此按钮时，Umami 将记录名为 `signup-button` 的事件，事件类型为 `click`。
 
-The event can be any [JavaScript event](https://developer.mozilla.org/en-US/docs/Web/Events) that can be
-applied to an element.
+事件可以是任何可以应用于元素的 [JavaScript 事件](https://developer.mozilla.org/en-US/docs/Web/Events)。
 
-Note: be careful not to attach to any events that fire continuously like `scroll` and `drag`.
+注意：要小心不要绑定任何持续触发的事件，如 `scroll` 和 `drag`。
 
-## Using JavaScript
+## 使用 JavaScript
 
-You can also record events manually using the `window.umami` object. To accomplish the same thing as the above
-CSS method, you can do:
+您也可以使用 `window.umami` 对象手动记录事件。要实现与上述 CSS 方法相同的功能，您可以这样做：
 
 ```js
 const button = document.getElementById('signup-button');
@@ -46,12 +42,12 @@ const button = document.getElementById('signup-button');
 button.onclick = () => umami('Signup button click');
 ```
 
-In this case, Umami will record an event named `Signup button click` with an event type of `custom`.
+在这种情况下，Umami 将记录名为 `Signup button click` 的事件，事件类型为 `custom`。
 
-If you want to use your own event type instead of `custom`, see [Tracker functions](/docs/tracker-functions).
+如果您希望使用自己的事件类型而不是 `custom`，请参见 [跟踪器函数](/docs/tracker-functions)。
 
-## View events
+## 查看事件
 
-Once your events are recorded, they will be available on your website **Details** page.
+一旦您的事件被记录，它们将在您网站的 **详细信息** 页面上可用。
 
 ![image](/images/docs/v1/events.png)

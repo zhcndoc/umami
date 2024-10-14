@@ -1,22 +1,22 @@
 ---
-title: API changelog
+title: API 更新日志
 ---
 
-This page documents changes made to **api.umami.is**.
+本页面记录了对 **api.umami.is** 的更改。
 
 ## 2024-09-09
 
 **网站**
 
-- `GET /websites/[id]/pageviews`: 将 `region` 参数设置为可选的。
-- `GET /websites/[id]/events`: 将结果集更改为给定时间范围内的网站事件详细信息。
-- `GET /websites/[id]/events/series`: 新的活动度量端点（以前是 `GET /websites/[id]/events`）。
+- `GET /websites/[id]/pageviews`: 修复 `region` 参数为可选。
+- `GET /websites/[id]/events`: 将结果集更改为在给定时间范围内的网站事件详情。
+- `GET /websites/[id]/events/series`: **新** 事件指标端点（以前为 `GET /websites/[id]/events`）。
 
 **事件数据**
 
-- `GET /event-data/events` : **迁移**到 `/websites/[id]/event-data/events`.
-- `GET /event-data/fields` : **迁移**到 `/websites/[id]/event-data/fields`.
-- `GET /event-data/stats` : **迁移**到 `/websites/[id]/event-data/stats`.
+- `GET /event-data/events` : **迁移** 到 `/websites/[id]/event-data/events`。
+- `GET /event-data/fields` : **迁移** 到 `/websites/[id]/event-data/fields`。
+- `GET /event-data/stats` : **迁移** 到 `/websites/[id]/event-data/stats`。
 - `GET /websites/[id]/event-data/values` : **新增**
 
 **会话**
@@ -33,19 +33,19 @@ This page documents changes made to **api.umami.is**.
 
 **网站**
 
-- `GET /websites/[id]/stats`: Renamed `change` to `prev`.
+- `GET /websites/[id]/stats`: 将 `change` 重命名为 `prev`。
 
 ## 2024-03-27
 
 **网站**
 
-- `GET /websites/[id]/stats`: 将 `uniques` 重命名为 `visitors`。添加 `visits`。
+- `GET /websites/[id]/stats`: 将 `uniques` 重命名为 `visitors`。新增 `visits`。
 
 ## 2024-02-16
 
 **网站**
 
-- `POST /websites`: 添加 teamId 作为可选参数.
+- `POST /websites`: 新增 teamId 作为可选参数。
 
 **团队**
 
@@ -54,4 +54,4 @@ This page documents changes made to **api.umami.is**.
 
 **报告**
 
-- `GET /reports/index`: 添加 `websiteId` 和 `teamId` 作为查询参数.
+- `GET /reports/index`: 新增 `websiteId` 和 `teamId` 查询参数。
