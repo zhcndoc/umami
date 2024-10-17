@@ -14,18 +14,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy to Server
-        uses: easingthemes/ssh-deploy@main
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.SERVER_KEY }}
-          REMOTE_USER: ${{ secrets.SERVER_USER }}
-          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-          REMOTE_PORT: ${{ secrets.SERVER_PORT }}
-          SOURCE: "./"
-          EXCLUDE: "/.git/"
-          ARGS: "-azr --delete"
-          TARGET: "${{ secrets.SERVER_PATH }}/umami/"
-          SCRIPT_AFTER: |
-            cd ${{ secrets.SERVER_PATH }}/umami
-            /www/server/nodejs/v20.16.0/bin/yarn
-            /www/server/nodejs/v20.16.0/bin/yarn run build
+      # - name: Deploy to Server
+      #   uses: easingthemes/ssh-deploy@main
+      #   with:
+      #     SSH_PRIVATE_KEY: ${{ secrets.SERVER_KEY }}
+      #     REMOTE_USER: ${{ secrets.SERVER_USER }}
+      #     REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+      #     REMOTE_PORT: ${{ secrets.SERVER_PORT }}
+      #     SOURCE: "./"
+      #     EXCLUDE: "/.git/"
+      #     ARGS: "-azr --delete"
+      #     TARGET: "${{ secrets.SERVER_PATH }}/umami/"
+      #     SCRIPT_AFTER: |
+      #       cd ${{ secrets.SERVER_PATH }}/umami
+      #       /www/server/nodejs/v20.16.0/bin/yarn
+      #       /www/server/nodejs/v20.16.0/bin/yarn run build
