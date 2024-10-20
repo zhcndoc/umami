@@ -1,12 +1,13 @@
 'use client';
-import { Container, Popup, PopupTrigger, Text, useScroll, Icon, Icons } from 'react-basics';
+import { Button, Text, Icon, Row } from '@umami/react-zen';
 import Link from 'next/link';
 import CompanyLogo from '@/components/CompanyLogo';
 import HamburgerButton from '@/components/HamburgerButton';
-import LinkButton from '@/components/LinkButton';
 import useQueryString from '@/components/hooks/useQueryString';
 import { GITHUB_STARS, GITHUB_URL } from '@/lib/constants';
-import GitHub from 'assets/github.svg';
+import useScroll from '@/components/hooks/useScroll';
+import Container from '@/components/Container';
+import GitHub from '@/assets/github.svg';
 import styles from './Header.module.css';
 
 const mobileMenuItems = [
@@ -41,92 +42,63 @@ const mobileMenuItems = [
 ];
 
 export default function Header() {
-  const query = useQueryString({ ref: 'umami-nav-header' });
   useScroll();
 
   return (
     <header className={styles.header}>
       <Container>
-        <div className={styles.row}>
-          <div className={styles.title}>
-            <CompanyLogo />
-          </div>
-          <nav className={styles.links}>
-            <PopupTrigger action="hover">
-              <div className={styles.dropdown}>
-                <Text>产品</Text>
-                <Icon>
-                  <Icons.ChevronDown />
-                </Icon>
-              </div>
-              <Popup>{close => <ProductMenu onClose={close} />}</Popup>
-            </PopupTrigger>
-            <Link href="/blog">博客</Link>
-            <Link href="/docs" prefetch={false}>
-              文档
-            </Link>
-            <Link href="/pricing">定价</Link>
-          </nav>
-          <div className={styles.buttons}>
-            <Link href={GITHUB_URL} target="_blank" className={styles.github}>
-              <Icon size="lg">
-                <GitHub />
-              </Icon>
-              <Text>{GITHUB_STARS}</Text>
-            </Link>
-            <Link
-              href={`https://cloud.umami.is/login${query}`}
-              className={styles.login}
-              data-umami-event="login-button-header"
-            >
-              登录
-            </Link>
-            <LinkButton
-              href={`https://cloud.umami.is/signup${query}`}
-              variant="primary"
-              data-umami-event="signup-button-header"
-            >
-              注册
-            </LinkButton>
-          </div>
-          <div className={styles.hamburger}>
-            <HamburgerButton items={mobileMenuItems} />
-          </div>
-        </div>
+        <Row justifyContent="space-between">
+          <CompanyLogo />
+          <NavLinks />
+          <ActionLinks />
+        </Row>
       </Container>
     </header>
   );
 }
 
-const ProductMenu = ({ onClose }) => {
+const NavLinks = () => {
   return (
-    <nav className={styles.menu} onClick={onClose}>
-      <div className={styles.column}>
-        <header>分析</header>
-        <Link href="/features">特点</Link>
-        <Link href="/docs" prefetch={false}>
-          自部署
+    <Row className={styles.links} alignItems="center" gap="lg">
+      <Link href="/features">特征</Link>
+      <Link href="/blog">博客</Link>
+      <Link href="/docs" prefetch={false}>
+        文档
+      </Link>
+      <Link href="/pricing">定价</Link>
+    </Row>
+  );
+};
+
+const ActionLinks = () => {
+  const query = useQueryString({ ref: 'umami-nav-header' });
+
+  return (
+    <Row alignItems="center" gap="md">
+      <Link className={styles.github} href={GITHUB_URL} target="_blank">
+        <Row alignItems="center" gap="md">
+          <Icon size="md">
+            <GitHub />
+          </Icon>
+          <Text>{GITHUB_STARS}</Text>
+        </Row>
+      </Link>
+      <Button className={styles.login} variant="quiet" asChild>
+        <Link href={`https://cloud.umami.is/login${query}`} data-umami-event="login-button-header">
+          Log in
         </Link>
-        <Link href="/docs/cloud">Cloud</Link>
-      </div>
-      <div className={styles.column}>
-        <header>学习</header>
-        <Link href="/community">社区</Link>
-        <Link href="/developers">开发者</Link>
+      </Button>
+      <Button className={styles.signup} variant="primary" asChild>
         <Link
-          href="https://github.com/umami-software/umami/discussions"
-          target="_blank"
-          data-umami-event="github-discussions-link"
+          href={`https://cloud.umami.is/signup${query}`}
+          data-umami-event="signup-button-header"
         >
-          讨论
+          Sign up
         </Link>
+      </Button>
+      <div className={styles.hamburger}>
+        <HamburgerButton items={mobileMenuItems} />
       </div>
-      <div className={styles.column}>
-        <header>使用</header>
-        <Link href="/product/creators">创作者</Link>
-        <Link href="/product/marketers">营销人员</Link>
-        <Link href="/product/agencies">机构</Link>
-      </div>
-    </nav>
+    </Row>
   );
 };

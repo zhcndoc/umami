@@ -49,6 +49,21 @@ Umami 追踪器提供了多个属性，允许您配置其行为。
 ></script>
 ```
 
+### data-tag
+
+如果您希望跟踪器在特定标签下收集事件。事件可以在仪表板中按特定标签过滤。
+
+用法：
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/umami.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+  data-tag="umami-eu"
+></script>
+```
+
 ### Google Tag Manager
 
 Google Tag Manager 会去除追踪器中的属性，因此您可以使用以下格式绕过此限制。
