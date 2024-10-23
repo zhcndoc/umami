@@ -39,6 +39,10 @@ const mobileMenuItems = [
     label: '开发者',
     value: '/developers',
   },
+  {
+    label: 'Contact',
+    value: '/contact',
+  },
 ];
 
 export default function Header() {
@@ -66,6 +70,7 @@ const NavLinks = () => {
         文档
       </Link>
       <Link href="/pricing">定价</Link>
+      <Link href="/contact">联系</Link>
     </Row>
   );
 };
