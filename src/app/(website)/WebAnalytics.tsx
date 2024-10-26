@@ -10,47 +10,38 @@ export default function WebAnalytics() {
   return (
     <Column gap="lg">
       <TextBlock size="lg">
-        <header>Web Analytics</header>
-        <h2>A complete analytics solution with all the features you need.</h2>
-        <p>
-          Umami is packed with amazing features that enable you to better understand your website
-          traffic.
-        </p>
+        <header>网络分析</header>
+        <h2>一个完整的分析解决方案，拥有您所需的所有功能。</h2>
+        <p>Umami 拥有丰富的功能，使您能够更好地了解您的网站流量。</p>
       </TextBlock>
       <div className={styles.items}>
-        <Feature title="Traffic analysis" image="/images/feature-stats.png">
-          Get insights into your traffic so you optimize for growth. Easily see all your metrics at
-          a glance.
+        <Feature title="流量分析" image="/images/feature-stats.png">
+          获取流量洞察，以便优化增长。轻松一目了然地查看所有指标。
         </Feature>
-        <Feature title="Visitor analysis" image="/images/feature-visitors.png" style={{ top: 30 }}>
-          Get detailed breakdowns about your visitors including where they are located and what
-          device they used.
+        <Feature title="访客分析" image="/images/feature-visitors.png" style={{ top: 30 }}>
+          获取有关访客的详细信息，包括他们的位置和使用的设备。
         </Feature>
-        <Feature title="Custom events" image="/images/feature-events.png" style={{ bottom: 30 }}>
-          Track more than just pageviews. Capture any event on your website like button clicks and
-          form entries.
+        <Feature title="自定义事件" image="/images/feature-events.png" style={{ bottom: 30 }}>
+          跟踪的不仅仅是页面浏览量。捕捉您网站上的任何事件，例如按钮点击和表单输入。
         </Feature>
         <Feature
-          title="Powerful filters"
+          title="强大的过滤器"
           image="/images/feature-filters.png"
           style={{ left: 50, top: 50 }}
         >
-          Dive deeper into your data using easy to apply filters. Segment your users by any metric
-          such as browser, OS, and country.
+          使用易于应用的过滤器深入挖掘您的数据。按浏览器、操作系统和国家等任何指标对用户进行细分。
         </Feature>
-        <Feature title="Realtime data" image="/images/feature-realtime.png" style={{ top: 40 }}>
-          Get a realtime view of your current website traffic. See the exact pages where your
-          visitors are landing.
+        <Feature title="实时数据" image="/images/feature-realtime.png" style={{ top: 40 }}>
+          获取您当前网站流量的实时视图。查看访客正在访问的确切页面。
         </Feature>
-        <Feature title="Trend detection" image="/images/feature-compare.png">
-          Compare date periods to discover key trends in your traffic. Easily measure the success of
-          your campaigns.
+        <Feature title="趋势检测" image="/images/feature-compare.png">
+          比较日期周期以发现流量中的关键趋势。轻松衡量您活动的成功。
         </Feature>
       </div>
       <Flexbox justifyContent="center" alignItems="center">
         <Button variant="secondary" asChild>
           <Link href="/src/app/(website)/WebAnalytics">
-            <Text>Explore more features </Text>
+            <Text>探索更多功能</Text>
             <Icon size="sm">
               <Icons.Arrow />
             </Icon>

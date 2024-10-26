@@ -13,12 +13,12 @@ const images = [
 ];
 
 const items = [
-  { name: 'User journeys', description: 'Understand how users navigate through your product.' },
+  { name: '用户旅程', description: '了解用户如何在您的产品中导航。' },
   {
-    name: 'User retention',
-    description: 'Measure your website stickiness by tracking how often users return.',
+    name: '用户留存',
+    description: '通过跟踪用户返回的频率来衡量您网站的粘性。',
   },
-  { name: 'Funnels', description: 'Understand the conversion and drop-off rate of users.' },
+  { name: '漏斗', description: '了解用户的转化率和流失率。' },
 ];
 
 export default function ProductAnalytics() {
@@ -45,12 +45,9 @@ export default function ProductAnalytics() {
       </ImageBlock>
       <Column gap="lg">
         <TextBlock align="center" size="lg">
-          <header>Product analytics</header>
-          <h2>Turn user behavior into insights</h2>
-          <p>
-            Umami helps you understand why your users do what they do, so you can optimize your
-            conversion paths.
-          </p>
+          <header>产品分析</header>
+          <h2>将用户行为转化为洞察</h2>
+          <p>Umami 帮助您理解用户为什么会这样做，以便您可以优化转化路径。</p>
         </TextBlock>
         <Column gap="md">
           {items.map(({ name, description }, index) => {

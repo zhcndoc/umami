@@ -19,7 +19,7 @@ export default function Hero() {
           <br /> 为了轻松的洞察
         </h1>
         <p>
-          Umami 使您轻松收集、分析和理解您的网站数据
+          Umami 使您轻松收集、分析和理解您的网站数据 ——
           这样您就可以专注于<strong>增长</strong>
         </p>
       </TextBlock>

@@ -34,7 +34,7 @@ export default function RootLayout({ children }) {
             defer
             src="https://analytics.ikxin.com/script.js"
             data-website-id="f0e90b0d-e086-4fdc-b173-de4857b71900"
-          ></script>
+          ></Script>
         )}
         <GoogleAnalytics gaId="G-HYH4TH7PWM" />
       </head>
