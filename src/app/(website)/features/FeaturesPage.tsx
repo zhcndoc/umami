@@ -3,36 +3,36 @@ import { Icon, Text } from '@umami/react-zen';
 import GetStartedBanner from '@/components/GetStartedBanner';
 import PageHeader from '@/components/PageHeader';
 import TextBlock from '@/components/TextBlock';
-import Anonymous from 'assets/anonymous.svg';
-import Bolt from 'assets/bolt.svg';
-import Bounce from 'assets/bounce.svg';
-import Compare from 'assets/compare.svg';
-import Cookie from 'assets/cookie.svg';
-import Data from 'assets/data.svg';
-import Device from 'assets/device.svg';
-import Export from 'assets/export.svg';
-import Filter from 'assets/filter.svg';
-import Funnel from 'assets/funnel.svg';
-import Gauge from 'assets/gauge.svg';
-import Gear from 'assets/gear.svg';
-import Graph from 'assets/graph.svg';
-import Import from 'assets/import.svg';
-import Key from 'assets/key.svg';
-import Language from 'assets/language.svg';
-import Lightbulb from 'assets/lightbulb.svg';
-import Location from 'assets/location.svg';
-import Magnet from 'assets/magnet.svg';
-import Path from 'assets/path.svg';
-import Privacy from 'assets/privacy.svg';
-import Realtime from 'assets/realtime.svg';
-import Reports from 'assets/reports.svg';
-import Share from 'assets/share.svg';
-import Tag from 'assets/tag.svg';
-import Target from 'assets/target.svg';
-import Team from 'assets/team.svg';
-import Traffic from 'assets/traffic.svg';
-import User from 'assets/user.svg';
-import View from 'assets/view.svg';
+import Anonymous from '@/assets/anonymous.svg';
+import Bolt from '@/assets/bolt.svg';
+import Bounce from '@/assets/bounce.svg';
+import Compare from '@/assets/compare.svg';
+import Cookie from '@/assets/cookie.svg';
+import Data from '@/assets/data.svg';
+import Device from '@/assets/device.svg';
+import Export from '@/assets/export.svg';
+import Filter from '@/assets/filter.svg';
+import Funnel from '@/assets/funnel.svg';
+import Gauge from '@/assets/gauge.svg';
+import Gear from '@/assets/gear.svg';
+import Graph from '@/assets/graph.svg';
+import Import from '@/assets/import.svg';
+import Key from '@/assets/key.svg';
+import Language from '@/assets/language.svg';
+import Lightbulb from '@/assets/lightbulb.svg';
+import Location from '@/assets/location.svg';
+import Magnet from '@/assets/magnet.svg';
+import Path from '@/assets/path.svg';
+import Privacy from '@/assets/privacy.svg';
+import Realtime from '@/assets/realtime.svg';
+import Reports from '@/assets/reports.svg';
+import Share from '@/assets/share.svg';
+import Tag from '@/assets/tag.svg';
+import Target from '@/assets/target.svg';
+import Team from '@/assets/team.svg';
+import Traffic from '@/assets/traffic.svg';
+import User from '@/assets/user.svg';
+import View from '@/assets/view.svg';
 import styles from './FeaturesPage.module.css';
 
 const items = [
@@ -41,18 +41,18 @@ const items = [
     description: `Umami collects all the metrics you care about to help you make better decisions.`,
     items: [
       {
-        title: 'Visitor info',
-        description: [
-          'Get detailed information about your visitors like their device, browser, OS and location.',
-        ],
-        icon: <User />,
-      },
-      {
         title: 'Page views',
         description: [
           'Knowing which of your pages gets the most traffic is essential to improving your website content.',
         ],
         icon: <View />,
+      },
+      {
+        title: 'Visitors',
+        description: [
+          'Get detailed information about your visitors like their device, browser, OS and location.',
+        ],
+        icon: <User />,
       },
       {
         title: 'Bounce rate',
@@ -76,7 +76,7 @@ const items = [
         icon: <Location />,
       },
       {
-        title: 'Device',
+        title: 'Devices',
         description: [
           'See the most popular devices used by visitors to help you optimize your pages.',
         ],
@@ -261,28 +261,30 @@ const items = [
 
 export default function FeaturesPage() {
   return (
-    <article>
+    <>
       <PageHeader>
-        <div>Features</div>
-        <div>An overview of all the core features Umami provides.</div>
+        <h1>Features</h1>
+        <p>An overview of all the core features Umami provides.</p>
       </PageHeader>
       <div className={styles.features}>
         {items.map(({ title, description, items }) => {
           return (
             <div key={title}>
-              <TextBlock size="md">
-                <div>{title}</div>
-                <div>{description}</div>
+              <TextBlock size="md" className={styles.section}>
+                <h2>{title}</h2>
+                <p>{description}</p>
               </TextBlock>
               <div className={styles.items}>
                 {items.map((item, index) => (
                   <div key={index} className={styles.item}>
                     <header className={styles.header}>
-                      <Icon size="lg">{item.icon}</Icon>
+                      <Icon size="md">{item.icon}</Icon>
                       <Text>{item.title}</Text>
                     </header>
                     {item.description.map((text, index) => (
-                      <p key={index}>{text}</p>
+                      <p key={index} className={styles.text}>
+                        {text}
+                      </p>
                     ))}
                   </div>
                 ))}
@@ -294,6 +296,6 @@ export default function FeaturesPage() {
       <section>
         <GetStartedBanner />
       </section>
-    </article>
+    </>
   );
 }

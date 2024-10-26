@@ -1,26 +1,24 @@
 import { Metadata } from 'next';
+import { Column } from '@umami/react-zen';
 import GetStartedBanner from '@/components/GetStartedBanner';
 import Hero from './Hero';
-import Statements from './Statements';
 import QuickStart from './QuickStart';
 import Quotes from './Quotes';
-import Features from './Features';
-import OpenSource from '@/app/(website)/OpenSource';
-import Companies from '@/app/(website)/Companies';
-import styles from './page.module.css';
+import WebAnalytics from './WebAnalytics';
+import OpenSource from './OpenSource';
+import ProductAnalytics from './ProductAnalytics';
 
 export default function () {
   return (
-    <article className={styles.container}>
+    <Column gap="xl">
       <Hero />
-      <Companies />
-      <Statements />
-      <Features />
+      <WebAnalytics />
+      <ProductAnalytics />
       <QuickStart />
       <OpenSource />
       <Quotes />
       <GetStartedBanner />
-    </article>
+    </Column>
   );
 }
 

@@ -12,10 +12,6 @@ import styles from './Header.module.css';
 
 const mobileMenuItems = [
   {
-    label: '首页',
-    value: '/',
-  },
-  {
     label: '特点',
     value: '/features',
   },
@@ -36,11 +32,7 @@ const mobileMenuItems = [
     value: '/community',
   },
   {
-    label: '开发者',
-    value: '/developers',
-  },
-  {
-    label: 'Contact',
+    label: '联系',
     value: '/contact',
   },
 ];
@@ -79,15 +71,17 @@ const ActionLinks = () => {
   const query = useQueryString({ ref: 'umami-nav-header' });
 
   return (
-    <Row alignItems="center" gap="md">
-      <Link className={styles.github} href={GITHUB_URL} target="_blank">
-        <Row alignItems="center" gap="md">
-          <Icon size="md">
-            <GitHub />
-          </Icon>
-          <Text>{GITHUB_STARS}</Text>
-        </Row>
-      </Link>
+    <Row className={styles.actions} alignItems="center" gap="sm">
+      <Button variant="quiet" asChild>
+        <Link className={styles.github} href={GITHUB_URL} target="_blank">
+          <Row alignItems="center" gap="sm">
+            <Icon size="sm">
+              <GitHub />
+            </Icon>
+            <Text weight="bold">{GITHUB_STARS}</Text>
+          </Row>
+        </Link>
+      </Button>
       <Button className={styles.login} variant="quiet" asChild>
         <Link href={`https://cloud.umami.is/login${query}`} data-umami-event="login-button-header">
           Log in

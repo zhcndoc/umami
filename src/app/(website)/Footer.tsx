@@ -23,7 +23,6 @@ const data = [
       { text: 'API 参考', href: '/docs/api' },
       { text: '发布说明', href: 'https://github.com/umami-software/umami/releases' },
       { text: '社区', href: '/community' },
-      { text: '开发者', href: '/developers' },
       { text: '支持', href: '/support' },
     ],
   },

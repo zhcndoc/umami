@@ -104,6 +104,23 @@
         ]
       },
       {
+        "group": "如何",
+        "pages": [
+          {
+            "label": "排除我自己的访问",
+            "url": "/docs/exclude-my-own-visits"
+          },
+          {
+            "label": "绕过广告拦截器",
+            "url": "/docs/bypass-ad-blockers"
+          },
+          {
+            "label": "使用谷歌标签管理器",
+            "url": "/docs/google-tag-manager"
+          }
+        ]
+      },
+      {
         "group": "参考",
         "pages": [
           {
@@ -250,23 +267,11 @@
         ]
       },
       {
-        "group": "如何做",
+        "group": "市场营销",
         "pages": [
-          {
-            "label": "排除我自己的访问",
-            "url": "/docs/guides/exclude-my-own-visits"
-          },
-          {
-            "label": "绕过广告拦截器",
-            "url": "/docs/guides/bypass-ad-blockers"
-          },
           {
             "label": "测量活动",
             "url": "/docs/guides/measure-campaigns"
-          },
-          {
-            "label": "使用 Google Tag Manager",
-            "url": "/docs/guides/google-tag-manager"
           }
         ]
       },

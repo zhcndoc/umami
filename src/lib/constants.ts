@@ -1,10 +1,10 @@
-import Infinite from 'assets/infinity.svg';
-import Teams from 'assets/teams.svg';
-import Block from 'assets/block.svg';
-import Feather from 'assets/feather.svg';
-import Share from 'assets/share.svg';
-import Lock from 'assets/lock.svg';
-import Code from 'assets/code.svg';
+import Infinite from '@/assets/infinity.svg';
+import Teams from '@/assets/teams.svg';
+import Block from '@/assets/block.svg';
+import Feather from '@/assets/feather.svg';
+import Share from '@/assets/share.svg';
+import Lock from '@/assets/lock.svg';
+import Code from '@/assets/code.svg';
 
 export const CONTENT_URL = 'https://static.umami.dev/website';
 export const CLOUD_URL = 'https://cloud.umami.is';
@@ -29,7 +29,7 @@ export const Blocks = {
   },
   visitorInsights: {
     title: '访客洞察',
-    description: `获取有关访问者的详细明细，包括他们使用的浏览器、操作系统和设备。`,
+    description: `获取关于您的访客的详细信息，包括他们的位置和使用的设备。`,
     image: '/images/preview-session-stats.png',
   },
   customEvents: {

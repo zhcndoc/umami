@@ -1,8 +1,10 @@
 'use client';
+import { Row } from '@umami/react-zen';
 import TextBlock from '@/components/TextBlock';
 import ContentImage from '@/components/ContentImage';
-import X from 'assets/x.svg';
+import X from '@/assets/x.svg';
 import styles from './Quotes.module.css';
+import SocialMedia from '@/components/SocialMedia';
 
 const items = [
   {
@@ -59,16 +61,21 @@ export default function Quotes() {
   return (
     <div className={styles.container}>
       <TextBlock size="lg" align="center">
-        <div>人们喜欢 Umami</div>
+        <header>连接</header>
+        <h2>加入我们的社区</h2>
+        <p>来与我们充满活力的用户和开发人员社区分享您的 Umami 体验。</p>
       </TextBlock>
+      <Row justifyContent="center" padding={6}>
+        <SocialMedia size="lg" />
+      </Row>
       <div className={styles.list}>
         {items.map(({ name, username, quote }) => {
           return (
             <div key={name} className={styles.card}>
-              <div className={styles.pic}>
-                <ContentImage src={`/images/${username}.jpg`} alt="" />
-              </div>
               <div className={styles.header}>
+                <div className={styles.pic}>
+                  <ContentImage src={`/images/${username}.jpg`} alt="" />
+                </div>
                 <div className={styles.user}>
                   <div className={styles.name}>{name}</div>
                   <div className={styles.username}>{username}</div>

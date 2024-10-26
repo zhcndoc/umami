@@ -5,6 +5,7 @@ import TextBlock from '@/components/TextBlock';
 import { CLOUD_URL } from '@/lib/constants';
 import useQueryString from '@/components/hooks/useQueryString';
 import ContentImage from '@/components/ContentImage';
+import Companies from './Companies';
 import styles from './Hero.module.css';
 
 export default function Hero() {
@@ -12,22 +13,23 @@ export default function Hero() {
 
   return (
     <Column gap="lg" className={styles.hero}>
-      <TextBlock size="xl" align="center">
-        <div>
-          轻松分析
-          <br /> 实时洞察
-        </div>
-        <div className={styles.subtitle}>
-          Umami 让收集、分析和理解您的网站数据变得简单。
-        </div>
+      <TextBlock size="lg" align="center" style={{ zIndex: 1 }}>
+        <h1>
+          现代化分析平台
+          <br /> 为了轻松的洞察
+        </h1>
+        <p>
+          Umami 使您轻松收集、分析和理解您的网站数据
+          这样您就可以专注于<strong>增长</strong>
+        </p>
       </TextBlock>
-      <Row justifyContent="center" gap="md">
-        <Button variant="primary" size="xl" asChild>
+      <Row justifyContent="center" gap="md" style={{ zIndex: 1 }}>
+        <Button variant="primary" size="lg" asChild>
           <Link href={`/docs`} data-umami-event="get-started-button">
             <Text weight="bold">开始使用</Text>
           </Link>
         </Button>
-        <Button size="xl" asChild>
+        <Button size="lg" asChild>
           <a
             href="https://analytics.ikxin.com/share/aHYOn5YKtcPoS5v7/zhcndoc.com"
             data-umami-event="live-demo-button"
@@ -38,14 +40,10 @@ export default function Hero() {
           </a>
         </Button>
       </Row>
-      <div className={styles.features}>
-        <div>没有 Cookie 横幅</div>
-        <div>简化的仪表板</div>
-        <div>轻松设置和使用</div>
-      </div>
       <div className={styles.image}>
         <ContentImage src="/images/app.jpg" />
       </div>
+      <Companies />
     </Column>
   );
 }

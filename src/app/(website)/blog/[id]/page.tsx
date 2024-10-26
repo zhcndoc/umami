@@ -1,8 +1,9 @@
 import { Metadata } from 'next';
+import classNames from 'classnames';
 import path from 'node:path';
 import { format } from 'date-fns';
 import Link from 'next/link';
-import { getFile } from 'lib/content';
+import { getFile } from '@/lib/content';
 import Markdown from '@/components/Markdown';
 import styles from './page.module.css';
 
@@ -36,7 +37,7 @@ export default async function ({ params }: Props) {
   const { title, date, author } = post.meta || {};
 
   return (
-    <article className={styles.blog}>
+    <article className={classNames(styles.blog, 'blog')}>
       <div className={styles.title}>{title}</div>
       <div className={styles.info}>
         <div className={styles.date}>{post?.date && format(new Date(date as string), 'PP')}</div>

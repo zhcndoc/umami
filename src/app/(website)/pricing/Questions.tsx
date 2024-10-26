@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
-import { Icon, Icons } from 'react-basics';
-import SectionHeader from '@/components/SectionHeader';
+import { Icon, Icons } from '@umami/react-zen';
 import styles from './Questions.module.css';
+import TextBlock from '@/components/TextBlock';
 
 const questions = [
   {
@@ -17,7 +17,7 @@ const questions = [
   {
     question: 'How will I be billed?',
     answer: `Billing occurs on a monthly basis and you can cancel at any time. 
-    If you upgraded to a paid plan via a trial, your first invoice git checkout dwill arrive after your trial period ends.`,
+    If you upgraded to a paid plan via a trial, your first invoice git checkout will arrive after your trial period ends.`,
   },
   {
     question: '你的服务器位于哪里？',
@@ -32,9 +32,9 @@ const questions = [
 export default function Questions() {
   return (
     <>
-      <SectionHeader>
-        <h1>常见问题</h1>
-      </SectionHeader>
+      <TextBlock>
+        <h2>常见问题</h2>
+      </TextBlock>
       <div className={styles.questions}>
         {questions.map(({ question, answer }) => {
           return (
@@ -55,8 +55,8 @@ const Question = ({ question, children }) => {
     <div className={styles.question} onClick={() => setExpanded(state => !state)}>
       <div className={styles.text}>
         {question}
-        <Icon className={styles.icon} rotate={expanded ? 180 : 0}>
-          <Icons.ChevronDown />
+        <Icon className={styles.icon} rotate={expanded ? 90 : 0} size="sm">
+          <Icons.Chevron />
         </Icon>
       </div>
       {expanded ? <div className={styles.answer}>{children}</div> : null}

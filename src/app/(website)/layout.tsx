@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { Suspense } from 'react';
+import Script from 'next/script';
 import { AxiomWebVitals } from 'next-axiom';
 import Header from './Header';
 import Main from './Main';
@@ -9,9 +10,9 @@ import '@fontsource/inter/400.css';
 import '@fontsource/inter/700.css';
 import '@fontsource/inter/800.css';
 import '@fontsource/jetbrains-mono/400.css';
-import 'styles/github-dark.css';
-import 'styles/variables.css';
-import 'styles/index.css';
+import '@/styles/github-dark.css';
+import '@/styles/variables.css';
+import '@/styles/global.css';
 import '@umami/react-zen/dist/zen.css';
 import '@umami/react-zen/dist/index.css';
 
@@ -29,7 +30,7 @@ export default function RootLayout({ children }) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         {process.env.NODE_ENV === 'production' && (
-          <script
+          <Script
             defer
             src="https://analytics.ikxin.com/script.js"
             data-website-id="f0e90b0d-e086-4fdc-b173-de4857b71900"

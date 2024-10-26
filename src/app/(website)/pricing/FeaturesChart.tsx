@@ -1,10 +1,10 @@
 'use client';
 import { Fragment } from 'react';
 import { Icon } from 'react-basics';
-import Checkmark from 'assets/checkmark.svg';
-import styles from './Features.module.css';
+import Checkmark from '@/assets/checkmark.svg';
+import styles from './FeaturesChart.module.css';
 
-const features = [
+const featuresChart = [
   {
     label: 'Data',
     items: [
@@ -80,7 +80,7 @@ export default function Features() {
           </tr>
         </thead>
         <tbody>
-          {features.map(({ label, items }) => {
+          {featuresChart.map(({ label, items }) => {
             return (
               <Fragment key={label}>
                 <tr>
