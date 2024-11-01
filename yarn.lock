@@ -3912,10 +3912,10 @@
     "@typescript-eslint/types" "8.8.1"
     eslint-visitor-keys "^3.4.3"
 
-"@umami/react-zen@^0.12.0":
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/@umami/react-zen/-/react-zen-0.12.0.tgz#bfaac4f71aac97729fed729791445a864f1aa506"
-  integrity sha512-lCipw/hXbJQO+HSlHcp1c5oYv3dUDtRdGxStf3afSUo5KmqeielW4ISAdB0HDpY5No29QvVsr4peHNooJYO4Eg==
+"@umami/react-zen@^0.15.0":
+  version "0.15.0"
+  resolved "https://registry.yarnpkg.com/@umami/react-zen/-/react-zen-0.15.0.tgz#2f3a1496e5bdbc8f7a19680a78ac423fd28c62a5"
+  integrity sha512-dyvbihZQ5u3tW/iDGuD2//TSKMcf0wjvstZ3RUcxYBD8y7IGMz9Pjao9f8MfTrreu/yp+qts/dEbMKsk/AoJGA==
   dependencies:
     "@fontsource/jetbrains-mono" "^5.0.18"
     "@mdx-js/loader" "^3.0.0"

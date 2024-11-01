@@ -27,7 +27,7 @@ export default function WebAnalytics() {
         <Feature
           title="强大的过滤器"
           image="/images/feature-filters.png"
-          style={{ left: 50, top: 50 }}
+          style={{ left: 70, top: 50 }}
         >
           使用易于应用的过滤器深入挖掘您的数据。按浏览器、操作系统和国家等任何指标对用户进行细分。
         </Feature>

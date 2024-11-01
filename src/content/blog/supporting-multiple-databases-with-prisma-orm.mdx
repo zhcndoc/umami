@@ -7,11 +7,11 @@ date: 2024-01-10
 
 Umami Analytics 目前支持 [MySQL](https://www.mysql.com/) 和 [PostgreSQL](https://www.postgresql.org/) 作为存储数据的选项。那么，一个小型开发团队如何确保在支持两个数据库的应用程序中的功能兼容性呢？这就要提到 Prisma ORM 了。
 
-# 什么是 Prisma？
+## 什么是 Prisma？
 
 [Prisma](https://prisma.io) 是一个开源 ORM，旨在使 Node.js 和 TypeScript 应用程序与数据库的交互更加简单。查询可以作为对象树编写，由 Prisma 查询引擎将该对象转换为相应数据库的 SQL 查询。这些结果返回给 Prisma 客户端，数据可以在节点中使用。
 
-# 我们如何使用它
+## 我们如何使用它
 
 我们首先通过查看 Prisma 的 `DATABASE_URL` 环境变量来确定使用的是哪个数据库。MySQL 的连接字符串以 `mysql://` 开头，而 PostgreSQL 以 `postgresql://` 开头。
 
@@ -25,7 +25,7 @@ Umami Analytics 目前支持 [MySQL](https://www.mysql.com/) 和 [PostgreSQL](ht
 
 ![image](/images/prisma-find-website.png)
 
-# 原始 SQL
+## 原始 SQL
 
 有时您需要自己编写 SQL 来完成任务，这时就需要自定义解决方案。以下是获取网站统计信息的自定义查询，用于计算总浏览量、访客数量、跳出率和平均访客时间。
 
@@ -37,12 +37,12 @@ Umami Analytics 目前支持 [MySQL](https://www.mysql.com/) 和 [PostgreSQL](ht
 
 ![image](/images/prisma-function-example.png)
 
-# 挑战
+## 挑战
 
 我们很少在 Prisma 本身上遇到重大问题。我们面临的大多数挑战都与支持不同数据库及其版本的独特功能集有关。
 
 在 Umami v1 中，我们发布了适用于更高版本的 MySQL 和 PostgreSQL 的迁移，但不支持旧版本。一旦迁移对公众发布，就无法回滚。让用户运行自定义脚本以撤回某些迁移，以及重写当前迁移的历史，这为我们带来了数周的支持工作。此后，我们在 Umami v2 中非常谨慎，绝不轻视迁移。
 
-# 想法
+## 想法
 
 Prisma 对我们来说是一个非常棒的工具。我们继续使用越来越多的功能，例如 `Read Replica` 和 `Multiple Database Schema`，并期待 Prisma 的未来。
