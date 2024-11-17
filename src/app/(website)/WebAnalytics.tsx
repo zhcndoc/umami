@@ -40,7 +40,7 @@ export default function WebAnalytics() {
       </div>
       <Flexbox justifyContent="center" alignItems="center">
         <Button variant="secondary" asChild>
-          <Link href="/src/app/(website)/WebAnalytics">
+          <Link href="/features">
             <Text>探索更多功能</Text>
             <Icon size="sm">
               <Icons.Arrow />
