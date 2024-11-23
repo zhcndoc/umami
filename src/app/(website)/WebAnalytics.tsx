@@ -8,7 +8,7 @@ import styles from './WebAnalytics.module.css';
 
 export default function WebAnalytics() {
   return (
-    <Column gap="lg">
+    <Column gap="6">
       <TextBlock size="lg">
         <header>网络分析</header>
         <h2>一个完整的分析解决方案，拥有您所需的所有功能。</h2>

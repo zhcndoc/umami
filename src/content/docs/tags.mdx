@@ -1,0 +1,44 @@
+---
+title: 标签
+---
+
+使用 Umami 标签可以在单一网站下对事件进行分组，收集数据，并启用各种功能。
+
+## 用例
+
+- A/B 测试：测试网页或活动的不同版本，以确定哪个表现更好。
+- 对事件进行分组，允许在单一网站概览下进行过滤和深入分析。
+
+## 使用方法
+
+将 **data-tag** 属性添加到跟踪脚本中。这将包含在负载中的 **tag** 列。
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/umami.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+  data-tag="homepage-layout-a"
+></script>
+```
+
+您可以在网站的不同部分重用跟踪脚本，并引入其他标签。
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/umami.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+  data-tag="homepage-layout-b"
+></script>
+```
+
+## 过滤
+
+在网站的 **概览** 中，您可以针对特定标签进行过滤。
+
+![image](/images/docs/v2/tag-filters.png)
+
+还可以通过点击任何指标卡上的 **更多** 查看页面浏览的详细分类。
+
+![image](/images/docs/v2/tag-details.png)

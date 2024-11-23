@@ -77,6 +77,10 @@
             "url": "/docs/compare"
           },
           {
+            "label": "标签",
+            "url": "/docs/tags"
+          },
+          {
             "label": "团队",
             "url": "/docs/teams"
           },
@@ -250,7 +254,7 @@
             "url": "/docs/reports/report-journey"
           },
           {
-            "label": "Revenue",
+            "label": "收入",
             "url": "/docs/reports/report-revenue"
           }
         ]

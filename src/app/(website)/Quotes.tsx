@@ -65,7 +65,7 @@ export default function Quotes() {
         <h2>加入我们的社区</h2>
         <p>来与我们充满活力的用户和开发人员社区分享您的 Umami 体验。</p>
       </TextBlock>
-      <Row justifyContent="center" padding={6}>
+      <Row justifyContent="center" padding="6">
         <SocialMedia size="lg" />
       </Row>
       <div className={styles.list}>

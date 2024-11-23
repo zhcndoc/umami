@@ -30,7 +30,7 @@ export default function ProductAnalytics() {
   }, []);
 
   return (
-    <Row gap="lg" className={styles.row}>
+    <Row gap="6" className={styles.row}>
       <ImageBlock className={styles.block}>
         {images.map((src, index) => {
           return (
@@ -43,13 +43,13 @@ export default function ProductAnalytics() {
           );
         })}
       </ImageBlock>
-      <Column gap="lg">
+      <Column gap="6">
         <TextBlock align="center" size="lg">
           <header>产品分析</header>
           <h2>将用户行为转化为洞察</h2>
           <p>Umami 帮助您理解用户为什么会这样做，以便您可以优化转化路径。</p>
         </TextBlock>
-        <Column gap="md">
+        <Column gap="3">
           {items.map(({ name, description }, index) => {
             return (
               <TextBlock
