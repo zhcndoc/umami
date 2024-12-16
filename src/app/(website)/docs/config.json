@@ -119,6 +119,10 @@
             "url": "/docs/bypass-ad-blockers"
           },
           {
+            "label": "跟踪外部链接",
+            "url": "/docs/track-outbound-links"
+          },
+          {
             "label": "使用谷歌标签管理器",
             "url": "/docs/google-tag-manager"
           }
