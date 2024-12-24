@@ -32,7 +32,7 @@ const nextConfig = {
   },
   pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
   reactStrictMode: false,
-  output: undefined,
+  output: 'standalone',
   eslint: {
     ignoreDuringBuilds: true,
   },
@@ -73,8 +73,8 @@ const nextConfig = {
   async rewrites() {
     return [
       { source: '/docs/getting-started', destination: '/docs' },
-      // { source: '/a/script.js', destination: 'https://tracker-script.umami.dev/' },
-      // { source: '/discord', destination: 'https://discord.gg/4dz4zcXYrQ' },
+      { source: '/a/script.js', destination: 'https://tracker-script.umami.dev/' },
+      { source: '/discord', destination: 'https://discord.gg/4dz4zcXYrQ' },
       { source: '/analytics', destination: '/lp/analytics' },
       { source: '/website-analytics', destination: '/lp/website-analytics' },
       {

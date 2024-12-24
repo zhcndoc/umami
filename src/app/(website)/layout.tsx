@@ -1,5 +1,4 @@
 import { Metadata } from 'next';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { Suspense } from 'react';
 import Script from 'next/script';
 import { AxiomWebVitals } from 'next-axiom';
@@ -29,13 +28,8 @@ export default function RootLayout({ children }) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         {process.env.NODE_ENV === 'production' && (
-          <Script
-            defer
-            src="https://analytics.ikxin.com/script.js"
-            data-website-id="f0e90b0d-e086-4fdc-b173-de4857b71900"
-          ></Script>
+          <Script async src="https://www.zhcndoc.com/js/common.js"></Script>
         )}
-        <GoogleAnalytics gaId="G-HYH4TH7PWM" />
       </head>
       <body>
         <Suspense>
