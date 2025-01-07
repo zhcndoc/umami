@@ -125,6 +125,10 @@
           {
             "label": "使用谷歌标签管理器",
             "url": "/docs/google-tag-manager"
+          },
+          {
+            "label": "Enable Cloudflare headers",
+            "url": "/docs/enable-cloudflare-headers"
           }
         ]
       },
