@@ -1,7 +1,6 @@
 'use client';
 import Link from 'next/link';
-import { Button, Row, Column } from '@umami/react-zen';
-import TextBlock from '@/components/TextBlock';
+import { Button, Row, Column, Heading, Text } from '@umami/react-zen';
 import { CLOUD_URL } from '@/lib/constants';
 import useQueryString from '@/components/hooks/useQueryString';
 import ContentImage from '@/components/ContentImage';
@@ -12,17 +11,15 @@ export default function Hero() {
   const query = useQueryString({ ref: 'umami-hero' });
 
   return (
-    <Column gap="6" className={styles.hero}>
-      <TextBlock size="lg" align="center" style={{ zIndex: 1 }}>
-        <h1>
-          现代化分析平台
-          <br /> 为了轻松的洞察
-        </h1>
-        <p>
-          Umami 使您轻松收集、分析和理解您的网站数据 ——
-          这样您就可以专注于<strong>增长</strong>
-        </p>
-      </TextBlock>
+    <Column gap="6" className={styles.hero} alignItems="center">
+      <Heading size="1" align="center">
+        现代分析平台
+        <br /> 为了轻松的洞察
+      </Heading>
+      <Text color="muted" size="4" as="p">
+        Umami 使您轻松收集、分析和理解您的网站数据 ——
+        这样您就可以专注于<strong>增长</strong>
+      </Text>
       <Row justifyContent="center" gap="3" style={{ zIndex: 1 }}>
         <Button variant="primary" size="lg" asChild>
           <Link href={`/docs`} data-umami-event="get-started-button">

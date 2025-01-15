@@ -1,218 +1,218 @@
 'use client';
-import { Icon, Text } from '@umami/react-zen';
+import { Box, Column, Grid, Heading, Icon, Text, Row } from '@umami/react-zen';
 import GetStartedBanner from '@/components/GetStartedBanner';
 import PageHeader from '@/components/PageHeader';
-import TextBlock from '@/components/TextBlock';
-import Anonymous from '@/assets/anonymous.svg';
-import Bolt from '@/assets/bolt.svg';
-import Bounce from '@/assets/bounce.svg';
-import Compare from '@/assets/compare.svg';
-import Cookie from '@/assets/cookie.svg';
-import Data from '@/assets/data.svg';
-import Device from '@/assets/device.svg';
-import Export from '@/assets/export.svg';
-import Filter from '@/assets/filter.svg';
-import Funnel from '@/assets/funnel.svg';
-import Gauge from '@/assets/gauge.svg';
-import Gear from '@/assets/gear.svg';
-import Graph from '@/assets/graph.svg';
-import Import from '@/assets/import.svg';
-import Key from '@/assets/key.svg';
-import Language from '@/assets/language.svg';
-import Lightbulb from '@/assets/lightbulb.svg';
-import Location from '@/assets/location.svg';
-import Magnet from '@/assets/magnet.svg';
-import Path from '@/assets/path.svg';
-import Privacy from '@/assets/privacy.svg';
-import Realtime from '@/assets/realtime.svg';
-import Reports from '@/assets/reports.svg';
-import Share from '@/assets/share.svg';
-import Tag from '@/assets/tag.svg';
-import Target from '@/assets/target.svg';
-import Team from '@/assets/team.svg';
-import Traffic from '@/assets/traffic.svg';
-import User from '@/assets/user.svg';
-import View from '@/assets/view.svg';
-import styles from './FeaturesPage.module.css';
+import {
+  Anonymous,
+  Bolt,
+  Bounce,
+  Compare,
+  Cookie,
+  Data,
+  Device,
+  Export,
+  Filter,
+  Funnel,
+  Gauge,
+  Gear,
+  Graph,
+  Import,
+  Key,
+  Language,
+  Lightbulb,
+  Location,
+  Magnet,
+  Path,
+  Privacy,
+  Realtime,
+  Reports,
+  Share,
+  Tag,
+  Target,
+  Team,
+  Traffic,
+  User,
+  View,
+} from '@/components/icons';
 
 const items = [
   {
-    title: 'Analytics',
-    description: `Umami collects all the metrics you care about to help you make better decisions.`,
+    title: '分析',
+    description: `Umami 收集您关心的所有指标，帮助您做出更好的决策。`,
     items: [
       {
-        title: 'Page views',
+        title: '页面浏览量',
         description: [
-          'Knowing which of your pages gets the most traffic is essential to improving your website content.',
+          '了解哪些页面流量最高，对于改进网站内容至关重要。',
         ],
         icon: <View />,
       },
       {
-        title: 'Visitors',
+        title: '访客',
         description: [
-          'Get detailed information about your visitors like their device, browser, OS and location.',
+          '获取有关访客的详细信息，如他们的设备、浏览器、操作系统和位置。',
         ],
         icon: <User />,
       },
       {
-        title: 'Bounce rate',
+        title: '跳出率',
         description: [
-          'See which pages keep your visitors engaged versus those they are abandoning.',
+          '查看哪些页面让访客保持参与，哪些页面让他们离开。',
         ],
         icon: <Bounce />,
       },
       {
-        title: 'Traffic sources',
+        title: '流量来源',
         description: [
-          'See where your traffic is coming from to better understand where you should be spending your effort.',
+          '查看您的流量来自哪里，以便更好地了解您应该在哪里投入精力。',
         ],
         icon: <Traffic />,
       },
       {
-        title: 'Location',
+        title: '位置',
         description: [
-          'Find out where your visitors are coming from including the city, region and country.',
+          '了解访客来自哪里，包括城市、地区和国家。',
         ],
         icon: <Location />,
       },
       {
-        title: 'Devices',
+        title: '设备',
         description: [
-          'See the most popular devices used by visitors to help you optimize your pages.',
+          '查看访客使用的最流行的设备，帮助您优化页面。',
         ],
         icon: <Device />,
       },
       {
-        title: 'Languages',
+        title: '语言',
         description: [
-          'Know which languages are the most popular among your visitors to help you tailor your content.',
+          '了解访客中最流行的语言，帮助您定制内容。',
         ],
         icon: <Language />,
       },
       {
-        title: 'Compare',
-        description: ['See your metric performance compared against previous date ranges.'],
+        title: '比较',
+        description: ['查看您的指标表现与之前日期范围的对比。'],
         icon: <Compare />,
       },
       {
-        title: 'Filtering',
+        title: '过滤',
         description: [
-          'Gain further insight into your data by applying filters like country, browser, and URL.',
+          '通过应用国家、浏览器和URL等过滤器，进一步深入了解您的数据。',
         ],
         icon: <Filter />,
       },
       {
-        title: 'Realtime data',
+        title: '实时数据',
         description: [
-          `Data available in seconds, not days. The data that Umami collects is immediately available on your dashboard`,
+          `数据在几秒钟内即可获得，而不是几天。Umami 收集的数据会立即显示在您的仪表板上。`,
         ],
         icon: <Realtime />,
       },
       {
-        title: 'Teams',
+        title: '团队',
         description: [
-          'The teams feature allows you to securely share websites access with different team members.',
+          '团队功能允许您安全地与不同的团队成员共享网站访问权限。',
         ],
         icon: <Team />,
       },
       {
-        title: 'Custom events',
+        title: '自定义事件',
         description: [
-          'Track everything that happens on your website like signups and cart checkouts using custom events.',
+          '使用自定义事件跟踪网站上发生的所有事情，如注册和购物车结账。',
         ],
         icon: <Bolt />,
       },
       {
-        title: 'Custom data',
-        description: ['Use custom data properties to help you further analyze your data.'],
+        title: '自定义数据',
+        description: ['使用自定义数据属性帮助您进一步分析数据。'],
         icon: <Data />,
       },
       {
-        title: 'UTM tracking',
+        title: 'UTM 跟踪',
         description: [
-          'Measure the effectiveness of your campaign by analyzing UTM query parameters that are automatically collected.',
+          '通过分析自动收集的UTM查询参数来衡量您的广告活动效果。',
         ],
         icon: <Tag />,
       },
 
       {
-        title: 'Sharing',
+        title: '分享',
         description: [
-          'Easily share your stats with others through a secure, uniquely generated URL.',
+          '通过安全生成的唯一URL轻松与他人分享您的统计数据。',
         ],
         icon: <Share />,
       },
       {
-        title: 'Reports',
+        title: '报告',
         description: [
-          'Build reports for specific websites and date ranges to cover all your data needs.',
+          '为特定网站和日期范围构建报告，以满足您的所有数据需求。',
         ],
         icon: <Graph />,
       },
     ],
   },
   {
-    title: 'Reports',
+    title: '报告',
     description:
-      'Umami comes with out of the box reporting that enables you to gain deep insights from all your website data.',
+      'Umami 提供开箱即用的报告功能，使您能够从所有网站数据中获得深入洞察。',
     items: [
       {
-        title: 'Insights',
-        description: ['Dive deeper into your data by using segments and filters.'],
+        title: '洞察',
+        description: ['通过使用细分和过滤器深入挖掘您的数据。'],
         icon: <Lightbulb />,
       },
       {
-        title: 'Funnels',
-        description: ['Understand the conversion and drop-off rate of users.'],
+        title: '漏斗',
+        description: ['了解用户的转化率和流失率。'],
         icon: <Funnel />,
       },
       {
-        title: 'Retention',
-        description: ['Measure your website stickiness by tracking how often users return.'],
+        title: '留存',
+        description: ['通过跟踪用户返回的频率来衡量您网站的粘性。'],
         icon: <Magnet />,
       },
       {
         title: 'UTM',
-        description: ['Track your campaigns through UTM parameters.'],
+        description: ['通过UTM参数跟踪您的广告活动。'],
         icon: <Tag />,
       },
       {
-        title: 'Goals',
-        description: ['Track your goals for pageviews and events.'],
+        title: '目标',
+        description: ['跟踪您的页面浏览量和事件目标。'],
         icon: <Target />,
       },
       {
-        title: 'Journey',
-        description: ['Understand how users navigate through your website.'],
+        title: '旅程',
+        description: ['了解用户如何浏览您的网站。'],
         icon: <Path />,
       },
     ],
   },
   {
-    title: 'Privacy',
-    description: `Umami is private by default and helps you stay compliant with data privacy laws.`,
+    title: '隐私',
+    description: `Umami 默认是私密的，帮助您遵守数据隐私法律。`,
     items: [
       {
         title: 'GDPR & CCPA',
         description: [
-          'Umami never collects any personal information from your visitors so it is fully compliant with GDPR and CCPA.',
+          'Umami 从不收集访客的任何个人信息，因此完全符合 GDPR 和 CCPA。',
         ],
         icon: <Privacy />,
       },
       {
-        title: 'Data anonymization ',
-        description: [`All visitor data is anonymized to protect your visitors' privacy.`],
+        title: '数据匿名化',
+        description: [`所有访客数据都经过匿名化处理，以保护访客的隐私。`],
         icon: <Anonymous />,
       },
       {
-        title: 'No cookies ',
-        description: [`Umami does not use any cookies so no annoying cookie banner is required.`],
+        title: '无 Cookie',
+        description: [`Umami 不使用任何 Cookie，因此不需要烦人的 Cookie 横幅。`],
         icon: <Cookie />,
       },
       {
-        title: 'Data ownership ',
+        title: '数据所有权',
         description: [
-          `Data is always in your control with Umami. You can self-host on your own infrastructure or export your data from Umami Cloud.`,
+          `使用 Umami，数据始终在您的控制之中。您可以在自己的基础设施上自托管，或从 Umami Cloud 导出数据。`,
         ],
         icon: <Key />,
       },
@@ -220,38 +220,38 @@ const items = [
   },
   {
     title: 'Cloud',
-    description: `Umami Cloud is a reliable, high-performance hosted solution.`,
+    description: `Umami Cloud 是一个可靠、高性能的托管解决方案。`,
     items: [
       {
-        title: 'Fully managed',
+        title: '完全托管',
         description: [
-          `Leave the upgrades, backups and performance tuning to us while you focus on your results.`,
+          `将升级、备份和性能调优交给我们，您只需专注于结果。`,
         ],
         icon: <Gear />,
       },
       {
-        title: 'High performance',
+        title: '高性能',
         description: [
-          `Whether you have millions or billions of records, our platform is designed for speed and will deliver fast results.`,
+          `无论您有数百万还是数十亿条记录，我们的平台都设计为快速交付结果。`,
         ],
         icon: <Gauge />,
       },
       {
-        title: 'Data import',
+        title: '数据导入',
         description: [
-          `Want to migrate your existing data to Umami? Just use our built-in import tool.`,
+          `想将现有数据迁移到 Umami 吗？只需使用我们内置的导入工具。`,
         ],
         icon: <Import />,
       },
       {
-        title: 'Data export ',
-        description: [`Don't settle for summarized data. Get a full data export of all your data.`],
+        title: '数据导出',
+        description: [`不要满足于汇总数据。获取所有数据的完整导出。`],
         icon: <Export />,
       },
       {
-        title: 'Email reports ',
+        title: '电子邮件报告',
         description: [
-          `Send scheduled email reports to anyone. Send out website summaries in a compact and digestable email.`,
+          `向任何人发送预定的电子邮件报告。以简洁易懂的电子邮件发送网站摘要。`,
         ],
         icon: <Reports />,
       },
@@ -262,40 +262,42 @@ const items = [
 export default function FeaturesPage() {
   return (
     <>
-      <PageHeader>
-        <h1>Features</h1>
-        <p>An overview of all the core features Umami provides.</p>
-      </PageHeader>
-      <div className={styles.features}>
+      <PageHeader
+        title="功能"
+        description="Umami 提供的所有核心功能概述。"
+      />
+      <Column gap="6">
         {items.map(({ title, description, items }) => {
           return (
-            <div key={title}>
-              <TextBlock size="md" className={styles.section}>
-                <h2>{title}</h2>
-                <p>{description}</p>
-              </TextBlock>
-              <div className={styles.items}>
+            <Box key={title}>
+              <Heading size="3">{title}</Heading>
+              <Box paddingY="6" maxWidth="600px">
+                <Text color="muted" size="3">
+                  {description}
+                </Text>
+              </Box>
+              <Grid columns="repeat(auto-fit, minmax(300px, 1fr))" gap="4">
                 {items.map((item, index) => (
-                  <div key={index} className={styles.item}>
-                    <header className={styles.header}>
+                  <Box key={index} borderRadius="2" padding="4" backgroundColor="50">
+                    <Row gap="3" alignItems="center">
                       <Icon size="md">{item.icon}</Icon>
-                      <Text>{item.title}</Text>
-                    </header>
+                      <Text weight="bold">{item.title}</Text>
+                    </Row>
                     {item.description.map((text, index) => (
-                      <p key={index} className={styles.text}>
+                      <Text key={index} as="p" color="muted">
                         {text}
-                      </p>
+                      </Text>
                     ))}
-                  </div>
+                  </Box>
                 ))}
-              </div>
-            </div>
+              </Grid>
+            </Box>
           );
         })}
-      </div>
-      <section>
-        <GetStartedBanner />
-      </section>
+        <section>
+          <GetStartedBanner />
+        </section>
+      </Column>
     </>
   );
 }

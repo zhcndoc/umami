@@ -1,18 +1,18 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
+import { Container, Grid } from '@umami/react-zen';
 import Script from 'next/script';
 import { AxiomWebVitals } from 'next-axiom';
 import Header from './Header';
-import Main from './Main';
 import Footer from './Footer';
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/700.css';
 import '@fontsource/inter/800.css';
 import '@fontsource/jetbrains-mono/400.css';
-import '@/styles/github-dark.css';
+import '@umami/react-zen/styles.css';
+import '@umami/shiso/dist/index.css';
 import '@/styles/variables.css';
 import '@/styles/global.css';
-import '@umami/react-zen/styles.css';
 
 export default function RootLayout({ children }) {
   return (
@@ -33,12 +33,14 @@ export default function RootLayout({ children }) {
       </head>
       <body>
         <Suspense>
-          <Header />
-          <Main>{children}</Main>
-          <Footer />
+          <Grid rows="auto 1fr auto" height="100vh">
+            <Header />
+            <Container style={{ marginTop: '70px', maxWidth: '1320px' }}>{children}</Container>
+            <Footer />
+          </Grid>
         </Suspense>
         {process.env.NODE_ENV === 'production' && (
-          <Script id="koala-script">
+          <Script id="koala">
             {`!function(t){if(window.ko)return;window.ko=[],["identify","track","removeListeners","on","off","qualify","ready"].forEach(function(t){ko[t]=function(){var n=[].slice.call(arguments);return n.unshift(t),ko.push(n),ko}});var n=document.createElement("script");n.async=!0,n.setAttribute("src","https://cdn.getkoala.com/v1/pk_c271ea7cda36bf4824350411f24fad0e76b7/sdk.js"),(document.body || document.head).appendChild(n)}();`}
           </Script>
         )}
