@@ -1,0 +1,15 @@
+---
+title: 启用 Redis
+---
+
+Umami 支持 [Redis](https://redis.io/) 作为缓存层，以提高性能。例如，当您向服务器发送请求时，需要进行网站查找。结果可以缓存到 Redis 中，以便今后更快地查找。
+
+此外，登录验证将由 Redis 处理，而不是使用 JWT 令牌。
+
+## 用法
+
+要启用 Redis，请添加一个称为 `REDIS_URL` 的环境变量作为连接字符串。
+
+```dotenv
+REDIS_URL=redis://username:password@your-redis-server:port
+```

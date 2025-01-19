@@ -108,6 +108,10 @@
             {
               "label": "环境变量",
               "url": "/docs/environment-variables"
+            },
+            {
+              "label": "启用 Redis",
+              "url": "/docs/enable-redis"
             }
           ]
         },
