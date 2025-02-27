@@ -63,3 +63,33 @@ Umami 追踪器提供了多个属性，允许您配置其行为。
   data-tag="umami-eu"
 ></script>
 ```
+
+### data-exclude-search
+
+如果您不想从 URL 中收集搜索参数。
+
+用法：
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/umami.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+  data-exclude-search="true"
+></script>
+```
+
+### data-exclude-hash
+
+如果您不想从 URL 中收集哈希值。
+
+用法：
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/umami.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+  data-exclude-hash="true"
+></script>
+```
