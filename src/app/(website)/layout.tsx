@@ -11,7 +11,8 @@ import '@fontsource/inter/600.css';
 import '@fontsource/inter/700.css';
 import '@fontsource/jetbrains-mono/400.css';
 import '@umami/react-zen/styles.css';
-import '@umami/shiso/dist/index.css';
+import '@umami/shiso/styles.css';
+import 'highlight.js/styles/github-dark.css';
 import '@/styles/variables.css';
 import '@/styles/global.css';
 
@@ -32,7 +33,7 @@ export default function RootLayout({ children }) {
           <Script async src="https://www.zhcndoc.com/js/common.js"></Script>
         )}
       </head>
-      <body>
+      <body suppressHydrationWarning>
         <Suspense>
           <Grid rows="auto 1fr auto" height="100vh">
             <Header />
