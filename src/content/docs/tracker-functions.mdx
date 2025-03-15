@@ -74,18 +74,18 @@ umami.track(props => ({
 }));
 ```
 
-## 事件数据限制
+## Event Data Limits
 
-事件数据可以与任何 JSON 数据一起使用。为了保持性能，有一些规则：
+Event Data can work with any JSON data. There are a few rules in place to maintain performance.
 
-- 数字的最大精度为 4。
-- 字符串的最大长度为 500。
-- 数组会被转换为字符串，最大长度也为 500。
-- 对象的最大属性数为 50。数组算作 1 个属性。
+- Numbers have a max precision of 4.
+- Strings have a max length of 500.
+- Arrays are converted to a String, with the same max length of 500.
+- Objects have a max of 50 properties. Arrays are considered 1 property.
 
-## 会话数据
+## Session Data
 
-跟踪具有动态数据的会话。您可以从跟踪器脚本调用身份函数，以保存有关当前会话的数据。
+Tracks a session with dynamic data. You would call the `identify` function from the tracker script to save data about the current session.
 
 ```js
 umami.identify({ email: 'bob@aol.com' });

@@ -8,7 +8,6 @@ title: 团队
 
 ```text
 POST /api/teams
-GET /api/teams
 POST /api/teams/join
 POST /api/teams/:teamId
 GET /api/teams/:teamId
@@ -49,43 +48,6 @@ GET /api/teams/:teamId/websites
     "teamId": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
     "updatedAt": null,
     "userId": "1a457e1a-121a-11ee-be56-0242ac120002"
-  }
-]
-```
-
----
-
-## GET /api/teams
-
-返回所有团队。
-
-**参数**
-
-- `query`: (可选字符串) 搜索文本。
-- `page`: (可选数字，默认1) 确定页码。
-- `pageSize`: (可选字符串) 确定返回多少结果。
-- `orderBy`: (可选字符串，默认 `name`) 按列名排序。
-
-**示例响应**
-
-```json
-[
-  {
-    "accessCode": "xxwtoY8pzKjDIUQi",
-    "createdAt": "2023-04-13T20:22:55.756Z",
-    "id": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
-    "name": "我的团队",
-    "teamUser": [
-      {
-        "createdAt": "2023-04-13T20:22:55.756Z",
-        "id": "a9b1fbbc-ac22-4422-aa74-b2a2751ad87d",
-        "role": "团队拥有者",
-        "teamId": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
-        "updatedAt": null,
-        "user": { "id": "1a457e1a-121a-11ee-be56-0242ac120002", "username": "admin" },
-        "userId": "1a457e1a-121a-11ee-be56-0242ac120002"
-      }
-    ]
   }
 ]
 ```
@@ -138,11 +100,23 @@ GET /api/teams/:teamId/websites
 
 ```json
 {
-  "id": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
-  "name": "我的团队2",
-  "accessCode": "LCh5C6SyoHCFcxaJ",
-  "createdAt": "2023-04-13T20:22:55.756Z",
-  "updatedAt": "2023-04-13T20:59:10.335Z"
+  "id": "a1645e87-6107-4dcf-96a4-1583c5a4d5cf",
+  "name": "我的团队",
+  "accessCode": "team_cVQf0mYPriZlPAgK",
+  "logoUrl": null,
+  "createdAt": "2025-03-10T17:59:42.325Z",
+  "updatedAt": "2025-03-10T17:59:42.325Z",
+  "deletedAt": null,
+  "teamUser": [
+    {
+      "id": "9bd52350-e1d4-457c-8181-45b2128b8810",
+      "teamId": "a1645e87-6107-4dcf-96a4-1583c5a4d5cf",
+      "userId": "41e2b680-648e-4b09-bcd7-3e2b10c06264",
+      "role": "team-owner",
+      "createdAt": "2025-03-10T17:59:42.325Z",
+      "updatedAt": "2025-03-10T17:59:42.325Z"
+    }
+  ]
 }
 ```
 
@@ -201,20 +175,22 @@ ok
 **示例响应**
 
 ```json
-[
-  {
-    "id": "a9b1fbbc-ac22-4422-aa74-b2a2751ad87d",
-    "teamId": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
-    "userId": "1a457e1a-121a-11ee-be56-0242ac120002",
-    "role": "团队拥有者",
-    "createdAt": "2023-04-13T20:22:55.756Z",
-    "updatedAt": null,
-    "user": {
-      "id": "1a457e1a-121a-11ee-be56-0242ac120002",
-      "username": "admin"
+{
+  "data": [
+    {
+      "id": "cbb58c3d-4f84-47c7-a394-b6efd3997c22",
+      "teamId": "f5f787dc-4cee-415c-a266-16fcab6520e5",
+      "userId": "41e2b680-648e-4b09-bcd7-3e2b10c06264",
+      "role": "团队拥有者",
+      "createdAt": "2025-03-10T18:20:13.333Z",
+      "updatedAt": "2025-03-10T18:20:13.333Z",
+      "user": { "id": "41e2b680-648e-4b09-bcd7-3e2b10c06264", "username": "admin" }
     }
-  }
-]
+  ],
+  "count": 1,
+  "page": 1,
+  "pageSize": 10
+}
 ```
 
 ---
@@ -225,19 +201,19 @@ ok
 
 **参数**
 
-- `userId`: 要添加的用户的ID。
-- `role`: 用户将添加的角色（`member`或`view-only`）。
+- `userId`: 要添加的用户ID。
+- `role`: 用户将被添加的角色（`team-member/team-view-only/team-manager`）。
 
 **示例响应**
 
 ```json
 {
-  "id": "a9b1fbbc-ac22-4422-aa74-b2a2751ad87d",
-  "teamId": "ae09865c-ff82-4c43-acba-dd1e6540cda5",
-  "userId": "1a457e1a-121a-11ee-be56-0242ac120002",
-  "role": "团队拥有者",
-  "createdAt": "2023-04-13T20:22:55.756Z",
-  "updatedAt": null
+  "id": "dcf462b4-0eb3-4ad9-8c5d-9b18bc7825e2",
+  "teamId": "f5f787dc-4cee-415c-a266-16fcab6520e5",
+  "userId": "6858ce93-22d9-48e3-8b33-fb355d63b6b4",
+  "role": "团队成员",
+  "createdAt": "2025-03-10T19:31:21.773Z",
+  "updatedAt": "2025-03-10T19:31:21.773Z"
 }
 ```
 
@@ -348,10 +324,7 @@ ok
         }
       }
     ],
-    "user": {
-      "id": "a36560ed-e21c-4ed9-84aa-c86654460cae",
-      "username": "admin@website.com"
-    }
+    "user": { "id": "a36560ed-e21c-4ed9-84aa-c86654460cae", "username": "admin@website.com" }
   }
 ]
 ```
