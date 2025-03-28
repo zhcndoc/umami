@@ -33,7 +33,7 @@ export default function RootLayout({ children }) {
           <Script async src="https://www.zhcndoc.com/js/common.js"></Script>
         )}
       </head>
-      <body suppressHydrationWarning>
+      <body>
         <Suspense>
           <Grid rows="auto 1fr auto" height="100vh">
             <Header />
@@ -57,4 +57,7 @@ export const metadata: Metadata = {
     template: '%s – Umami 中文文档',
     default: 'Umami 中文文档',
   },
+  openGraph: {
+    description: 'Umami is a simple, fast, privacy-friendly alternative to Google Analytics.',
+  }
 };
