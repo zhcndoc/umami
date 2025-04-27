@@ -22,6 +22,8 @@ import {
   Lightbulb,
   Location,
   Magnet,
+  Money,
+  Network,
   Path,
   Privacy,
   Realtime,
@@ -183,8 +185,18 @@ const items = [
       },
       {
         title: '旅程',
-        description: ['了解用户如何浏览您的网站。'],
+        description: ['查看您的收入数据以及用户的消费情况。'],
         icon: <Path />,
+      },
+      {
+        title: '收入',
+        description: ['了解用户如何浏览您的网站。'],
+        icon: <Money />,
+      },
+      {
+        title: '归属',
+        description: ['查看用户如何与您的营销互动以及什么推动了转化。'],
+        icon: <Network />,
       },
     ],
   },
