@@ -81,6 +81,10 @@
               "url": "/docs/compare"
             },
             {
+              "label": "唯一 ID",
+              "url": "/docs/distinct-ids"
+            },
+            {
               "label": "标签",
               "url": "/docs/tags"
             },

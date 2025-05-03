@@ -1,34 +1,30 @@
 'use client';
-import { createPortal } from 'react-dom';
-import classNames from 'classnames';
+import { Button, Icon, Icons, DialogTrigger, Modal, Dialog, Column, Text } from '@umami/react-zen';
 import Link from 'next/link';
-import { Button, Icon, Icons } from '@umami/react-zen';
-import styles from './MobileMenu.module.css';
 
-interface Props {
-  items: {
-    label: string;
-    value: string;
-  }[];
-  onClose: () => void;
-}
-
-export default function MobileMenu({ items = [], onClose }: Props) {
-  return createPortal(
-    <div className={classNames(styles.menu)}>
-      <Button className={styles.close} onPress={onClose}>
+export default function MobileMenu({ items }) {
+  return (
+    <DialogTrigger>
+      <Button variant="quiet">
         <Icon>
-          <Icons.Close />
+          <Icons.Menu />
         </Icon>
       </Button>
-      <div className={styles.items}>
-        {items.map(({ label, value }) => (
-          <Link key={value} href={value} className={styles.item}>
-            {label}
-          </Link>
-        ))}
-      </div>
-    </div>,
-    document.body,
+      <Modal position="bottom" offset="70px">
+        <Dialog variant="sheet">
+          {({ close }) => {
+            return (
+              <Column gap="6" padding="6" onClick={close}>
+                {items.map(({ label, value }) => (
+                  <Link key={value} href={value}>
+                    <Text size="4">{label}</Text>
+                  </Link>
+                ))}
+              </Column>
+            );
+          }}
+        </Dialog>
+      </Modal>
+    </DialogTrigger>
   );
 }

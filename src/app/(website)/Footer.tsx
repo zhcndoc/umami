@@ -32,6 +32,7 @@ const data = [
       { text: '联系', href: '/contact' },
       { text: '隐私', href: '/privacy' },
       { text: '条款', href: '/terms' },
+      { text: 'DPA', href: '/umami-dpa.pdf', target: '_blank' },
     ],
   },
 ];
@@ -50,12 +51,12 @@ export default function Footer() {
           </Column>
           {data.map(({ title, items }) => (
             <Column key={title} gap>
-              <Heading size="5">{title}</Heading>
-              {items.map(({ text, href }) => (
+              <Heading size="1">{title}</Heading>
+              {items.map(({ text, href, target }) => (
                 <Link
                   key={text}
                   href={href}
-                  target={href.startsWith('http') ? '_blank' : undefined}
+                  target={target || href.startsWith('http') ? '_blank' : undefined}
                 >
                   {text}
                 </Link>
@@ -65,7 +66,7 @@ export default function Footer() {
         </Grid>
         <Row justifyContent="space-between">
           <SocialMedia />
-          <Text size="2">
+          <Text size="1">
               <a target="__blank" href="https://www.zhcndoc.com/?ref=umami">
                 简中文档
               </a>

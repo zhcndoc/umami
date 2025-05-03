@@ -2,21 +2,37 @@
 title: 跟踪器功能
 ---
 
-Umami 跟踪器提供了一个可以在网站上调用的函数，如果您想要对跟踪进行更多控制的话。默认情况下，一切都是自动收集的，但您可以使用 `data-auto-track="false"` 禁用此功能，并自行发送数据。请参见 [跟踪器配置](/docs/tracker-configuration)。
+Umami 跟踪器提供了一个函数，您可以在网站上调用它，以便对跟踪进行更大的控制。默认情况下，所有数据都是自动收集的，但您可以通过使用 `data-auto-track="false"` 并自己发送数据来禁用此功能。
+请参见 [跟踪器配置](/docs/tracker-configuration)。
 
 ## 函数
 
 ```js
+// 跟踪当前页面
+umami.track();
+
+// 自定义有效负载
 umami.track(payload: object);
 
-umami.track(event_name: string, event_data: object);
+// 自定义事件
+umami.track(event_name: string);
 
-umami.identify(session_data: object);
+// 包含数据的自定义事件
+umami.track(event_name: string, data: object);
+
+// 将 ID 分配给当前会话
+umami.identify(unique_id: string);
+
+// 会话数据
+umami.identify(unique_id: string, data: object);
+
+// 无 ID 的会话数据
+umami.identify(data: object);
 ```
 
-## 页面浏览
+## 页面浏览量
 
-跟踪页面浏览。
+跟踪页面浏览量。
 
 ```js
 umami.track();
@@ -30,23 +46,23 @@ umami.track();
 - `screen`: 屏幕尺寸（例如 1920x1080）
 - `title`: 页面标题
 - `url`: 页面 URL
-- `website`: 网站 ID（必填）
+- `website`: 网站 ID（必需）
 
-如果您希望发送自己的自定义载荷，可以将对象传递给该函数：
+如果您希望发送自定义有效负载，可以将对象传递给函数：
 
 ```js
-umami.track({ website: 'e676c9b4-11e4-4ef1-a4d7-87001773e9f2', url: '/home', title: '主页' });
+umami.track({ website: 'e676c9b4-11e4-4ef1-a4d7-87001773e9f2', url: '/home', title: '首页' });
 ```
 
-上述代码仅会发送属性 `website`、`url` 和 `title`。如果您想包括现有的属性，请传递一个函数：
+上述代码将仅发送属性 `website`、`url` 和 `title`。如果您想包含现有属性，可以传递一个函数：
 
 ```js
-umami.track(props => ({ ...props, url: '/home', title: '主页' }));
+umami.track(props => ({ ...props, url: '/home', title: '首页' }));
 ```
 
 ## 事件
 
-根据给定名称跟踪事件。
+跟踪具有给定名称的事件。
 
 ```js
 umami.track('signup-button');
@@ -54,14 +70,14 @@ umami.track('signup-button');
 
 ## 事件数据
 
-跟踪具有动态数据的事件。
+跟踪带有动态数据的事件。
 
 ```js
 umami.track('signup-button', { name: 'newsletter', id: 123 });
 ```
 
-在跟踪事件时，默认属性会包含在载荷中。
-这相当于运行：
+在跟踪事件时，默认属性将包含在有效负载中。
+这等同于运行：
 
 ```js
 umami.track(props => ({
@@ -74,19 +90,33 @@ umami.track(props => ({
 }));
 ```
 
-## Event Data Limits
+## 事件数据限制
 
-Event Data can work with any JSON data. There are a few rules in place to maintain performance.
+事件数据可以处理任何 JSON 数据。为了保持性能，设定了一些规则。
 
-- Numbers have a max precision of 4.
-- Strings have a max length of 500.
-- Arrays are converted to a String, with the same max length of 500.
-- Objects have a max of 50 properties. Arrays are considered 1 property.
+- 数字的最大精度为 4。
+- 字符串的最大长度为 500。
+- 数组被转换为字符串，最大长度同样为 500。
+- 对象最大有 50 个属性。数组视为 1 个属性。
 
-## Session Data
+## 会话
 
-Tracks a session with dynamic data. You would call the `identify` function from the tracker script to save data about the current session.
+传入您自己的 ID 来识别用户。
 
 ```js
-umami.identify({ email: 'bob@aol.com' });
+umami.identify('unique_id');
+```
+
+## 会话数据
+
+保存当前会话的数据。
+
+```js
+umami.identify('unique_id', { name: 'Bob', email: 'bob@aol.com' });
+```
+
+要保存没有唯一 ID 的数据，仅传入一个 JSON 对象。
+
+```js
+umami.identify({ name: 'Bob', email: 'bob@aol.com' });
 ```

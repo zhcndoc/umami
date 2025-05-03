@@ -12,7 +12,7 @@ export default function Hero() {
 
   return (
     <Column gap="6" className={styles.hero} alignItems="center">
-      <Heading size="1" align="center">
+      <Heading size="6" align="center">
         现代分析平台
         <br /> 为了轻松的洞察
       </Heading>
