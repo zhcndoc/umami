@@ -311,6 +311,10 @@
               "url": "/docs/guides/hosting"
             },
             {
+              "label": "在 Nodion 上运行",
+              "url": "/docs/guides/running-on-nodion"
+            },
+            {
               "label": "在 DigitalOcean 上运行",
               "url": "/docs/guides/running-on-digitalocean"
             },
