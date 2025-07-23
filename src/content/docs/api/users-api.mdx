@@ -24,18 +24,27 @@ GET /api/users/:userId/teams
 
 **参数**
 
-- `username`: (字符串) 用户的用户名。
-- `password`: (字符串) 用户的密码。
-- `role`: (字符串) 确定用户访问权限，`admin/user/view-only`。
+- `username`: (string) 用户名。
+- `password`: (string) 用户密码。
+- `role`: (string) 选择 `admin` | `user` | `view-only` 中的一个。
+
+**请求体**
+
+```json
+{
+  "username": "admin",
+  "password": "umami",
+  "role": "admin"
+}
+```
 
 **示例响应**
 
 ```json
 {
-  "id": "1a457e1a-121a-11ee-be56-0242ac120002",
-  "username": "umami",
-  "role": "admin",
-  "createdAt": "2023-04-13T20:22:55.756Z"
+    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "username": "demo",
+    "role": "user"
 }
 ```
 
@@ -43,21 +52,17 @@ GET /api/users/:userId/teams
 
 ## GET /api/admin/users
 
-返回所有用户。需要管理权限。
-
-**参数**
-
-无
+返回所有用户。**需要管理权限。**
 
 **示例响应**
 
 ```json
 [
   {
-    "id": "1a457e1a-121a-11ee-be56-0242ac120002",
-    "username": "umami",
+    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "username": "admin",
     "role": "admin",
-    "createdAt": "2023-04-13T20:22:55.756Z"
+    "createdAt": "0000-00-00T00:00:00.000Z"
   }
 ]
 ```
@@ -68,17 +73,14 @@ GET /api/users/:userId/teams
 
 根据 ID 获取用户。
 
-**参数**
-
-无
-
 **示例响应**
 
 ```json
 {
-  "id": "1a457e1a-121a-11ee-be56-0242ac120002",
-  "username": "umami",
-  "role": "admin"
+  "username" : "xxxxxxxxxxx",
+  "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "role" : "user",
+  "createdAt" : "0000-00-00T00:00:00.000Z"
 }
 ```
 
@@ -90,18 +92,28 @@ GET /api/users/:userId/teams
 
 **参数**
 
-- `username`: (可选字符串) 用户的用户名。
-- `password`: (可选字符串) 用户的密码。
-- `role`: (可选字符串) 确定用户访问权限，`admin` 或 `user`。
+- `username`: （可选字符串）用户的用户名。
+- `password`: （可选字符串）用户的密码。
+- `role`: （可选字符串）从 `admin`、`user`、`view-only` 中选择。
+
+**请求体**
+
+```json
+{
+  "username": "admin",
+  "password": "umami",
+  "role": "admin"
+}
+```
 
 **示例响应**
 
 ```json
 {
-  "id": "1a457e1a-121a-11ee-be56-0242ac120002",
-  "username": "umami",
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "username": "admin",
   "role": "admin",
-  "createdAt": "2023-04-13T20:22:55.756Z"
+  "createdAt": "0000-00-00T00:00:00.000Z"
 }
 ```
 
@@ -111,13 +123,9 @@ GET /api/users/:userId/teams
 
 删除一个用户。
 
-**参数**
-
-无
-
 **示例响应**
 
-```
+```text
 ok
 ```
 
@@ -137,19 +145,31 @@ ok
 **示例响应**
 
 ```json
-[
-  {
-    "id": "02d89813-7a72-41e1-87f0-8d668f85008b",
-    "userId": "1a457e1a-121a-11ee-be56-0242ac120002",
-    "domain": "mywebsite.com",
-    "name": "我的网站",
-    "shareId": null,
-    "createdAt": "2023-04-10T23:06:44.250Z",
-    "deletedAt": null,
-    "resetAt": null,
-    "updatedAt": null
-  }
-]
+{
+  "data": [
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "updatedAt": "0000-00-00T00:00:00.00Z",
+      "user": {
+        "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "username": "xxxxx"
+      },
+      "domain": "xxxxxxx",
+      "teamId": null,
+      "resetAt": null,
+      "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "shareId": "xxxxxxxxxxxxx",
+      "createdAt": "0000-00-00T00:00:00.00Z",
+      "name": "xxxxx",
+      "deletedAt": null
+    }
+  ],
+  "orderBy": "name",
+  "count": 3,
+  "pageSize": 10,
+  "page": 1
+}
 ```
 
 ---
@@ -160,21 +180,46 @@ ok
 
 **参数**
 
-- `query`: (可选字符串) 搜索文本。
-- `page`: (可选数字，默认 1) 确定页码。
-- `pageSize`: (可选字符串) 确定返回多少结果。
-- `orderBy`: (可选字符串，默认 `name`) 按列名排序。
+- `query`: （字符串 | 可选）搜索文本。
+- `page`: （数字 | 可选，默认为1）确定页码。
+- `pageSize`: （字符串 | 可选）确定返回结果数量。
+- `orderBy`: （字符串 | 可选，默认为`name`）按列名排序。
 
 **示例响应**
 
 ```json
-[
-  {
-    "id": "02d89813-7a72-41e1-87f0-8d668f85008b",
-    "name": "我的团队",
-    "createdAt": "2023-04-10T23:06:44.250Z",
-    "deletedAt": null,
-    "updatedAt": null
-  }
-]
+{
+  "data": [
+    {
+      "_count": {
+        "website": 0,
+        "teamUser": 1
+      },
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "logoUrl": null,
+      "deletedAt": null,
+      "teamUser": [
+        {
+          "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "role": "team-owner",
+          "updatedAt": "0000-00-00T00:00:00.00Z",
+          "createdAt": "0000-00-00T00:00:00.00Z",
+          "user": {
+            "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "username": "xxxxx"
+          }
+        }
+      ],
+      "accessCode": "team_xxxxxxxxxxx",
+      "createdAt": "0000-00-00T00:00:00.00Z",
+      "updatedAt": "0000-00-00T00:00:00.00Z",
+      "name": "xxxxxx"
+    }
+  ],
+  "count": 8,
+  "pageSize": 10,
+  "page": 1
+}
 ```

@@ -188,7 +188,11 @@
               "url": "/docs/api/authentication"
             },
             {
-              "label": "发送统计数据",
+              "label": "我",
+              "url": "/docs/api/me-api"
+            },
+            {
+              "label": "发送统计信息",
               "url": "/docs/api/sending-stats"
             }
           ]
@@ -219,6 +223,14 @@
             {
               "label": "网站统计",
               "url": "/docs/api/website-stats-api"
+            },
+            {
+              "label": "实时",
+              "url": "/docs/api/realtime-api"
+            },
+            {
+              "label": "报告",
+              "url": "/docs/api/reports-api"
             }
           ]
         },
@@ -309,6 +321,10 @@
             {
               "label": "概述",
               "url": "/docs/guides/hosting"
+            },
+            {
+              "label": "在 Sevalla 上运行",
+              "url": "/docs/guides/running-on-sevalla"
             },
             {
               "label": "在 Nodion 上运行",

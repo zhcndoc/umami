@@ -1,0 +1,85 @@
+---
+title: 实时数据
+---
+
+您网站的实时数据。
+
+**端点**
+
+```text
+GET /api/realtime/:websiteId
+```
+
+---
+
+## GET /api/realtime/:websiteId
+
+获取网站实时数据。
+
+**参数**
+
+- `startAt`：（数字）起始日期的时间戳（毫秒级）。
+- `endAt`：（数字）结束日期的时间戳（毫秒级）。
+- `timezone`：（字符串）时区。
+
+**示例响应**
+
+```json
+{
+  "urls": {
+    "/" : 1,
+    "/contact" : 2
+  },
+  "countries": {
+    "PL" : 2,
+    "DE" : 5
+  },
+  "events": [
+    {
+      "__type": "event",
+      "os": "xxxx",
+      "device": "xxxx",
+      "country": "xx",
+      "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "eventName": "xxx-xxx-xxx-button",
+      "browser": "xxxxx",
+      "createdAt": "0000-00-00T00:00:00Z",
+      "urlPath": "x",
+      "referrerDomain": ""
+    }
+  ],
+  "series": {
+    "views": [
+      {
+        "x": "0000-00-00T00:00:00Z",
+        "y": 3
+      },
+      {
+        "x": "0000-00-00T00:00:00Z",
+        "y": 4
+      }
+    ],
+    "visitors": [
+      {
+        "x": "0000-00-00T00:00:00Z",
+        "y": 2
+      },
+      {
+        "x": "0000-00-00T00:00:00Z",
+        "y": 4
+      }
+    ]
+  },
+  "referrers": {
+    "umami.nuxt.dev": 2,
+    "umami.is": 33
+  },
+  "totals": {
+    "visitors": 60,
+    "views": 79,
+    "events": 19,
+    "countries": 22
+  },
+  "timestamp": 1750970573667
+}
+```

@@ -30,21 +30,15 @@ GET /api/websites/:websiteId/stats
 
 获取网站上活跃用户的数量。
 
-**参数**
-
-无
-
 **示例响应**
-
-从网址获取：`https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/active`
 
 ```json
 {
-  "x": 5
+  "visitors": 5
 }
 ```
 
-- `x`: 在过去 5 分钟内的唯一访客数量
+- `visitors`: 在过去 5 分钟内的唯一访客数量
 
 ---
 
@@ -71,15 +65,33 @@ GET /api/websites/:websiteId/stats
 
 **示例响应**
 
-网址：`https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/events/series?startAt=1683262800000&endAt=1683349199999&unit=hour&timezone=America%2FLos_Angeles`
-
 ```json
 [
-  { "x": "live-demo-button", "t": "2023-04-12T22:00:00Z", "y": 1 },
-  { "x": "get-started-button", "t": "2023-04-12T22:00:00Z", "y": 5 },
-  { "x": "get-started-button", "t": "2023-04-12T23:00:00Z", "y": 4 },
-  { "x": "live-demo-button", "t": "2023-04-12T23:00:00Z", "y": 4 },
-  { "x": "social-Discord", "t": "2023-04-13T00:00:00Z", "y": 1 }
+  { 
+    "x": "live-demo-button", 
+    "t": "2023-04-12T22:00:00Z", 
+    "y": 1 
+  },
+  {
+    "x": "get-started-button", 
+    "t": "2023-04-12T22:00:00Z", 
+    "y": 5 
+  },
+  { 
+    "x": "get-started-button", 
+    "t": "2023-04-12T23:00:00Z",
+    "y": 4 
+  },
+  {
+    "x": "live-demo-button", 
+    "t": "2023-04-12T23:00:00Z", 
+    "y": 4 
+  },
+  { 
+    "x": "social-Discord", 
+    "t": "2023-04-13T00:00:00Z", 
+    "y": 1 
+  }
 ]
 ```
 
@@ -115,12 +127,24 @@ GET /api/websites/:websiteId/stats
 ```json
 {
   "pageviews": [
-    { "x": "2020-04-20 01:00:00", "y": 3 },
-    { "x": "2020-04-20 02:00:00", "y": 7 }
+    { 
+      "x": "2020-04-20 01:00:00", 
+      "y": 3 
+    },
+    { 
+      "x": "2020-04-20 02:00:00", 
+      "y": 7 
+    }
   ],
   "sessions": [
-    { "x": "2020-04-20 01:00:00", "y": 2 },
-    { "x": "2020-04-20 02:00:00", "y": 4 }
+    { 
+      "x": "2020-04-20 01:00:00", 
+      "y": 2
+    },
+    { 
+      "x": "2020-04-20 02:00:00", 
+      "y": 4 
+    }
   ]
 }
 ```
@@ -153,15 +177,28 @@ GET /api/websites/:websiteId/stats
 
 **示例响应**
 
-网址：`https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/stats?startAt=1656679719687&endAt=1656766119687`
-
 ```json
 {
-  "pageviews": { "value": 3018, "prev": 3508 },
-  "visitors": { "value": 847, "prev": 910 },
-  "visits": { "value": 984, "prev": 1080 },
-  "bounces": { "value": 537, "prev": 628 },
-  "totaltime": { "value": 150492, "prev": 164713 }
+  "pageviews": { 
+    "value": 3018, 
+    "prev": 3508 
+  },
+  "visitors": {
+    "value": 847, 
+    "prev": 910 
+  },
+  "visits": { 
+    "value": 984, 
+    "prev": 1080 
+  },
+  "bounces": {
+    "value": 537, 
+    "prev": 628 
+  },
+  "totaltime": { 
+    "value": 150492, 
+    "prev": 164713 
+  }
 }
 ```
 
@@ -201,9 +238,18 @@ GET /api/websites/:websiteId/stats
 
 ```json
 [
-  { "x": "/", "y": 46 },
-  { "x": "/docs", "y": 17 },
-  { "x": "/download", "y": 14 }
+  { 
+    "x": "/", 
+    "y": 46 
+  },
+  { 
+    "x": "/docs", 
+    "y": 17 
+  },
+  { 
+    "x": "/download", 
+    "y": 14 
+  }
 ]
 ```
 

@@ -31,19 +31,33 @@ POST /api/websites/:websiteId/reset
 **示例响应**
 
 ```json
-[
-  {
-    "id": "02d89813-7a72-41e1-87f0-8d668f85008b",
-    "name": "我的网站",
-    "domain": "mywebsite.com",
-    "shareId": null,
-    "resetAt": null,
-    "websiteId": "1a457e1a-121a-11ee-be56-0242ac120002",
-    "createdAt": "2023-04-10T23:06:44.250Z",
-    "updatedAt": null,
-    "deletedAt": null
-  }
-]
+{
+    "data": [
+        {
+            "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "name": "Example",
+            "domain": "example.com",
+            "shareId": null,
+            "resetAt": null,
+            "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "teamId": null,
+            "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "createdAt": "0000-00-00T00:00:00.000Z",
+            "updatedAt": "0000-00-00T00:00:00.000Z",
+            "deletedAt": null,
+            "user": {
+                "username": "xxxxxxx@xxxx.xxxx",
+                "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+            }
+        }
+    ],
+    "count": 2,
+    "page": 1,
+    "pageSize": 10,
+    "orderBy": "name"
+}
+
+
 ```
 
 ---
@@ -56,20 +70,34 @@ POST /api/websites/:websiteId/reset
 
 - `domain`: （字符串）被跟踪网站的完整域名。
 - `name`: （字符串）Umami 中的网站名称。
-- `shareId`: （可选字符串）一个唯一字符串以启用共享 URL。设置为 `null` 以取消共享。
-- `teamId`: （可选字符串）创建网站所在团队的 ID。
+- `shareId`: （字符串|可选）一个唯一字符串以启用共享 URL。设置为 `null` 以取消共享。
+- `teamId`: （字符串|可选）创建网站所在团队的 ID。
+
+
+**请求体**
+
+```json 
+{
+    "name": "Test",
+    "domain": "example.com"
+}
+```
 
 **示例响应**
 
 ```json
 {
-  "id": 4,
-  "websiteUuid": "51f73213-3f01-4343-a135-25496a3ffd31",
-  "websiteId": 2,
-  "name": "Umami",
-  "domain": "umami.is",
-  "shareId": "8PWex1pa",
-  "createdAt": "2021-07-26T17:17:52.846Z"
+    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "name": "Test",
+    "domain": "example.com",
+    "shareId": null,
+    "resetAt": null,
+    "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "teamId": null,
+    "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "createdAt": "0000-00-00T00:00:00.000Z",
+    "updatedAt": "0000-00-00T00:00:00.000Z",
+    "deletedAt": null
 }
 ```
 
@@ -79,21 +107,17 @@ POST /api/websites/:websiteId/reset
 
 通过 ID 获取网站。
 
-**参数**
-
-无
-
 **示例响应**
 
 ```json
 {
-  "id": "02d89813-7a72-41e1-87f0-8d668f85008b",
-  "name": "我的网站",
-  "domain": "mywebsite.com",
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "Example",
+  "domain": "example.com",
   "shareId": null,
   "resetAt": null,
-  "userId": "1a457e1a-121a-11ee-be56-0242ac120002",
-  "createdAt": "2023-04-10T23:06:44.250Z",
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "createdAt": "0000-00-00T00:00:00.000Z",
   "updatedAt": null,
   "deletedAt": null
 }
@@ -107,23 +131,34 @@ POST /api/websites/:websiteId/reset
 
 **参数**
 
-- `name`: （可选字符串）Umami 中的网站名称。
-- `domain`: （可选字符串）被跟踪网站的完整域名。
-- `shareId`: （可选字符串）一个唯一字符串以启用共享 URL。设置为 `null` 以取消共享。
+- `name`: (string) Umami 网站的名称。
+- `domain`: (string) 被追踪网站的完整域名。
+- `shareId`: (string | optional) 用于启用共享 URL 的唯一字符串。设置为 `null` 以取消共享。
+
+**请求主体**
+
+```json
+{
+    "name": "Test",
+    "domain": "domain.com"
+}
+```
 
 **示例响应**
 
 ```json
 {
-  "id": "02d89813-7a72-41e1-87f0-8d668f85008b",
-  "name": "我的网站",
-  "domain": "mywebsite.com",
-  "shareId": null,
-  "resetAt": null,
-  "userId": "1a457e1a-121a-11ee-be56-0242ac120002",
-  "createdAt": "2023-04-10T23:06:44.250Z",
-  "updatedAt": null,
-  "deletedAt": null
+    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "name": "Test",
+    "domain": "domain.com",
+    "shareId": null,
+    "resetAt": null,
+    "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "teamId": null,
+    "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "createdAt": "0000-00-00T00:00:00.000Z",
+    "updatedAt": "0000-00-00T00:00:00.000Z",
+    "deletedAt": null
 }
 ```
 
@@ -132,10 +167,6 @@ POST /api/websites/:websiteId/reset
 ## DELETE /api/websites/:websiteId
 
 删除一个网站。
-
-**参数**
-
-无
 
 **示例响应**
 
@@ -148,10 +179,6 @@ ok
 ## POST /api/websites/:websiteId/reset
 
 通过移除与网站相关的所有数据重置网站。
-
-**参数**
-
-无
 
 **示例响应**
 

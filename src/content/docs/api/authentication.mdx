@@ -19,12 +19,14 @@ title: 身份验证
 
 ```json
 {
-  "token": "eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A",
-  "user": {
-    "id": "cd33a605-d785-42a1-9365-d6cad3b7befd",
-    "username": "您的用户名",
-    "createdAt": "2020-04-20 01:00:00"
-  }
+    "token": "eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A",
+    "user": {
+        "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "username": "admin",
+        "role": "admin",
+        "createdAt": "2000-00-00T00:00:00.000Z",
+        "isAdmin": true
+    }
 }
 ```
 
@@ -54,9 +56,10 @@ curl https://{您的服务器}/api/websites
 
 ```json
 {
-  "id": "1a457e1a-121a-11ee-be56-0242ac120002",
-  "username": "umami",
-  "role": "admin",
-  "isAdmin": true
+    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "username": "admin",
+    "role": "admin",
+    "createdAt": "2000-00-00T00:00:00.000Z",
+    "isAdmin": true
 }
 ```
