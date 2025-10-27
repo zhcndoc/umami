@@ -8,11 +8,36 @@ title: 事件
 
 ```text
 GET /api/websites/:websiteId/events
+GET /api/websites/:websiteId/event-data/:eventId
 GET /api/websites/:websiteId/event-data/events
 GET /api/websites/:websiteId/event-data/fields
+GET /api/websites/:websiteId/event-data/properties
 GET /api/websites/:websiteId/event-data/values
 GET /api/websites/:websiteId/event-data/stats
 ```
+
+---
+
+## Filters
+
+所有带有 `filters` 标记的端点现在可以使用以下参数进行过滤。
+
+**参数**
+
+- `path`: (string | optional) URL 名称。
+- `referrer`: (string | optional) 引荐来源名称。
+- `title`: (string | optional) 页面标题名称。
+- `query`: (string | optional) 查询参数名称。
+- `browser`: (string | optional) 浏览器名称。
+- `os`: (string | optional) 操作系统名称。
+- `device`: (string | optional) 设备名称（例如 Mobile）
+- `country`: (string | optional) 国家名称。
+- `region`: (string | optional) 地区/州/省名称。
+- `city`: (string | optional) 城市名称。
+- `hostname`: (string | optional) 主机名。
+- `tag`: (string | optional) 标签名称。
+- `segment`: (uuid | optional) 片段 UUID。
+- `cohort`: (uuid | optional) 群体 UUID。
 
 ---
 
@@ -22,12 +47,12 @@ GET /api/websites/:websiteId/event-data/stats
 
 **参数**
 
-- `startAt`: 开始日期的时间戳（以毫秒为单位）。
-- `endAt`: 结束日期的时间戳（以毫秒为单位）。
-- `query`: （字符串 | 字符串）搜索文本。
-- `page`: （数字 | 可选，默认为 1）确定页码。
-- `pageSize`: （字符串 | 可选）确定要返回多少结果。
-- `orderBy`: （字符串 | 可选）按列名排序。
+- `startAt`: (number) 开始日期的时间戳（毫秒）。
+- `endAt`: (number) 结束日期的时间戳（毫秒）。
+- `search`: (string | optional) 搜索文本。
+- `page`: (optional number, 默认为 1) 页码。
+- `pageSize`: (number | optional, 默认为 20) 返回结果数量。
+- `filters`: 可接受过滤参数。
 
 **示例响应**
 
@@ -38,35 +63,88 @@ GET /api/websites/:websiteId/event-data/stats
       "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "createdAt": "0000-00-00T00:00:00Z",
-      "urlPath": "/docs/api/authentication",
+      "createdAt": "2025-10-15T16:26:28Z",
+      "hostname": "umami.is",
+      "urlPath": "/docs/api",
       "urlQuery": "",
-      "referrerPath": "/docs/api",
+      "referrerPath": "",
       "referrerQuery": "",
       "referrerDomain": "",
-      "pageTitle": "总览 – Umami",
+      "country": "US",
+      "city": "Scott",
+      "device": "desktop",
+      "os": "Mac OS",
+      "browser": "chrome",
+      "pageTitle": "API – Docs - Umami",
       "eventType": 1,
-      "eventName": ""
+      "eventName": "",
+      "hasData": 0
     },
     {
       "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "createdAt": "0000-00-00T00:00:00Z",
-      "urlPath": "/",
-      "urlQuery": "utm_source=apollo&utm_medium=outbound-email&utm_campaign=founders",
-      "referrerPath": "",
+      "createdAt": "2025-10-15T16:26:23Z",
+      "hostname": "umami.is",
+      "urlPath": "/docs/sessions",
+      "urlQuery": "",
+      "referrerPath": "/docs/distinct-ids",
       "referrerQuery": "",
-      "referrerDomain": "",
-      "pageTitle": "Umami",
-      "eventType": 1,
-      "eventName": ""
+      "referrerDomain": "umami.is",
+      "country": "PL",
+      "city": "Warsaw",
+      "device": "desktop",
+      "os": "Mac OS",
+      "browser": "chrome",
+      "pageTitle": "Sessions – Docs - Umami",
+      "eventType": 2,
+      "eventName": "login-button-header",
+      "hasData": 0
     }
   ],
-  "count": 1000,
+  "count": 2,
   "page": 1,
   "pageSize": 20
 }
+```
+
+---
+
+## GET /api/websites/:websiteId/event-data/:eventId
+
+获取单个事件的事件数据。
+
+**示例响应**
+
+```json
+[
+  {
+    "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "urlPath": "/",
+    "eventName": "revenue-demo",
+    "dataKey": "currency",
+    "stringValue": "USD",
+    "numberValue": null,
+    "dateValue": null,
+    "dataType": 1,
+    "createdAt": "2025-10-10T12:31:03Z"
+  },
+  {
+    "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "urlPath": "/",
+    "eventName": "revenue-demo",
+    "dataKey": "revenue",
+    "stringValue": "40.0000",
+    "numberValue": 40,
+    "dateValue": null,
+    "dataType": 2,
+    "createdAt": "2025-10-10T12:31:03Z"
+  }
+]
 ```
 
 ---
@@ -77,9 +155,10 @@ GET /api/websites/:websiteId/event-data/stats
 
 **参数**
 
-- `startAt`: 开始日期的时间戳（毫秒）。
-- `endAt`: 结束日期的时间戳（毫秒）。
-- `event`: （可选）事件名称过滤。
+- `startAt`: (number) 开始日期的时间戳（毫秒）。
+- `endAt`: (number) 结束日期的时间戳（毫秒）。
+- `event`: (string | optional) 事件名称过滤。
+- `filters`: 可接受过滤参数。
 
 **示例响应**
 
@@ -114,9 +193,9 @@ GET /api/websites/:websiteId/event-data/stats
 
 **参数**
 
-- `websiteId`: （uuid）网站的唯一标识符。
-- `startAt`: 开始日期的时间戳（毫秒）。
-- `endAt`: 结束日期的时间戳（毫秒）。
+- `startAt`: (number) 开始日期的时间戳（毫秒）。
+- `endAt`: (number) 结束日期的时间戳（毫秒）。
+- `filters`: 可接受过滤参数。
 
 **示例响应**
 
@@ -151,23 +230,59 @@ GET /api/websites/:websiteId/event-data/stats
 
 ---
 
+## GET /api/websites/:websiteId/event-data/properties
+
+获取网站事件名称和属性计数。
+
+**参数**
+
+- `startAt`: (number) 开始日期的时间戳（毫秒）。
+- `endAt`: (number) 结束日期的时间戳（毫秒）。
+- `filters`: 可接受过滤参数。
+
+**示例响应**
+
+```json
+[
+  {
+    "eventName": "revenue-demo",
+    "propertyName": "revenue",
+    "total": 122
+  },
+  {
+    "eventName": "revenue-demo",
+    "propertyName": "currency",
+    "total": 122
+  }
+]
+```
+
+---
+
 ## GET /api/websites/:websiteId/event-data/values
 
 获取给定事件和属性的事件数据计数。
 
 **参数**
 
-- `startAt`: 开始日期的时间戳（毫秒）。
-- `endAt`: 结束日期的时间戳（毫秒）。
-- `eventName`: 事件名称。
-- `propertyName`: 属性名称。
+- `startAt`: (number) 开始日期的时间戳（毫秒）。
+- `endAt`: (number) 结束日期的时间戳（毫秒）。
+- `event`: (string) 事件名称。
+- `propertyName`: (string) 属性名称。
+- `filters`: 可接受过滤参数。
 
 **示例响应**
 
 ```json
 [
-  { "value": "female", "total": 4 },
-  { "value": "male", "total": 1 }
+  {
+    "value": "Male",
+    "total": 28
+  },
+  {
+    "value": "Female",
+    "total": 26
+  }
 ]
 ```
 
@@ -175,12 +290,13 @@ GET /api/websites/:websiteId/event-data/stats
 
 ## GET /api/websites/:websiteId/event-data/stats
 
-获取给定时间范围内总结的网站事件、字段和记录。
+获取给定时间范围内汇总的网站事件、属性和记录。
 
 **参数**
 
-- `startAt`: 开始日期的时间戳（毫秒）。
-- `endAt`: 结束日期的时间戳（毫秒）。
+- `startAt`: (number) 开始日期的时间戳（毫秒）。
+- `endAt`: (number) 结束日期的时间戳（毫秒）。
+- `filters`: 可接受过滤参数。
 
 **示例响应**
 
@@ -188,7 +304,7 @@ GET /api/websites/:websiteId/event-data/stats
 [
   {
     "events": 16,
-    "fields": 13,
+    "properties": 13,
     "records": 26
   }
 ]

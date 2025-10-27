@@ -14,72 +14,94 @@ GET /api/realtime/:websiteId
 
 ## GET /api/realtime/:websiteId
 
-获取网站实时数据。
+获取网站最近30分钟的实时统计数据。
 
 **参数**
 
 - `startAt`：（数字）起始日期的时间戳（毫秒级）。
 - `endAt`：（数字）结束日期的时间戳（毫秒级）。
-- `timezone`：（字符串）时区。
+- `timezone`：（字符串）时区，如 America/Los_Angeles。
 
 **示例响应**
 
 ```json
 {
-  "urls": {
-    "/" : 1,
-    "/contact" : 2
-  },
   "countries": {
-    "PL" : 2,
-    "DE" : 5
+    "US": 9,
+    "FI": 3,
+    "IN": 3,
+    "VN": 1,
+    "CA": 3,
+    "TR": 1
+  },
+  "urls": {
+    "/about": 1,
+    "/blog": 4,
+    "/blog/what-is-coming-in-umami-v3": 2,
+    "/": 43,
+    "/pricing": 6,
+    "/docs": 4
+  },
+  "referrers": {
+    "umami.is": 31,
+    "google.com": 9,
+    "analytics.quickcv.io": 1,
+    "blog.vrecruiters.in": 2
   },
   "events": [
     {
-      "__type": "event",
-      "os": "xxxx",
-      "device": "xxxx",
-      "country": "xx",
+      "__type": "pageview",
       "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "eventName": "xxx-xxx-xxx-button",
-      "browser": "xxxxx",
-      "createdAt": "0000-00-00T00:00:00Z",
-      "urlPath": "x",
-      "referrerDomain": ""
+      "eventName": "",
+      "createdAt": "2025-10-22T00:15:29Z",
+      "browser": "chrome",
+      "os": "Mac OS",
+      "device": "desktop",
+      "country": "US",
+      "urlPath": "/docs/attribution",
+      "referrerDomain": "umami.is"
+    },
+    {
+      "__type": "pageview",
+      "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "eventName": "",
+      "createdAt": "2025-10-22T00:15:17Z",
+      "browser": "chrome",
+      "os": "Mac OS",
+      "device": "desktop",
+      "country": "US",
+      "urlPath": "/docs/pixels",
+      "referrerDomain": "umami.is"
     }
   ],
   "series": {
     "views": [
       {
-        "x": "0000-00-00T00:00:00Z",
-        "y": 3
+        "x": "2025-10-21T23:45:00Z",
+        "y": 5
       },
       {
-        "x": "0000-00-00T00:00:00Z",
-        "y": 4
+        "x": "2025-10-21T23:46:00Z",
+        "y": 7
       }
     ],
     "visitors": [
       {
-        "x": "0000-00-00T00:00:00Z",
-        "y": 2
+        "x": "2025-10-21T23:45:00Z",
+        "y": 3
       },
       {
-        "x": "0000-00-00T00:00:00Z",
-        "y": 4
+        "x": "2025-10-21T23:46:00Z",
+        "y": 1
       }
     ]
   },
-  "referrers": {
-    "umami.nuxt.dev": 2,
-    "umami.is": 33
-  },
   "totals": {
-    "visitors": 60,
-    "views": 79,
-    "events": 19,
-    "countries": 22
+    "views": 69,
+    "visitors": 42,
+    "events": 12,
+    "countries": 15
   },
-  "timestamp": 1750970573667
+  "timestamp": 1761092151944
 }
 ```

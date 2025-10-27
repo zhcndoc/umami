@@ -9,28 +9,51 @@ title: 会话
 ```text
 GET /api/websites/:websiteId/sessions
 GET /api/websites/:websiteId/sessions/stats
+GET /api/websites/:websiteId/sessions/weekly
 GET /api/websites/:websiteId/sessions/:sessionId
 GET /api/websites/:websiteId/sessions/:sessionId/activity
 GET /api/websites/:websiteId/sessions/:sessionId/properties
 GET /api/websites/:websiteId/session-data/properties
 GET /api/websites/:websiteId/session-data/values
-GET /api/websites/:websiteId/sessions/weekly
 ```
+
+---
+
+## Filters
+
+所有带有 `filters` 标记的端点现在可以使用以下参数进行过滤。
+
+**参数**
+
+- `path`: (字符串 | 可选) URL 名称。
+- `referrer`: (字符串 | 可选) 引荐来源名称。
+- `title`: (字符串 | 可选) 页面标题名称。
+- `query`: (字符串 | 可选) 查询参数名称。
+- `browser`: (字符串 | 可选) 浏览器名称。
+- `os`: (字符串 | 可选) 操作系统名称。
+- `device`: (字符串 | 可选) 设备名称（例如 Mobile）
+- `country`: (字符串 | 可选) 国家名称。
+- `region`: (字符串 | 可选) 地区/州/省名称。
+- `city`: (字符串 | 可选) 城市名称。
+- `hostname`: (字符串 | 可选) 主机名。
+- `tag`: (字符串 | 可选) 标签名称。
+- `segment`: (UUID | 可选) 片段的 UUID。
+- `cohort`: (UUID | 可选) 群组的 UUID。
 
 ---
 
 ## GET /api/websites/:websiteId/sessions
 
-获取给定时间范围内的网站会话详情。
+获取指定时间范围内的网站会话详情。
 
 **参数**
 
-- `startAt`: 开始日期的时间戳（毫秒）。
-- `endAt`: 结束日期的时间戳（毫秒）。
-- `query`: （可选字符串）搜索文本。
-- `page`: （可选数字，默认为1）确定页码。
-- `pageSize`: （可选字符串）确定返回多少条结果。
-- `orderBy`: （可选字符串）按列名排序。
+- `startAt`: (数字) 开始日期的时间戳（毫秒）。
+- `endAt`: (数字) 结束日期的时间戳（毫秒）。
+- `search`: (字符串 | 可选) 搜索文本。
+- `page`: (数字 | 可选，默认1) 页码。
+- `pageSize`: (数字 | 可选，默认20) 返回结果数量。
+- `filters`: 可以接受过滤参数。
 
 **示例响应**
 
@@ -39,26 +62,44 @@ GET /api/websites/:websiteId/sessions/weekly
   "data": [
     {
       "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "createdAt": "0000-00-00T00:00:00Z",
       "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "lastAt": "0000-00-00T00:00:00Z",
-      "screen": "1920x1080",
-      "hostname": "example.com",
-      "visits": 1,
-      "os": "xxxxx",
-      "browser": "xxxxxx",
-      "language": "xx-xx",
-      "region": "xx-xx",
-      "city": "xxxx",
-      "firstAt": "0000-00-00T00:00:00Z",
+      "hostname": "umami.is",
+      "browser": "chrome",
+      "os": "Mac OS",
       "device": "desktop",
-      "country": "US",
-      "views": 0
+      "screen": "1800x1169",
+      "language": "en-US",
+      "country": "SE",
+      "region": "SE-AB",
+      "city": "Stockholm",
+      "firstAt": "2025-10-21T13:35:51Z",
+      "lastAt": "2025-10-21T15:00:09Z",
+      "visits": 2,
+      "views": 18,
+      "createdAt": "2025-10-21T15:00:09Z"
+    },
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "hostname": "umami.is",
+      "browser": "safari",
+      "os": "Mac OS",
+      "device": "desktop",
+      "screen": "1512x982",
+      "language": "en-IN",
+      "country": "IN",
+      "region": "IN-GJ",
+      "city": "Bhavnagar",
+      "firstAt": "2025-10-21T14:59:47Z",
+      "lastAt": "2025-10-21T14:59:48Z",
+      "visits": 1,
+      "views": 1,
+      "createdAt": "2025-10-21T14:59:48Z"
     }
   ],
-  "count": 11,
-  "pageSize": 10,
-  "page": 1
+  "count": 923,
+  "page": 1,
+  "pageSize": 20
 }
 ```
 
@@ -66,58 +107,74 @@ GET /api/websites/:websiteId/sessions/weekly
 
 ## GET /api/websites/:websiteId/sessions/stats
 
-获取概述的网站会话统计信息。
+获取概览的网站会话统计信息。
 
 **参数**
 
-- `startAt`: 开始日期的时间戳（毫秒）。
-- `endAt`: 结束日期的时间戳（毫秒）。
-- `url`: （可选）URL名称。
-- `referrer`: （可选）引荐来源名称。
-- `title`: （可选）页面标题名称。
-- `query`: （可选）查询名称。
-- `event`: （可选）事件名称。
-- `host`: （可选）主机名。
-- `os`: （可选）操作系统名称。
-- `browser`: （可选）浏览器名称。
-- `device`: （可选）设备名称（如手机）。
-- `country`: （可选）国家名称。
-- `region`: （可选）区域/省/州名称。
-- `city`: （可选）城市名称。
+- `startAt`: (数字) 开始日期的时间戳（毫秒）。
+- `endAt`: (数字) 结束日期的时间戳（毫秒）。
+- `filters`: 可以接受过滤参数。
 
 **示例响应**
 
 ```json
 {
-  "pageviews" : {
-    "value" : 0
+  "pageviews": {
+    "value": 2924
   },
-  "visitors" : {
-    "value" : 11
+  "visitors": {
+    "value": 905
   },
-  "visits" : {
-    "value" : 12
+  "visits": {
+    "value": 1050
   },
-  "countries" : {
-    "value" : 2
+  "countries": {
+    "value": 84
   },
-  "events" : {
-    "value" : 12
+  "events": {
+    "value": 517
   }
 }
 ```
 
-- `pageviews`: 页面点击数
+- `pageviews`: 页面访问次数
 - `visitors`: 唯一访客数量
-- `visits`: 会话数量
-- `countries`: 唯一国家数量
-- `events`: 自定义事件数量
+- `visits`: 唯一访问次数
+- `bounces`: 只访问单页的访客数
+- `totaltime`: 在网站上的累计停留时间
+
+---
+
+## GET /api/websites/:websiteId/sessions/weekly
+
+获取按星期几和小时收集的会话数量。
+
+**参数**
+
+- `startAt`: (数字) 开始日期的时间戳（毫秒）。
+- `endAt`: (数字) 结束日期的时间戳（毫秒）。
+- `timezone`: 时区（例如 America/Los_Angeles）。
+- `filters`: 可以接受过滤参数。
+
+**示例响应**
+
+```json
+[
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 45, 58, 57, 65, 53, 58, 135],
+  [117, 124, 132, 127, 135, 142, 141, 138, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+]
+```
 
 ---
 
 ## GET /api/websites/:websiteId/sessions/:sessionId
 
-获取单个会话的详情。
+获取单个会话详情。
 
 **参数**
 
@@ -125,27 +182,25 @@ GET /api/websites/:websiteId/sessions/weekly
 
 **示例响应**
 
-URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/sessions/a35fe227-2fe9-5147-85a0-15f0fd48faed`
-
 ```json
 {
   "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "hostname": "umami.is",
-  "browser": "ios",
-  "os": "iOS",
-  "device": "mobile",
-  "screen": "390x844",
+  "distinctId": "",
+  "browser": "chrome",
+  "os": "Mac OS",
+  "device": "desktop",
+  "screen": "1800x1169",
   "language": "en-US",
-  "country": "US",
-  "subdivision1": "US-IN",
-  "city": "Bloomington",
-  "firstAt": "2024-09-09T18:12:01Z",
-  "lastAt": "2024-09-09T18:12:08Z",
-  "visits": 1,
-  "views": 3,
-  "events": 0,
-  "totaltime": 7
+  "country": "SE",
+  "region": "SE-AB",
+  "city": "Stockholm",
+  "firstAt": "2025-10-21T13:35:51Z",
+  "lastAt": "2025-10-21T15:00:09Z",
+  "visits": 2,
+  "views": 18,
+  "events": 12,
+  "totaltime": 1609
 }
 ```
 
@@ -157,32 +212,45 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 **参数**
 
-- `startAt`: 开始日期的时间戳（毫秒）。
-- `endAt`: 结束日期的时间戳（毫秒）。
+- `startAt`: (数字) 开始日期的时间戳（毫秒）。
+- `endAt`: (数字) 结束日期的时间戳（毫秒）。
 
 **示例响应**
 
 ```json
 [
   {
-    "eventType" : 1,
-    "urlQuery" : "",
-    "urlPath" : "/",
-    "eventName" : "",
-    "createdAt" : "0000-00-00T00:00:00Z",
-    "referrerDomain" : "",
-    "eventId" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "visitId" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    "createdAt": "2025-10-21T15:00:09Z",
+    "urlPath": "/blog",
+    "urlQuery": "",
+    "referrerDomain": "umami.is",
+    "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "eventType": 1,
+    "eventName": "",
+    "visitId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "hasData": 0
   },
   {
-    "eventType" : 1,
-    "urlQuery" : "",
-    "urlPath" : "/",
-    "eventName" : "",
-    "createdAt" : "0000-00-00T00:00:00Z",
-    "referrerDomain" : "",
-    "eventId" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "visitId" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    "createdAt": "2025-10-21T14:56:30Z",
+    "urlPath": "/docs",
+    "urlQuery": "",
+    "referrerDomain": "umami.is",
+    "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "eventType": 1,
+    "eventName": "",
+    "visitId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "hasData": 0
+  },
+  {
+    "createdAt": "2025-10-21T14:56:30Z",
+    "urlPath": "/",
+    "urlQuery": "",
+    "referrerDomain": "umami.is",
+    "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "eventType": 1,
+    "eventName": "",
+    "visitId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "hasData": 0
   }
 ]
 ```
@@ -195,8 +263,6 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 **示例响应**
 
-URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/sessions/a35fe227-2fe9-5147-85a0-15f0fd48faed/properties`
-
 ```json
 [
   {
@@ -204,20 +270,30 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
     "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "dataKey": "email",
     "dataType": 1,
-    "stringValue": "xxxx@xxxx.xxx",
+    "stringValue": "bob@aol.com",
     "numberValue": null,
     "dateValue": null,
-    "createdAt": "0000-00-00T00:00:00Z"
+    "createdAt": "2025-10-22T02:28:17Z"
+  },
+  {
+    "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "dataKey": "id",
+    "dataType": 1,
+    "stringValue": "910bfde0-21dd-4d24-804d-716035e92ddc",
+    "numberValue": null,
+    "dateValue": null,
+    "createdAt": "2025-10-22T02:28:17Z"
   },
   {
     "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
     "dataKey": "name",
     "dataType": 1,
-    "stringValue": "xxxx xxxxx",
+    "stringValue": "Bob Aol",
     "numberValue": null,
     "dateValue": null,
-    "createdAt": "0000-00-00T00:00:00Z"
+    "createdAt": "2025-10-22T02:28:17Z"
   }
 ]
 ```
@@ -228,8 +304,9 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 **参数**
 
-- `startAt`: 开始日期的时间戳（毫秒）。
-- `endAt`: 结束日期的时间戳（毫秒）。
+- `startAt`: (数字) 开始日期的时间戳（毫秒）。
+- `endAt`: (数字) 结束日期的时间戳（毫秒）。
+- `filters`: 可以接受过滤参数。
 
 **示例响应**
 
@@ -258,44 +335,26 @@ URL: `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b
 
 ## GET /api/websites/:websiteId/session-data/values
 
-获取给定属性的会话数据计数。
+获取指定属性的会话数据计数。
 
 **参数**
 
-- `startAt`: 开始日期的时间戳（毫秒）。
-- `endAt`: 结束日期的时间戳（毫秒）。
-- `propertyName`: 属性名称。
+- `startAt`: (数字) 开始日期的时间戳（毫秒）。
+- `endAt`: (数字) 结束日期的时间戳（毫秒）。
+- `propertyName`: (字符串) 属性名称。
+- `filters`: 可以接受过滤参数。
 
 **示例响应**
 
 ```json
 [
-  { "value": "EU", "total": 609 },
-  { "value": "US", "total": 431 }
-]
-```
----
-
-## GET /api/websites/:websiteId/sessions/weekly
-
-获取按星期几的小时数收集的会话数量。
-
-**参数**
-
-- `startAt`: (number) 开始日期的时间戳（毫秒）。
-- `endAt`: (number) 结束日期的时间戳（毫秒）。
-- `timezone`: (string) 时区。
-
-**示例响应**
-
-```json
-[
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  {
+    "value": "EU",
+    "total": 626
+  },
+  {
+    "value": "US",
+    "total": 462
+  }
 ]
 ```

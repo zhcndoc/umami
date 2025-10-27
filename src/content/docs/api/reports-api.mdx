@@ -8,27 +8,73 @@ title: 报表
 
 ```text
 GET /api/reports
+POST /api/reports
 GET /api/reports/:reportId
-GET /api/reports/revenue
-POST /api/reports/utm
-POST /api/reports/revenue
+POST /api/reports/:reportId
+DELETE /api/reports/:reportId
+POST /api/reports/attribution
+POST /api/reports/breakdown
+POST /api/reports/funnel
+POST /api/reports/goals
 POST /api/reports/journey
 POST /api/reports/retention
-POST /api/reports/insights
-POST /api/reports/goals
-POST /api/reports/funnel
-POST /api/reports/attribution
-DELETE /api/reports/:reportId
+POST /api/reports/revenue
+POST /api/reports/utm
+```
+
+---
+
+## Filters
+
+所有报表现在都可以通过请求体中的 filters 属性进行筛选。
+
+**参数**
+
+- `path`:（字符串 | 可选）URL 名称。
+- `referrer`:（字符串 | 可选）来源名称。
+- `title`:（字符串 | 可选）页面标题名称。
+- `query`:（字符串 | 可选）查询参数名称。
+- `browser`:（字符串 | 可选）浏览器名称。
+- `os`:（字符串 | 可选）操作系统名称。
+- `device`:（字符串 | 可选）设备名称（例如 Mobile）。
+- `country`:（字符串 | 可选）国家名称。
+- `region`:（字符串 | 可选）地区/州/省名称。
+- `city`:（字符串 | 可选）城市名称。
+- `hostname`:（字符串 | 可选）主机名。
+- `tag`:（字符串 | 可选）标签名称。
+- `segment`:（UUID | 可选）细分段 UUID。
+- `cohort`:（UUID | 可选）群组 UUID。
+
+**请求体**
+
+```json
+{
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "attribution",
+  "filters": { "os": "Mac OS", "device": "desktop" },
+  "parameters": {
+    "startDate": "2025-10-19T07:00:00.000Z",
+    "endDate": "2025-10-26T06:59:59.999Z",
+    "timezone": "America/Los_Angeles",
+    "model": "first-click",
+    "type": "path",
+    "step": "/"
+  }
+}
 ```
 
 ---
 
 ## GET /api/reports
 
-获取您的所有个人报表。
+获取所有报表。
 
 **参数**
-- `websiteId`：（字符串 | 可选）按网站筛选。
+
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `page` : （可选数字，默认1）指定页码。
+- `pageSize` : （可选数字）指定返回结果数。
 
 **示例响应**
 
@@ -36,23 +82,81 @@ DELETE /api/reports/:reportId
 {
   "data": [
     {
-      "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "parameters": "{\"fields\":[{\"name\":\"url\",\"type\":\"string\",\"label\":\"URL\"}],\"filters\":[],\"websiteId\":\"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx\",\"dateRange\":{\"startDate\":\"0000-00-00T00:00:00.000Z\",\"endDate\":\"0000-00-00T00:00:00.000Z\",\"unit\":\"day\",\"offset\":0,\"num\":90,\"value\":\"90day\"}}",
-      "createdAt": "0000-00-00T00:00:00.000Z",
       "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "website": {
-        "domain": "example.com"
-      },
-      "updatedAt": "0000-00-00T00:00:00.000Z",
-      "type": "insights",
+      "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "name": "洞察分析",
-      "description": ""
+      "type": "goal",
+      "name": "Visited /pricing",
+      "description": "Test",
+      "parameters": {
+        "type": "path",
+        "value": "/pricing"
+      },
+      "createdAt": "2025-07-23T17:28:55.192Z",
+      "updatedAt": "2025-10-07T07:46:57.918Z"
+    },
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "type": "goal",
+      "name": "Triggered live-demo-button",
+      "description": "",
+      "parameters": {
+        "type": "event",
+        "value": "live-demo-button"
+      },
+      "createdAt": "2025-10-07T07:46:24.120Z",
+      "updatedAt": "2025-10-07T07:46:24.120Z"
     }
   ],
-  "count": 1,
-  "pageSize": 10,
-  "page": 1
+  "count": 2,
+  "page": 1,
+  "pageSize": 20
+}
+```
+
+---
+
+## POST /api/reports
+
+创建报表。
+
+**参数**
+
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `name`: （字符串）报表名称。
+- `description`: （字符串 | 可选）报表描述。
+- `parameters`: （对象）报表参数。
+
+**请求体**
+
+```json
+{
+  "name": "Triggered Login-button ",
+  "parameters": { "type": "event", "value": "login-button-header" },
+  "type": "goal",
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
+
+**示例响应**
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "goal",
+  "name": "Triggered Login-button ",
+  "description": "",
+  "parameters": {
+    "type": "event",
+    "value": "login-button-header"
+  },
+  "createdAt": "2025-10-14T00:12:33.203Z",
+  "updatedAt": "2025-10-14T00:12:33.203Z"
 }
 ```
 
@@ -60,99 +164,49 @@ DELETE /api/reports/:reportId
 
 ## GET /api/reports/:reportId
 
-通过 ID 获取报表详情
+通过 ID 获取报表详情。
 
 **示例响应**
 
 ```json
 {
-  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "parameters": {
-    "fields": [
-      {
-        "name": "url",
-        "type": "string",
-        "label": "URL"
-      }
-    ],
-    "dateRange": {
-      "num": 90,
-      "value": "90day",
-      "startDate": "0000-00-00T00:00:00.000Z",
-      "endDate": "0000-00-00T00:00:00.000Z",
-      "unit": "day",
-      "offset": 0
-    },
-    "filters": [
-
-    ],
-    "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-  },
-  "createdAt": "0000-00-00T00:00:00.000Z",
   "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "updatedAt": "0000-00-00T00:00:00.000Z",
-  "type": "insights",
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "name": "洞察分析",
-  "description": ""
+  "type": "goal",
+  "name": "Triggered Login-button ",
+  "description": "",
+  "parameters": {
+    "type": "event",
+    "value": "login-button-header"
+  },
+  "createdAt": "2025-10-14T00:12:33.203Z",
+  "updatedAt": "2025-10-14T00:12:33.203Z"
 }
 ```
 
 ---
 
-## GET /api/reports/revenue
+## POST /api/reports/:reportId
 
-获取指定时间段的货币类型。在收入报表中为必需参数，在归因报表中为可选参数。
-
-**参数**
-
-- `websiteId`：（字符串）您的网站 ID
-- `startDate`：（字符串）起始日期格式（`Thu Mar 27 2025 00:00:00 GMT+0100 (中欧标准时间)`）
-- `endDate`：（字符串）结束日期格式（`Tue Jun 24 2025 23:59:59 GMT+0200 (中欧夏令时间)`）
-
-**示例响应**
-
-```json
-[
-    { "currency": "EUR" },
-    {  "currency": "FR" }, 
-    { "currency": "USD" }
-]
-
-```
-
----
-
-## POST /api/reports/utm
-
-通过 UTM 参数追踪您的营销活动。
+更新报表。
 
 **参数**
 
-- `dateRange`
-    - `startDate`：（数字）起始日期的时间戳（毫秒级）
-    - `endDate`：（数字）结束日期的时间戳（毫秒级）
-    - `num`：（数字）
-    - `offset`：（数字）
-    - `unit`：（字符串）
-    - `value`：（字符串）
-- `timezone`：（字符串）时区
-- `websiteId`：（字符串）您的网站 ID
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `name`: （字符串）报表名称。
+- `description`: （字符串 | 可选）报表描述。
+- `parameters`: （对象）报表参数。
 
 **请求体**
 
 ```json
 {
-    "websiteId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "dateRange":{
-        "startDate":"2025-05-17T22:00:00.000Z",
-        "endDate":"2025-05-24T21:59:59.999Z",
-        "unit":"day",
-        "offset":0,
-        "num":1,
-        "value":"0week"
-    },
-    "timezone":"Europe/Berlin"
+  "name": "Triggered Login-button ",
+  "parameters": { "type": "event", "value": "login-button-header" },
+  "type": "goal",
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 }
 ```
 
@@ -160,489 +214,18 @@ DELETE /api/reports/:reportId
 
 ```json
 {
-    "utm_source": {
-        "test": 1
-    },
-    "utm_content": {
-        "email-newsletter-1": 1124
-    },
-    "utm_term": {
-        "software": 4
-    },
-    "utm_medium": {
-        "test": 1
-    },
-    "utm_campaign": {
-        "test": 1
-    },
-    "utm_agid": {
-        "12345": 5
-    },
-    "utm_banner": {
-        "12345": 1
-    }
-}
-```
-
----
-
-## POST /api/reports/revenue
-
-深入了解您的收入数据以及用户的消费情况。
-
-**参数**
-
-- `dateRange`
-    - `startDate`：（数字）起始日期的时间戳（毫秒级）
-    - `endDate`：（数字）结束日期的时间戳（毫秒级）
-    - `num`：（数字）
-    - `offset`：（数字）
-    - `unit`：（字符串）
-    - `value`：（字符串）
-- `timezone`：（字符串）时区
-- `websiteId`：（字符串）您的网站 ID
-- `currency`：（字符串）货币类型
-
-**请求体**
-
-```json
-{
-    "websiteId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "dateRange":{
-        "startDate":"2025-05-19T14:00:00.000Z",
-        "endDate":"2025-05-20T13:59:59.999Z",
-        "offset":0,
-        "num":24,
-        "unit":"hour",
-        "value":"24hour"
-    },
-    "currency":"USD",
-    "timezone":"Europe/Berlin"
-}
-```
-
-**示例响应**
-
-```json
-{
-    "chart": [
-        {
-            "x": "",
-            "t": "2025-05-19T15:00:00Z",
-            "y": 289.94
-        }
-    ],
-    "country": [
-        {
-            "name": "DE",
-            "value": 289.94
-        }
-    ],
-    "total": {
-        "sum": 289.94,
-        "count": 6,
-        "unique_count": 1
-    },
-    "table": [
-        {
-            "currency": "USD",
-            "sum": 289.94,
-            "count": 6,
-            "unique_count": 1
-        }
-    ]
-}
-```
-
----
-
-## POST /api/reports/journey
-
-了解用户如何在您的网站上导航。
-
-**参数**
-
-- `dateRange`
-    - `startDate`：（数字）起始日期的时间戳（毫秒级）
-    - `endDate`：（数字）结束日期的时间戳（毫秒级）
-    - `num`：（数字）
-    - `offset`：（数字）
-    - `unit`：（字符串）
-    - `value`：（字符串）
-- `steps`：（数字）步骤数量，范围为 3 至 7
-- `timezone`：（字符串）时区
-- `websiteId`：（字符串）您的网站 ID
-- `startStep`：（字符串 | 可选）起始步骤
-- `endStep`：（字符串 | 可选）结束步骤
-
-**请求体**
-
-```json
-{
-    "steps": 5,
-    "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "dateRange": {
-        "startDate": "2025-05-17T22:00:00.000Z",
-        "endDate": "2025-05-24T21:59:59.999Z",
-        "unit": "day",
-        "offset": 0,
-        "num": 1,
-        "value": "0week"
-    },
-    "timezone": "Europe/Berlin"
-}
-```
-
-**示例响应**
-
-```json
-[
-    {
-        "items": ["index.html", "outbound-link-click", null, null],
-        "count": 1
-    },
-    {
-        "items": ["/", null],
-        "count": 1
-    },
-    {
-        "items": ["index.html", "open-app-store", null],
-        "count": 1
-    }
-]
-```
-
----
-
-## POST /api/reports/retention
-
-通过追踪用户的回访频率来衡量您网站的粘性。
-
-**参数**
-
-- `dateRange`
-    - `startDate`：（数字）起始日期的时间戳（毫秒级）
-    - `endDate`：（数字）结束日期的时间戳（毫秒级）
-    - `num`：（数字）
-    - `offset`：（数字）
-    - `unit`：（字符串）
-    - `value`：（字符串）
-- `timezone`：（字符串）时区
-- `websiteId`：（字符串）您的网站 ID
-
-**请求体**
-
-```json
-{
-    "dateRange":{
-        "startDate":"2025-04-30T22:00:00.000Z",
-        "endDate":"2025-05-31T21:59:59.999Z",
-        "value":"range:1746050400000:1748728799999",
-        "offset":0,
-        "unit":"day"
-    },
-    "websiteId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "timezone":"Europe/Berlin"
-}
-```
-
-**示例响应**
-
-```json
-[
-    {
-        "date": "2025-05-18T22:00:00Z",
-        "day": 0,
-        "visitors": 1,
-        "returnVisitors": 1,
-        "percentage": 100
-    }, 
-    {
-        "date": "2025-05-19T22:00:00Z",
-        "day": 0,
-        "visitors": 1,
-        "returnVisitors": 1,
-        "percentage": 100
-    }
-]
-```
-
----
-
-## POST /api/reports/insights
-
-通过使用细分和筛选器深入挖掘您的数据。
-
-**参数**
-
-- `dateRange`
-    - `startDate`：（数字）起始日期的时间戳（毫秒级）
-    - `endDate`：（数字）结束日期的时间戳（毫秒级）
-    - `num`：（数字）
-    - `offset`：（数字）
-    - `unit`：（字符串）
-    - `value`：（字符串）
-- `fields`：（数组）至少需要一个字段
-- `filters`：（数组）筛选条件
-- `timezone`：（字符串）时区
-- `websiteId`：（字符串）您的网站 ID
-
-**请求体**
-
-```json
-{
-    "fields":[
-        {
-            "name":"url",
-            "type":"string",
-            "label":"URL"
-        }
-    ],
-    "filters":[
-    ],
-    "websiteId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "dateRange":{
-        "startDate":"2025-05-17T22:00:00.000Z",
-        "endDate":"2025-05-24T21:59:59.999Z",
-        "unit":"day",
-        "offset":0,
-        "num":1,
-        "value":"0week"
-    },
-    "timezone":"Europe/Berlin"
-}
-```
-
-**示例响应**
-
-```json
-[
-    {
-        "views": 8,
-        "visitors": 3,
-        "visits": 3,
-        "bounces": 1,
-        "totaltime": 242,
-        "country": "US"
-    }
-]
-```
-
----
-
-## POST /api/reports/goals
-
-追踪您的页面浏览量和事件目标。
-
-**参数**
-
-- `dateRange`
-    - `startDate`：（数字）起始日期的时间戳（毫秒级）
-    - `endDate`：（数字）结束日期的时间戳（毫秒级）
-    - `num`：（数字）
-    - `offset`：（数字）
-    - `unit`：（字符串）
-    - `value`：（字符串）
-- `goals`：（数组）至少需要两个目标
-- `timezone`：（字符串）时区
-- `websiteId`：（字符串）您的网站 ID
-
-**请求体**
-
-```json
-{
-    "goals":[
-        {
-            "type":"url",
-            "value":"/",
-            "goal":10
-        }
-    ],
-    "websiteId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "dateRange":{
-        "startDate":"2025-05-17T22:00:00.000Z",
-        "endDate":"2025-05-24T21:59:59.999Z",
-        "unit":"day",
-        "offset":0,
-        "num":1,
-        "value":"0week"
-    },
-    "timezone":"Europe/Berlin"
-}
-```
-
-**示例响应**
-
-```json
-[
-    {
-        "type": "url",
-        "value": "/",
-        "goal": 10,
-        "result": 10
-    }
-]
-```
-
----
-
-## POST /api/reports/funnel
-
-了解用户的转化率和流失率。
-
-**参数**
-
-- `dateRange`
-    - `startDate`：（数字）起始日期的时间戳（毫秒级）
-    - `endDate`：（数字）结束日期的时间戳（毫秒级）
-    - `num`：（数字）
-    - `offset`：（数字）
-    - `unit`：（字符串）
-    - `value`：（字符串）
-- `steps`：（数组）至少需要两个步骤
-- `timezone`：（字符串）时区
-- `websiteId`：（字符串）您的网站 ID
-- `window`：（数字）时间窗口（分钟）
-
-**请求体**
-
-```json
-{
-    "window":60,
-    "steps":[
-        {
-            "type":"url",
-            "value":"/"
-        },
-        {
-            "type":"url",
-            "value":"/contact"
-        }
-    ],
-    "websiteId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "dateRange":{
-        "startDate":"2025-05-13T22:00:00.000Z",
-        "endDate":"2025-05-20T21:59:59.999Z",
-        "unit":"day",
-        "offset":0,
-        "num":7,
-        "value":"7day"
-    },
-    "timezone":"Europe/Berlin"
-}
-```
-
-**示例响应**
-
-```json
-[
-    {
-        "type": "url",
-        "value": "/",
-        "visitors": 1,
-        "previous": 0,
-        "dropped": 0,
-        "dropoff": null,
-        "remaining": 1
-    }
-]
-```
-
----
-
-## POST /api/reports/attribution
-
-查看用户如何参与您的营销活动以及哪些因素推动了转化。
-
-**参数**
-
-- `dateRange`
-    - `startDate`：（数字）起始日期的时间戳（毫秒级）
-    - `endDate`：（数字）结束日期的时间戳（毫秒级）
-    - `num`：（数字）
-    - `offset`：（数字）
-    - `unit`：（字符串）
-    - `value`：（字符串）
-- `model`：（字符串）选择 `firstClick`（首次点击）或 `lastClick`（末次点击）
-- `steps`：（数组）仅需一个步骤
-- `timezone`：（字符串）时区
-- `websiteId`：（字符串）您的网站 ID
-
-**请求体**
-
-```json
-{
-    "model":"firstClick",
-    "steps":[
-        {
-            "type":"event",
-            "value":"/"
-        }
-    ],
-    "websiteId":"xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "dateRange":{
-        "startDate":"2025-05-13T22:00:00.000Z",
-        "endDate":"2025-05-20T21:59:59.999Z",
-        "unit":"day",
-        "offset":0,
-        "num":7,
-        "value":"7day"
-    },
-    "timezone":"Europe/Berlin"
-}
-```
-
-**示例响应**
-
-```json
-{
-    "paidAds": [
-        {
-            "name": "Google",
-            "value": 129
-        }
-    ],
-    "referrer": [
-        {
-            "name": "google.com",
-            "value": 21273
-        }
-    ],
-    "utm_source": [
-        {
-            "name": "yahoo.de",
-            "value": 671
-        }
-    ],
-    "utm_content": [
-        {
-            "name": "info-email-3",
-            "value": 24
-        }
-    ],
-    "utm_medium": [
-        {
-            "name": "outbound-email",
-            "value": 150
-        }
-    ],
-    "utm_campaign": [
-        {
-            "name": "analytics",
-            "value": 69
-        }
-    ],
-    "utm_term": [
-        {
-            "name": "software",
-            "value": 2
-        }
-    ],
-    "total": {
-        "visitors": 79106,
-        "visits": 105066,
-        "pageviews": 136971
-    }
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "goal",
+  "name": "Triggered Login-button ",
+  "description": "",
+  "parameters": {
+    "type": "event",
+    "value": "login-button-header"
+  },
+  "createdAt": "2025-10-14T00:12:33.203Z",
+  "updatedAt": "2025-10-14T00:12:33.203Z"
 }
 ```
 
@@ -654,6 +237,605 @@ DELETE /api/reports/:reportId
 
 **示例响应**
 
-```text
-ok
+```json
+{
+  "ok": true
+}
+```
+
+---
+
+## POST /api/reports/attribution
+
+查看用户如何参与您的营销活动以及哪些因素推动了转化。
+
+**参数**
+
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`: 筛选参数。
+- `startDate` : （数字）起始日期时间戳（毫秒）。
+- `endDate` : （数字）结束日期时间戳（毫秒）。
+- `model` : （字符串）归因模型（`firstClick` | `lastClick`）。
+- `type` : （字符串数组）转化类型（`path` | `event`）。
+- `step`: （字符串）转化步骤。
+
+**请求体**
+
+```json
+{
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "attribution",
+  "filters": { "os": "Mac OS" },
+  "parameters": {
+    "startDate": "2025-10-19T07:00:00.000Z",
+    "endDate": "2025-10-26T06:59:59.999Z",
+    "model": "first-click",
+    "type": "path",
+    "step": "/"
+  }
+}
+```
+
+**示例响应**
+
+```json
+{
+  "referrer": [
+    {
+      "name": "google.com",
+      "value": 30082
+    },
+    {
+      "name": "chatgpt.com",
+      "value": 1672
+    }
+  ],
+  "paidAds": [
+    {
+      "name": "Facebook / Meta",
+      "value": 106
+    },
+    {
+      "name": "Google Ads",
+      "value": 6
+    }
+  ],
+  "utm_source": [
+    {
+      "name": "coolify.io",
+      "value": 465
+    },
+    {
+      "name": "chatgpt.com",
+      "value": 338
+    }
+  ],
+  "utm_medium": [
+    {
+      "name": "referral",
+      "value": 75
+    },
+    {
+      "name": "email",
+      "value": 16
+    }
+  ],
+  "utm_campaign": [
+    {
+      "name": "navigation",
+      "value": 60
+    },
+    {
+      "name": "website_analytics",
+      "value": 8
+    }
+  ],
+  "utm_content": [
+    {
+      "name": "comparison-page",
+      "value": 1
+    },
+    {
+      "name": "sidebar-cta",
+      "value": 1
+    }
+  ],
+  "utm_term": [
+    {
+      "name": "data analysis",
+      "value": 1
+    },
+    {
+      "name": "0_df65b6d7c8-e2c14ebdc7-59136105",
+      "value": 1
+    }
+  ],
+  "total": {
+    "pageviews": 171481,
+    "visitors": 104727,
+    "visits": 138391
+  }
+}
+```
+
+---
+
+## POST /api/reports/retention
+
+通过追踪用户的回访频率来衡量您网站的粘性。
+
+**参数**
+
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`: 筛选参数。
+- `startDate` : （数字）起始日期时间戳（毫秒）。
+- `endDate` : （数字）结束日期时间戳（毫秒）。
+- `timezone`: 时区（如 America/Los_Angeles）。
+
+**请求体**
+
+```json
+{
+  "websiteId": "86d4095c-a2a8-4fc8-9521-103e858e2b41",
+  "type": "retention",
+  "filters": {},
+  "parameters": {
+    "startDate": "2025-10-01T07:00:00.000Z",
+    "endDate": "2025-11-01T06:59:59.999Z",
+    "timezone": "America/Los_Angeles"
+  }
+}
+```
+
+**示例响应**
+
+```json
+[
+  {
+    "date": "2025-10-01T07:00:00Z",
+    "day": 0,
+    "visitors": 1499,
+    "returnVisitors": 1499,
+    "percentage": 100
+  },
+  {
+    "date": "2025-10-01T07:00:00Z",
+    "day": 1,
+    "visitors": 1499,
+    "returnVisitors": 151,
+    "percentage": 10.073382254836558
+  },
+  {
+    "date": "2025-10-01T07:00:00Z",
+    "day": 2,
+    "visitors": 1499,
+    "returnVisitors": 83,
+    "percentage": 5.537024683122081
+  },
+  {
+    "date": "2025-10-01T07:00:00Z",
+    "day": 3,
+    "visitors": 1499,
+    "returnVisitors": 45,
+    "percentage": 3.002001334222815
+  }
+]
+```
+
+---
+
+## POST /api/reports/breakdown
+
+通过使用细分和筛选器深入挖掘您的数据。
+
+**参数**
+
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`: 筛选参数。
+- `startDate` : （数字）起始日期时间戳（毫秒）。
+- `endDate` : （数字）结束日期时间戳（毫秒）。
+- `fields`: （数组）字段列表。
+
+**可用字段**
+
+`path` | `title` | `query` | `referrer` | `browser` | `os` | `device` | `country` | `region` | `city` | `hostname`| `tag` | `event`
+
+**请求体**
+
+```json
+{
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "breakdown",
+  "filters": {},
+  "parameters": {
+    "startDate": "2025-07-23T07:00:00.000Z",
+    "endDate": "2025-10-22T06:59:59.999Z",
+    "fields": ["os", "country"]
+  }
+}
+```
+
+**示例响应**
+
+```json
+[
+  {
+    "views": 37856,
+    "visitors": 9229,
+    "visits": 13145,
+    "bounces": 8105,
+    "totaltime": 12985151,
+    "os": "Mac OS",
+    "country": "US"
+  },
+  {
+    "views": 24399,
+    "visitors": 6628,
+    "visits": 10673,
+    "bounces": 7119,
+    "totaltime": 21398417,
+    "os": "Windows 10",
+    "country": "US"
+  },
+  {
+    "views": 21561,
+    "visitors": 4916,
+    "visits": 6532,
+    "bounces": 3452,
+    "totaltime": 22984512,
+    "os": "Mac OS",
+    "country": "DE"
+  },
+  {
+    "views": 12977,
+    "visitors": 2976,
+    "visits": 4180,
+    "bounces": 2440,
+    "totaltime": 9962317,
+    "os": "Windows 10",
+    "country": "DE"
+  }
+]
+```
+
+---
+
+## POST /api/reports/funnel
+
+了解用户的转化率和流失率。
+
+**参数**
+
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`: 筛选参数。
+- `startDate` : （数字）起始日期时间戳（毫秒）。
+- `endDate` : （数字）结束日期时间戳（毫秒）。
+- `steps` : （数组，至少两个）事件类型（`path` | `event`）及转化步骤。
+- `window` : （数字）漏斗步骤间视为转化的时间窗口（分钟）。
+
+**请求体**
+
+```json
+{
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "funnel",
+  "filters": {},
+  "parameters": {
+    "startDate": "2025-07-23T07:00:00.000Z",
+    "endDate": "2025-10-22T06:59:59.999Z",
+    "steps": [
+      { "type": "path", "value": "/" },
+      { "type": "event", "value": "live-demo-button" }
+    ],
+    "window": 60
+  }
+}
+```
+
+**示例响应**
+
+```json
+[
+  {
+    "type": "path",
+    "value": "/",
+    "visitors": 106594,
+    "previous": 0,
+    "dropped": 0,
+    "dropoff": null,
+    "remaining": 1
+  },
+  {
+    "type": "event",
+    "value": "live-demo-button",
+    "visitors": 10269,
+    "previous": 106594,
+    "dropped": 96325,
+    "dropoff": 0.9036624950747697,
+    "remaining": 0.09633750492523031
+  }
+]
+```
+
+---
+
+## POST /api/reports/goals
+
+追踪您的页面浏览量和事件目标。
+
+**参数**
+
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`: 筛选参数。
+- `startDate` : （数字）起始日期时间戳（毫秒）。
+- `endDate` : （数字）结束日期时间戳（毫秒）。
+- `type` : （数组）转化类型（`path` | `event`）。
+- `value`: （字符串）转化步骤值。
+
+**请求体**
+
+```json
+{
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "goal",
+  "filters": {},
+  "parameters": {
+    "startDate": "2025-07-23T07:00:00.000Z",
+    "endDate": "2025-10-22T06:59:59.999Z",
+    "type": "event",
+    "value": "live-demo-button"
+  }
+}
+```
+
+**示例响应**
+
+```json
+{
+  "num": 11935,
+  "total": 50602
+}
+```
+
+---
+
+## POST /api/reports/journey
+
+了解用户如何在您的网站上导航。
+
+**参数**
+
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`: 筛选参数。
+- `startDate` : （数字）起始日期时间戳（毫秒）。
+- `endDate` : （数字）结束日期时间戳（毫秒）。
+- `steps`: （数字）步骤数量，范围 3 至 7。
+- `startStep` : （字符串）起始步骤 URL 或事件名称。
+- `endStep` : （字符串 | 可选）结束步骤 URL 或事件名称。
+
+**请求体**
+
+```json
+{
+  "websiteId": "86d4095c-a2a8-4fc8-9521-103e858e2b41",
+  "type": "journey",
+  "filters": {},
+  "parameters": {
+    "startDate": "2025-07-23T07:00:00.000Z",
+    "endDate": "2025-10-22T06:59:59.999Z",
+    "steps": 3,
+    "startStep": "/",
+    "endStep": "/pricing"
+  }
+}
+```
+
+**示例响应**
+
+```json
+[
+  {
+    "items": ["/", "/pricing", null, null],
+    "count": 6433
+  },
+  {
+    "items": ["/", "live-demo-button", "/pricing", null],
+    "count": 918
+  },
+  {
+    "items": ["/", "/features", "/pricing", null],
+    "count": 857
+  },
+  {
+    "items": ["/", "/pricing", null],
+    "count": 434
+  },
+  {
+    "items": ["/", "/pricing", null],
+    "count": 306
+  },
+  {
+    "items": ["/", "/docs", "/pricing", null],
+    "count": 257
+  },
+  {
+    "items": ["/", "get-started-button", "/pricing", null],
+    "count": 237
+  },
+  {
+    "items": ["/", "login-button-header", "/pricing", null],
+    "count": 102
+  }
+]
+```
+
+---
+
+## POST /api/reports/revenue
+
+深入了解您的收入数据以及用户的消费情况。
+
+**参数**
+
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`: 筛选参数。
+- `startDate` : （数字）起始日期时间戳（毫秒）。
+- `endDate` : （数字）结束日期时间戳（毫秒）。
+- `timezone`: 时区（如 America/Los_Angeles）。
+- `currency`: （字符串）货币代码（ISO 4217）。
+
+**请求体**
+
+```json
+{
+  "websiteId": "86d4095c-a2a8-4fc8-9521-103e858e2b41",
+  "type": "revenue",
+  "filters": {},
+  "parameters": {
+    "startDate": "2025-07-23T07:00:00.000Z",
+    "endDate": "2025-10-22T06:59:59.999Z",
+    "timezone": "America/Los_Angeles",
+    "currency": "USD"
+  }
+}
+```
+
+**示例响应**
+
+```json
+{
+  "chart": [
+    {
+      "x": "revenue-demo",
+      "t": "2025-10-14T07:00:00Z",
+      "y": 400
+    },
+    {
+      "x": "revenue-demo",
+      "t": "2025-10-15T07:00:00Z",
+      "y": 480
+    },
+    {
+      "x": "revenue-demo",
+      "t": "2025-10-16T07:00:00Z",
+      "y": 490
+    }
+  ],
+  "country": [
+    {
+      "name": "US",
+      "value": 1050
+    },
+    {
+      "name": "FR",
+      "value": 1040
+    },
+    {
+      "name": "GB",
+      "value": 720
+    }
+  ],
+  "total": {
+    "sum": 3870,
+    "count": 131,
+    "unique_count": 131,
+    "average": 29.541984732824428
+  }
+}
+```
+
+---
+
+## POST /api/reports/utm
+
+通过 UTM 参数追踪您的营销活动。
+
+**参数**
+
+- `websiteId` : （字符串）您的网站 ID。
+- `type`: （字符串）报表类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`: 筛选参数。
+- `startDate` : （数字）起始日期时间戳（毫秒）。
+- `endDate` : （数字）结束日期时间戳（毫秒）。
+
+**请求体**
+
+```json
+{
+  "websiteId": "86d4095c-a2a8-4fc8-9521-103e858e2b41",
+  "type": "utm",
+  "filters": {},
+  "parameters": {
+    "startDate": "2025-10-14T07:00:00.000Z",
+    "endDate": "2025-10-22T06:59:59.999Z"
+  }
+}
+```
+
+**示例响应**
+
+```json
+{
+  "utm_source": [
+    {
+      "utm": "chatgpt.com",
+      "views": 341
+    },
+    {
+      "utm": "coolify.io",
+      "views": 235
+    },
+    {
+      "utm": "openalternative.co",
+      "views": 89
+    },
+    {
+      "utm": "facebook",
+      "views": 28
+    }
+  ],
+  "utm_medium": [
+    {
+      "utm": "cpc",
+      "views": 28
+    },
+    {
+      "utm": "referral",
+      "views": 26
+    }
+  ],
+  "utm_campaign": [
+    {
+      "utm": "website_analytics",
+      "views": 28
+    },
+    {
+      "utm": "navigation",
+      "views": 16
+    }
+  ],
+  "utm_term": [
+    {
+      "utm": "0_df65b6d7c8-e2c14ebdc7-59136105",
+      "views": 1
+    }
+  ],
+  "utm_content": [
+    {
+      "utm": "comparison-page",
+      "views": 1
+    },
+    {
+      "utm": "sidebar-cta",
+      "views": 1
+    }
+  ]
+}
 ```

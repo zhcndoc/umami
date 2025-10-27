@@ -13,11 +13,13 @@ title: 发送统计信息
 `payload`
 
 - `hostname`: (字符串) 主机名称。
-- `language`: (字符串) 访问者的语言（例如 "zh-CN"）。
+- `language`: (字符串) 访问者的语言（例如 "en-US"）。
 - `referrer`: (字符串) 引荐 URL。
 - `screen`: (字符串) 屏幕分辨率（例如 "1920x1080"）。
 - `title`: (字符串) 页面标题。
 - `url`: (字符串) 页面 URL。
+- `tag`: (字符串) 额外的标签描述。
+- `id`: (字符串) 会话标识符。
 - `website`: (字符串) 网站 ID。
 - `name`: (字符串) 事件名称。
 - `data`: (对象|可选) 事件的附加数据。
@@ -48,6 +50,16 @@ title: 发送统计信息
 注意，对于 `/api/send` 请求，您无需发送身份验证令牌。
 
 另外，您需要发送一个正确的 `User-Agent` HTTP 头，否则您的请求将不会被注册。
+
+**示例响应**
+
+```json
+{
+  "cache": "xxxxxxxxxxxxxxx",
+  "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "visitId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+}
+```
 
 **程序化操作**
 

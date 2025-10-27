@@ -4,13 +4,14 @@ title: 用户
 
 用户管理相关的操作。
 
+These endpoints are only available for self-hosted instances for **admin** users and not **Umami Cloud**.
+
 **端点**
 
 ```text
 POST /api/users
-GET /api/admin/users
-POST /api/users/:userId
 GET /api/users/:userId
+POST /api/users/:userId
 DELETE /api/users/:userId
 GET /api/users/:userId/websites
 GET /api/users/:userId/teams
@@ -27,14 +28,15 @@ GET /api/users/:userId/teams
 - `username`: (string) 用户名。
 - `password`: (string) 用户密码。
 - `role`: (string) 选择 `admin` | `user` | `view-only` 中的一个。
+- `id`: (string | 可选) 强制为用户分配 UUID。
 
 **请求体**
 
 ```json
 {
-  "username": "admin",
+  "username": "member",
   "password": "umami",
-  "role": "admin"
+  "role": "user"
 }
 ```
 
@@ -42,29 +44,10 @@ GET /api/users/:userId/teams
 
 ```json
 {
-    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "username": "demo",
-    "role": "user"
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "username": "member",
+  "role": "user"
 }
-```
-
----
-
-## GET /api/admin/users
-
-返回所有用户。**需要管理权限。**
-
-**示例响应**
-
-```json
-[
-  {
-    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "username": "admin",
-    "role": "admin",
-    "createdAt": "0000-00-00T00:00:00.000Z"
-  }
-]
 ```
 
 ---
@@ -77,10 +60,10 @@ GET /api/users/:userId/teams
 
 ```json
 {
-  "username" : "xxxxxxxxxxx",
-  "id" : "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "role" : "user",
-  "createdAt" : "0000-00-00T00:00:00.000Z"
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "username": "member",
+  "role": "user",
+  "createdAt": "2025-10-10T23:09:16.524Z"
 }
 ```
 
@@ -92,9 +75,9 @@ GET /api/users/:userId/teams
 
 **参数**
 
-- `username`: （可选字符串）用户的用户名。
-- `password`: （可选字符串）用户的密码。
-- `role`: （可选字符串）从 `admin`、`user`、`view-only` 中选择。
+- `username`: (可选字符串) 用户的用户名。
+- `password`: (可选字符串) 用户的密码。
+- `role`: (可选字符串) 从 `admin`、`user`、`view-only` 中选择。
 
 **请求体**
 
@@ -125,8 +108,10 @@ GET /api/users/:userId/teams
 
 **示例响应**
 
-```text
-ok
+```json
+{
+  "ok": true
+}
 ```
 
 ---
@@ -137,10 +122,10 @@ ok
 
 **参数**
 
-- `query`: (可选字符串) 搜索文本。
+- `includeTeams`: (boolean) 如果想包含作为团队所有者的网站，请设置为 true。
+- `search`: (可选字符串) 搜索文本。
 - `page`: (可选数字，默认 1) 确定页码。
 - `pageSize`: (可选字符串) 确定返回多少结果。
-- `orderBy`: (可选字符串，默认 `name`) 按列名排序。
 
 **示例响应**
 
@@ -149,26 +134,25 @@ ok
   "data": [
     {
       "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "updatedAt": "0000-00-00T00:00:00.00Z",
-      "user": {
-        "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-        "username": "xxxxx"
-      },
-      "domain": "xxxxxxx",
-      "teamId": null,
+      "name": "My Website",
+      "domain": "mywebsite.com",
+      "shareId": null,
       "resetAt": null,
       "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "teamId": null,
       "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "shareId": "xxxxxxxxxxxxx",
-      "createdAt": "0000-00-00T00:00:00.00Z",
-      "name": "xxxxx",
-      "deletedAt": null
+      "createdAt": "2025-09-16T19:59:32.957Z",
+      "updatedAt": "2025-09-16T19:59:32.957Z",
+      "deletedAt": null,
+      "user": {
+        "username": "admin",
+        "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
     }
   ],
-  "orderBy": "name",
-  "count": 3,
-  "pageSize": 10,
-  "page": 1
+  "count": 1,
+  "page": 1,
+  "pageSize": 20
 }
 ```
 
@@ -180,10 +164,8 @@ ok
 
 **参数**
 
-- `query`: （字符串 | 可选）搜索文本。
-- `page`: （数字 | 可选，默认为1）确定页码。
-- `pageSize`: （字符串 | 可选）确定返回结果数量。
-- `orderBy`: （字符串 | 可选，默认为`name`）按列名排序。
+- `page`: (数字 | 可选，默认 1) 确定页码。
+- `pageSize`: (字符串 | 可选) 确定返回结果数量。
 
 **示例响应**
 
@@ -191,35 +173,35 @@ ok
 {
   "data": [
     {
-      "_count": {
-        "website": 0,
-        "teamUser": 1
-      },
       "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "Umami Software, Inc",
+      "accessCode": "team_qunhu7q6NVZDu6Cg",
       "logoUrl": null,
+      "createdAt": "2025-09-24T22:08:35.259Z",
+      "updatedAt": "2025-09-24T22:08:35.259Z",
       "deletedAt": null,
-      "teamUser": [
+      "members": [
         {
+          "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
           "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
           "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-          "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
           "role": "team-owner",
-          "updatedAt": "0000-00-00T00:00:00.00Z",
-          "createdAt": "0000-00-00T00:00:00.00Z",
+          "createdAt": "2025-09-24T22:08:35.302Z",
+          "updatedAt": "2025-09-24T22:08:35.302Z",
           "user": {
             "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            "username": "xxxxx"
+            "username": "admin"
           }
         }
       ],
-      "accessCode": "team_xxxxxxxxxxx",
-      "createdAt": "0000-00-00T00:00:00.00Z",
-      "updatedAt": "0000-00-00T00:00:00.00Z",
-      "name": "xxxxxx"
+      "_count": {
+        "websites": 0,
+        "members": 1
+      }
     }
   ],
-  "count": 8,
-  "pageSize": 10,
-  "page": 1
+  "count": 1,
+  "page": 1,
+  "pageSize": 20
 }
 ```

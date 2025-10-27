@@ -1,7 +1,8 @@
 'use client';
-import { Box, Column, Grid, Heading, Icon, Text, Row } from '@umami/react-zen';
 import GetStartedBanner from '@/components/GetStartedBanner';
 import PageHeader from '@/components/PageHeader';
+import { Box, Column, Grid, Heading, Icon, Row, Text } from '@umami/react-zen';
+import { ChartPie, Grid2x2, LinkIcon, UserPlus } from 'lucide-react';
 import {
   Anonymous,
   Bolt,
@@ -92,11 +93,6 @@ const items = [
         icon: <Language />,
       },
       {
-        title: '比较',
-        description: ['查看您的指标表现与之前日期范围的对比。'],
-        icon: <Compare />,
-      },
-      {
         title: '过滤',
         description: [
           '通过应用国家、浏览器和URL等过滤器，进一步深入了解您的数据。',
@@ -145,22 +141,53 @@ const items = [
         icon: <Share />,
       },
       {
-        title: '报告',
+        title: 'Insights',
         description: [
-          '为特定网站和日期范围构建报告，以满足您的所有数据需求。',
+          'Build insights for specific websites and date ranges to cover all your data needs.',
         ],
         icon: <Graph />,
+      },
+      {
+        title: 'Segments',
+        description: [
+          'Save commonly used filters, so you can quickly reapply them without setting criteria each time',
+        ],
+        icon: <ChartPie />,
+      },
+      {
+        title: 'Cohorts',
+        description: [
+          'Group your users based on specific actions, helping you uncover trends and measure engagement more effectively',
+        ],
+        icon: <UserPlus />,
+      },
+      {
+        title: 'Links',
+        description: [
+          'Monitor and record clicks on URLs to show where visitors come from and how they interact with your links.',
+        ],
+        icon: <LinkIcon />,
+      },
+      {
+        title: 'Pixels',
+        description: ['Embed a tracking pixel anywhere to start collecting data.'],
+        icon: <Grid2x2 />,
       },
     ],
   },
   {
-    title: '报告',
+    title: 'Insights',
     description:
-      'Umami 提供开箱即用的报告功能，使您能够从所有网站数据中获得深入洞察。',
+      'Umami comes with out of the box insights that enables you to gain deep understanding of all your website data.',
     items: [
       {
-        title: '洞察',
-        description: ['通过使用细分和过滤器深入挖掘您的数据。'],
+        title: 'Compare',
+        description: ['See your metric performance compared against previous date ranges.'],
+        icon: <Compare />,
+      },
+      {
+        title: 'Breakdown',
+        description: ['Dive deeper into your data by using segments and filters.'],
         icon: <Lightbulb />,
       },
       {

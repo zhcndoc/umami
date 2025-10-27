@@ -8,11 +8,17 @@ title: API 密钥
 
 ## 创建您的密钥
 
-要在 Umami Cloud 中创建密钥，请前往 `账户` > `API 密钥`，然后点击 `创建密钥` 按钮。
+登录后，点击侧边导航栏的下拉菜单，然后点击 **设置**。
 
-![image](/images/cloud/create-api-key.png)
+![image](/images/cloud/navbar-settings.png)
+
+导航至 **API 密钥** 并点击 **创建密钥** 按钮。
+
+![image](/images/cloud/api-key-create.png)
 
 您可以通过点击文本输入框中的 `可见` 图标来显示您的密钥。
+
+![image](/images/cloud/api-key-details.png)
 
 ## 使用您的密钥
 
@@ -32,7 +38,7 @@ curl https://api.umami.is/v1/websites
 
 ## 使用 API 客户端的密钥
 
-设置以下要求变量以使 API 客户端使用您的 API 密钥。
+设置以下环境变量以使 API 客户端使用您的 API 密钥。
 
 ```dotenv
 UMAMI_API_KEY={您的 API 密钥}
@@ -57,6 +63,8 @@ UMAMI_API_CLIENT_ENDPOINT=https://api.umami.is/v1
 
 ## 删除您的密钥
 
-您可以在 `账户` > `API 密钥` 下删除您的密钥，点击要删除的特定密钥的 `删除` 按钮。
+在 API 密钥页面，点击要删除的特定密钥的 `删除` 按钮。
 
 一旦删除 API 密钥，将无法恢复。
+
+![image](/images/cloud/api-key-delete.png)

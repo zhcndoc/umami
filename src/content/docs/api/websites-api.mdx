@@ -19,11 +19,12 @@ POST /api/websites/:websiteId/reset
 
 ## GET /api/websites
 
-返回所有被跟踪的网站。
+返回所有用户网站。
 
 **参数**
 
-- `query`: （可选字符串）搜索文本。
+- `includeTeams`: (boolean) 如果想包含您作为团队所有者的网站，请设置为 true。
+- `search`: （可选字符串）搜索文本。
 - `page`: （可选数字，默认值 1）确定页码。
 - `pageSize`: （可选字符串）确定返回多少结果。
 - `orderBy`: （可选字符串，默认值 `name`）按列名排序。
@@ -32,32 +33,29 @@ POST /api/websites/:websiteId/reset
 
 ```json
 {
-    "data": [
-        {
-            "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            "name": "Example",
-            "domain": "example.com",
-            "shareId": null,
-            "resetAt": null,
-            "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            "teamId": null,
-            "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-            "createdAt": "0000-00-00T00:00:00.000Z",
-            "updatedAt": "0000-00-00T00:00:00.000Z",
-            "deletedAt": null,
-            "user": {
-                "username": "xxxxxxx@xxxx.xxxx",
-                "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
-            }
-        }
-    ],
-    "count": 2,
-    "page": 1,
-    "pageSize": 10,
-    "orderBy": "name"
+  "data": [
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "Example",
+      "domain": "example.com",
+      "shareId": null,
+      "resetAt": null,
+      "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "teamId": null,
+      "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "createdAt": "0000-00-00T00:00:00.000Z",
+      "updatedAt": "0000-00-00T00:00:00.000Z",
+      "deletedAt": null,
+      "user": {
+        "username": "bob@aol.com",
+        "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+      }
+    }
+  ],
+  "count": 1,
+  "page": 1,
+  "pageSize": 10
 }
-
-
 ```
 
 ---
@@ -68,18 +66,18 @@ POST /api/websites/:websiteId/reset
 
 **参数**
 
-- `domain`: （字符串）被跟踪网站的完整域名。
-- `name`: （字符串）Umami 中的网站名称。
-- `shareId`: （字符串|可选）一个唯一字符串以启用共享 URL。设置为 `null` 以取消共享。
-- `teamId`: （字符串|可选）创建网站所在团队的 ID。
-
+- `name`: (string) Umami 中的网站名称。
+- `domain`: (string) 被跟踪网站的完整域名。
+- `shareId`: (string | 可选) 一个唯一字符串以启用共享 URL。设置为 `null` 以取消共享。
+- `teamId`: (string | 可选) 创建网站所在团队的 ID。
+- `id`: (string | 可选) 强制为网站分配 UUID。
 
 **请求体**
 
-```json 
+```json
 {
-    "name": "Test",
-    "domain": "example.com"
+  "name": "Test",
+  "domain": "example.com"
 }
 ```
 
@@ -87,17 +85,17 @@ POST /api/websites/:websiteId/reset
 
 ```json
 {
-    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "name": "Test",
-    "domain": "example.com",
-    "shareId": null,
-    "resetAt": null,
-    "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "teamId": null,
-    "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "createdAt": "0000-00-00T00:00:00.000Z",
-    "updatedAt": "0000-00-00T00:00:00.000Z",
-    "deletedAt": null
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "Test",
+  "domain": "example.com",
+  "shareId": null,
+  "resetAt": null,
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "teamId": null,
+  "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "createdAt": "0000-00-00T00:00:00.000Z",
+  "updatedAt": "0000-00-00T00:00:00.000Z",
+  "deletedAt": null
 }
 ```
 
@@ -117,8 +115,10 @@ POST /api/websites/:websiteId/reset
   "shareId": null,
   "resetAt": null,
   "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "createdAt": "0000-00-00T00:00:00.000Z",
-  "updatedAt": null,
+  "teamId": null,
+  "createdBy": "133660ed-e51c-4ed9-84aa-c86654460cae",
+  "createdAt": "2025-10-10T22:01:06.201Z",
+  "updatedAt": "2025-10-10T22:02:02.220Z",
   "deletedAt": null
 }
 ```
@@ -133,14 +133,14 @@ POST /api/websites/:websiteId/reset
 
 - `name`: (string) Umami 网站的名称。
 - `domain`: (string) 被追踪网站的完整域名。
-- `shareId`: (string | optional) 用于启用共享 URL 的唯一字符串。设置为 `null` 以取消共享。
+- `shareId`: (string | 可选) 用于启用共享 URL 的唯一字符串。设置为 `null` 以取消共享。
 
 **请求主体**
 
 ```json
 {
-    "name": "Test",
-    "domain": "domain.com"
+  "name": "Test",
+  "domain": "domain.com"
 }
 ```
 
@@ -148,17 +148,17 @@ POST /api/websites/:websiteId/reset
 
 ```json
 {
-    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "name": "Test",
-    "domain": "domain.com",
-    "shareId": null,
-    "resetAt": null,
-    "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "teamId": null,
-    "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "createdAt": "0000-00-00T00:00:00.000Z",
-    "updatedAt": "0000-00-00T00:00:00.000Z",
-    "deletedAt": null
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "Example",
+  "domain": "example.com",
+  "shareId": null,
+  "resetAt": null,
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "teamId": null,
+  "createdBy": "133660ed-e51c-4ed9-84aa-c86654460cae",
+  "createdAt": "2025-10-10T22:01:06.201Z",
+  "updatedAt": "2025-10-10T22:02:02.220Z",
+  "deletedAt": null
 }
 ```
 
@@ -170,8 +170,10 @@ POST /api/websites/:websiteId/reset
 
 **示例响应**
 
-```text
-ok
+```json
+{
+  "ok": true
+}
 ```
 
 ---
@@ -182,6 +184,8 @@ ok
 
 **示例响应**
 
-```text
-ok
+```json
+{
+  "ok": true
+}
 ```
