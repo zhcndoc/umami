@@ -1,3 +1,40 @@
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
+
+:root {
+  --color-fd-background: hsl(0, 0%, 100%);
+}
+
+.light {
+  --color-fd-background: hsl(0, 0%, 100%);
+
+  #nd-sidebar a[data-active=true] {
+    background-color: #e5e5e5;
+  }
+}
+
+.dark {
+  --color-fd-background: hsl(0, 0%, 7%);
+}
+
+#nd-sidebar p {
+  font-weight: bold;
+}
+
+#nd-page h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: -0.05rem;
+}
+
+#nd-page h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: -0.05rem;
+}
+
+#nd-page a {
+  text-decoration-color: color-mix(in srgb, var(--color-fd-foreground) 30%, transparent);
+  text-decoration-thickness: 1px;
+}
