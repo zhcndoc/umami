@@ -38,3 +38,7 @@
   text-decoration-color: color-mix(in srgb, var(--color-fd-foreground) 30%, transparent);
   text-decoration-thickness: 1px;
 }
+
+#nd-subnav a[data-active=true] {
+  font-weight: bold;
+}

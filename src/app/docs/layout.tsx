@@ -1,9 +1,10 @@
-import { DocsLayout } from 'fumadocs-ui/layouts/docs';
+import { ReactNode } from 'react';
+import { DocsLayout } from 'fumadocs-ui/layouts/notebook';
 import { baseOptions } from '@/lib/layout.shared';
 import { source } from '@/lib/source';
-import { Book, Map, Terminal, NotebookPen, Cloud } from 'lucide-react';
+import { Book, Map, Terminal, Cloud } from 'lucide-react';
 
-export default function Layout({ children }: LayoutProps<'/docs'>) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <div id="docs-layout">
       <DocsLayout
@@ -16,22 +17,25 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
             icon: <Book />,
             text: 'Documentation',
             url: '/docs',
+            active: 'url',
           },
           {
             icon: <Map />,
             text: 'Guides',
             url: '/docs/guides',
-            secondary: true,
+            active: 'nested-url',
           },
           {
             icon: <Terminal />,
             text: 'API Reference',
             url: '/docs/api',
+            active: 'nested-url',
           },
           {
             icon: <Cloud />,
             text: 'Cloud',
             url: '/docs/cloud',
+            active: 'nested-url',
           },
         ]}
         {...baseOptions()}
