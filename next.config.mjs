@@ -8,12 +8,8 @@ const config = {
   async rewrites() {
     return [
       {
-        source: '/docs',
-        destination: '/docs/v3/index',
-      },
-      {
-        source: '/docs/:path((?!api|guides|cloud|changelog).*)',
-        destination: '/docs/v3/:path*',
+        source: '/docs/:path((?!v2|v1|api|guides|cloud|changelog).*)',
+        destination: '/docs/:path*',
       },
     ];
   },

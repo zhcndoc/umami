@@ -10,6 +10,7 @@ export function baseOptions(): BaseLayoutProps {
           umami
         </>
       ),
+      url: 'https://umami.is/?ref=docs',
     },
     githubUrl: 'https://github.com/umami-software/umami',
   };

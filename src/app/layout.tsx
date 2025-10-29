@@ -1,8 +1,12 @@
 import '@/app/global.css';
 import { RootProvider } from 'fumadocs-ui/provider/next';
-import { Inter } from 'next/font/google';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 
 const inter = Inter({
+  subsets: ['latin'],
+});
+
+const mon = JetBrains_Mono({
   subsets: ['latin'],
 });
 

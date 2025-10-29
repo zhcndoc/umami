@@ -1,14 +1,16 @@
 import { DocsLayout } from 'fumadocs-ui/layouts/docs';
 import { baseOptions } from '@/lib/layout.shared';
 import { source } from '@/lib/source';
-import { Book, Map, Terminal, NotebookPen } from 'lucide-react';
+import { Book, Map, Terminal, NotebookPen, Cloud } from 'lucide-react';
 
 export default function Layout({ children }: LayoutProps<'/docs'>) {
   return (
     <div id="docs-layout">
       <DocsLayout
         tree={source.pageTree}
-        tabMode="top"
+        sidebar={{
+          tabs: false,
+        }}
         links={[
           {
             icon: <Book />,
@@ -19,6 +21,7 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
             icon: <Map />,
             text: 'Guides',
             url: '/docs/guides',
+            secondary: true,
           },
           {
             icon: <Terminal />,
@@ -26,9 +29,9 @@ export default function Layout({ children }: LayoutProps<'/docs'>) {
             url: '/docs/api',
           },
           {
-            icon: <NotebookPen />,
-            text: 'Changelog',
-            url: '/docs/changelog',
+            icon: <Cloud />,
+            text: 'Cloud',
+            url: '/docs/cloud',
           },
         ]}
         {...baseOptions()}

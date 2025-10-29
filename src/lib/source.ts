@@ -8,6 +8,24 @@ export const source = loader({
   plugins: [lucideIconsPlugin()],
 });
 
+export const api = loader({
+  baseUrl: '/docs/api',
+  source: docs.toFumadocsSource(),
+  plugins: [lucideIconsPlugin()],
+});
+
+export const guides = loader({
+  baseUrl: '/docs/guides',
+  source: docs.toFumadocsSource(),
+  plugins: [lucideIconsPlugin()],
+});
+
+export const cloud = loader({
+  baseUrl: '/docs/cloud',
+  source: docs.toFumadocsSource(),
+  plugins: [lucideIconsPlugin()],
+});
+
 export function getPageImage(page: InferPageType<typeof source>) {
   const segments = [...page.slugs, 'image.png'];
 
