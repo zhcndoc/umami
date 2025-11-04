@@ -1,5 +1,4 @@
 {
-  "serverless": false,
-  "build_command": "yarn run build",
-  "start_command": "yarn run start"
+  "build_command": "pnpm run build",
+  "start_command": "pnpm run start"
 }
