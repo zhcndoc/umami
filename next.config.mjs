@@ -4,6 +4,7 @@ const withMDX = createMDX();
 
 /** @type {import('next').NextConfig} */
 const config = {
+  assetPrefix: '/docs',
   reactStrictMode: true,
   env: {
     trackerId: process.env.TRACKER_ID || '',
