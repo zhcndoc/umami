@@ -2,10 +2,6 @@
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 
-:root {
-  --color-fd-background: hsl(0, 0%, 100%);
-}
-
 #nd-sidebar p {
   font-weight: bold;
 }
@@ -47,6 +43,12 @@
     a[data-active="true"] {
       background-color: var(--color-neutral-200);
     }
+  }
+
+  #nd-sidebar-mobile,
+  #nd-tocnav,
+  #nd-subnav {
+    background: var(--color-white);
   }
 }
 
