@@ -41,7 +41,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             active: 'nested-url',
           },
           {
-            text: 'v2.x 🡕',
+            text: 'v2 🡕',
             url: 'https://v2.umami.is',
             external: true,
           },

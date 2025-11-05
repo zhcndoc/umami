@@ -6,6 +6,10 @@
   font-weight: bold;
 }
 
+#nd-subnav a[data-active="true"] {
+  font-weight: bold;
+}
+
 #nd-page {
   h1 {
     font-size: 2.5rem;
