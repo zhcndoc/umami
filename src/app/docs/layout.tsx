@@ -1,5 +1,5 @@
 import { DocsLayout } from 'fumadocs-ui/layouts/notebook';
-import { Book, Cloud, Map, Terminal } from 'lucide-react';
+import { Book, Cloud, MapIcon, ShareIcon, Terminal } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { baseOptions } from '@/lib/layout.shared';
 import { source } from '@/lib/source';
@@ -23,7 +23,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             active: 'url',
           },
           {
-            icon: <Map />,
+            icon: <MapIcon />,
             text: 'Guides',
             url: '/docs/guides',
             active: 'nested-url',
@@ -39,6 +39,11 @@ export default function Layout({ children }: { children: ReactNode }) {
             text: 'Cloud',
             url: '/docs/cloud',
             active: 'nested-url',
+          },
+          {
+            text: 'v2.x 🡕',
+            url: 'https://v2.umami.is',
+            external: true,
           },
         ]}
         {...baseOptions()}
