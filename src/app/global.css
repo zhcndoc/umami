@@ -1,6 +1,6 @@
-@import 'tailwindcss';
-@import 'fumadocs-ui/css/neutral.css';
-@import 'fumadocs-ui/css/preset.css';
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
 
 :root {
   --color-fd-background: hsl(0, 0%, 100%);
@@ -9,7 +9,7 @@
 .light {
   --color-fd-background: hsl(0, 0%, 100%);
 
-  #nd-sidebar a[data-active=true] {
+  #nd-sidebar a[data-active="true"] {
     background-color: #e5e5e5;
   }
 }
@@ -39,6 +39,6 @@
   text-decoration-thickness: 1px;
 }
 
-#nd-subnav a[data-active=true] {
+#nd-subnav a[data-active="true"] {
   font-weight: bold;
 }
