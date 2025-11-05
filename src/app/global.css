@@ -39,6 +39,7 @@
 .shiki {
   border-radius: 6px;
   border: 0;
+  box-shadow: none;
 
   code {
     font-size: 14px;
