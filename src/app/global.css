@@ -27,6 +27,13 @@
     text-decoration-color: color-mix(in srgb, var(--color-fd-foreground) 30%, transparent);
     text-decoration-thickness: 1px;
   }
+
+  img {
+    display: block;
+    max-width: 100%;
+    margin: 4rem auto;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .shiki {
