@@ -2,7 +2,9 @@
   "title": "Guides",
   "root": true,
   "pages": [
+    "---Guides---",
     "index",
+    "migrate-v1-v2",
     "---Marketing---",
     "measure-campaigns",
     "---Hosting---",

@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
 import { DocsLayout } from 'fumadocs-ui/layouts/notebook';
+import { Book, Cloud, Map, Terminal } from 'lucide-react';
+import type { ReactNode } from 'react';
 import { baseOptions } from '@/lib/layout.shared';
 import { source } from '@/lib/source';
-import { Book, Map, Terminal, Cloud } from 'lucide-react';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -11,6 +11,9 @@ export default function Layout({ children }: { children: ReactNode }) {
         tree={source.pageTree}
         sidebar={{
           tabs: false,
+        }}
+        themeSwitch={{
+          mode: 'light-dark',
         }}
         links={[
           {
