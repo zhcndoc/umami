@@ -49,7 +49,7 @@
 
 .light {
   --color-fd-card: var(--color-neutral-50);
-  --color-fd-background: var(--color-fd-background);
+  --color-fd-background: var(--color-white);
 
   #nd-sidebar {
     a[data-active="true"] {
