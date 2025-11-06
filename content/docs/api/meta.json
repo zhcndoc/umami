@@ -8,7 +8,6 @@
     "sending-stats",
     "---Endpoints---",
     "me",
-    "admin",
     "users",
     "teams",
     "events",
@@ -19,6 +18,7 @@
     "reports",
     "links",
     "pixels",
+    "admin",
     "---Clients---",
     "api-client",
     "node-client"
