@@ -50,10 +50,11 @@
 .light {
   --color-fd-card: var(--color-neutral-50);
   --color-fd-background: var(--color-white);
+  --color-fd-primary: var(--color-blue-600);
 
   #nd-sidebar {
     a[data-active="true"] {
-      background-color: var(--color-neutral-200);
+      background-color: var(--color-blue-100);
     }
   }
 
@@ -65,5 +66,12 @@
 }
 
 .dark {
-  --color-fd-background: hsl(0, 0%, 7%);
+  --color-fd-background: var(--color-neutral-900);
+  --color-fd-primary: var(--color-blue-400);
+
+  #nd-sidebar {
+    a[data-active="true"] {
+      background-color: var(--color-blue-950);
+    }
+  }
 }
