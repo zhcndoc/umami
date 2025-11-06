@@ -12,6 +12,7 @@
     "hosting",
     "running-on-caprover",
     "running-on-digitalocean",
+    "running-on-northflank",
     "running-on-fly-io",
     "running-on-forge",
     "running-on-heroku",
