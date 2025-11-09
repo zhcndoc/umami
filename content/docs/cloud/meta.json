@@ -15,10 +15,12 @@
     "usage",
     "---API---",
     "api-key",
-    "api-changelog",
     "---Data---",
     "export-data",
-    "import-data"
+    "import-data",
+    "---Changelog---",
+    "cloud-changelog",
+    "api-changelog"
   ],
   "defaultOpen": true
 }
