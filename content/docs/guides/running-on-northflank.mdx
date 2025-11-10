@@ -1,0 +1,40 @@
+---
+title: Running on Northflank
+---
+
+[Northflank](https://northflank.com) is a fully managed platform for building, deploying, and scaling applications using containers. It combines the flexibility of cloud infrastructure with a simple developer experience so you can focus on your app instead of managing servers.
+
+Northflank provides free and paid hosting plans that let you deploy Umami together with a managed PostgreSQL database, all configured automatically.
+
+## Setup Website and Database
+
+### Northflank Button (Recommended)
+
+[![Deploy on Northflank](https://assets.northflank.com/deploy_to_northflank_smm_36700fb050.svg)](https://northflank.com/stacks/deploy-umami)
+
+Click the button above to deploy your own Umami instance with a managed PostgreSQL addon and all environment variables preconfigured.
+
+Once the stack is deployed, go to your Umami service in the Northflank project dashboard and open the public URL.  
+
+You should see the setup screen where you can create your admin account and start using Umami.
+
+## Running on Northflank manually
+
+The one-click deployment is the easiest way to get started, but you can also deploy Umami manually using the template configuration.
+
+1. Create a new project on [Northflank](https://northflank.com).
+2. Add a **PostgreSQL addon** to the project.
+3. Create a **Deployment service** using the Docker image `umamisoftware/umami:postgresql-latest`.
+4. Expose port `3000` publicly.
+5. Add the following environment variables and link them to your database:
+   - `DATABASE_URL` — connection string from the PostgreSQL addon  
+   - `DATABASE_TYPE=postgres`
+6. Deploy the service.
+
+Once deployed, open the public URL of your service to finish the Umami setup.
+
+### Notes
+
+- Data is stored in the PostgreSQL addon and persists across deploys.
+- You can scale the service or update the image version from the dashboard.
+- Read more about [adding a website](https://umami.is/docs/add-a-website) and [collecting data](https://umami.is/docs/collect-data) here.
