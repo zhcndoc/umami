@@ -28,14 +28,6 @@ behind a proxy that uses non-standard headers.
 CLIENT_IP_HEADER = "header name"
 ```
 
-### CLOUD_MODE
-
-Disables `users`, `teams`, and `websites` settings page.
-
-```
-CLOUD_MODE = 1
-```
-
 ### COLLECT_API_ENDPOINT
 
 Allows you to send metrics to a location different than the default `/api/send`. This is to help you avoid some [ad blockers](/docs/bypass-ad-blockers).
@@ -124,6 +116,10 @@ Some alternatives you can use:
 
 - https://www.google.com/s2/favicons?domain={{domain}}
 - https://logo.clearbit.com/{{domain}}
+
+## GEO_DATABASE_URL
+
+The URL for downloading the geo location database.
 
 ### HOSTNAME / PORT
 
