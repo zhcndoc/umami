@@ -13,7 +13,7 @@
   },
   "lint-staged": {
     "**/*.{js,jsx,ts,tsx,json,css}": [
-      "biome check --apply"
+      "npm run format"
     ]
   },
   "dependencies": {
