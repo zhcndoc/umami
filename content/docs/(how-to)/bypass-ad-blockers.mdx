@@ -71,9 +71,9 @@ There are two sources that could potentially be blocked:
 1. The tracker script at `https://your-umami.com/script.js`
 2. The stats collection endpoint at `https://your-umami.com/api/send`.
 
-The `TRACKER_SCRIPT_NAME` variable can be used to rename your tracker script to
-something like `/x.js`. You would then change your script source to `https://your-umami.com/x.js`.
+The [`TRACKER_SCRIPT_NAME`](/docs/environment-variables#tracker_script_name) variable can be used to rename your tracker script to
+something like `x.js`. You would then change your script source to `https://your-umami.com/x.js`.
 
-The `COLLECT_API_ENDPOINT` variable can be used to rename your endpoint to something
+The [`COLLECT_API_ENDPOINT`](/docs/environment-variables#collect_api_endpoint) variable can be used to rename your endpoint to something
 like `/api/x`. The tracker script will automatically make calls to your custom endpoint name
 instead of `/api/send`.
