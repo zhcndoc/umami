@@ -226,3 +226,13 @@ Skips the Prisma migration step in the build process. Setting `SKIP_DB_CHECK` al
 ```
 SKIP_DB_MIGRATION = 1
 ```
+
+### SKIP_LOCATION_HEADERS
+
+Skips using known location headers for country/region/city detection and forces using the local geo database.
+
+This is useful in environments where only the country (without region or city) header is set from the proxy or CDN (like Cloudflare’s `CF-IPCountry` when Network > IP Geolocationis switched to On).
+
+```
+SKIP_LOCATION_HEADERS = 1
+```
