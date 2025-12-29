@@ -38,3 +38,9 @@ location / {
     proxy_pass http://127.0.0.1:3000;
 }
 ```
+
+## Force local geo database
+
+Alternatively, when Cloudflare sends only the country but adding the visitor location
+headers is not possible, you can set the `SKIP_LOCATION_HEADERS` runtime variable to `1`.
+This disables header detection and forces the usage of the internal geo database.
