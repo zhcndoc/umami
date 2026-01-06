@@ -1,9 +1,9 @@
 'use client';
+import { Button, Column, Heading, Row, Text } from '@umami/react-zen';
 import Link from 'next/link';
-import { Button, Row, Column, Heading, Text } from '@umami/react-zen';
-import { CLOUD_URL } from '@/lib/constants';
-import useQueryString from '@/components/hooks/useQueryString';
 import ContentImage from '@/components/ContentImage';
+import useQueryString from '@/components/hooks/useQueryString';
+import { CLOUD_URL } from '@/lib/constants';
 import Companies from './Companies';
 import styles from './Hero.module.css';
 
@@ -22,19 +22,9 @@ export default function Hero() {
       </Text>
       <Row justifyContent="center" gap="3" style={{ zIndex: 1 }}>
         <Button variant="primary" size="lg" asChild>
-          <Link href={`/docs`} data-umami-event="get-started-button">
+          <Link href={`/docs`}>
             开始使用
           </Link>
-        </Button>
-        <Button size="lg" asChild>
-          <a
-            href="https://umami.ikxin.com/share/aHYOn5YKtcPoS5v7/zhcndoc.com"
-            data-umami-event="live-demo-button"
-            target="_blank"
-            rel="noreferrer"
-          >
-            查看演示
-          </a>
         </Button>
       </Row>
       <div className={styles.image}>

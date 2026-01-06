@@ -1,12 +1,12 @@
 'use client';
-import { Button, Text, Icon, Row, Container } from '@umami/react-zen';
+import { Button, Container, Icon, Row, Text } from '@umami/react-zen';
 import Link from 'next/link';
-import CompanyLogo from '@/components/CompanyLogo';
-import MobileMenu from '@/components/MobileMenu';
-import useQueryString from '@/components/hooks/useQueryString';
-import { GITHUB_STARS, GITHUB_URL } from '@/lib/constants';
-import useScroll from '@/components/hooks/useScroll';
 import { Github } from 'src/components/svg';
+import CompanyLogo from '@/components/CompanyLogo';
+import useQueryString from '@/components/hooks/useQueryString';
+import useScroll from '@/components/hooks/useScroll';
+import MobileMenu from '@/components/MobileMenu';
+import { GITHUB_STARS, GITHUB_URL } from '@/lib/constants';
 import styles from './Header.module.css';
 
 const mobileMenuItems = [
@@ -57,9 +57,7 @@ const NavLinks = () => {
     <Row className={styles.links} alignItems="center" gap="6">
       <Link href="/features">特征</Link>
       <Link href="/blog">博客</Link>
-      <Link href="/docs" prefetch={false}>
-        文档
-      </Link>
+      <a href="/docs">文档</a>
       <Link href="/pricing">定价</Link>
       <Link href="/contact">联系</Link>
     </Row>
