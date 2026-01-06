@@ -1,101 +1,88 @@
 ---
-title: What is Coming in Umami v3
-description: Preview the new features we are planning for Umami v3.
+title: Umami v3 的新动态
+description: 预览我们为 Umami v3 规划的新功能。
 author: Mike Cao
 date: 2025-07-25T00:00:00-08:00
 image: /images/blog/banner-10.png
 ---
 
-Umami has come a long way from being a simple web analytics app to a more robust
-analytics platform challenging [Google Analytics](https://marketingplatform.google.com/about/analytics/),
-[Mixpanel](https://mixpanel.com/) and [Amplitude](https://amplitude.com).
-We have added many features over the years requested by our users and continue to work with them to define our roadmap.
+Umami 走过了从一个简单的网络分析应用到一个更强大分析平台的漫长旅程，挑战着 [Google Analytics](https://marketingplatform.google.com/about/analytics/)、
+[Mixpanel](https://mixpanel.com/) 和 [Amplitude](https://amplitude.com)。
+多年来，我们添加了许多用户请求的功能，并继续与他们合作制定路线图。
 
-In this release we are focused on improving the user experience, adding more customization options, and introducing new tools for tracking.
-We're excited to share what we've been working on!
+在本次发布中，我们专注于提升用户体验、增加更多自定义选项，并引入新的追踪工具。
+我们很高兴与大家分享我们的工作成果！
 
-## New design
+## 新设计
 
-One of the main goals of Umami is to be as simple to use as possible. Users should be
-able to quickly and easily get to the data they want. In v3, we are introducing a more
-streamlined design with a new sidebar navigation. We plan to add lots more features in the future and needed a design that
-would scale and be friendly to navigate.
+Umami 的主要目标之一是尽可能简单易用。用户应该能够快速、轻松地获取所需数据。
+在 v3 中，我们引入了更简洁的设计以及新的侧边栏导航。未来我们计划增加更多功能，因此需要一个能够扩展且便于导航的设计。
 
-Also, the sidenav now includes a website selector so you can quickly switch between websites.
+此外，侧边导航栏现在包含网站选择器，方便您在不同网站间快速切换。
 
 ![image](/images/blog/screenshot-v3-sidenav.png)
 
-## Reports reworked
+## 报告重构
 
-With reports, we originally planned on having the
-primary functionality on the overview page and any extra functionality would exists in
-separate reports. However this caused a few problems. First, reports felt hidden away and it
-took too many extra steps to get to your data. Second, reports functionality was too disjointed and
-didn't follow a standard pattern. In some reports you could filter by certain criteria, others
-you couldn't, and it was a frustrating experience.
+关于报告，我们最初计划将主要功能放在概览页，其它附加功能存在于独立报告中。
+但是这带来了一些问题。首先，报告感觉被隐藏，需要额外步骤才能获取数据。
+其次，报告功能过于分散，没有统一的模式。有的报告可以按某些条件筛选，有的不能，使用体验令人沮丧。
 
-In v3 we are making reports a seamless part of the app.
-You will be able to click through the different reports as tabs in the application. For example,
-instead of opening individual goals reports, you can see all your saved goals on one screen.
-All of your existing reports will be converted to the new system automatically.
+在 v3 中，我们让报告成为应用的无缝部分。
+您可以像切换标签页一样点击不同的报告。例如，您不必逐个打开目标报告，而是在一个界面查看所有保存的目标。
+所有现有报告将自动转换到新系统。
 
 ![image](/images/blog/screenshot-v3-reports.png)
 
-## Universal filters
+## 通用筛选器
 
-One thing we really wanted to achieve in this release was to provide a consistent experience.
-So we refactored how filters worked and now they can be applied to any screen in the application.
+我们本次发布最想实现的一点是提供一致的体验。
+因此，我们重构了筛选器，现在它们可应用于应用中的任何屏幕。
 
-As you navigate the app, the filters and date range will remain in place, so you can always be in the
-same context as you explore. Filters are also saved to the query string, so you can bookmark or
-share the URL with your team.
+导航应用时，筛选器和日期范围会保持不变，使您始终处于相同的上下文中探索。筛选条件也会保存到查询字符串，您可以收藏或与团队分享链接。
 
 ![image](/images/blog/screenshot-v3-filters.png)
 
-## Segments
+## 细分
 
-Along with the update to filters, you will have the ability to save a set of filters as a segment.
-You just give the segment a name and then you can then filter by the saved segment just as you would any other filter.
+在筛选器更新的同时，您可以将一组筛选条件保存为“细分”。
+只需为细分命名，然后就能像使用任意筛选器一样基于该细分筛选数据。
 
-We're also introducing an improved filter editing experience that will allow you to edit multiple filters at once.
+我们还引入了改进的筛选器编辑体验，允许您一次编辑多个筛选条件。
 
 ![image](/images/blog/screenshot-v3-filters-edit.png)
 
-## Cohorts
+## 用户群组（Cohorts）
 
-Along with segments, you will be able to create **cohorts**.
-In analytics, cohorts are used to group users based on shared characteristics or experiences within a defined time frame, allowing you to track how those users behave over time.
+除了细分，您还可以创建 **用户群组（cohorts）**。
+在分析中，用户群组用于将具有共有特征或在指定时间段内的经验的用户分组，从而跟踪这些用户随时间的行为变化。
 
-You will be able to create cohorts from the sessions screen by filtering your
-sessions and saving the group as a cohort. You can then use the cohort as a filter parameter, just like segments.
+您可以从会话页面筛选会话并将该组保存为用户群组。随后，您可以像使用细分一样使用该用户群组作为筛选参数。
 
-## Boards
+## 仪表板（Boards）
 
-A major new feature we are adding to Umami are custom dashboards. These are customizable views that you create using various visual components like charts, graphs and tables.
-This allows you to create custom views showing what is important to you and your team.
+我们为 Umami 新增的一个重要功能是自定义仪表板。这些是您用各种图表、图形和表格等视觉组件创建的可自定义视图。
+它让您可以创建展示对您和团队重要内容的个性化视图。
 
-You'll also be able to share your individual boards via a public URL so you can easily make them
-available to your team or clients.
+您还能通过公共 URL 分享个人仪表板，让团队或客户轻松访问。
 
 ![image](/images/blog/screenshot-v3-boards.png)
 
-## Links and pixels
+## 链接与像素
 
-In v3 we are introducing new tools for tracking, **links** and **pixels**. Currently all tracking is done through the Umami tracking script that you place on your website.
-However, you may want to track events that happen outside of your website.
+v3 新增了用于追踪的新工具：**链接** 和 **像素**。目前，所有追踪均通过您网站上部署的 Umami 追踪脚本完成。
+但是，您可能希望追踪发生在网站外的事件。
 
-With links, you can create custom short URLs that redirect the user to another location.
-Anytime the link is clicked, Umami will be able to track the event and provide you with the same detailed data.
-You can distribute your links across social media, through marketing campaigns, or create product links to track downloads.
+通过链接，您可以创建自定义短链接，重定向用户至其他地址。
+每次点击链接时，Umami 都能捕捉事件并提供详细数据。
+您可以在社交媒体、营销活动中分发链接，或创建产品链接追踪下载情况。
 
-Additionally, with pixels you can create a custom transparent pixel that you can include on other sites. When the image is loaded,
-it will collect data automatically.
+此外，通过像素，您可以创建自定义透明像素嵌入其他网站。当图片被加载时，它将自动采集数据。
 
-## Breaking changes
+## 重大变更
 
-Umami v3 will no longer support MySQL, only PostgreSQL. Supporting multiple databases required too much additional testing and development time
-and MySQL usage was much lower than PostgreSQL.
+Umami v3 将不再支持 MySQL，仅支持 PostgreSQL。支持多数据库需要过多额外测试和开发时间，而且 MySQL 使用率远低于 PostgreSQL。
 
-## What next?
+## 下一步？
 
-Umami v3 will be rolled out to Umami Cloud first, followed by an open source release for self-hosting.
+Umami v3 将先在 Umami Cloud 推出，随后发布开源版本供自行托管使用。

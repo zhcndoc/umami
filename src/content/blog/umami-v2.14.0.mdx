@@ -1,47 +1,47 @@
 ---
 title: Umami v2.14.0
-description: Introducing a new revenue report, improved dashboard and more.
+description: 介绍新的收入报告、改进的仪表板等功能。
 author: Mike Cao
 date: 2024-11-21T00:00:00-08:00
 image: /images/blog/banner-03.png
 ---
 
-Umami v2.14.0 is here! Introducing a new revenue report, improved dashboard and more.
+Umami v2.14.0 来了！带来全新的收入报告、改进的仪表板等多项新功能。
 
-## Features
+## 功能
 
-### Revenue report
+### 收入报告
 
-We added a new report that allows you to track revenue. Simply send a custom event with revenue data and it will start tracking. [Learn more](https://umami.is/docs/reports/report-revenue).
+我们新增了一个报告，允许你跟踪收入。只需发送包含收入数据的自定义事件，它就会开始追踪。[了解更多](https://umami.is/docs/reports/report-revenue)。
 
 ![image](https://github.com/user-attachments/assets/51fb6167-8e6f-4638-ac3d-87c20396a47c)
 
-### Improved dashboard
+### 改进的仪表板
 
-In the dashboard, you are now able to select which websites you want to appear, not just the order. Simply toggle the ones you want visible and the rest will be hidden. If none are toggled then all the websites will appear just like before. We also fixed an issue where you couldn't see all your websites if you had too many. Additionally you can now search for websites on the dashboard edit screen.
+在仪表板中，你现在可以选择想要显示的网站，不仅仅是调整顺序。只需切换你想显示的网站，其余的网站将被隐藏。如果没有选中任何网站，所有网站将像之前一样全部显示。我们还修复了当网站数量过多时无法查看所有网站的问题。此外，你现在可以在仪表板编辑页面搜索网站。
 
 ![image](https://github.com/user-attachments/assets/4dbee4b3-1529-40ce-adb0-aa5c2976f982)
 
-### Hash based routing support
+### 基于哈希的路由支持
 
-We now record hashes in URLs for websites that use hashed based routing.
+我们现在会记录使用基于哈希路由的网站中的 URL 哈希。
 
-### Redirect to team
+### 登录后重定向到团队
 
-Umami now redirects to your last selected team on login.
+Umami 现在在登录后会重定向到你上次选择的团队。
 
-## Fixes
-- Fixed dashboard editing [#3048](https://github.com/umami-software/umami/issues/3048)
-- Fixed unknown countries [#3054](https://github.com/umami-software/umami/issues/3054)
-- Fixed mobile display issue [#3039](https://github.com/umami-software/umami/issues/3039)
-- Fixed wrong events count [#2980](https://github.com/umami-software/umami/issues/2980)
-- Fixed display of event properties [#2928](https://github.com/umami-software/umami/issues/2928)
-- Fixed session data not deleting [#2915](https://github.com/umami-software/umami/issues/2915)
+## 修复
+- 修复仪表板编辑问题 [#3048](https://github.com/umami-software/umami/issues/3048)
+- 修复未知国家问题 [#3054](https://github.com/umami-software/umami/issues/3054)
+- 修复移动端显示问题 [#3039](https://github.com/umami-software/umami/issues/3039)
+- 修复错误的事件计数 [#2980](https://github.com/umami-software/umami/issues/2980)
+- 修复事件属性显示问题 [#2928](https://github.com/umami-software/umami/issues/2928)
+- 修复会话数据未删除问题 [#2915](https://github.com/umami-software/umami/issues/2915)
 
-## Updates
-- Language updates (German, French, Russian, Czech, German - Switzerland)
-- Added minor version tags to Docker images
-- Allow underscores in subdomains
-- Added cache control headers for tracker script
+## 更新
+- 语言更新（德语、法语、俄语、捷克语、瑞士德语）
+- Docker 镜像添加次版本标签
+- 允许子域名使用下划线
+- 为跟踪脚本添加缓存控制头
 
-See the full [release notes](https://github.com/umami-software/umami/releases/tag/v2.14.0).
+查看完整的[发布说明](https://github.com/umami-software/umami/releases/tag/v2.14.0)。

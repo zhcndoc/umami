@@ -141,53 +141,53 @@ const items = [
         icon: <Share />,
       },
       {
-        title: 'Insights',
+        title: '见解',
         description: [
-          'Build insights for specific websites and date ranges to cover all your data needs.',
+          '为特定网站和日期范围建立见解，以满足您的所有数据需求。',
         ],
         icon: <Graph />,
       },
       {
-        title: 'Segments',
+        title: '分段',
         description: [
-          'Save commonly used filters, so you can quickly reapply them without setting criteria each time',
+          '保存常用的过滤器，以便您可以快速重新应用它们，而无需每次都设置条件。',
         ],
         icon: <ChartPie />,
       },
       {
-        title: 'Cohorts',
+        title: '同群分析',
         description: [
-          'Group your users based on specific actions, helping you uncover trends and measure engagement more effectively',
+          '根据特定操作对用户进行分组，帮助您更有效地发现趋势和衡量参与度。',
         ],
         icon: <UserPlus />,
       },
       {
-        title: 'Links',
+        title: '链接',
         description: [
-          'Monitor and record clicks on URLs to show where visitors come from and how they interact with your links.',
+          '监控和记录 URL 的点击情况，显示访客来自哪里以及他们如何与您的链接互动。',
         ],
         icon: <LinkIcon />,
       },
       {
-        title: 'Pixels',
-        description: ['Embed a tracking pixel anywhere to start collecting data.'],
+        title: '像素',
+        description: ['在任何地方嵌入跟踪像素以开始收集数据。'],
         icon: <Grid2x2 />,
       },
     ],
   },
   {
-    title: 'Insights',
+    title: '见解',
     description:
-      'Umami comes with out of the box insights that enables you to gain deep understanding of all your website data.',
+      'Umami 提供开箱即用的见解，帮助您深入了解所有网站数据。',
     items: [
       {
-        title: 'Compare',
-        description: ['See your metric performance compared against previous date ranges.'],
+        title: '对比',
+        description: ['查看您的指标表现与之前日期范围的对比情况。'],
         icon: <Compare />,
       },
       {
-        title: 'Breakdown',
-        description: ['Dive deeper into your data by using segments and filters.'],
+        title: '分解',
+        description: ['通过使用分段和过滤器深入挖掘您的数据。'],
         icon: <Lightbulb />,
       },
       {

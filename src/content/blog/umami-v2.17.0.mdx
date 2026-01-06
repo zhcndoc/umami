@@ -1,39 +1,41 @@
 ---
-title: Umami v2.17.0
-description: Batch processing, payload overrides, a do not track feature and more.
-author: Mike Cao
-date: 2025-03-08T00:00:00-08:00
-image: /images/blog/banner-05.png
+title: Umami v2.17.0  
+description: 批量处理、负载覆盖、拒绝跟踪功能及更多。  
+author: Mike Cao  
+date: 2025-03-08T00:00:00-08:00  
+image: /images/blog/banner-05.png  
 ---
 
-In this release of Umami, we are introducing batch processing, payload overrides, a do not track feature and more!
+在本次 Umami 版本发布中，我们引入了批量处理、负载覆盖、拒绝跟踪功能等新特性！
 
-## Features
+## 功能
 
-### Batch send
+### 批量发送
 
-You can now send data in batches, for example when trying to import a lot of data through the API. Instead of sending a single payload object, you would send an array of objects. It will be processed by the same logic from `/api/send`. To use this feature, you would make a `POST` request to `/api/batch`.
+现在你可以批量发送数据，例如通过 API 导入大量数据时。你可以发送一个对象数组，而不是单一的负载对象。数据将通过 `/api/send` 的相同逻辑进行处理。要使用此功能，你可以发起一个 `POST` 请求到 `/api/batch`。
 
-### Payload overrides
+### 负载覆盖
 
-When you send a request to `/api/send`, Umami pulls data from the request such as user-agent and IP address. Now you can provide your own values in the payload. This is useful when you're sending from a server or mobile environment where you are not using a web browser. The values you can provide are:
+当你向 `/api/send` 发送请求时，Umami 会从请求中提取诸如用户代理和 IP 地址等数据。现在你可以在负载中提供自定义值。当你从服务器或移动环境发送数据且不使用网页浏览器时，这非常有用。可以提供的值包括：
 
-- **ip**: IP address. Note that when you send a custom IP address, the normal geo headers from hosts like Vercel and Cloudflare are ignored and a local lookup will be made to get the country and city data.
-- **userAgent**: User agent string. Note this must be in a valid format or your request might be flagged as a bot.
-- **timestamp**: UNIX timestamp in seconds. If passed in, Umami will record the data with the given timestamp instead of the current time.
+- **ip**: IP 地址。注意，当你发送自定义 IP 地址时，常见主机（如 Vercel 和 Cloudflare）提供的地理位置信息头将被忽略，系统会使用本地查询来获取国家和城市信息。  
+- **userAgent**: 用户代理字符串。请确保格式有效，否则你的请求可能会被标记为机器人。  
+- **timestamp**: 以秒为单位的 UNIX 时间戳。传入时，Umami 会使用该时间戳记录数据，而非当前时间。
 
-### Do Not Track
+### 拒绝跟踪 (Do Not Track)
 
-You can respect users DNT setting by adding the parameter `data-do-not-track=true` on your tracker script.
+你可以通过在你的追踪脚本中添加参数 `data-do-not-track=true` 来尊重用户的拒绝跟踪设置。
 
-## Fixes
-- Error when filtering using referrer [#3255](https://github.com/umami-software/umami/issues/3255)
-- CORS headers missing from custom endpoints. [#3281](https://github.com/umami-software/umami/issues/3281)
-- Journey report regression [#3268](https://github.com/umami-software/umami/issues/3268)
-- Hostname is not allowed 127.0.0.1 [#3279](https://github.com/umami-software/umami/issues/3279)
-- Grouped referrers shows incorrect values [#3257](https://github.com/umami-software/umami/issues/3257)
+## 修复
 
-## Updates
-- Improved paid ad channel detection [#3270](https://github.com/umami-software/umami/issues/3270)
+- 按引用来源过滤时出现错误 [#3255](https://github.com/umami-software/umami/issues/3255)  
+- 自定义端点缺少 CORS 头 [#3281](https://github.com/umami-software/umami/issues/3281)  
+- 旅程报告回归问题 [#3268](https://github.com/umami-software/umami/issues/3268)  
+- 127.0.0.1 不被允许作为主机名 [#3279](https://github.com/umami-software/umami/issues/3279)  
+- 分组的引用来源显示错误数值 [#3257](https://github.com/umami-software/umami/issues/3257)  
 
-See the full [release notes](https://github.com/umami-software/umami/releases/tag/v2.17.0).
+## 更新
+
+- 改进付费广告渠道检测 [#3270](https://github.com/umami-software/umami/issues/3270)  
+
+查看完整的[发布说明](https://github.com/umami-software/umami/releases/tag/v2.17.0)。

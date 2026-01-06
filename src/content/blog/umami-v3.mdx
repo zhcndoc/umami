@@ -6,60 +6,50 @@ date: 2025-11-06T00:00:00-08:00
 image: /images/blog/banner-11.png
 ---
 
-Today we are excited to announce the release of Umami v3! This release comes with a new interface, lots of new features and
-enhancements and lays the groundwork for the future of the application.
+今天我们很高兴地宣布 Umami v3 正式发布！本次发布带来了全新界面、众多新功能和改进，并为应用的未来奠定了基础。
 
+## 新功能和改进
 
-## New features and improvements
+### 更新的用户界面
 
-### Updated UI
+我们更新了用户界面，使其更加用户友好，帮助你一目了然地查看所有数据。通过新的导航栏，你可以快速查看所有网站内容，甚至通过嵌入的下拉菜单轻松切换网站。
 
-We've updated the UI to be more user friendly and help you see all your data at a glance. With the new navigation bar
-you can quickly see all your website content and even easily switch between websites with the embedded dropdown.
-
-Additionally, all the previous reports have been separated out into individual pages for easier access.
+此外，之前的所有报告已被拆分到独立页面，方便访问。
 
 ![image](/images/blog/v3-app.png)
 
-### Improved filters
+### 改进的筛选器
 
-Filters are now applied universally everywhere in the application via the query string. That means you can copy the URL
-to share with your team and it will remember what filters were applied.
+筛选器现在通过查询字符串在应用中的所有地方统一应用。这意味着你可以复制带有过滤条件的 URL 分享给团队，系统会记住所应用的筛选条件。
 
-We've also enhanced the filter form so that you can add and edit multiple filters at once.
+我们还增强了筛选表单，支持一次添加和编辑多个筛选条件。
 
 ![image](/images/blog/v3-filters.png)
 
-### Segments and cohorts
+### 细分与用户群组
 
-Segments are a set of filters that you can save to use for later. For example, you can create a segment called *Windows users from the United States*,
-and apply it to your data via the filter form.
+细分是你可以保存以供后续使用的一组筛选条件。例如，你可以创建一个名为 *来自美国的 Windows 用户* 的细分，并通过筛选表单应用到数据中。
 
-A cohort is a group of users who share a common event or experience during a specific time period, and are then tracked over time. For example, you can
-create a cohort called *Users who signed up in November*. You can then analyze retention or behavior over time. Just like segments, cohorts can be
-applied as a filter parameter.
+用户群组是指一批在特定时间段内具有共同事件或经历的用户，然后对他们进行持续追踪。例如，你可以创建一个名为 *11 月注册的用户* 的用户群组，然后分析他们随时间的留存率或行为。与细分类似，用户群组可以作为筛选参数应用。
 
-### Links and pixels
+### 链接和像素
 
-Umami v3 introduces two additional elements you can use for tracking, links and pixels. Links are simply short URLs that redirect to another URL.
-You can use links to measure how often users are clicking on certain links or as download links to a file to see how many downloads
-it received.
+Umami v3 引入了可用于跟踪的两个新元素：链接和像素。链接是指向其他 URL 的简短网址。你可以使用链接来衡量用户点击某些链接的频率，或者作为文件的下载链接来查看下载量。
 
-Pixels are invisible images your can embed elsewhere to measure traffic. For example, on external websites where you can't install a website tracker but can
-post images. You can also embed pixels into your emails to measure open rates, for example in a monthly newsletter to members.
+像素是你可以嵌入到其他地方的隐形图片，用于衡量流量。例如，在无法安装网站追踪器但能发布图片的外部网站上。你也可以将像素嵌入电子邮件中，用于测量打开率，比如向会员发送的月度通讯。
 
-Both links and pixels have their own stats pages just like websites.
+链接和像素像网站一样，拥有各自的统计页面。
 
-### New admin page
+### 新的管理员页面
 
-There is a new dedicated admin page for admin users. You can view and make changes to all the users, websites and teams in the system.
+新增了专门的管理员页面，供管理员用户使用。你可以查看并更改系统中所有用户、网站和团队的信息。
 
 ![image](/images/blog/v3-admin.png)
 
-### Coming soon
+### 即将到来
 
-One feature that unfortunately didn't make it into this release was Boards. With boards, you would be able to create your own dashboards and components to display your data however you like. We're still hard at work on it and it will be available in the next release.
+很遗憾，本次发布未能包含“看板”功能。通过看板，你将能够创建自定义仪表盘和组件，以你喜欢的方式展示数据。我们仍在努力开发该功能，预计将在下一版本发布。
 
-## Breaking changes
+## 重大变更
 
-Umami v3 no longer supports MySQL as a database option, only PostgreSQL. If you want to migrate your data over we've written a [guide](https://umami.is/docs/guides/migrate-mysql-postgresql) to help you migrate.
+Umami v3 不再支持 MySQL 作为数据库选项，仅支持 PostgreSQL。如果你想迁移数据，我们已编写了[迁移指南](https://umami.is/docs/guides/migrate-mysql-postgresql)帮助你完成迁移。

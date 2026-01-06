@@ -1,259 +1,259 @@
 {
   "contentDir": "./src/content",
   "docs": {
-    "title": "Docs - Umami",
+    "title": "Docs - Umami 中文文档",
     "top": "100px",
     "tabs": [
       {
         "id": "docs",
-        "label": "Umami",
+        "label": "文档",
         "url": "/docs"
       },
       {
         "id": "api",
-        "label": "API",
+        "label": "API 参考",
         "url": "/docs/api"
       },
       {
         "id": "guides",
-        "label": "Guides",
+        "label": "指南",
         "url": "/docs/guides"
       },
       {
         "id": "cloud",
-        "label": "Cloud",
+        "label": "云服务",
         "url": "/docs/cloud"
       }
     ],
     "navigation": {
       "docs": [
         {
-          "section": "Getting started",
+          "section": "入门",
           "pages": [
             {
-              "label": "Overview",
+              "label": "概览",
               "url": "/docs"
             },
             {
-              "label": "Installation",
+              "label": "安装",
               "url": "/docs/install"
             },
             {
-              "label": "Updates",
+              "label": "更新",
               "url": "/docs/updates"
             }
           ]
         },
         {
-          "section": "Basics",
+          "section": "基础",
           "pages": [
             {
-              "label": "Login",
+              "label": "登录",
               "url": "/docs/login"
             },
             {
-              "label": "Add a website",
+              "label": "添加网站",
               "url": "/docs/add-a-website"
             },
             {
-              "label": "Collect data",
+              "label": "收集数据",
               "url": "/docs/collect-data"
             },
             {
-              "label": "Enable share URL",
+              "label": "启用分享链接",
               "url": "/docs/enable-share-url"
             },
             {
-              "label": "Track events",
+              "label": "跟踪事件",
               "url": "/docs/track-events"
             },
             {
-              "label": "Add a user",
+              "label": "添加用户",
               "url": "/docs/add-a-user"
             }
           ]
         },
         {
-          "section": "Filtering",
+          "section": "过滤",
           "pages": [
             {
-              "label": "Overview",
+              "label": "概览",
               "url": "/docs/filter"
             },
             {
-              "label": "Segments",
+              "label": "分段",
               "url": "/docs/segment"
             },
             {
-              "label": "Cohorts",
+              "label": "同群分析",
               "url": "/docs/cohort"
             }
           ]
         },
         {
-          "section": "Identify",
+          "section": "识别",
           "pages": [
             {
-              "label": "Sessions",
+              "label": "会话",
               "url": "/docs/sessions"
             },
             {
-              "label": "Distinct IDs",
+              "label": "唯一 ID",
               "url": "/docs/distinct-ids"
             },
             {
-              "label": "Tags",
+              "label": "标签",
               "url": "/docs/tags"
             }
           ]
         },
         {
-          "section": "External Tracking",
+          "section": "外部跟踪",
           "pages": [
             {
-              "label": "Links",
+              "label": "链接",
               "url": "/docs/links"
             },
             {
-              "label": "Pixels",
+              "label": "像素",
               "url": "/docs/pixels"
             }
           ]
         },
         {
-          "section": "Teams",
+          "section": "团队",
           "pages": [
             {
-              "label": "Overview",
+              "label": "概览",
               "url": "/docs/teams"
             },
             {
-              "label": "Add a team",
+              "label": "添加团队",
               "url": "/docs/teams-add"
             },
             {
-              "label": "Join a team",
+              "label": "加入团队",
               "url": "/docs/teams-join"
             },
             {
-              "label": "Manage a team",
+              "label": "管理团队",
               "url": "/docs/teams-manage"
             }
           ]
         },
         {
-          "section": "Insights",
+          "section": "洞察",
           "pages": [
             {
-              "label": "Overview",
+              "label": "概览",
               "url": "/docs/insights"
             },
             {
-              "label": "Compare",
+              "label": "对比",
               "url": "/docs/compare"
             },
             {
-              "label": "Breakdown",
+              "label": "细分",
               "url": "/docs/breakdown"
             },
             {
-              "label": "Funnel",
+              "label": "转化漏斗",
               "url": "/docs/funnel"
             },
             {
-              "label": "Retention",
+              "label": "留存",
               "url": "/docs/retention"
             },
             {
-              "label": "UTM",
+              "label": "UTM 分析",
               "url": "/docs/utm"
             },
             {
-              "label": "Goals",
+              "label": "目标",
               "url": "/docs/goals"
             },
             {
-              "label": "Journey",
+              "label": "路径分析",
               "url": "/docs/journey"
             },
             {
-              "label": "Revenue",
+              "label": "收入",
               "url": "/docs/revenue"
             },
             {
-              "label": "Attribution",
+              "label": "归因分析",
               "url": "/docs/attribution"
             }
           ]
         },
         {
-          "section": "Configuration",
+          "section": "配置",
           "pages": [
             {
-              "label": "Tracker functions",
+              "label": "跟踪器函数",
               "url": "/docs/tracker-functions"
             },
             {
-              "label": "Tracker configuration",
+              "label": "跟踪器配置",
               "url": "/docs/tracker-configuration"
             },
             {
-              "label": "Environment variables",
+              "label": "环境变量",
               "url": "/docs/environment-variables"
             },
             {
-              "label": "Enable Redis",
+              "label": "启用 Redis",
               "url": "/docs/enable-redis"
             }
           ]
         },
         {
-          "section": "How-to",
+          "section": "使用指南",
           "pages": [
             {
-              "label": "Exclude my own visits",
+              "label": "排除我自己的访问",
               "url": "/docs/exclude-my-own-visits"
             },
             {
-              "label": "Bypass ad blockers",
+              "label": "绕过广告拦截器",
               "url": "/docs/bypass-ad-blockers"
             },
             {
-              "label": "Track outbound links",
+              "label": "跟踪外链",
               "url": "/docs/track-outbound-links"
             },
             {
-              "label": "Use Google Tag Manager",
+              "label": "使用 Google 标签管理器",
               "url": "/docs/google-tag-manager"
             },
             {
-              "label": "Enable Cloudflare headers",
+              "label": "启用 Cloudflare 请求头",
               "url": "/docs/enable-cloudflare-headers"
             }
           ]
         },
         {
-          "section": "Reference",
+          "section": "参考",
           "pages": [
             {
-              "label": "Metric definitions",
+              "label": "指标定义",
               "url": "/docs/metric-definitions"
             },
             {
-              "label": "Integrations",
+              "label": "集成",
               "url": "/docs/integrations"
             }
           ]
         },
         {
-          "section": "Contributing",
+          "section": "贡献",
           "pages": [
             {
-              "label": "Code of conduct",
+              "label": "行为准则",
               "url": "/docs/code-of-conduct"
             },
             {
-              "label": "Languages",
+              "label": "语言",
               "url": "/docs/languages"
             }
           ]
@@ -261,84 +261,84 @@
       ],
       "api": [
         {
-          "section": "Getting started",
+          "section": "入门",
           "pages": [
             {
-              "label": "Overview",
+              "label": "概览",
               "url": "/docs/api"
             },
             {
-              "label": "Authentication",
+              "label": "身份验证",
               "url": "/docs/api/authentication"
             },
             {
-              "label": "Me",
+              "label": "当前用户接口",
               "url": "/docs/api/me-api"
             },
             {
-              "label": "Sending stats",
+              "label": "发送统计数据",
               "url": "/docs/api/sending-stats"
             }
           ]
         },
         {
-          "section": "Endpoints",
+          "section": "端点",
           "pages": [
             {
-              "label": "Admin",
+              "label": "管理员",
               "url": "/docs/api/admin-api"
             },
             {
-              "label": "Users",
+              "label": "用户",
               "url": "/docs/api/users-api"
             },
             {
-              "label": "Teams",
+              "label": "团队",
               "url": "/docs/api/teams-api"
             },
             {
-              "label": "Events",
+              "label": "事件",
               "url": "/docs/api/events-api"
             },
             {
-              "label": "Sessions",
+              "label": "会话",
               "url": "/docs/api/sessions-api"
             },
             {
-              "label": "Websites",
+              "label": "网站",
               "url": "/docs/api/websites-api"
             },
             {
-              "label": "Website stats",
+              "label": "网站统计",
               "url": "/docs/api/website-stats-api"
             },
             {
-              "label": "Realtime",
+              "label": "实时数据",
               "url": "/docs/api/realtime-api"
             },
             {
-              "label": "Reports",
+              "label": "报表",
               "url": "/docs/api/reports-api"
             },
             {
-              "label": "Links",
+              "label": "链接",
               "url": "/docs/api/links-api"
             },
             {
-              "label": "Pixels",
+              "label": "像素",
               "url": "/docs/api/pixels-api"
             }
           ]
         },
         {
-          "section": "Clients",
+          "section": "客户端",
           "pages": [
             {
-              "label": "API client",
+              "label": "API 客户端",
               "url": "/docs/api/api-client"
             },
             {
-              "label": "Node client",
+              "label": "Node 客户端",
               "url": "/docs/api/node-client"
             }
           ]
@@ -346,101 +346,101 @@
       ],
       "guides": [
         {
-          "section": "Getting started",
+          "section": "入门",
           "pages": [
             {
-              "label": "Overview",
+              "label": "概览",
               "url": "/docs/guides"
             }
           ]
         },
         {
-          "section": "How-to",
+          "section": "使用指南",
           "pages": [
             {
-              "label": "Migrate v1 to v2",
+              "label": "从 v1 迁移到 v2",
               "url": "/docs/guides/migrate-v1-v2"
             },
             {
-              "label": "Migrate MySQL to PostgreSQL",
+              "label": "从 MySQL 迁移到 PostgreSQL",
               "url": "/docs/guides/migrate-mysql-postgresql"
             }
           ]
         },
         {
-          "section": "Marketing",
+          "section": "营销",
           "pages": [
             {
-              "label": "Measure campaigns",
+              "label": "衡量营销活动",
               "url": "/docs/guides/measure-campaigns"
             }
           ]
         },
         {
-          "section": "Hosting",
+          "section": "托管",
           "pages": [
             {
-              "label": "Overview",
+              "label": "概览",
               "url": "/docs/guides/hosting"
             },
             {
-              "label": "Running on Sevalla",
+              "label": "在 Sevalla 上运行",
               "url": "/docs/guides/running-on-sevalla"
             },
             {
-              "label": "Running on Nodion",
+              "label": "在 Nodion 上运行",
               "url": "/docs/guides/running-on-nodion"
             },
             {
-              "label": "Running on DigitalOcean",
+              "label": "在 DigitalOcean 上运行",
               "url": "/docs/guides/running-on-digitalocean"
             },
             {
-              "label": "Running on Vercel",
+              "label": "在 Vercel 上运行",
               "url": "/docs/guides/running-on-vercel"
             },
             {
-              "label": "Running on Neon Postgres",
+              "label": "在 Neon Postgres 上运行",
               "url": "/docs/guides/running-on-neon"
             },
             {
-              "label": "Running on Netlify",
+              "label": "在 Netlify 上运行",
               "url": "/docs/guides/running-on-netlify"
             },
             {
-              "label": "Running on Heroku",
+              "label": "在 Heroku 上运行",
               "url": "/docs/guides/running-on-heroku"
             },
             {
-              "label": "Running on Railway",
+              "label": "在 Railway 上运行",
               "url": "/docs/guides/running-on-railway"
             },
             {
-              "label": "Running on Supabase",
+              "label": "在 Supabase 上运行",
               "url": "/docs/guides/running-on-supabase"
             },
             {
-              "label": "Running on PlanetScale",
+              "label": "在 PlanetScale 上运行",
               "url": "/docs/guides/running-on-planetscale"
             },
             {
-              "label": "Running on Qovery",
+              "label": "在 Qovery 上运行",
               "url": "/docs/guides/running-on-qovery"
             },
             {
-              "label": "Running on CapRover",
+              "label": "在 CapRover 上运行",
               "url": "/docs/guides/running-on-caprover"
             },
             {
-              "label": "Running on Koyeb",
+              "label": "在 Koyeb 上运行",
               "url": "/docs/guides/running-on-koyeb"
             },
             {
-              "label": "Running on Forge",
+              "label": "在 Forge 上运行",
               "url": "/docs/guides/running-on-forge"
             },
             {
-              "label": "Running on Fly.io",
+              "label": "在 Fly.io 上运行",
               "url": "/docs/guides/running-on-fly-io"
             }
           ]
@@ -448,52 +448,52 @@
       ],
       "cloud": [
         {
-          "section": "Getting started",
+          "section": "入门",
           "pages": [
             {
-              "label": "Overview",
+              "label": "概览",
               "url": "/docs/cloud"
             },
             {
-              "label": "Sign up",
+              "label": "注册",
               "url": "/docs/cloud/sign-up"
             }
           ]
         },
         {
-          "section": "Basics",
+          "section": "基础",
           "pages": [
             {
-              "label": "Login",
+              "label": "登录",
               "url": "/docs/cloud/login"
             },
             {
-              "label": "Teams",
+              "label": "团队",
               "url": "/docs/cloud/teams"
             },
             {
-              "label": "Email reports",
+              "label": "邮件报告",
               "url": "/docs/cloud/email-reports"
             },
             {
-              "label": "Notifications",
+              "label": "通知",
               "url": "/docs/cloud/notifications"
             },
             {
-              "label": "Delete account",
+              "label": "删除账户",
               "url": "/docs/cloud/delete-account"
             }
           ]
         },
         {
-          "section": "Billing",
+          "section": "账单",
           "pages": [
             {
-              "label": "Subscription",
+              "label": "订阅",
               "url": "/docs/cloud/subscription"
             },
             {
-              "label": "Usage",
+              "label": "用量",
               "url": "/docs/cloud/usage"
             }
           ]
@@ -502,24 +502,24 @@
           "section": "API",
           "pages": [
             {
-              "label": "API key",
+              "label": "API 密钥",
               "url": "/docs/cloud/api-key"
             },
             {
-              "label": "API changelog",
+              "label": "API 更新日志",
               "url": "/docs/cloud/api-changelog"
             }
           ]
         },
         {
-          "section": "Data",
+          "section": "数据",
           "pages": [
             {
-              "label": "Export data",
+              "label": "导出数据",
               "url": "/docs/cloud/export-data"
             },
             {
-              "label": "Import data",
+              "label": "导入数据",
               "url": "/docs/cloud/import-data"
             }
           ]
@@ -527,75 +527,75 @@
       ],
       "v1": [
         {
-          "label": "Basics",
+          "label": "基础",
           "pages": [
             {
-              "label": "About",
+              "label": "关于",
               "url": "/docs/v1/about"
             },
             {
-              "label": "Getting started",
+              "label": "入门",
               "url": "/docs/v1/getting-started"
             },
             {
-              "label": "Installation",
+              "label": "安装",
               "url": "/docs/v1/install"
             },
             {
-              "label": "Login",
+              "label": "登录",
               "url": "/docs/v1/login"
             },
             {
-              "label": "Add a website",
+              "label": "添加网站",
               "url": "/docs/v1/add-a-website"
             },
             {
-              "label": "Collect data",
+              "label": "收集数据",
               "url": "/docs/v1/collect-data"
             },
             {
-              "label": "Add an account",
+              "label": "添加账号",
               "url": "/docs/v1/add-an-account"
             },
             {
-              "label": "Enable share URL",
+              "label": "启用分享链接",
               "url": "/docs/v1/enable-share-url"
             },
             {
-              "label": "Track events",
+              "label": "跟踪事件",
               "url": "/docs/v1/track-events"
             },
             {
-              "label": "Updates",
+              "label": "更新",
               "url": "/docs/v1/updates"
             },
             {
-              "label": "Languages",
+              "label": "语言",
               "url": "/docs/v1/languages"
             },
             {
-              "label": "FAQ",
+              "label": "常见问题",
               "url": "/docs/v1/faq"
             },
             {
-              "label": "Useful links",
+              "label": "实用链接",
               "url": "/docs/v1/useful-links"
             }
           ]
         },
         {
-          "label": "Advanced",
+          "label": "高级",
           "pages": [
             {
-              "label": "Tracker configuration",
+              "label": "跟踪器配置",
               "url": "/docs/v1/tracker-configuration"
             },
             {
-              "label": "Tracker functions",
+              "label": "跟踪器函数",
               "url": "/docs/v1/tracker-functions"
             },
             {
-              "label": "Environment variables",
+              "label": "环境变量",
               "url": "/docs/v1/environment-variables"
             },
             {
@@ -605,54 +605,54 @@
           ]
         },
         {
-          "label": "Guides",
+          "label": "指南",
           "pages": [
             {
-              "label": "Hosting",
+              "label": "托管",
               "url": "/docs/v1/hosting"
             },
             {
-              "label": "Running on DigitalOcean",
+              "label": "在 DigitalOcean 上运行",
               "url": "/docs/v1/running-on-digitalocean"
             },
             {
-              "label": "Running on Vercel",
+              "label": "在 Vercel 上运行",
               "url": "/docs/v1/running-on-vercel"
             },
             {
-              "label": "Running on Netlify",
+              "label": "在 Netlify 上运行",
               "url": "/docs/v1/running-on-netlify"
             },
             {
-              "label": "Running on Heroku",
+              "label": "在 Heroku 上运行",
               "url": "/docs/v1/running-on-heroku"
             },
             {
-              "label": "Running on Railway",
+              "label": "在 Railway 上运行",
               "url": "/docs/v1/running-on-railway"
             },
             {
-              "label": "Running on Supabase",
+              "label": "在 Supabase 上运行",
               "url": "/docs/v1/running-on-supabase"
             },
             {
-              "label": "Running on PlanetScale",
+              "label": "在 PlanetScale 上运行",
               "url": "/docs/v1/running-on-planetscale"
             },
             {
-              "label": "Running on Qovery",
+              "label": "在 Qovery 上运行",
               "url": "/docs/v1/running-on-qovery"
             },
             {
-              "label": "Running on CapRover",
+              "label": "在 CapRover 上运行",
               "url": "/docs/v1/running-on-caprover"
             },
             {
-              "label": "Running on Koyeb",
+              "label": "在 Koyeb 上运行",
               "url": "/docs/v1/running-on-koyeb"
             },
             {
-              "label": "Running on Forge",
+              "label": "在 Forge 上运行",
               "url": "/docs/v1/running-on-forge"
             }
           ]
@@ -660,184 +660,184 @@
       ],
       "v2": [
         {
-          "section": "Getting started",
+          "section": "入门",
           "pages": [
             {
-              "label": "Overview",
+              "label": "概览",
               "url": "/docs"
             },
             {
-              "label": "Installation",
+              "label": "安装",
               "url": "/docs/install"
             },
             {
-              "label": "Updates",
+              "label": "更新",
               "url": "/docs/updates"
             }
           ]
         },
         {
-          "section": "Basics",
+          "section": "基础",
           "pages": [
             {
-              "label": "Login",
+              "label": "登录",
               "url": "/docs/login"
             },
             {
-              "label": "Add a website",
+              "label": "添加网站",
               "url": "/docs/add-a-website"
             },
             {
-              "label": "Collect data",
+              "label": "收集数据",
               "url": "/docs/collect-data"
             },
             {
-              "label": "Enable share URL",
+              "label": "启用分享链接",
               "url": "/docs/enable-share-url"
             },
             {
-              "label": "Track events",
+              "label": "跟踪事件",
               "url": "/docs/track-events"
             },
             {
-              "label": "Sessions",
+              "label": "会话",
               "url": "/docs/sessions"
             },
             {
-              "label": "Compare",
+              "label": "对比",
               "url": "/docs/compare"
             },
             {
-              "label": "Distinct IDs",
+              "label": "唯一 ID",
               "url": "/docs/distinct-ids"
             },
             {
-              "label": "Tags",
+              "label": "标签",
               "url": "/docs/tags"
             },
             {
-              "label": "Teams",
+              "label": "团队",
               "url": "/docs/teams"
             },
             {
-              "label": "Add a user",
+              "label": "添加用户",
               "url": "/docs/add-a-user"
             },
             {
-              "label": "Tracker functions",
+              "label": "跟踪器函数",
               "url": "/docs/tracker-functions"
             }
           ]
         },
         {
-          "section": "Reports",
+          "section": "报告",
           "pages": [
             {
-              "label": "Overview",
+              "label": "概览",
               "url": "/docs/reports"
             },
             {
-              "label": "Insights",
+              "label": "洞察",
               "url": "/docs/report-insights"
             },
             {
-              "label": "Funnel",
+              "label": "转化漏斗",
               "url": "/docs/report-funnel"
             },
             {
-              "label": "Retention",
+              "label": "留存",
               "url": "/docs/report-retention"
             },
             {
-              "label": "UTM",
+              "label": "UTM 分析",
               "url": "/docs/report-utm"
             },
             {
-              "label": "Goals",
+              "label": "目标",
               "url": "/docs/report-goals"
             },
             {
-              "label": "Journey",
+              "label": "路径分析",
               "url": "/docs/report-journey"
             },
             {
-              "label": "Revenue",
+              "label": "收入",
               "url": "/docs/report-revenue"
             },
             {
-              "label": "Attribution",
+              "label": "归因分析",
               "url": "/docs/report-attribution"
             }
           ]
         },
         {
-          "section": "Configuration",
+          "section": "配置",
           "pages": [
             {
-              "label": "Tracker configuration",
+              "label": "跟踪器配置",
               "url": "/docs/tracker-configuration"
             },
             {
-              "label": "Environment variables",
+              "label": "环境变量",
               "url": "/docs/environment-variables"
             },
             {
-              "label": "Enable Redis",
+              "label": "启用 Redis",
               "url": "/docs/enable-redis"
             }
           ]
         },
         {
-          "section": "How-to",
+          "section": "使用指南",
           "pages": [
             {
-              "label": "Exclude my own visits",
+              "label": "排除我自己的访问",
               "url": "/docs/exclude-my-own-visits"
             },
             {
-              "label": "Bypass ad blockers",
+              "label": "绕过广告拦截器",
               "url": "/docs/bypass-ad-blockers"
             },
             {
-              "label": "Track outbound links",
+              "label": "跟踪外链",
               "url": "/docs/track-outbound-links"
             },
             {
-              "label": "Use Google Tag Manager",
+              "label": "使用 Google 标签管理器",
               "url": "/docs/google-tag-manager"
             },
             {
-              "label": "Enable Cloudflare headers",
+              "label": "启用 Cloudflare 请求头",
               "url": "/docs/enable-cloudflare-headers"
             }
           ]
         },
         {
-          "section": "Reference",
+          "section": "参考",
           "pages": [
             {
-              "label": "Metric definitions",
+              "label": "指标定义",
               "url": "/docs/metric-definitions"
             },
             {
-              "label": "Integrations",
+              "label": "集成",
               "url": "/docs/integrations"
             },
             {
-              "label": "Migrating v1 to v2",
+              "label": "从 v1 迁移到 v2",
               "url": "/docs/migrate-v1-v2"
             }
           ]
         },
         {
-          "section": "Contributing",
+          "section": "贡献",
           "pages": [
             {
-              "label": "Code of conduct",
+              "label": "行为准则",
               "url": "/docs/code-of-conduct"
             },
             {
-              "label": "Languages",
+              "label": "语言",
               "url": "/docs/languages"
             }
           ]
@@ -846,7 +846,7 @@
     }
   },
   "blog": {
-    "title": "Blog - Umami",
+    "title": "博客 - Umami 中文文档",
     "top": "100px"
   }
 }
