@@ -1,0 +1,99 @@
+---
+title: 安装
+---
+
+有几种不同的方法可以安装 Umami。
+
+- **从源代码安装**：从 [GitHub](https://github.com/umami-software/umami) 获取代码并自行构建应用程序。
+- **使用 Docker Compose**：使用 `docker compose` 构建自己的 Docker 容器。
+- **使用 Docker 镜像**：下载一个预构建的 Docker 镜像。
+
+## 从源代码安装
+
+### 需求
+
+- 一台安装 [Node.js](https://nodejs.org/) 版本 18.18 或更高的服务器。
+- 一个数据库。 Umami 支持 [MySQL](https://www.mysql.com/)（最低 v8.0）和 [PostgreSQL](https://www.postgresql.org/)（最低 v12.14）数据库。
+
+### 安装 Yarn
+
+```shell
+npm install -g yarn
+```
+
+### 获取源代码并安装包
+
+```shell
+git clone https://github.com/umami-software/umami.git
+cd umami
+yarn install
+```
+
+### 配置 Umami
+
+创建一个 `.env` 文件，内容如下
+
+```dotenv
+DATABASE_URL={连接网址}
+```
+
+连接网址的格式如下：
+
+```dotenv
+DATABASE_URL=postgresql://用户名:我的密码@localhost:5432/mydb
+
+DATABASE_URL=mysql://用户名:我的密码@localhost:3306/mydb
+```
+
+### 构建应用程序
+
+```shell
+yarn build
+```
+
+第一次运行构建时，它将创建数据库中所需的所有数据库表。
+还会创建一个用户名为 **admin**、密码为 **umami** 的登录帐户。
+
+### 启动应用程序
+
+```shell
+yarn start
+```
+
+默认情况下，这将会在 `http://localhost:3000` 启动应用程序。您需要通过 [代理](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/) 请求从 Web 服务器或更改 [端口](https://nextjs.org/docs/api-reference/cli#production) 直接提供应用程序。
+
+### 运行 Umami
+
+您可以简单地运行 `yarn start` 启动 Umami，但强烈建议您使用像 [PM2](https://pm2.keymetrics.io/) 这样的进程管理器，它将为您处理重启。
+
+使用 PM2 运行：
+
+```shell
+yarn global add pm2
+cd umami
+pm2 start yarn --name umami -- start
+pm2 startup
+pm2 save
+```
+
+## 使用 Docker 安装
+
+Umami 附带一个包含应用程序和 PostgreSQL 数据库的 Docker Compose。
+
+要构建 Docker 容器并启动 Postgres 数据库，请运行：
+
+```shell
+docker-compose up -d
+```
+
+或者，如果您想使用预构建的镜像，可以拉取支持 PostgreSQL 的 Umami Docker 镜像：
+
+```shell
+docker pull docker.umami.is/umami-software/umami:postgresql-latest
+```
+
+或者支持 MySQL：
+
+```shell
+docker pull docker.umami.is/umami-software/umami:mysql-latest
+```

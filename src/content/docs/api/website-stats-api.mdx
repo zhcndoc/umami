@@ -1,0 +1,341 @@
+---
+title: 网站统计
+---
+
+有关网站统计的操作。
+
+**端点**
+
+```text
+GET /api/websites/:websiteId/active
+GET /api/websites/:websiteId/events/series
+GET /api/websites/:websiteId/metrics
+GET /api/websites/:websiteId/metrics/expanded
+GET /api/websites/:websiteId/pageviews
+GET /api/websites/:websiteId/stats
+```
+
+---
+
+## Filters
+
+所有标记为 `filters` 的端点现在都可以通过以下参数进行过滤。
+
+**参数**
+
+- `path`：（字符串，可选）URL 名称。
+- `referrer`：（字符串，可选）引用来源名称。
+- `title`：（字符串，可选）页面标题名称。
+- `query`：（字符串，可选）查询参数名称。
+- `browser`：（字符串，可选）浏览器名称。
+- `os`：（字符串，可选）操作系统名称。
+- `device`：（字符串，可选）设备名称（例如，Mobile）
+- `country`：（字符串，可选）国家名称。
+- `region`：（字符串，可选）地区/省/州名称。
+- `city`：（字符串，可选）城市名称。
+- `hostname`：（字符串，可选）主机名名称。
+- `tag`：（字符串，可选）标签名称。
+- `segment`：（UUID，可选）分段UUID。
+- `cohort`：（UUID，可选）群组UUID。
+
+---
+
+**单位参数**
+
+单位参数将返回的数据分组。如果超过最大值，单位会自动转换为下一个更大的适用时间单位。
+
+- `minute`：最多 60 分钟。
+- `hour`：最多 48 小时。
+- `day`：最多 12 个月。
+- `month`：无限制。
+- `year`：无限制。
+
+---
+
+## GET /api/websites/:websiteId/active
+
+获取网站上活跃用户的数量。
+
+**示例响应**
+
+```json
+{
+  "visitors": 5
+}
+```
+
+- `visitors`：过去 5 分钟内的唯一访客数量。
+
+---
+
+## GET /api/websites/:websiteId/events/series
+
+获取给定时间范围内的事件。
+
+**参数**
+
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `unit`：时间单位（`year` | `month` | `hour` | `day`）。
+- `timezone`：时区（例如 America/Los_Angeles）。
+- `filters`：可接受过滤参数。
+
+**示例响应**
+
+```json
+[
+  {
+    "x": "live-demo-button",
+    "t": "2023-04-12T22:00:00Z",
+    "y": 1
+  },
+  {
+    "x": "get-started-button",
+    "t": "2023-04-12T22:00:00Z",
+    "y": 5
+  },
+  {
+    "x": "get-started-button",
+    "t": "2023-04-12T23:00:00Z",
+    "y": 4
+  },
+  {
+    "x": "live-demo-button",
+    "t": "2023-04-12T23:00:00Z",
+    "y": 4
+  },
+  {
+    "x": "social-Discord",
+    "t": "2023-04-13T00:00:00Z",
+    "y": 1
+  }
+]
+```
+
+- `x`：事件名称。
+- `t`：时间戳。
+- `y`：事件数量。
+
+---
+
+## GET /api/websites/:websiteId/metrics
+
+获取给定时间范围的指标。
+
+**参数**
+
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `unit`：时间单位（year | month | hour | day）。
+- `timezone`：时区（如 America/Los_Angeles）。
+- `type`：指标类型。
+- `filters`：可接受过滤参数。
+- `limit`：（可选，默认 500）返回的行数。
+- `offset`：（可选，默认 0）跳过的行数。
+
+**可用类型**
+
+`path` | `entry` | `exit` | `title` | `query` | `referrer` | `channel` | `domain` | `country` | `region` | `city` | `browser` | `os` | `device` | `language` | `screen` | `event` | `hostname` | `tag`
+
+**示例响应**
+
+```json
+[
+  {
+    "x": "Mac OS",
+    "y": 1918
+  },
+  {
+    "x": "Windows 10",
+    "y": 1413
+  },
+  {
+    "x": "iOS",
+    "y": 464
+  },
+  {
+    "x": "Android OS",
+    "y": 301
+  },
+  {
+    "x": "Linux",
+    "y": 296
+  },
+  {
+    "x": "Windows 7",
+    "y": 29
+  },
+  {
+    "x": "Chrome OS",
+    "y": 12
+  }
+]
+```
+
+- `x`：唯一值，取决于指标类型。
+- `y`：访客数量。
+
+## GET /api/websites/:websiteId/metrics/expanded
+
+获取给定时间范围的扩展指标。
+
+**参数**
+
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `unit`：时间单位（year | month | hour | day）。
+- `timezone`：时区（如 America/Los_Angeles）。
+- `type`：指标类型。
+- `filters`：可接受过滤参数。
+- `limit`：（可选，默认 500）返回的行数。
+- `offset`：（可选，默认 0）跳过的行数。
+
+**可用类型**
+
+`path` | `entry` | `exit` | `title` | `query` | `referrer` | `channel` | `domain` | `country` | `region` | `city` | `browser` | `os` | `device` | `language` | `screen` | `event` | `hostname` | `tag`
+
+**示例响应**
+
+```json
+[
+  {
+    "name": "Mac OS",
+    "pageviews": 74020,
+    "visitors": 16982,
+    "visits": 24770,
+    "bounces": 15033,
+    "totaltime": 149156302
+  },
+  {
+    "name": "Windows 10",
+    "pageviews": 52252,
+    "visitors": 12858,
+    "visits": 20089,
+    "bounces": 12720,
+    "totaltime": 137208105
+  },
+  {
+    "name": "iOS",
+    "pageviews": 10029,
+    "visitors": 4364,
+    "visits": 5139,
+    "bounces": 3578,
+    "totaltime": 23482267
+  },
+  {
+    "name": "Android OS",
+    "pageviews": 8147,
+    "visitors": 3122,
+    "visits": 3854,
+    "bounces": 2610,
+    "totaltime": 20347972
+  },
+  {
+    "name": "Linux",
+    "pageviews": 12462,
+    "visitors": 3000,
+    "visits": 4278,
+    "bounces": 2630,
+    "totaltime": 26331069
+  }
+]
+```
+
+- `name`：唯一值，取决于指标类型。
+- `pageviews`：页面浏览量。
+- `visitors`：唯一访客数量。
+- `visits`：访问次数。
+- `bounces`：仅访问单个页面的访客数量。
+- `totaltime`：在网站上的总时长。
+
+---
+
+## GET /api/websites/:websiteId/pageviews
+
+获取给定时间范围内的页面浏览量。
+
+**参数**
+
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `unit`：时间单位（year | month | hour | day）。
+- `timezone`：时区（如 America/Los_Angeles）。
+- `compare`：（字符串，可选）比较值，`prev` 或 `yoy`。
+- `filters`：可接受过滤参数。
+
+**示例响应**
+
+```json
+{
+  "pageviews": [
+    {
+      "x": "2025-10-19T07:00:00Z",
+      "y": 4129
+    },
+    {
+      "x": "2025-10-20T07:00:00Z",
+      "y": 6105
+    },
+    {
+      "x": "2025-10-21T07:00:00Z",
+      "y": 4936
+    }
+  ],
+  "sessions": [
+    {
+      "x": "2025-10-19T07:00:00Z",
+      "y": 1397
+    },
+    {
+      "x": "2025-10-20T07:00:00Z",
+      "y": 1880
+    },
+    {
+      "x": "2025-10-21T07:00:00Z",
+      "y": 1469
+    }
+  ]
+}
+```
+
+- `x`：时间戳。
+- `y`：页面浏览量或访客数量。
+
+---
+
+## GET /api/websites/:websiteId/stats
+
+获取综合的网站统计信息。
+
+**参数**
+
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `unit`：时间单位（year | month | hour | day）。
+- `timezone`：时区（如 America/Los_Angeles）。
+- `filters`：可接受过滤参数。
+
+**示例响应**
+
+```json
+{
+  "pageviews": 15171,
+  "visitors": 4415,
+  "visits": 5680,
+  "bounces": 3567,
+  "totaltime": 809968,
+  "comparison": {
+    "pageviews": 38675,
+    "visitors": 10568,
+    "visits": 14595,
+    "bounces": 9364,
+    "totaltime": 2182387
+  }
+}
+```
+
+- `pageviews`：页面浏览量。
+- `visitors`：唯一访客数量。
+- `visits`：访问次数。
+- `bounces`：仅访问单个页面的访客数量。
+- `totaltime`：在网站上花费的时间。

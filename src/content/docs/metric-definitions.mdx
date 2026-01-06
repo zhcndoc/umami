@@ -1,0 +1,125 @@
+---
+title: 指标定义
+---
+
+Umami 收集的所有默认指标及其高层定义。
+
+---
+
+## 事件指标
+
+事件指标帮助识别用户的唯一事件。每个事件存储为一个称为事件 ID 的唯一 UUID。
+
+**网站 ID**
+
+识别您网站的唯一 UUID 值，包含在有效负载中。
+
+**主机名**
+
+包含在有效负载中的位置 [hostname](https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname) 属性。
+
+**URL**
+
+包含在有效负载中的 URL [pathname](https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname) 和 [search](https://developer.mozilla.org/en-US/docs/Web/API/URL/search) 属性的组合。
+
+**引荐来源**
+
+文档 [referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer) 属性包含在有效负载中。如果引荐来源包含主机名，则其值将被前一个 URL 替换。
+
+**标题**
+
+文档 [title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title) 属性包含在有效负载中。
+
+**查询参数**
+
+从 URL 提取的 [Search](https://developer.mozilla.org/en-US/docs/Web/API/URL/search) 属性，在有效负载发送后。
+
+---
+
+## 会话指标
+
+会话指标帮助识别用户的唯一会话。每个会话存储为一个称为会话 ID 的唯一 UUID。
+
+**浏览器**
+
+从 [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) 中提取的浏览器名称。
+
+`示例：Chrome, FireFox, iOS, Safari, Edge`
+
+**操作系统**
+
+从 [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) 中提取的操作系统名称。
+
+`示例：Windows 10, macOS, Linux, Android, iOS`
+
+**设备**
+
+从 **OS** 和 **屏幕** 的组合中识别的设备名称。
+
+`示例：笔记本电脑, 台式机, 移动设备, 平板电脑`
+
+**屏幕**
+
+包含在有效负载中的 [Screen](https://developer.mozilla.org/en-US/docs/Web/API/Screen) 宽度和高度属性。
+
+`示例：1920x1080, 1280x960`
+
+**语言**
+
+包含在有效负载中的导航器 [language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) 属性。
+
+`示例：英语, 中文, 德语, 法语`
+
+---
+
+## 位置指标
+
+位置指标来源于不同的源，具体取决于标题。发送请求的 IP 地址用于收集这些指标，但永远不会被存储。
+
+- `Cloudflare`： [HTTP 请求头](https://developers.cloudflare.com/fundamentals/reference/http-request-headers/#docs-content)
+- `Vercel`： [地理定位头](https://vercel.com/guides/geo-ip-headers-geolocation-vercel-functions)
+- `MaxMind`： [Geolite 数据库](https://dev.maxmind.com/geoip/geolocate-an-ip)。
+
+**国家**
+
+遵循 ISO-3166 标准的国家名称。
+
+`示例：美国, 中国, 德国, 法国`
+
+**地区**
+
+遵循 ISO-3166-2 标准的地区（子区）的名称。
+
+`示例：加利福尼亚, 安大略, 巴伐利亚, Île-de-France`
+
+**城市**
+
+城市名称。
+
+`示例：旧金山, 多伦多, 慕尼黑, 巴黎`
+
+---
+
+## 计算指标
+
+计算指标是每个网站的总数和唯一聚合的组合。
+
+**浏览量**
+
+由您的访客收集的事件总数。
+
+**访问量**
+
+唯一的访问次数。访问是在用户会话中更细化的范围。访问是通过会话 ID 的哈希值和每小时旋转的盐值计算得出的。访问可以跨越小时间隔。
+
+**访客**
+
+唯一的会话数。会话是通过网站 ID、主机名、User-Agent 等数据的哈希值以及在每月初旋转的盐值计算得出的。
+
+**跳出率**
+
+当访问只有 1 个事件时定义为跳出。用户将进入网站，初步生成一个浏览量，然后离开。跳出率是通过将跳出的总数除以唯一访问次数来计算的。
+
+**访问时长**
+
+在网站上花费的总时间除以唯一的访问次数。总时长仅计算访问超过一页的访客。每次访问的首次和最后事件创建时间之间的差额被汇总为持续时间。

@@ -1,0 +1,66 @@
+---
+title: 身份验证
+---
+
+以下身份验证方法仅适用于自托管的 Umami。对于 **Umami Cloud**，您只需生成一个 [API 密钥](/docs/cloud/api-key)。
+
+## POST /api/auth/login
+
+首先，您需要获取一个 _token_ 才能进行 API 请求。您需要向 `/api/auth/login` 端点发送一个 `POST` 请求，数据如下：
+
+```json
+{
+  "username": "您的用户名",
+  "password": "您的密码"
+}
+```
+
+如果成功，您应该会收到如下响应：
+
+```json
+{
+  "token": "eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A",
+  "user": {
+    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "username": "admin",
+    "role": "admin",
+    "createdAt": "2000-00-00T00:00:00.000Z",
+    "isAdmin": true
+  }
+}
+```
+
+保存 token 值，并在所有数据请求中发送 `Authorization` 头，值为 `Bearer <token>`。您的请求头应如下所示：
+
+```http request
+Authorization: Bearer eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A
+```
+
+例如，使用 `curl` 时如下所示：
+
+```shell
+curl https://{您的服务器}/api/websites
+   -H "Accept: application/json"
+   -H "Authorization: Bearer <token>"
+```
+
+授权 token 在每一个需要权限的 API 调用中都是必须的。
+
+---
+
+## POST /api/auth/verify
+
+您可以验证 token 是否仍然有效。
+
+**示例响应**
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "username": "admin",
+  "role": "admin",
+  "createdAt": "2000-00-00T00:00:00.000Z",
+  "isAdmin": true,
+  "teams": []
+}
+```

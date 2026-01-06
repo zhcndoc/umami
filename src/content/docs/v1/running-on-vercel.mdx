@@ -1,0 +1,52 @@
+---
+title: 在 Vercel 上运行
+---
+
+[Vercel](https://vercel.com/) 是框架 [Next.js](https://nextjs.org/) 的开发公司，Umami 正是基于该框架构建的。  
+他们还提供了一项免费的托管服务，非常适合 Next.js 应用程序。
+
+在此设置中，您应该已经有一个运行中的数据库服务器，并接受远程连接。  
+如果您还没有数据库，可以按照 [在 DigitalOcean 上运行](/docs/v1/running-on-digitalocean) 指南  
+或 [在 PlanetScale 上运行](/docs/v1/running-on-planetscale) 指南来启动一个数据库。  
+您还可以查看 [托管](/docs/v1/hosting) 下的 **托管数据库** 部分。
+
+## 设置 [![使用 Vercel 部署](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2Fmikecao%2Fumami&env=DATABASE_URL&envDescription=这些值是在安装中的%20Configure%20Umami%20步骤中定义的&envLink=https%3A%2F%2Fumami.is%2Fdocs%2Finstall&project-name=umami&repo-name=umami)
+
+_使用上面的按钮自动执行步骤 1-5_
+
+1. 将项目 [https://github.com/umami-software/umami](https://github.com/umami-software/umami) 分叉到您的 GitHub 账号中。  
+2. 在 [Vercel](https://vercel.com/) 上创建一个帐户。  
+3. 从仪表板页面点击 **导入项目**，然后指定您在 GitHub 上的项目分支 URL。  
+4. 向您的 Vercel 项目添加所需的环境变量 `DATABASE_URL`。这些值在  
+   [安装](/docs/v1/install) 的 **配置 Umami** 步骤中定义。  
+5. 部署并访问您的应用程序，网址为 `<deploy-id>.vercel.app`。  
+6. 从 [登录](/docs/v1/login) 步骤开始，按照 **开始使用** 指南操作，并确保更改默认密码。
+
+### 通过 Vercel 代理 Umami 分析
+
+可选地，您可以通过代理 Umami Analytics 来从您的主域名提供 Umami 分析。这在使用 [Umami Cloud](https://umami.is/pricing) 时也有助于绕过广告拦截器。
+
+请参见 Vercel 的 [重写文档](https://vercel.com/docs/project-configuration)。
+
+在项目根目录中，添加 `vercel.json` 文件，内容如下：
+
+```json
+{
+  "rewrites": [
+    {
+      "source": "/stats/:match*",
+      "destination": "https://cloud.umami.is/:match*"
+    }
+  ]
+}
+```
+
+跟踪代码的脚本标签应将 `/stats/script.js` 作为 `src` 值：
+
+```html
+<script
+  defer
+  src="/stats/script.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+></script>
+```

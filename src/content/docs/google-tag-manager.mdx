@@ -1,0 +1,28 @@
+---
+title: 使用 Google Tag Manager
+---
+
+Umami 追踪器可以通过 Google Tag Manager 安装。
+
+通常，你可以使用以下代码安装 Umami 追踪器：
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/script.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+></script>
+```
+
+然而，Google Tag Manager 会去掉追踪器的属性。因此，你需要使用以下代码：
+
+```javascript
+<script>
+  (function () {
+  var el = document.createElement('script');
+  el.setAttribute('src', 'http://mywebsite.com/script.js');
+  el.setAttribute('data-website-id', '94db1cb1-74f4-4a40-ad6c-962362670409');
+  document.body.appendChild(el);
+})();
+</script>
+```

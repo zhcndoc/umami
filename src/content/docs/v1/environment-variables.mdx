@@ -1,0 +1,81 @@
+---
+title: 环境变量
+---
+
+您可以通过使用环境变量来配置 Umami。它们与您的 `DATABASE_URL` 一样存放在同一个 `.env` 文件中。
+
+---
+
+## 运行时变量
+
+运行时变量在 Umami 运行时被识别。您可以在启动应用程序之前设置您的环境变量。
+
+### DATABASE_URL = &lt;连接字符串&gt;
+
+您的数据库连接字符串。这是唯一必需的变量。
+
+### IGNORE_IP = &lt;IP 地址&gt;
+
+您可以提供一个用逗号分隔的 IP 地址列表，以排除这些地址的数据收集。
+
+### IGNORE_HOSTNAME = &lt;主机名&gt;
+
+这会对主机名进行 DNS 查找，结果 IP 地址将被忽略。可以使用用逗号分隔的主机名列表。
+
+### FORCE_SSL = 1
+
+这将把所有来自 `http` 的请求重定向到 Umami 应用程序的 `https`。请注意，这不适用于跟踪脚本。
+
+### LOG_QUERY = 1
+
+如果您在开发模式下运行，这将把数据库查询记录到控制台以进行调试。
+
+### HOSTNAME = &lt;主机名&gt;
+
+### PORT = &lt;端口号&gt;
+
+如果您在需要绑定到特定主机名或端口的环境中运行，例如 Heroku，您可以添加这些变量，并使用 `npm run start-env` 启动您的应用，而不是使用 `npm start`。
+
+### CLIENT_IP_HEADER = &lt;头部名称&gt;
+
+用于检查客户端 IP 地址的 HTTP 头部。当您在使用非标准头部的代理后面时，这非常有用。
+
+### REMOVE_TRAILING_SLASH = 1
+
+从所有传入的 URL 中移除尾部斜杠。
+
+### TRACKER_SCRIPT_NAME = &lt;脚本名称&gt;
+
+允许您为跟踪脚本分配一个不同于默认 `umami` 的自定义名称。这有助于您避免一些广告拦截器。
+
+注意：如果您更新此项，请确保将您网站上的跟踪代码更新为新名称。
+
+### COLLECT_API_ENDPOINT = /api/x
+
+允许您将指标发送到不同于默认 `/api/collect` 的位置。这有助于您避免一些广告拦截器。
+
+### DISABLE_UPDATES = 1
+
+禁用 Umami 的新版本检查。
+
+### DISABLE_LOGIN = 1
+
+禁用应用程序的登录页面。
+
+### DISABLE_TELEMETRY = 1
+
+Umami 收集完全匿名的遥测数据以帮助改善应用程序。您可以选择禁用此功能，若您不想参与。
+
+---
+
+## 构建时变量
+
+构建时变量仅在构建过程中被识别。这还包括构建自定义 Docker 镜像。您需要在构建应用程序之前设置环境变量。
+
+### BASE_PATH = &lt;路径&gt;
+
+如果您想将 Umami 托管在子目录下。您可能需要更新您的反向代理设置以正确处理 BASE_PATH 前缀。
+
+### DATABASE_TYPE = &lt;postgresql | mysql&gt;
+
+要使用的数据库类型。这仅在 Docker 构建时必需。

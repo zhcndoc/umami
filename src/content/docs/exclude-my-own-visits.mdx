@@ -1,0 +1,21 @@
+---
+title: 排除我的访问
+---
+
+您想访问自己的网站，但不希望您的访问出现在统计数据中。为此，您需要在浏览器中添加一个设置。
+
+打开浏览器中的开发者控制台：`设置 -> 更多工具 -> 开发者工具`
+
+在控制台中，输入以下代码并按 `Enter`：
+
+```javascript
+localStorage.setItem('umami.disabled', 1);
+```
+
+此设置适用于 **每个网站**，因此您需要为每个希望排除的网站执行此操作。
+
+要移除该设置，请输入以下代码并按 `Enter`：
+
+```javascript
+localStorage.removeItem('umami.disabled');
+```

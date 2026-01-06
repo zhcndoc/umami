@@ -1,0 +1,262 @@
+---
+title: API
+---
+
+Umami 允许您直接通过调用 API 端点来获取数据。  
+这些端点可在 `http://<your-umami>/api` 找到。  
+所有数据以 JSON 格式返回。
+
+通过 Umami 管理面板可以执行的任何操作也可以在 API 中使用，但可能尚未文档化。
+
+## 身份验证
+
+## POST /api/auth/login
+
+首先，您需要获取一个 _token_ 以便进行 API 请求。您需要向 `/api/auth/login` 端点发送一个 `POST` 请求，数据格式如下：
+
+```json
+{
+  "username": "your-username",
+  "password": "your-password"
+}
+```
+
+如果成功，您应收到类似以下的响应：
+
+```json
+{
+  "token": "eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A"
+}
+```
+
+保存 token 值，并在所有数据请求中发送一个 `Authorization` 头，值为 `Bearer <token>`。您的请求头应类似如下格式：
+
+```http request
+Authorization: Bearer eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A
+```
+
+例如，使用 `curl` 时，可以这样写：
+
+```shell
+curl https://yoursever/api/websites
+   -H "Accept: application/json"
+   -H "Authorization: Bearer <token>"
+```
+
+在 v1.26.0 之前，Umami 使用 cookies。如果使用旧版本，您需要执行以下操作：
+
+保存 token 值并将其作为 _cookie_ 传递到所有数据请求中。  
+cookie 名称为 `umami.auth`。您的请求头应类似如下格式：
+
+```http request
+Cookie: umami.auth=eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A
+```
+
+## 网站
+
+与 Umami 跟踪的网站相关的操作。
+
+## POST /api/websites
+
+创建一个网站。
+
+**参数**
+
+- `domain`: (字符串) 被跟踪网站的完整域名
+- `name`: (字符串) 在 Umami 中网站的名称
+- `enable_share_url`: (布尔值) 启用该网站的统计公共 URL
+- `public`: (布尔值) 默认值为 false
+
+**示例响应**
+
+```json
+{
+  "id": 4,
+  "websiteUuid": "51f73213-3f01-4343-a135-25496a3ffd31",
+  "userId": 2,
+  "name": "Umami",
+  "domain": "umami.is",
+  "shareId": "8PWex1pa",
+  "createdAt": "2021-07-26T17:17:52.846Z"
+}
+```
+
+## GET /api/websites
+
+返回所有被跟踪的网站。
+
+**参数**
+
+无
+
+**示例响应**
+
+```json
+[
+  {
+    "id": 4,
+    "websiteUuid": "51f73213-3f01-4343-a135-25496a3ffd31",
+    "userId": 2,
+    "name": "Umami",
+    "domain": "umami.is",
+    "shareId": "8PWex1pa",
+    "createdAt": "2021-07-26T17:17:52.846Z"
+  }
+]
+```
+
+在 v1.39 之前，一些字段名称不同。如果使用旧版本，请使用 `website_id` 而不是 `id`，并将其他字段重写为蛇形命名（例如 `share_id` 而不是 `shareId`）。
+
+## 获取统计信息
+
+您可以调用多个端点以获取网站的统计信息。所有统计信息端点都需要发送带有 `Bearer <token>`（post v1.26.0）或 `umami.auth` 身份验证 cookie 的 `GET` 请求。
+
+## GET /api/websites/{websiteUuid}/stats
+
+获取汇总的网站统计信息。
+
+**查询参数**
+
+- `start_at`: 开始日期的时间戳（毫秒）
+- `end_at`: 结束日期的时间戳（毫秒）
+
+**示例响应**
+
+从 URL `https://umami.mydomain.com/api/websites/86d4095c-a2a8-4fc8-9521-103e858e2b41/stats?start_at=1656679719687&end_at=1656766119687` 的 GET 请求（带 Authorization 头）：
+
+```json
+{
+  "pageviews": { "value": 5, "change": 5 },
+  "uniques": { "value": 1, "change": 1 },
+  "bounces": { "value": 0, "change": 0 },
+  "totaltime": { "value": 4, "change": 4 }
+}
+```
+
+- `pageviews`: 页面点击数
+- `uniques`: 独立访客数量
+- `bounces`: 仅访问单一页面的访客数量
+- `totaltime`: 在网站上花费的时间
+
+## GET /api/websites/{websiteUuid}/pageviews
+
+在给定时间范围内获取页面浏览量。
+
+**参数**
+
+- `start_at`: 开始日期的时间戳（毫秒）
+- `end_at`: 结束日期的时间戳（毫秒）
+- `unit`: 时间单位（年 | 月 | 小时 | 天）
+- `tz`: 时区（例如 America/Los_Angeles）
+
+**示例响应**
+
+```json
+{
+  "pageviews": [
+    { "t": "2020-04-20 01:00:00", "y": 3 },
+    { "t": "2020-04-20 02:00:00", "y": 7 }
+  ],
+  "sessions": [
+    { "t": "2020-04-20 01:00:00", "y": 2 },
+    { "t": "2020-04-20 02:00:00", "y": 4 }
+  ]
+}
+```
+
+## GET /api/websites/{websiteUuid}/events
+
+在给定时间范围内获取事件。
+
+**参数**
+
+- `start_at`: 开始日期的时间戳（毫秒）
+- `end_at`: 结束日期的时间戳（毫秒）
+- `unit`: 时间单位（年 | 月 | 小时 | 天）
+- `tz`: 时区（例如 America/Los_Angeles）
+
+**示例响应**
+
+```json
+[
+  { "x": "download-button", "t": "2020-04-20 02:00:00", "y": 2 },
+  { "x": "signup-button", "t": "2020-04-20 02:00:00", "y": 1 }
+]
+```
+
+## GET /api/websites/{websiteUuid}/metrics
+
+获取给定时间范围内的指标。
+
+**参数**
+
+- `start_at`: 开始日期的时间戳（毫秒）
+- `end_at`: 结束日期的时间戳（毫秒）
+- `type`: 指标类型（url | referrer | browser | os | device | country | event）
+
+**示例响应**
+
+```json
+[
+  { "x": "/", "y": 46 },
+  { "x": "/docs", "y": 17 },
+  { "x": "/download", "y": 14 }
+]
+```
+
+## 发送统计信息
+
+## POST /api/collect
+
+要注册一个 `pageview` 或 `event`，您需要向 `/api/collect` 发送一个 `POST` 请求，数据如下：
+
+```json
+{
+  "payload": {
+    "website": "your-website-id",
+    "url": "/",
+    "referrer": "",
+    "hostname": "your-hostname",
+    "language": "en-US",
+    "screen": "1920x1080"
+  },
+  "type": "pageview"
+}
+```
+
+对于事件，从 v1.37 开始，您需要发送：
+
+```json
+{
+  "payload": {
+    "website": "your-website-id",
+    "url": "/",
+    "event_name": "click-signup-button",
+    "hostname": "your-hostname",
+    "language": "en-US",
+    "screen": "1920x1080"
+  },
+  "type": "event"
+}
+```
+
+在 v1.37 之前，`event_name` 分为两个不同的字段：`event_type` 和 `event_value`：
+
+```json
+{
+  "payload": {
+    "website": "your-website-id",
+    "url": "/",
+    "event_type": "click",
+    "event_value": "signup-button",
+    "hostname": "your-hostname",
+    "language": "en-US",
+    "screen": "1920x1080"
+  },
+  "type": "event"
+}
+```
+
+请注意，对于 `/api/collect` 请求，您不需要发送身份验证 token。
+
+另外，您需要发送一个合适的 `User-Agent` HTTP 头，否则您的请求将不会被注册。

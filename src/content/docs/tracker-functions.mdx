@@ -1,0 +1,122 @@
+---
+title: 跟踪器功能
+---
+
+Umami 跟踪器提供了一个函数，您可以在网站上调用它，以便对跟踪进行更大的控制。默认情况下，所有数据都是自动收集的，但您可以通过使用 `data-auto-track="false"` 并自己发送数据来禁用此功能。
+请参见 [跟踪器配置](/docs/tracker-configuration)。
+
+## 函数
+
+```js
+// 跟踪当前页面
+umami.track();
+
+// 自定义有效负载
+umami.track(payload: object);
+
+// 自定义事件
+umami.track(event_name: string);
+
+// 包含数据的自定义事件
+umami.track(event_name: string, data: object);
+
+// 将 ID 分配给当前会话
+umami.identify(unique_id: string);
+
+// 会话数据
+umami.identify(unique_id: string, data: object);
+
+// 无 ID 的会话数据
+umami.identify(data: object);
+```
+
+## 页面浏览量
+
+跟踪页面浏览量。
+
+```js
+umami.track();
+```
+
+默认情况下，跟踪器会自动收集以下属性：
+
+- `hostname`: 服务器的主机名
+- `language`: 浏览器语言
+- `referrer`: 页面引荐
+- `screen`: 屏幕尺寸（例如 1920x1080）
+- `title`: 页面标题
+- `url`: 页面 URL
+- `website`: 网站 ID（必需）
+
+如果您希望发送自定义有效负载，可以将对象传递给函数：
+
+```js
+umami.track({ website: 'e676c9b4-11e4-4ef1-a4d7-87001773e9f2', url: '/home', title: '首页' });
+```
+
+上述代码将仅发送属性 `website`、`url` 和 `title`。如果您想包含现有属性，可以传递一个函数：
+
+```js
+umami.track(props => ({ ...props, url: '/home', title: '首页' }));
+```
+
+## 事件
+
+跟踪具有给定名称的事件。
+
+```js
+umami.track('signup-button');
+```
+
+## 事件数据
+
+跟踪带有动态数据的事件。
+
+```js
+umami.track('signup-button', { name: 'newsletter', id: 123 });
+```
+
+在跟踪事件时，默认属性将包含在有效负载中。
+这等同于运行：
+
+```js
+umami.track(props => ({
+  ...props,
+  name: 'signup-button',
+  data: {
+    name: 'newsletter',
+    id: 123,
+  },
+}));
+```
+
+## 事件数据限制
+
+事件数据可以处理任何 JSON 数据。为了保持性能，设定了一些规则。
+
+- 数字的最大精度为 4。
+- 字符串的最大长度为 500。
+- 数组被转换为字符串，最大长度同样为 500。
+- 对象最大有 50 个属性。数组视为 1 个属性。
+
+## 会话
+
+传入您自己的 ID 来识别用户。
+
+```js
+umami.identify('unique_id');
+```
+
+## 会话数据
+
+保存当前会话的数据。
+
+```js
+umami.identify('unique_id', { name: 'Bob', email: 'bob@aol.com' });
+```
+
+要保存没有唯一 ID 的数据，仅传入一个 JSON 对象。
+
+```js
+umami.identify({ name: 'Bob', email: 'bob@aol.com' });
+```

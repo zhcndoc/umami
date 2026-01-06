@@ -1,0 +1,42 @@
+---
+title: 独特ID
+---
+
+独特ID是分配给用户的唯一标识符，可以是匿名的，也可以是在他们登录时使用的。这使您能够在多个会话之间将操作（页面浏览、点击、转化）与单个用户关联起来。要以更全面的方式识别会话，请查看[会话数据](/docs/tracker-functions#session-data)。
+
+## 用例
+
+- 正确归因用户行为。
+- 连接跨多个会话或设备的事件。
+- 识别重复用户与新用户。
+- 根据用户历史构建旅程和档案。
+
+## 使用方法
+
+将**id**属性添加到有效负载中。该属性的字符数限制为50个字符。
+
+```json
+{
+  "payload": {
+    "hostname": "your-hostname",
+    "language": "en-US",
+    "referrer": "",
+    "screen": "1920x1080",
+    "title": "dashboard",
+    "url": "/",
+    "website": "your-website-id",
+    "id": "bob@aol.com"
+  },
+  "type": "event"
+}
+```
+
+## 搜索
+
+导航到**会话**以查看访客活动。
+
+![image](/images/docs/v3/traffic-navbar.png)
+
+搜索特定的**独特ID**以查看该时间范围内所有连接的会话。
+
+![image](/images/docs/v3/distinct-id-search.png)

@@ -24,7 +24,7 @@
     "strict": true,
     "strictNullChecks": false,
     "noEmit": true,
-    "jsx": "react-jsx",
+    "jsx": "preserve",
     "downlevelIteration": true,
     "baseUrl": ".",
     "paths": {

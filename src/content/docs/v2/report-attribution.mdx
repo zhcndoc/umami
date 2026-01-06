@@ -1,0 +1,54 @@
+---
+title: 归因报告
+---
+
+Umami Attribution 有助于跟踪营销渠道的有效性，衡量活动表现，并识别哪些来源带来最有价值的流量。
+
+通过将归因数据与流量和参与度指标相结合，企业可以做出明智的决策，以提升营销投资回报并推动可持续增长。
+
+该报告的工作原理是选择一个您想要跟踪归因的 URL 或事件，并通过特定的归因模型显示引荐来源、付费广告和 UTM 数据。
+
+## 模型
+
+- **首次点击**：将转化归因于用户与您的转化事件的第一次互动。
+- **最后点击**：将转化归因于转化事件之前的最后一次互动。
+
+## 参数
+
+- `Website`: （必填）您想要运行报告的网站。
+- `Date range`: （必填）报告的日期范围。
+- `Model`: （必填）应用于报告的归因模型。
+- `Conversion Step`: （必填）要应用归因的 URL 或事件步骤。
+- `Revenue Mode`: （可选）使用收入指标而不是访客（仅在配置了收入数据时启用 [这里](https://umami.is/docs/reports/report-attribution#configuring-attribution)）。
+- `Currency`: （可选）要汇总的数据的货币。
+
+## 创建报告
+
+### 第 1 步：选择一个网站
+
+![image](/images/docs/v2/attribution-website.png)
+
+### 第 2 步：选择日期范围
+
+![image](/images/docs/v2/attribution-date-range.png)
+
+### 第 3 步：选择一个模型
+
+![image](/images/docs/v2/attribution-model.png)
+
+### 第 4 步：选择您的转换步骤
+
+点击 **加号**，选择步骤类型（URL 或事件），然后输入漏斗中的第一个步骤条件并点击 **添加** 按钮。
+
+![image](/images/docs/v2/attribution-conversion-step.png)
+
+- **特定 URL** : 用户必须到达此特定 URL。 （例如：`/pricing`）
+- **事件** : 用户必须生成此特定事件。 （例如：`checkout-cart`）
+
+### 第 5 步：运行查询并保存
+
+点击 **运行查询** 以查看结果。为了保存报告，请添加标题和描述，然后点击 **保存**。
+
+报告及其参数将被保存以供将来使用。
+
+![image](/images/docs/v2/attribution-details.png)

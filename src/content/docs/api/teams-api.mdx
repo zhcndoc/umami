@@ -1,0 +1,430 @@
+---
+title: 团队
+---
+
+团队管理相关操作。
+
+**接口**
+
+```text
+GET /api/teams
+POST /api/teams
+POST /api/teams/join
+GET /api/teams/:teamId
+POST /api/teams/:teamId
+DELETE /api/teams/:teamId
+GET /api/teams/:teamId/users
+POST /api/teams/:teamId/users
+GET /api/teams/:teamId/users/:userId
+POST /api/teams/:teamId/users/:userId
+DELETE /api/teams/:teamId/users/:userId
+GET /api/teams/:teamId/websites
+```
+
+---
+
+## GET /api/teams
+
+返回所有团队。
+
+**参数**
+
+- `page`：（可选数字，默认1）确定页码。
+- `pageSize`：（可选字符串）确定返回多少结果。
+
+**示例响应**
+
+```json
+{
+  "data": [
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "Umami Software",
+      "accessCode": "xxxxxxxxxx",
+      "logoUrl": null,
+      "createdAt": "2025-01-06T23:46:38.169Z",
+      "updatedAt": "2025-02-14T17:38:27.607Z",
+      "deletedAt": null,
+      "members": [
+        {
+          "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "role": "team-owner",
+          "createdAt": "2025-01-06T23:46:38.169Z",
+          "updatedAt": "2025-01-06T23:46:38.169Z",
+          "user": {
+            "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "username": "bob@aol.com"
+          }
+        },
+        {
+          "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "role": "team-member",
+          "createdAt": "2025-01-06T23:46:38.169Z",
+          "updatedAt": "2025-01-06T23:46:38.169Z",
+          "user": {
+            "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+            "username": "bob@aol.com"
+          }
+        }
+      ],
+      "_count": {
+        "websites": 1,
+        "members": 2
+      }
+    }
+  ],
+  "count": 1,
+  "page": 1,
+  "pageSize": 20
+}
+```
+
+---
+
+## POST /api/teams
+
+创建一个团队。
+
+**参数**
+
+- `name`：（字符串）团队名称。
+
+**请求体**
+
+```json
+{
+  "name": "marketing"
+}
+```
+
+**示例响应**
+
+```json
+[
+  {
+    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "name": "marketing",
+    "accessCode": "team_KBmjrm5KcDZSArah",
+    "logoUrl": null,
+    "createdAt": "0000-00-00T00:00:00.000Z",
+    "updatedAt": "0000-00-00T00:00:00.000Z",
+    "deletedAt": null
+  },
+  {
+    "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "role": "team-owner",
+    "createdAt": "0000-00-00T00:00:00.000Z",
+    "updatedAt": "0000-00-00T00:00:00.000Z"
+  }
+]
+```
+
+---
+
+## POST /api/teams/join
+
+加入一个团队。
+
+**参数**
+
+- `accessCode`：（字符串）团队的访问代码。
+
+**请求体**
+
+```json
+{
+  "accessCode": "xxwtoY8pzKjDIUQi"
+}
+```
+
+**示例响应**
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "role": "team-member",
+  "createdAt": "0000-00-00T00:00:00.000Z",
+  "updatedAt": "0000-00-00T00:00:00.000Z"
+}
+```
+
+---
+
+## GET /api/teams/:teamId
+
+获取一个团队。
+
+**示例响应**
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "Umami Software",
+  "accessCode": "xxxxxxxxxxx",
+  "logoUrl": null,
+  "createdAt": "2024-02-17T06:27:50.130Z",
+  "updatedAt": "2025-02-14T17:37:50.306Z",
+  "deletedAt": null,
+  "members": [
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "role": "team-owner",
+      "createdAt": "2024-02-17T06:27:50.130Z",
+      "updatedAt": "2024-02-17T06:27:50.130Z"
+    },
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "role": "team-member",
+      "createdAt": "2024-02-29T17:47:21.354Z",
+      "updatedAt": "2024-02-29T17:47:21.354Z"
+    }
+  ]
+}
+```
+
+---
+
+## POST /api/teams/:teamId
+
+更新一个团队。
+
+**参数**
+
+- `name`：（字符串 | 可选）团队的名称。
+- `accessCode`：（字符串 | 可选）团队的访问码。
+
+**请求体**
+
+```json
+{
+  "name": "Marketing"
+}
+```
+
+**示例响应**
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "Marketing",
+  "accessCode": "xxxxxxxxxxx",
+  "logoUrl": null,
+  "createdAt": "2025-10-07T07:42:06.112Z",
+  "updatedAt": "2025-10-10T22:41:22.191Z",
+  "deletedAt": null
+}
+```
+
+---
+
+## DELETE /api/teams/:teamId
+
+删除一个团队。
+
+**示例响应**
+
+```json
+{
+  "ok": true
+}
+```
+
+---
+
+## GET /api/teams/:teamId/users
+
+获取属于一个团队的所有用户。
+
+**参数**
+
+- `search`：（可选字符串）搜索文本。
+- `page`：（可选数字，默认1）确定页码。
+- `pageSize`：（可选字符串）确定返回结果数量。
+- `orderBy`：（可选字符串，默认`name`）按列名排序。
+
+**示例响应**
+
+```json
+{
+  "data": [
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "role": "team-owner",
+      "createdAt": "2025-10-10T22:34:46.736Z",
+      "updatedAt": "2025-10-10T22:34:46.736Z",
+      "user": {
+        "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "username": "bob@aol.com"
+      }
+    },
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "role": "team-member",
+      "createdAt": "2025-10-10T22:37:38.587Z",
+      "updatedAt": "2025-10-10T22:37:38.587Z",
+      "user": {
+        "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "username": "bob@aol.com"
+      }
+    }
+  ],
+  "count": 2,
+  "page": 1,
+  "pageSize": 20
+}
+```
+
+---
+
+## POST /api/teams/:teamId/users
+
+将用户添加到团队。
+
+**参数**
+
+- `userId`：要添加用户的 ID。
+- `role`：用户权限的角色 `team-member` | `team-view-only` | `team-manager`。
+
+**请求体**
+
+```json
+{
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "role": "team-member"
+}
+```
+
+**示例响应**
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "role": "team-member",
+  "createdAt": "0000-00-00T00:00:00.000Z",
+  "updatedAt": "0000-00-00T00:00:00.000Z"
+}
+```
+
+---
+
+## GET /api/teams/:teamId/users/:userId
+
+获取属于一个团队的用户。
+
+**示例响应**
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "role": "team-owner",
+  "createdAt": "0000-00-00T00:00:00.000Z",
+  "updatedAt": "0000-00-00T00:00:00.000Z"
+}
+```
+
+---
+
+## POST /api/teams/:teamId/users/:userId
+
+更新用户在团队中的角色。
+
+**参数**
+
+- `role`：用户访问权限的角色 `team-member` | `team-view-only` | `team-manager`。
+
+**请求体**
+
+```json
+{
+  "role": "team-member"
+}
+```
+
+**示例响应**
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "role": "team-member",
+  "createdAt": "0000-00-00T00:00:00.000Z",
+  "updatedAt": "0000-00-00T00:00:00.000Z"
+}
+```
+
+---
+
+## DELETE /api/teams/:teamId/users/:userId
+
+从团队中移除用户。
+
+**示例响应**
+
+```json
+{
+  "ok": true
+}
+```
+
+---
+
+## GET /api/teams/:teamId/websites
+
+获取属于一个团队的所有网站。
+
+**参数**
+
+- `search`：（可选字符串）搜索文本。
+- `page`：（可选数字，默认1）确定页码。
+- `pageSize`：（可选字符串）确定返回结果数量。
+- `orderBy`：（可选字符串，默认`name`）按列名排序。
+
+**示例响应**
+
+```json
+{
+  "data": [
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "name": "aol",
+      "domain": "aol.com",
+      "shareId": "xxxxxxxxxxxx",
+      "resetAt": null,
+      "userId": null,
+      "teamId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "createdBy": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "createdAt": "2020-07-19T06:53:33.482Z",
+      "updatedAt": "2024-06-24T05:00:00.279Z",
+      "deletedAt": null,
+      "createUser": {
+        "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+        "username": "bob@aol.com"
+      }
+    }
+  ],
+  "count": 1,
+  "page": 1,
+  "pageSize": 20
+}
+```

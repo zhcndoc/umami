@@ -1,0 +1,94 @@
+---
+title: API 更新日志
+---
+
+本页面记录了对 **api.umami.is** 的更改。
+
+## 2025-10-07
+
+**Filters**
+
+- Changed filter `url` to `path`.
+- Changed filter `host` to `hostname`
+
+**Websites**
+
+- `GET /websites/[id]/metrics`: The `type` parameter `url` has been changed to `path`.
+- `GET /websites/[id]/stats`: The reponse data structure has changed.
+
+```json
+{
+  "pageviews": 34210,
+  "visitors": 9401,
+  "visits": 12726,
+  "bounces": 7918,
+  "totaltime": 5214477,
+  "comparison": {
+    "pageviews": 30818,
+    "visitors": 8776,
+    "visits": 11756,
+    "bounces": 7396,
+    "totaltime": 1704355
+  }
+}
+```
+
+**Events**
+
+- `GET /event-data/values`: The `eventName` query parameter has been changed to `event`.
+
+**Reports**
+
+- `POST /reports`: The `insights` report has been changed to `breakdown`.
+
+## 2024-09-09
+
+**网站**
+
+- `GET /websites/[id]/pageviews`: 修复 `region` 参数为可选。
+- `GET /websites/[id]/events`: 将结果集更改为在给定时间范围内的网站事件详情。
+- `GET /websites/[id]/events/series`: **新** 事件指标端点（以前为 `GET /websites/[id]/events`）。
+
+**事件数据**
+
+- `GET /event-data/events` : **迁移** 到 `/websites/[id]/event-data/events`。
+- `GET /event-data/fields` : **迁移** 到 `/websites/[id]/event-data/fields`。
+- `GET /event-data/stats` : **迁移** 到 `/websites/[id]/event-data/stats`。
+- `GET /websites/[id]/event-data/values` : **新增**
+
+**会话**
+
+- `GET /websites/:websiteId/sessions` : **新增**
+- `GET /websites/:websiteId/sessions/stats` : **新增**
+- `GET /websites/:websiteId/sessions/:sessionId` : **新增**
+- `GET /websites/:websiteId/sessions/:sessionId/activity` : **新增**
+- `GET /websites/:websiteId/sessions/:sessionId/properties` : **新增**
+- `GET /websites/:websiteId/session-data/properties` : **新增**
+- `GET /websites/:websiteId/session-data/values` : **新增**
+
+## 2024-05-23
+
+**网站**
+
+- `GET /websites/[id]/stats`: 将 `change` 重命名为 `prev`。
+
+## 2024-03-27
+
+**网站**
+
+- `GET /websites/[id]/stats`: 将 `uniques` 重命名为 `visitors`。新增 `visits`。
+
+## 2024-02-16
+
+**网站**
+
+- `POST /websites`: 新增 teamId 作为可选参数。
+
+**团队**
+
+- `/teams/[id]/websites/[websiteId]`: **已弃用**
+- `GET /teams/[id]/users/[userId]/index`: **新增**
+
+**报告**
+
+- `GET /reports/index`: 新增 `websiteId` 和 `teamId` 查询参数。

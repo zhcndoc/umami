@@ -1,0 +1,43 @@
+---
+title: 托管
+---
+
+有很多方法可以让 Umami 启动并运行。
+您需要的只是一个数据库（可以是 [MySQL](https://www.mysql.com/) 或 [PostgreSQL](https://www.postgresql.org/)）
+和能够运行 [Node.js](https://nodejs.org/)（10.13 或更高版本）的服务器。
+
+## 单服务器
+
+在此设置中，数据库和 Web 服务器将在同一台机器上运行。您还可以选择在像 [Nginx](https://www.nginx.com/) 或 [Apache](https://httpd.apache.org/) 这样的专用 Web 服务器后面运行 Umami，并将请求代理到 Umami。
+
+您可以查看 [在 DigitalOcean 上运行](/docs/v1/running-on-digitalocean) 指南，以了解如何设置服务器。
+
+## 分离的数据库和 Web 服务器
+
+在此设置中，您有一个在单独机器上运行的数据库，允许远程连接。您的 Web 服务器在另一台安装了 Umami 的机器上运行，并通过远程连接到数据库以存储和检索数据。
+
+## 应用托管
+
+在此设置中，您可以让一个应用托管服务为您托管 Umami 应用。您仍然需要在其他地方运行一个数据库，供应用连接。以下是几个可以托管 Umami 的应用托管服务提供商。Vercel、Netlify 和 Railway 都提供免费套餐。
+
+- [Vercel](https://vercel.com/)
+- [Netlify](https://www.netlify.com/)
+- [Render](https://render.com/)
+- [Railway](https://railway.app/)
+
+对于部署，构建命令是 `npm run build`，发布目录是 `.next`。
+
+## 托管数据库
+
+托管数据库是指主机为您提供一个您无需安装或维护的运行数据库。以下是一些托管数据库的提供商。
+
+- [DigitalOcean](https://www.digitalocean.com/products/managed-databases/)
+- [Scaleway (EU)](https://www.scaleway.com/en/database/)
+- [Amazon Web Services](https://aws.amazon.com/products/databases/)
+- [Google Cloud SQL](https://cloud.google.com/sql/)
+- [Microsoft Azure](https://azure.microsoft.com/en-us/services/#databases)
+- [Render](https://render.com/pricing#databases)
+- [Heroku](https://www.heroku.com/postgres)
+- [Railway](https://docs.railway.app/databases/postgresql/)
+- [Supabase](https://supabase.com/database)
+- [PlanetScale](https://planetscale.com/)

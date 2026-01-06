@@ -1,0 +1,79 @@
+---
+title: 在 Forge 上运行
+---
+
+[Forge](https://forge.laravel.com/) 是一项付费服务器管理服务，专门为在 DigitalOcean、Linode、Vultr、Amazon、Hetzner 等服务器提供商上托管 Laravel 应用而量身定制。
+
+如果您拥有一个 Forge 账户并连接了服务器桶，您可以轻松设置 Umami 安装。
+
+## 前提条件
+
+1. 配置您希望 Umami 可用的（子）域。通常，您可以通过配置 DNS 记录，将 A 记录指向您的桶 IP 地址来完成。
+
+## 设置
+
+1. 在 Forge 中选择您想要的服务器。
+2. 转到 **站点** > **新建站点**
+   - 输入域名
+   - 项目类型：静态 HTML
+   - 选中 **创建数据库**，输入数据库名称
+   - 点击 **添加**
+3. 要安装存储库，可以将 [https://github.com/umami-software/umami](https://github.com/umami-software/umami) 项目 fork 到您的 GitHub 账户，或从官方存储库安装。
+   - 输入存储库路径：`umami-software/umami`
+   - 取消勾选 **安装 Composer 依赖**
+   - 点击 **安装存储库**
+4. 更新部署脚本，在 `git pull origin $FORGE_SITE_BRANCH` 命令后添加以下内容。
+
+   ```shell
+   yarn install
+   yarn build
+   ```
+
+   删除以下行，因为我们没有 artisan 或 php：
+
+   ```
+   ( flock -w 10 9 || exit 1
+   echo '正在重启 FPM...'; sudo -S service $FORGE_PHP_FPM reload ) 9>/tmp/fpmlock
+
+   if [ -f artisan ]; then
+       $FORGE_PHP artisan migrate --force
+   fi
+   ```
+
+5. 在 Forge 中，转到您的服务器页面，点击 **数据库** 并为刚创建的数据库添加用户。
+6. 创建数据库连接字符串并将其添加到您的 `.env` 文件中：
+
+   ```
+   DATABASE_URL=mysql://user:password@localhost:3306/dbname
+   ```
+
+7. 通过 SSH 执行初始项目设置：
+
+   ```shell
+   yarn install
+   yarn update-db
+   yarn build
+   ```
+
+8. 转到您的 Umami 站点，点击左侧菜单中的 **SSL** 并添加 SSL 证书。
+9. 点击 **编辑文件** > **编辑 Nginx 配置**，并在 favicon 之前添加以下内容：
+
+   ```
+   location / {
+       proxy_pass http://localhost:3000;
+       proxy_http_version 1.1;
+       proxy_set_header Upgrade $http_upgrade;
+       proxy_set_header Connection 'upgrade';
+       proxy_set_header Host $host;
+       proxy_cache_bypass $http_upgrade;
+   }
+   ```
+
+   该配置将流量路由到 Umami 运行的节点服务器。
+
+10. 在 Forge 中，转到您的服务器页面，点击 **守护进程** 并添加 **新建守护进程**，以保持 Umami Node-Server 运行。
+    - 命令：`yarn start`
+    - 目录：`/home/forge/umami.yourdomain.tld`
+    - 点击 **创建**
+
+现在您应该能够访问您的 Umami 项目。

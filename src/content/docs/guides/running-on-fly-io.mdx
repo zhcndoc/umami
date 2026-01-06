@@ -1,0 +1,59 @@
+---
+title: 在 Fly.io 上运行
+---
+
+[Fly.io](https://fly.io) 将容器转为可以在一个或多个区域中部署的虚拟机。`fly launch` 过程可以自动设置与您的 Umami 应用相连接的 Postgres 虚拟机。
+
+## 使用 Umami 的预构建容器进行设置
+
+对于希望现在在 Fly 上部署 Umami 的任何人，这里有一个简单的方法，使用 [Umami 的预构建 Postgres 容器](https://github.com/umami-software/umami/pkgs/container/umami/123905077?tag=postgresql-latest)，而不是拉取源代码并修改 Dockerfile。
+
+如果您还没有安装 `flyctl`，请 [安装它](https://fly.io/docs/hands-on/install-flyctl/)。
+
+1. 在您的应用新目录中创建 `fly.toml`：
+
+```toml
+kill_signal = "SIGINT"
+kill_timeout = "5s"
+
+[experimental]
+auto_rollback = true
+
+[build]
+image = "docker.umami.is/umami-software/umami:postgresql-latest"
+
+[[services]]
+protocol = "tcp"
+internal_port = 3000
+processes = ["app"]
+
+[[services.ports]]
+port = 80
+handlers = ["http"]
+force_https = true
+
+[[services.ports]]
+port = 443
+handlers = ["tls", "http"]
+
+[services.concurrency]
+type = "connections"
+hard_limit = 25
+soft_limit = 20
+
+[[services.tcp_checks]]
+interval = "15s"
+timeout = "2s"
+grace_period = "1s"
+```
+
+2. 运行 `fly launch` 并选择使用找到的 `fly.toml` 配置创建应用。
+3. 按照启动步骤操作，在创建连接的 Postgres 应用时选择 `y`。
+4. 选择暂不部署应用。
+5. 运行 `fly secrets set APP_SECRET="<任何字符串，但不能包含尖括号>"`，使用您想要用于哈希盐值的任何字符串。
+6. 运行 `fly deploy`，将会出现错误，但请让部署完成。
+7. 运行 `fly scale memory 512`（如果需要，可以更高。Umami 在少于 512 MB RAM 的情况下似乎会失败）
+8. 运行 `fly deploy`
+9. 根据 [Umami 文档](https://umami.is/docs/login)，使用用户名: `admin` 和密码: `umami` 登录
+
+根据 Fly [文档](https://fly.io/docs/) 调整实例位置、机器数量、自动扩展、Umami 应用的自定义域以及其他任何 Fly.io 选项。
