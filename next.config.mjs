@@ -18,7 +18,7 @@ const config = {
         source: '/docs/:path((?!api|guides|cloud|changelog).*)',
         destination: '/docs/:path*',
       },
-      { source: '/a/script.js', destination: 'https://cloud.umami.is/script.js' },
+      { source: '/d.js', destination: 'https://cloud.umami.is/script.js' },
     ];
   },
   async redirects() {
