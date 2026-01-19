@@ -1,8 +1,15 @@
 import { DocsLayout } from 'fumadocs-ui/layouts/notebook';
-import { Book, Cloud, MapIcon, ShareIcon, Terminal } from 'lucide-react';
+import { Book, Cloud, MapIcon, Terminal } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { baseOptions } from '@/lib/layout.shared';
 import { source } from '@/lib/source';
+import {
+  ApiLink,
+  CloudLink,
+  DocumentationLink,
+  ExternalNavLink,
+  GuidesLink,
+} from '@/components/NavLinks';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -17,33 +24,24 @@ export default function Layout({ children }: { children: ReactNode }) {
         }}
         links={[
           {
-            icon: <Book />,
-            text: 'Documentation',
-            url: '/docs',
-            active: 'url',
+            type: 'custom',
+            children: <DocumentationLink icon={<Book />} />,
           },
           {
-            icon: <MapIcon />,
-            text: 'Guides',
-            url: '/docs/guides',
-            active: 'nested-url',
+            type: 'custom',
+            children: <GuidesLink icon={<MapIcon />} />,
           },
           {
-            icon: <Terminal />,
-            text: 'API Reference',
-            url: '/docs/api',
-            active: 'nested-url',
+            type: 'custom',
+            children: <ApiLink icon={<Terminal />} />,
           },
           {
-            icon: <Cloud />,
-            text: 'Cloud',
-            url: '/docs/cloud',
-            active: 'nested-url',
+            type: 'custom',
+            children: <CloudLink icon={<Cloud />} />,
           },
           {
-            text: 'v2 🡕',
-            url: 'https://v2.umami.is',
-            external: true,
+            type: 'custom',
+            children: <ExternalNavLink href="https://v2.umami.is">v2</ExternalNavLink>,
           },
         ]}
         {...baseOptions()}
