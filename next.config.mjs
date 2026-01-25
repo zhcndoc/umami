@@ -14,11 +14,11 @@ const config = {
   },
   async rewrites() {
     return [
+      { source: '/docs/d.js', destination: 'https://cloud.umami.is/script.js' },
       {
         source: '/docs/:path((?!api|guides|cloud|changelog).*)',
         destination: '/docs/:path*',
       },
-      { source: '/docs/d.js', destination: 'https://cloud.umami.is/script.js' },
     ];
   },
   async redirects() {
