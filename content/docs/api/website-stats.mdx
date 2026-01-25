@@ -45,8 +45,8 @@ All Endpoints marked with `filters` can now be filtered with the parameters belo
 The unit parameter buckets the data returned. The unit is automatically converted to the next largest applicable time unit if the maximum is exceeded.
 
 - `minute`: Up to 60 minutes.
-- `hour`: Up to 48 hours.
-- `day`: Up to 12 months.
+- `hour`: Up to 30 days.
+- `day`: Up to 6 months.
 - `month`: No limit.
 - `year`: No limit.
 
@@ -126,8 +126,6 @@ Gets metrics for a given time range.
 
 - `startAt`: (number) Timestamp (in ms) of starting date.
 - `endAt`: (number) Timestamp (in ms) of end date.
-- `unit`: Time unit (year | month | hour | day).
-- `timezone`: Timezone (ex. America/Los_Angeles).
 - `type`: Metrics type.
 - `filters`: Can accept filter parameters.
 - `limit`: (optional, default 500) Number of rows returned.
@@ -183,8 +181,6 @@ Gets expanded metrics for a given time range.
 
 - `startAt`: (number) Timestamp (in ms) of starting date.
 - `endAt`: (number) Timestamp (in ms) of end date.
-- `unit`: Time unit (year | month | hour | day).
-- `timezone`: Timezone (ex. America/Los_Angeles).
 - `type`: Metrics type.
 - `filters`: Can accept filter parameters.
 - `limit`: (optional, default 500) Number of rows returned.
@@ -311,8 +307,6 @@ Gets summarized website statistics.
 
 - `startAt`: (number) Timestamp (in ms) of starting date.
 - `endAt`: (number) Timestamp (in ms) of end date.
-- `unit`: Time unit (year | month | hour | day).
-- `timezone`: Timezone (ex. America/Los_Angeles).
 - `filters`: Can accept filter parameters.
 
 **Sample response**
