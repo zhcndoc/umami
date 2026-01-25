@@ -24,7 +24,7 @@ export default function Layout({ children }: LayoutProps<'/'>) {
         <RootProvider>{children}</RootProvider>
       </body>
       {process.env.trackerId && (
-        <Script defer data-website-id={process.env.trackerId} src="/d.js" />
+        <Script defer data-website-id={process.env.trackerId} src="https://umami.is/u.js" />
       )}
     </html>
   );

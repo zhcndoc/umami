@@ -14,7 +14,6 @@ const config = {
   },
   async rewrites() {
     return [
-      { source: '/d.js', destination: 'https://cloud.umami.is/script.js' },
       {
         source: '/docs/:path((?!api|guides|cloud|changelog).*)',
         destination: '/docs/:path*',
