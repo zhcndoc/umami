@@ -15,6 +15,13 @@ There are several different ways to install Umami.
 - A server with [Node.js](https://nodejs.org/) version 18.18 or newer.
 - A database. Umami supports [PostgreSQL](https://www.postgresql.org/) (minimum v12.14) databases.
 
+- **Notes**: We recommend configuring the PostgreSQL database to use the **UTC** timezone.
+
+    **Why UTC?**
+
+    Using UTC avoids issues caused by regional offsets, ensuring consistent, predictable timestamps across environments, services, and deployments.
+
+
 ### Install pnpm
 
 ```shell

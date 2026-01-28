@@ -8,6 +8,7 @@
     "login",
     "teams",
     "email-reports",
+    "ip-filters",
     "notifications",
     "delete-account",
     "---Billing---",
