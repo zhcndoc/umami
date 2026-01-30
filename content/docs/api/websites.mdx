@@ -37,7 +37,6 @@ Returns all user websites.
       "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "name": "Example",
       "domain": "example.com",
-      "shareId": null,
       "resetAt": null,
       "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "teamId": null,
@@ -67,7 +66,6 @@ Creates a website.
 
 - `name`: (string) The name of the website in Umami.
 - `domain`: (string) The full domain of the tracked website.
-- `shareId`: (string | optional) A unique string to enable a share url. Set `null` to unshare.
 - `teamId`: (string | optional) The ID of the team the website will be created under.
 - `id`: (string | optional) Force a UUID assignment to the website.
 
@@ -87,7 +85,6 @@ Creates a website.
   "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "name": "Test",
   "domain": "example.com",
-  "shareId": null,
   "resetAt": null,
   "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "teamId": null,
@@ -111,7 +108,6 @@ Gets a website by ID.
   "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "name": "Example",
   "domain": "example.com",
-  "shareId": null,
   "resetAt": null,
   "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "teamId": null,
@@ -132,7 +128,6 @@ Updates a website.
 
 - `name`: (string) The name of the website in Umami.
 - `domain`: (string) The full domain of the tracked website.
-- `shareId`: (string | optional) A unique string to enable a share url. Set `null` to unshare.
 
 **Request body**
 
