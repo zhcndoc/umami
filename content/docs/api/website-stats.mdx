@@ -35,6 +35,7 @@ All Endpoints marked with `filters` can now be filtered with the parameters belo
 - `city`: (string | optional) Name of city.
 - `hostname`: (string | optional) Name of hostname.
 - `tag`: (string | optional) Name of tag.
+- `distinctId`: (string | optional) Name of distinct ID.
 - `segment`: (uuid | optional) UUID of segment.
 - `cohort`: (uuid | optional) UUID of cohort.
 
@@ -133,7 +134,7 @@ Gets metrics for a given time range.
 
 **Available Types**
 
-`path` | `entry` | `exit` | `title` | `query` | `referrer` | `channel` | `domain` | `country` | `region` | `region` | `city` | `browser` | `os` | `device` | `language` | `screen` | `event` | `hostname` | `tag`
+`path` | `entry` | `exit` | `title` | `query` | `referrer` | `channel` | `domain` | `country` | `region` | `city` | `browser` | `os` | `device` | `language` | `screen` | `event` | `hostname` | `tag` | `distinctId`
 
 **Sample response**
 
@@ -188,7 +189,7 @@ Gets expanded metrics for a given time range.
 
 **Available Types**
 
-`path` | `entry` | `exit` | `title` | `query` | `referrer` | `channel` | `domain` | `country` | `region` | `region` | `city` | `browser` | `os` | `device` | `language` | `screen` | `event` | `hostname` | `tag`
+`path` | `entry` | `exit` | `title` | `query` | `referrer` | `channel` | `domain` | `country` | `region` | `city` | `browser` | `os` | `device` | `language` | `screen` | `event` | `hostname` | `tag` | `distinctId`
 
 **Sample response**
 
