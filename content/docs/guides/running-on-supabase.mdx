@@ -1,20 +1,20 @@
 ---
-title: Running on Supabase
+title: 在 Supabase 上运行
 ---
 
-[Supabase](https://supabase.com/) is a open source Firebase alternative built on the Postgres database.
+[Supabase](https://supabase.com/) 是基于 Postgres 数据库构建的开源 Firebase 替代方案。
 
-## Setup
+## 设置
 
-1. Edit db/postgresql/schema.prisma to add directUrl = env("DIRECT_DATABASE_URL")
-2. Create a project on Supabase with a given name in a region close to where you will be hosting your Umami project.
-3. Get the database connection string from the **Settings > Database** page, then scroll to the bottom for the **Connection Pooling** section and copy the **Connection string**.
-4. Add `DATABASE_URL` and `DIRECT_DATABASE_URL` to your `.env` file:
+1. 编辑 `db/postgresql/schema.prisma`，添加 `directUrl = env("DIRECT_DATABASE_URL")`
+2. 在 Supabase 上创建一个项目，名称自定义，区域选择靠近你托管 Umami 项目的位置。
+3. 从 **Settings > Database** 页面获取数据库连接字符串，然后滚动到底部 **Connection Pooling** 部分，复制 **Connection string**。
+4. 将 `DATABASE_URL` 和 `DIRECT_DATABASE_URL` 添加到你的 `.env` 文件中：
 
    ```dotenv
    DATABASE_URL=postgres://[db-user].[project-ref]:[db-password]@aws-0-[aws-region].pooler.supabase.com:6543/[db-name]?pgbouncer=true&connection_limit=1
    DIRECT_DATABASE_URL=postgres://postgres.[my-supabase-project-id]:[db-password]@aws-0-[aws-region].pooler.supabase.com:5432/postgres
    ```
 
-5. You should now be able to build and start Umami (`npm run build` followed by `npm start`).
-6. Follow the **Getting started** guide starting from the [Login](/docs/login) step and be sure to change the default password.
+5. 现在你应该能够构建并启动 Umami（运行 `npm run build`，然后执行 `npm start`）。
+6. 按照 **入门指南**，从 [登录](/docs/login) 步骤开始操作，并务必更改默认密码。

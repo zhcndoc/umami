@@ -1,16 +1,16 @@
 ---
-title: Running on Fly.io
+title: 在 Fly.io 上运行
 ---
 
-[Fly.io](https://fly.io) turns containers into VMs that can be deployed in one or multiple regions. The `fly launch` process can automatically set up Postgres VM that in connection with your Umami app.
+[Fly.io](https://fly.io) 将容器转换为可在一个或多个地区部署的虚拟机。`fly launch` 过程可以自动设置与您的 Umami 应用连接的 Postgres 虚拟机。
 
-## Setup using Umami's pre-built container
+## 使用 Umami 预构建容器进行设置
 
-For anyone wishing to deploy Umami on Fly now, here's a simple method using [Umami's pre-built container for postgres](https://github.com/umami-software/umami/pkgs/container/umami/123905077?tag=postgresql-latest) instead of pulling the source and modifying the Dockerfile.
+对于希望现在就在 Fly 上部署 Umami 的用户，这里有一种简单的方法，使用 [Umami 为 Postgres 预构建的容器](https://github.com/umami-software/umami/pkgs/container/umami/123905077?tag=postgresql-latest)，而不是拉取源代码并修改 Dockerfile。
 
-If you don't already have `flyctl` installed, [install it](https://fly.io/docs/hands-on/install-flyctl/).
+如果您还没有安装 `flyctl`，请[安装它](https://fly.io/docs/hands-on/install-flyctl/)。
 
-1. In a new directory for your app, create `fly.toml`:
+1. 在您的应用新目录中，创建 `fly.toml`：
 
 ```toml
 kill_signal = "SIGINT"
@@ -47,13 +47,13 @@ timeout = "2s"
 grace_period = "1s"
 ```
 
-2. `fly launch` and choose to create an app with the found `fly.toml` configuration.
-3. Go through the launch steps, and choose `y` on the step to create a connected Postgres app.
-4. Choose not to deploy the app yet.
-5. `fly secrets set APP_SECRET="<any-string-minus-angle-brackets>"`, using whatever string you want to salt the hash.
-6. `fly deploy` There will be errors, but let the deployment complete.
-7. `fly scale memory 512` (or higher, if needed. Umami seems to fail with less than 512 MB RAM)
-8. `fly deploy`
-9. Following the [Umami docs](https://umami.is/docs/login), log in with user: `admin` and password: `umami`
+2. 执行 `fly launch`，选择使用发现的 `fly.toml` 配置创建应用。
+3. 按步骤操作，并在创建连接的 Postgres 应用步骤选择 `y`。
+4. 选择暂不部署应用。
+5. 执行 `fly secrets set APP_SECRET="<任意字符串，不含尖括号>"`，使用任何您想要的字符串作为哈希盐。
+6. 执行 `fly deploy`，可能会出现错误，但请让部署完成。
+7. 执行 `fly scale memory 512`（或更高，如果需要。Umami 在 512 MB RAM 以下似乎会失败）
+8. 再次执行 `fly deploy`
+9. 根据[Umami 文档](https://umami.is/docs/login)，使用用户名：`admin` 和密码：`umami` 登录
 
-Adjust instance locations, number of machines, auto-scaling, custom domains for your Umami app, and any other Fly.io options as per Fly [docs](https://fly.io/docs/)
+根据 Fly [文档](https://fly.io/docs/)，调整实例位置、机器数量、自动扩展、自定义域名以及其他 Fly.io 选项以适应您的 Umami 应用。

@@ -1,10 +1,10 @@
 ---
-title: Reports
+title: 报告
 ---
 
-Using reports throught the api.
+通过 API 使用报告。
 
-**Endpoints**
+**端点**
 
 ```text
 GET /api/reports
@@ -24,29 +24,29 @@ POST /api/reports/utm
 
 ---
 
-## Filters
+## 过滤器
 
-All reports can now be filtered with the filters property in the request body.
+现在所有报告都可以通过请求体中的 filters 属性进行过滤。
 
-**Parameters**
+**参数**
 
-- `path`: (string | optional) Name of URL.
-- `referrer`: (string | optional) Name of referrer.
-- `title`: (string | optional) Name of page title.
-- `query`: (string | optional) Name of query parameter.
-- `browser`: (string | optional) Name of browser.
-- `os`: (string | optional) Name of operating system.
-- `device`: (string | optional) Name of device (ex. Mobile)
-- `country`: (string | optional) Name of country.
-- `region`: (string | optional) Name of region/state/province.
-- `city`: (string | optional) Name of city.
-- `hostname`: (string | optional) Name of hostname.
-- `tag`: (string | optional) Name of tag.
-- `distinctId`: (string | optional) Name of distinct ID.
-- `segment`: (uuid | optional) UUID of segment.
-- `cohort`: (uuid | optional) UUID of cohort.
+- `path`：（字符串 | 可选）URL 名称。
+- `referrer`：（字符串 | 可选）引荐来源名称。
+- `title`：（字符串 | 可选）页面标题名称。
+- `query`：（字符串 | 可选）查询参数名称。
+- `browser`：（字符串 | 可选）浏览器名称。
+- `os`：（字符串 | 可选）操作系统名称。
+- `device`：（字符串 | 可选）设备名称（例如 Mobile）。
+- `country`：（字符串 | 可选）国家名称。
+- `region`：（字符串 | 可选）地区/州/省名称。
+- `city`：（字符串 | 可选）城市名称。
+- `hostname`：（字符串 | 可选）主机名。
+- `tag`：（字符串 | 可选）标签名称。
+- `distinctId`：（字符串 | 可选）唯一 ID。
+- `segment`：（uuid | 可选）分段的 UUID。
+- `cohort`：（uuid | 可选）群组的 UUID。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -68,16 +68,16 @@ All reports can now be filtered with the filters property in the request body.
 
 ## GET /api/reports
 
-Get all reports by website ID.
+根据网站 ID 获取所有报告。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `page`： （可选数字，默认 1）分页。
+- `pageSize`： （可选字符串）返回结果数量。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -87,8 +87,8 @@ Get all reports by website ID.
       "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "type": "goal",
-      "name": "Visited /pricing",
-      "description": "Test",
+      "name": "访问 /pricing",
+      "description": "测试",
       "parameters": {
         "type": "path",
         "value": "/pricing"
@@ -101,7 +101,7 @@ Get all reports by website ID.
       "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
       "type": "goal",
-      "name": "Triggered live-demo-button",
+      "name": "触发 live-demo-button",
       "description": "",
       "parameters": {
         "type": "event",
@@ -121,28 +121,28 @@ Get all reports by website ID.
 
 ## POST /api/reports
 
-Creates a report.
+创建报告。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type `attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`.
-- `name`: (string) Name of report.
-- `description`: (string | optional) Description of report.
-- `parameters`: (object) Parameters for report.
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型 `attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`。
+- `name`： （字符串）报告名称。
+- `description`：（字符串 | 可选）报告描述。
+- `parameters`：（对象）报告参数。
 
-**Request body**
+**请求体**
 
 ```json
 {
-  "name": "Triggered Login-button ",
+  "name": "触发登录按钮 ",
   "parameters": { "type": "event", "value": "login-button-header" },
   "type": "goal",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -150,7 +150,7 @@ Creates a report.
   "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "goal",
-  "name": "Triggered Login-button ",
+  "name": "触发登录按钮 ",
   "description": "",
   "parameters": {
     "type": "event",
@@ -165,9 +165,9 @@ Creates a report.
 
 ## GET /api/reports/:reportId
 
-Gets a report by ID.
+根据 ID 获取报告。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -175,7 +175,7 @@ Gets a report by ID.
   "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "goal",
-  "name": "Triggered Login-button ",
+  "name": "触发登录按钮 ",
   "description": "",
   "parameters": {
     "type": "event",
@@ -190,28 +190,28 @@ Gets a report by ID.
 
 ## POST /api/reports/:reportId
 
-Updates a report.
+更新报告。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type `attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`.
-- `name`: (string) Name of report.
-- `description`: (string | optional) Description of report.
-- `parameters`: (object) Parameters for report.
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型 `attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`。
+- `name`： （字符串）报告名称。
+- `description`：（字符串 | 可选）报告描述。
+- `parameters`：（对象）报告参数。
 
-**Request body**
+**请求体**
 
 ```json
 {
-  "name": "Triggered Login-button ",
+  "name": "触发登录按钮 ",
   "parameters": { "type": "event", "value": "login-button-header" },
   "type": "goal",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -219,7 +219,7 @@ Updates a report.
   "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "goal",
-  "name": "Triggered Login-button ",
+  "name": "触发登录按钮 ",
   "description": "",
   "parameters": {
     "type": "event",
@@ -234,9 +234,9 @@ Updates a report.
 
 ## DELETE /api/reports/:reportId
 
-Deletes a report.
+删除报告。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -248,20 +248,20 @@ Deletes a report.
 
 ## POST /api/reports/attribution
 
-See how users engage with your marketing and what drives conversions.
+查看用户如何与您的营销活动互动以及哪些因素驱动转化。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `model` : (string) Attribution model (`firstClick` | `lastClick`).
-- `type` : (array) Conversion type (`path` | `event`).
-- `step`: (string) Conversion step
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`：可接受过滤参数。
+- `startDate` ：（数字）开始日期的时间戳（毫秒）。
+- `endDate` ：（数字）结束日期的时间戳（毫秒）。
+- `model` ：（字符串）归因模型（`firstClick` | `lastClick`）。
+- `type` ：（数组）转化类型（`path` | `event`）。
+- `step`： （字符串）转化步骤。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -278,7 +278,7 @@ See how users engage with your marketing and what drives conversions.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -364,22 +364,22 @@ See how users engage with your marketing and what drives conversions.
 
 ## POST /api/reports/breakdown
 
-Dive deeper into your data by using segments and filters.
+通过使用分段和过滤器更深入地了解您的数据。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `fields`: (array) List of column fields.
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`：可接受过滤参数。
+- `startDate` ：（数字）开始日期的时间戳（毫秒）。
+- `endDate` ：（数字）结束日期的时间戳（毫秒）。
+- `fields`： （数组）列字段列表。
 
-**Available Fields**
+**可用字段**
 
-`path` | `title` | `query` | `referrer` | `browser` | `os` | `device` | `country` | `region` | `city` | `hostname`| `tag` | `event`
+`path` | `title` | `query` | `referrer` | `browser` | `os` | `device` | `country` | `region` | `city` | `hostname` | `tag` | `event`
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -394,7 +394,7 @@ Dive deeper into your data by using segments and filters.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -441,19 +441,19 @@ Dive deeper into your data by using segments and filters.
 
 ## POST /api/reports/funnel
 
-Understand the conversion and drop-off rate of users.
+了解用户的转化和流失率。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `steps` : (array | Minumum two required) type of event (`path` | `event`) and conversion step.
-- `window` : (number) Window of days between funnel steps to be considered a conversion.
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`：可接受过滤参数。
+- `startDate` ：（数字）开始日期的时间戳（毫秒）。
+- `endDate` ：（数字）结束日期的时间戳（毫秒）。
+- `steps` ：（数组 | 至少两个）事件类型（`path` | `event`）和转化步骤。
+- `window` ：（数字）漏斗步骤之间被视为转化的时间窗口（天数）。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -472,7 +472,7 @@ Understand the conversion and drop-off rate of users.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -501,19 +501,19 @@ Understand the conversion and drop-off rate of users.
 
 ## POST /api/reports/goals
 
-Track your goals for pageviews and events.
+跟踪您的页面浏览量和事件目标。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `type` : (array) Conversion type (`path` | `event`).
-- `value`: (string) Conversion step value.
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`：可接受过滤参数。
+- `startDate` ：（数字）开始日期的时间戳（毫秒）。
+- `endDate` ：（数字）结束日期的时间戳（毫秒）。
+- `type` ：（数组）转化类型（`path` | `event`）。
+- `value`： （字符串）转化步骤值。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -529,7 +529,7 @@ Track your goals for pageviews and events.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -542,20 +542,20 @@ Track your goals for pageviews and events.
 
 ## POST /api/reports/journey
 
-Understand how users nagivate through your website.
+了解用户如何在您的网站上导航。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `steps`: (number) Number of steps from 3 to 7
-- `startStep` : (string) Starting step URL or event name.
-- `endStep` : (string | optional) Ending step URL or event name.
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`：可接受过滤参数。
+- `startDate` ：（数字）开始日期的时间戳（毫秒）。
+- `endDate` ：（数字）结束日期的时间戳（毫秒）。
+- `steps`：（数字）步骤数，范围 3 至 7。
+- `startStep` ：（字符串）起始步骤 URL 或事件名称。
+- `endStep` ：（字符串 | 可选）结束步骤 URL 或事件名称。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -572,7 +572,7 @@ Understand how users nagivate through your website.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -615,18 +615,18 @@ Understand how users nagivate through your website.
 
 ## POST /api/reports/retention
 
-Measure your website stickiness by tracking how often users return.
+通过跟踪用户回访频率来衡量网站粘性。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `timezone`: Timezone (ex. America/Los_Angeles).
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`：可接受过滤参数。
+- `startDate` ：（数字）开始日期的时间戳（毫秒）。
+- `endDate` ：（数字）结束日期的时间戳（毫秒）。
+- `timezone`： 时区（例如 America/Los_Angeles）。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -641,7 +641,7 @@ Measure your website stickiness by tracking how often users return.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -680,19 +680,19 @@ Measure your website stickiness by tracking how often users return.
 
 ## POST /api/reports/revenue
 
-Get currency for given range. Needed for Revenue and optional in Attribution reports.
+获取指定区间的货币信息。用于 Revenue 报告必需，Attribution 报告可选。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `timezone`: Timezone (ex. America/Los_Angeles).
-- `currency`: (string) Currency code (ISO 4217).
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`：可接受过滤参数。
+- `startDate` ：（数字）开始日期的时间戳（毫秒）。
+- `endDate` ：（数字）结束日期的时间戳（毫秒）。
+- `timezone`： 时区（例如 America/Los_Angeles）。
+- `currency`： （字符串）货币代码（ISO 4217）。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -708,7 +708,7 @@ Get currency for given range. Needed for Revenue and optional in Attribution rep
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -756,17 +756,17 @@ Get currency for given range. Needed for Revenue and optional in Attribution rep
 
 ## POST /api/reports/utm
 
-Track your campaigns through UTM parameters.
+通过 UTM 参数跟踪您的营销活动。
 
-**Parameters**
+**参数**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
+- `websiteId` ：（字符串）您网站的ID。
+- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
+- `filters`：可接受过滤参数。
+- `startDate` ：（数字）开始日期的时间戳（毫秒）。
+- `endDate` ：（数字）结束日期的时间戳（毫秒）。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -780,7 +780,7 @@ Track your campaigns through UTM parameters.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {

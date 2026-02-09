@@ -1,14 +1,14 @@
 {
-  "title": "Guides",
+  "title": "指南",
   "root": true,
   "pages": [
-    "---Guides---",
+    "---指南---",
     "index",
     "migrate-v1-v2",
     "migrate-mysql-postgresql",
-    "---Marketing---",
+    "---营销---",
     "measure-campaigns",
-    "---Hosting---",
+    "---托管---",
     "hosting",
     "running-on-caprover",
     "running-on-digitalocean",

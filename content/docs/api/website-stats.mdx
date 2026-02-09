@@ -1,10 +1,10 @@
 ---
-title: Website statistics
+title: 网站统计
 ---
 
-Operations around Website statistics.
+关于网站统计的操作。
 
-**Endpoints**
+**端点**
 
 ```text
 GET /api/websites/:websiteId/active
@@ -17,47 +17,47 @@ GET /api/websites/:websiteId/stats
 
 ---
 
-## Filters
+## 过滤器
 
-All Endpoints marked with `filters` can now be filtered with the parameters below.
+所有标记为 `filters` 的端点现在可以使用以下参数进行过滤。
 
-**Parameters**
+**参数**
 
-- `path`: (string | optional) Name of URL.
-- `referrer`: (string | optional) Name of referrer.
-- `title`: (string | optional) Name of page title.
-- `query`: (string | optional) Name of query parameter.
-- `browser`: (string | optional) Name of browser.
-- `os`: (string | optional) Name of operating system.
-- `device`: (string | optional) Name of device (ex. Mobile)
-- `country`: (string | optional) Name of country.
-- `region`: (string | optional) Name of region/state/province.
-- `city`: (string | optional) Name of city.
-- `hostname`: (string | optional) Name of hostname.
-- `tag`: (string | optional) Name of tag.
-- `distinctId`: (string | optional) Name of distinct ID.
-- `segment`: (uuid | optional) UUID of segment.
-- `cohort`: (uuid | optional) UUID of cohort.
+- `path`：（字符串 | 可选）URL 名称。
+- `referrer`：（字符串 | 可选）来源名称。
+- `title`：（字符串 | 可选）页面标题名称。
+- `query`：（字符串 | 可选）查询参数名称。
+- `browser`：（字符串 | 可选）浏览器名称。
+- `os`：（字符串 | 可选）操作系统名称。
+- `device`：（字符串 | 可选）设备名称（例如 手机）。
+- `country`：（字符串 | 可选）国家名称。
+- `region`：（字符串 | 可选）地区/州/省名称。
+- `city`：（字符串 | 可选）城市名称。
+- `hostname`：（字符串 | 可选）主机名。
+- `tag`：（字符串 | 可选）标签名称。
+- `distinctId`：（字符串 | 可选）独特 ID。
+- `segment`：（uuid | 可选）分段 UUID。
+- `cohort`：（uuid | 可选）用户群组 UUID。
 
 ---
 
-**Unit Parameter**
+**单位参数**
 
-The unit parameter buckets the data returned. The unit is automatically converted to the next largest applicable time unit if the maximum is exceeded.
+单位参数用于对返回的数据进行分组。如果超过最大值，单位会自动转换为下一个较大的适用时间单位。
 
-- `minute`: Up to 60 minutes.
-- `hour`: Up to 30 days.
-- `day`: Up to 6 months.
-- `month`: No limit.
-- `year`: No limit.
+- `minute`：最多 60 分钟。
+- `hour`：最多 30 天。
+- `day`：最多 6 个月。
+- `month`：无限制。
+- `year`：无限制。
 
 ---
 
 ## GET /api/websites/:websiteId/active
 
-Gets the number of active users on a website.
+获取网站上的活跃用户数量。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -65,23 +65,23 @@ Gets the number of active users on a website.
 }
 ```
 
-- `visitors`: Number of unique visitors within the last 5 minutes
+- `visitors`：最近 5 分钟内的独立访客数量
 
 ---
 
 ## GET /api/websites/:websiteId/events/series
 
-Gets events within a given time range.
+获取给定时间范围内的事件。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `unit`: Time unit (`year` | `month` | `hour` | `day`).
-- `timezone`: Timezone (ex. America/Los_Angeles).
-- `filters`: Can accept filter parameters.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `unit`：时间单位（`year` | `month` | `hour` | `day`）。
+- `timezone`：时区（例如 America/Los_Angeles）。
+- `filters`：可接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -113,30 +113,30 @@ Gets events within a given time range.
 ]
 ```
 
-- `x`: Event name.
-- `t`: Timestamp.
-- `y`: Number of events.
+- `x`：事件名称。
+- `t`：时间戳。
+- `y`：事件数量。
 
 ---
 
 ## GET /api/websites/:websiteId/metrics
 
-Gets metrics for a given time range.
+获取给定时间范围内的指标。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `type`: Metrics type.
-- `filters`: Can accept filter parameters.
-- `limit`: (optional, default 500) Number of rows returned.
-- `offset`: (optional, default 0) Number of ows to skip.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `type`：指标类型。
+- `filters`：可接受过滤参数。
+- `limit`：（可选，默认 500）返回的行数。
+- `offset`：（可选，默认 0）跳过的行数。
 
-**Available Types**
+**可用类型**
 
 `path` | `entry` | `exit` | `title` | `query` | `referrer` | `channel` | `domain` | `country` | `region` | `city` | `browser` | `os` | `device` | `language` | `screen` | `event` | `hostname` | `tag` | `distinctId`
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -171,27 +171,27 @@ Gets metrics for a given time range.
 ]
 ```
 
-- `x`: Unique value, depending on metric type.
-- `y`: Number of visitors.
+- `x`：根据指标类型，唯一值。
+- `y`：访客数量。
 
 ## GET /api/websites/:websiteId/metrics/expanded
 
-Gets expanded metrics for a given time range.
+获取给定时间范围内的扩展指标。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `type`: Metrics type.
-- `filters`: Can accept filter parameters.
-- `limit`: (optional, default 500) Number of rows returned.
-- `offset`: (optional, default 0) Number of ows to skip.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `type`：指标类型。
+- `filters`：可接受过滤参数。
+- `limit`：（可选，默认 500）返回的行数。
+- `offset`：（可选，默认 0）跳过的行数。
 
-**Available Types**
+**可用类型**
 
 `path` | `entry` | `exit` | `title` | `query` | `referrer` | `channel` | `domain` | `country` | `region` | `city` | `browser` | `os` | `device` | `language` | `screen` | `event` | `hostname` | `tag` | `distinctId`
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -238,29 +238,29 @@ Gets expanded metrics for a given time range.
 ]
 ```
 
-- `name`: Unique value, depending on metric type.
-- `pageviews`: Pages hits
-- `visitors`: Number of unique visitors
-- `visits`: Number of unique visits
-- `bounces`: Number of visitors who only visit a single page
-- `totaltime`: Time spent on the website
+- `name`：根据指标类型，唯一值。
+- `pageviews`：页面浏览量
+- `visitors`：独立访客数
+- `visits`：独立访问数
+- `bounces`：仅访问单个页面的访客数
+- `totaltime`：网站停留时间（单位未注明，通常毫秒）
 
 ---
 
 ## GET /api/websites/:websiteId/pageviews
 
-Gets pageviews within a given time range.
+获取给定时间范围内的页面浏览量。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `unit`: Time unit (year | month | hour | day).
-- `timezone`: Timezone (ex. America/Los_Angeles).
-- `compare`: (string | optional) Comparison value `prev`| `yoy`.
-- `filters`: Can accept filter parameters.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `unit`：时间单位（year | month | hour | day）。
+- `timezone`：时区（例如 America/Los_Angeles）。
+- `compare`：（字符串 | 可选）对比值 `prev`| `yoy`。
+- `filters`：可接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -295,22 +295,22 @@ Gets pageviews within a given time range.
 }
 ```
 
-- `x`: Timestamp.
-- `y`: Number of pageviews or visitors.
+- `x`：时间戳。
+- `y`：页面浏览量或访客数。
 
 ---
 
 ## GET /api/websites/:websiteId/stats
 
-Gets summarized website statistics.
+获取网站汇总统计数据。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `filters`: Can accept filter parameters.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `filters`：可接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -329,8 +329,8 @@ Gets summarized website statistics.
 }
 ```
 
-- `pageviews`: Pages hits
-- `visitors`: Number of unique visitors
-- `visits`: Number of unique visits
-- `bounces`: Number of visitors who only visit a single page
-- `totaltime`: Time spent on the website
+- `pageviews`：页面浏览量
+- `visitors`：独立访客数
+- `visits`：独立访问数
+- `bounces`：仅访问单个页面的访客数
+- `totaltime`：网站停留时间

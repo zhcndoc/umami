@@ -1,94 +1,72 @@
 ---
-title: Measure campaigns
+title: 测量营销活动
 ---
 
-Whether you are doing paid advertising or email campaigns, Umami can help you measure the impact
-and effectiveness of your marketing campaigns in driving business outcomes.
+无论您是在进行付费广告还是邮件活动，Umami 都可以帮助您衡量营销活动在推动业务成果方面的影响力和有效性。
 
-It's important to note that Umami complements your existing tools.
+需要注意的是，Umami 是对您现有工具的补充。
 
-- **Paid advertising**: Continue to use your paid ads management system (such as Google Ads) to track paid ads performance, such as spend, clicks, CTRs, etc.
-- **Email campaigns**: Continue to use your email tool to track email deliverability performance, such as opens and clicks.
+- **付费广告**：继续使用您的付费广告管理系统（例如 Google Ads）来跟踪付费广告的表现，如花费、点击量、点击率等。
+- **邮件活动**：继续使用您的邮件工具来跟踪邮件的送达表现，如打开率和点击率。
 
-## Step 1: Setup event tracking
+## 第一步：设置事件跟踪
 
-If you send traffic to a page on your website with Umami installed, that page needs to be set up to track
-events. This is a crucial step as Umami can track events on your website, which is vital to understanding
-campaign performance. We need to know how many people clicked a sign-up button, installed, downloaded,
-signed up, etc. There are two ways to record events in Umami: using the data attributes property or JavaScript.
-For additional information on how to set up event tracking using Umami, please refer to the [documentation](/docs).
+如果您发送流量到安装了 Umami 的网站页面，该页面需要设置事件跟踪。这是一个关键步骤，因为 Umami 可以跟踪您网站上的事件，这对于了解活动表现至关重要。我们需要知道有多少人点击了注册按钮、安装了应用、下载了内容、完成注册等。Umami 记录事件有两种方式：使用 data 属性或者 JavaScript。有关如何使用 Umami 设置事件跟踪的更多信息，请参考[文档](/docs)。
 
 ![image](/images/guides/measure-campaigns-01.png)
 
-## Step 2: Add UTM parameters to your links
+## 第二步：为链接添加 UTM 参数
 
-If you send traffic to a page on your website, the links in your ads or emails need to have UTM parameters
-so you can measure which links, creative, campaigns, etc, are driving traffic.
+如果您发送流量到网站页面，广告或邮件中的链接需要带有 UTM 参数，这样您才能衡量哪些链接、创意、活动等带来了流量。
 
-**URL w/ no UTM Parameters**:
-
+**没有 UTM 参数的 URL**：
 
 `https://website.com/`
 
-
-**URL w/ UTM Parameters**:
+**带 UTM 参数的 URL**：
 
 `https://website.com/?utm_source=newsletter
 &utm_medium=email&utm_campaign=sales`
 
-Umami automatically captures the UTM parameters you have added to the end of your links. You can review that
-data inside your Umami dashboards or build a custom [UTM report](/docs/reports/report-utm). Google has a free [UTM link builder](https://ga-dev-tools.google/campaign-url-builder/) that
-anyone can use.
+Umami 会自动捕获您添加在链接末尾的 UTM 参数。您可以在 Umami 仪表盘内查看这些数据，或构建自定义的 [UTM 报告](/docs/reports/report-utm)。Google 提供了免费的 [UTM 链接生成工具](https://ga-dev-tools.google/campaign-url-builder/)，任何人都可以使用。
 
 ![image](/images/guides/measure-campaigns-02.png)
 
-## Reading the data
+## 数据解读
 
-Once events and UTMs are in place, measuring the impact and effectiveness of your campaigns involves
-reviewing the data inside Umami. There are two places to look: **Dashboards** and **Reports**.
+一旦事件和 UTM 参数设置完成，衡量营销活动的影响力和有效性就可以通过查看 Umami 中的数据来进行。主要有两个查看位置：**仪表盘**和**报告**。
 
-Your Umami dashboard will give you a quick snapshot of which events are being triggered. Remember that without
-filters, the dashboard shows all events across all pages. Click More (see screenshot below) to filter your data.
+您的 Umami 仪表盘会快速显示哪些事件被触发。请记住，若不加筛选，仪表盘会显示所有页面上的全部事件。点击“更多”（见下图）即可筛选数据。
 
 ![image](/images/guides/measure-campaigns-03.png)
 
-To filter your data to measure the impact and effectiveness of your campaigns, click the Filter link
-at the top of the page, as shown in the screenshot below. You can slice and dice the data with filters to
-understand which campaigns generate events.
+要根据营销活动的影响力和有效性过滤数据，请点击页面顶部的“筛选”链接，如下图所示。您可以通过筛选工具对数据进行多维度分析，了解哪些活动产生了事件。
 
 ![image](/images/guides/measure-campaigns-04.png)
 
-Umami also allows you to build custom reports that will allow you to jump straight into the exact data view
-you are looking for. These are the four types of custom reports:
+Umami 还允许您构建自定义报告，直接跳转到所需的具体数据视图。自定义报告有四种类型：
 
-- **Breakdown**: Dive deeper into your data by using segments and filters.
-- **Funnel**: Understand the conversion and drop-off rate of users.
-- **Retention**: Measure your website stickiness by tracking how often users return.
-- **UTM**: Track your campaigns through UTM parameters.
+- **细分**：通过使用分段和筛选深入挖掘数据。
+- **漏斗**：了解用户转化和流失率。
+- **留存**：通过追踪用户返回频率来衡量网站粘性。
+- **UTM**：通过 UTM 参数追踪您的活动。
 
-When you log in to Umami, click Reports along the top navigation to explore and start building your reports.
+登录 Umami 后，点击顶部导航栏的“报告”以浏览并开始构建报告。
 
 ![image](/images/guides/measure-campaigns-05.png)
 
-## Example
+## 示例
 
-Let's review an example of how to measure the impact and effectiveness of your campaign by using landing pages,
-as sending traffic to a specific landing page is a very common practice:
+让我们通过使用登陆页面来回顾如何衡量营销活动的影响力和有效性，因为向指定登陆页面发送流量是一种非常常见的做法：
 
-1. The first thing to do in Umami is view metrics on your landing page by filtering by URL.
-2. We can then use data filters to understand traffic via query parameters (UTM parameters) to determine how people arrived on the page, which links were clicked, and which email was clicked (maybe you have multiple emails in a sequence you’re trying to track).
-3. We can then use data filters to understand the events on the page. For example, has someone clicked the Get Started or Free Trial buttons?
+1. 在 Umami 中，首先通过 URL 过滤查看登陆页面的指标。
+2. 接着，通过数据筛选了解流量来源的查询参数（UTM 参数），确定用户如何抵达该页面，点击了哪些链接，以及点击了哪封邮件（例如您有多封邮件并需要跟踪）。
+3. 最后，利用数据筛选了解页面上的事件。例如，有人点击了“Get Started”或“Free Trial”按钮吗？
 
-You can then return to your leadership and recommend adjusting the marketing spend based on actual campaign data. Also, when you determine what is producing the desired outcomes, you can go to leadership and ask for more budget because you will have the information and data you need to tell them the precise return on ad spend per channel.
+然后，您可以将这些数据反馈给领导层，基于实际的活动数据调整营销预算。同时，确定了哪些活动带来了预期效果后，您可以向领导申请更多预算，因为您已经掌握了各渠道广告投入产出比的具体数据。
 
-## Conclusion
+## 结论
 
-Using Umami to measure the impact and effectiveness of your campaigns is a vital step in achieving
-your marketing goals. By setting up event tracking and adding UTM parameters to your links, you can gain
-valuable insights into your website's performance and attribute the success of your campaigns to
-specific campaigns, creative, and more. With the help of Umami's dashboards and custom reports, you can
-easily filter and analyze your data to make data-driven decisions that will help you optimize your
-marketing efforts and drive business outcomes.
+使用 Umami 测量营销活动的影响力和有效性，是实现营销目标的重要步骤。通过设置事件跟踪和为链接添加 UTM 参数，您可以获得宝贵的洞察，了解网站表现，并将活动成效归因于特定的活动、创意等。有了 Umami 的仪表盘和自定义报告，您可以轻松筛选和分析数据，做出数据驱动的决策，帮助优化营销策略并推动业务成果。
 
-If you want to take your campaign measurement to the next level, try [Umami](https://cloud.umami.is/signup?ref=umami-docs-guides). Start tracking your
-website activity today, and use the data to make informed decisions to help you achieve your marketing goals.
+如果您想进一步提升活动测量水平，尝试 [Umami](https://cloud.umami.is/signup?ref=umami-docs-guides)。今天就开始跟踪您的网站活动，利用数据做出明智决策，助力实现您的营销目标。

@@ -1,10 +1,10 @@
 ---
-title: Links
+title: 链接
 ---
 
-Operations around Links management.
+链接管理相关操作。
 
-**Endpoints**
+**接口**
 
 ```text
 GET /api/links
@@ -17,15 +17,15 @@ DELETE /api/links/:linkId
 
 ## GET /api/links
 
-Returns all user links.
+返回所有用户链接。
 
-**Parameters**
+**参数**
 
-- `search`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+- `search`：（可选字符串）搜索文本。
+- `page`：（可选数字，默认 1）指定页码。
+- `pageSize`：（可选字符串）指定返回结果数量。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -52,9 +52,9 @@ Returns all user links.
 
 ## GET /api/links/:linkId
 
-Gets a link by ID.
+通过 ID 获取链接。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -74,15 +74,15 @@ Gets a link by ID.
 
 ## POST /api/links/:linkId
 
-Updates a link.
+更新链接。
 
-**Parameters**
+**参数**
 
-- `name`: (optional string) The link's name.
-- `url`: (optional string) The link's destination URL.
-- `slug`: (optional string | minimum 8 char) The link's URL slug.
+- `name`：（可选字符串）链接名称。
+- `url`：（可选字符串）链接目标 URL。
+- `slug`：（可选字符串 | 最少 8 个字符）链接的 URL slug。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -91,7 +91,7 @@ Updates a link.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -111,9 +111,9 @@ Updates a link.
 
 ## DELETE /api/links/:linkId
 
-Deletes a link.
+删除链接。
 
-**Sample response**
+**示例响应**
 
 ```json
 {

@@ -1,28 +1,22 @@
 ---
-title: Revenue
+title: 收入
 ---
 
-Umami Revenue allows you to helps track financial performance, measure ROI, and identify which pages or products
-generate the most income. It provides insights into customer behavior, helping optimize revenue sources
-and improve conversion rates. By linking revenue data with traffic and user behavior,
-businesses can make informed decisions to boost profitability and plan for future growth.
+Umami 收入功能帮助您跟踪财务表现、衡量投资回报率（ROI），并识别哪些页面或产品产生了最多收入。它提供了对客户行为的洞察，帮助优化收入来源并提高转化率。通过将收入数据与流量和用户行为关联，企业能够做出明智决策，提升盈利能力并规划未来增长。
 
-The insight works by aggregating **Revenue** and **Currency** data across a specified time period.
+该洞察通过汇总**收入**和**货币**数据，覆盖指定的时间段来实现。
 
-## Configuring Revenue
+## 配置收入
 
-To start collecting revenue data, you will be leveraging tracking an event with dynamic data. This can be done through [tracker functions](https://umami.is/docs/tracker-functions#event-data)
-or [data attributes](https://umami.is/docs/track-events#using-data-attributes). The tracked event must be passed along with the two dynamic data
-properties `revenue` and `currency`. If a currency code (ISO 4217) is not recognized, the insight will default to `USD`.
+要开始收集收入数据，您需要利用事件追踪并传递动态数据。这可以通过[追踪器函数](https://umami.is/docs/tracker-functions#event-data)或[数据属性](https://umami.is/docs/track-events#using-data-attributes)实现。被追踪的事件必须携带两个动态数据属性 `revenue` 和 `currency`。如果货币代码（ISO 4217）未被识别，洞察将默认使用 `USD`。
 
-### Tracker function
+### 追踪器函数
 
 ```js
 umami.track('checkout-cart', { revenue: 19.99, currency: 'USD' });
 ```
 
-When tracking events, the default properties are included in the payload.
-This is equivalent to running:
+追踪事件时，默认属性包含在负载中。此代码相当于执行：
 
 ```js
 umami.track(props => ({
@@ -35,9 +29,9 @@ umami.track(props => ({
 }));
 ```
 
-### Data attributes
+### 数据属性
 
-Please note that revenue must be passed as a string while using this method.
+请注意，使用此方式时，收入必须作为字符串传递。
 
 ```html
 <button
@@ -46,20 +40,20 @@ Please note that revenue must be passed as a string while using this method.
   data-umami-event-revenue="19.99"
   data-umami-event-currency="USD"
 >
-  Checkout
+  结账
 </button>
 ```
 
-## Parameters
+## 参数
 
-- `Currency`: (required) The currency of the data to be aggregated.
+- `Currency`：（必填）汇总数据所使用的货币。
 
-## Create a insight
+## 创建洞察
 
-### Step 1: Choose a currency
+### 步骤 1：选择货币
 
 ![image](/images/docs/revenue-currency.png)
 
-### Step 2: Run insight
+### 步骤 2：运行洞察
 
 ![image](/images/docs/revenue-details.png)

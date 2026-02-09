@@ -1,10 +1,10 @@
 ---
-title: Events
+title: 事件
 ---
 
-Operations around Events and Event data.
+关于事件和事件数据的操作。
 
-**Endpoints**
+**端点**
 
 ```text
 GET /api/websites/:websiteId/events
@@ -18,44 +18,44 @@ GET /api/websites/:websiteId/event-data/stats
 
 ---
 
-## Filters
+## 过滤器
 
-All Endpoints marked with `filters` can now be filtered with the parameters below.
+所有标记为 `filters` 的端点现在都可以使用以下参数进行过滤。
 
-**Parameters**
+**参数**
 
-- `path`: (string | optional) Name of URL.
-- `referrer`: (string | optional) Name of referrer.
-- `title`: (string | optional) Name of page title.
-- `query`: (string | optional) Name of query parameter.
-- `browser`: (string | optional) Name of browser.
-- `os`: (string | optional) Name of operating system.
-- `device`: (string | optional) Name of device (ex. Mobile)
-- `country`: (string | optional) Name of country.
-- `region`: (string | optional) Name of region/state/province.
-- `city`: (string | optional) Name of city.
-- `hostname`: (string | optional) Name of hostname.
-- `tag`: (string | optional) Name of tag.
-- `distinctId`: (string | optional) Name of distinct ID.
-- `segment`: (uuid | optional) UUID of segment.
-- `cohort`: (uuid | optional) UUID of cohort.
+- `path`：（字符串 | 可选）URL 名称。
+- `referrer`：（字符串 | 可选）推荐来源名称。
+- `title`：（字符串 | 可选）页面标题名称。
+- `query`：（字符串 | 可选）查询参数名称。
+- `browser`：（字符串 | 可选）浏览器名称。
+- `os`：（字符串 | 可选）操作系统名称。
+- `device`：（字符串 | 可选）设备名称（例如：移动设备）
+- `country`：（字符串 | 可选）国家名称。
+- `region`：（字符串 | 可选）区域/州/省名称。
+- `city`：（字符串 | 可选）城市名称。
+- `hostname`：（字符串 | 可选）主机名。
+- `tag`：（字符串 | 可选）标签名称。
+- `distinctId`：（字符串 | 可选）唯一 ID 名称。
+- `segment`：（UUID | 可选）分段 UUID。
+- `cohort`：（UUID | 可选）队列 UUID。
 
 ---
 
 ## GET /api/websites/:websiteId/events
 
-Gets website event details within a given time range.
+获取指定时间范围内网站事件的详细信息。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `search`: (string | optional) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (number | optional, default 20) Determines how many results to return.
-- `filters`: Can accept filter parameters.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `search`：（字符串 | 可选）搜索文本。
+- `page`：（可选数字，默认 1）指定页码。
+- `pageSize`：（数字 | 可选，默认 20）指定返回结果数量。
+- `filters`：可以接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -113,9 +113,9 @@ Gets website event details within a given time range.
 
 ## GET /api/websites/:websiteId/event-data/:eventId
 
-Gets event-data for a individual event
+获取单个事件的事件数据。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -152,16 +152,16 @@ Gets event-data for a individual event
 
 ## GET /api/websites/:websiteId/event-data/events
 
-Gets event data names, properties, and counts
+获取事件数据的名称、属性和计数。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `event`: (string | optional) Event name filter.
-- `filters`: Can accept filter parameters.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `event`：（字符串 | 可选）事件名称过滤。
+- `filters`：可以接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -190,15 +190,15 @@ Gets event data names, properties, and counts
 
 ## GET /api/websites/:websiteId/event-data/fields
 
-Gets event data property and value counts within a given time range.
+获取指定时间范围内事件数据属性和值的计数。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `filters`: Can accept filter parameters.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `filters`：可以接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -233,15 +233,15 @@ Gets event data property and value counts within a given time range.
 
 ## GET /api/websites/:websiteId/event-data/properties
 
-Gets event name and property counts for a website.
+获取网站的事件名称和属性计数。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `filters`: Can accept filter parameters.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `filters`：可以接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -262,17 +262,17 @@ Gets event name and property counts for a website.
 
 ## GET /api/websites/:websiteId/event-data/values
 
-Gets event data counts for a given event and property
+获取指定事件及属性的事件数据计数。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `event`: (string) Event name.
-- `propertyName`: (string) Property name.
-- `filters`: Can accept filter parameters.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `event`：（字符串）事件名称。
+- `propertyName`：（字符串）属性名称。
+- `filters`：可以接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -291,15 +291,15 @@ Gets event data counts for a given event and property
 
 ## GET /api/websites/:websiteId/event-data/stats
 
-Gets aggregated website events, properties, and records within a given time range.
+获取指定时间范围内网站事件、属性和记录的汇总信息。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `filters`: Can accept filter parameters.
+- `startAt`：（数字）起始日期的时间戳（毫秒）。
+- `endAt`：（数字）结束日期的时间戳（毫秒）。
+- `filters`：可以接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 [

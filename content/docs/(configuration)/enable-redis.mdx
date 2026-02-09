@@ -1,16 +1,14 @@
 ---
-title: Enable Redis
+title: 启用 Redis
 ---
 
-Umami supports [Redis](https://redis.io/) as a caching layer for improved performance. For example, when
-you send a request to the server, a website lookup must be done. The result can be cached in Redis for faster
-lookups in the future.
+Umami 支持将 [Redis](https://redis.io/) 用作缓存层以提升性能。例如，当你向服务器发送请求时，需要进行网站查找。结果可以缓存在 Redis 中，以便将来更快速地查找。
 
-Additionally, login authentication will be handled by Redis instead of using JWT tokens.
+此外，登录认证将由 Redis 处理，而不再使用 JWT 令牌。
 
-## Usage
+## 使用方法
 
-To enable Redis, add a connection string as an environment variabled called `REDIS_URL`.
+要启用 Redis，请添加一个名为 `REDIS_URL` 的环境变量，内容为连接字符串。
 
 ```dotenv
 REDIS_URL=redis://username:password@your-redis-server:port

@@ -1,10 +1,10 @@
 ---
-title: Sessions
+title: 会话
 ---
 
-Operations around Sessions and Session data.
+有关会话及会话数据的操作。
 
-**Endpoints**
+**接口**
 
 ```text
 GET /api/websites/:websiteId/sessions
@@ -19,44 +19,44 @@ GET /api/websites/:websiteId/session-data/values
 
 ---
 
-## Filters
+## 过滤器
 
-All Endpoints marked with `filters` can now be filtered with the parameters below.
+所有标记有 `filters` 的接口现在均可使用以下参数进行过滤。
 
-**Parameters**
+**参数**
 
-- `path`: (string | optional) Name of URL.
-- `referrer`: (string | optional) Name of referrer.
-- `title`: (string | optional) Name of page title.
-- `query`: (string | optional) Name of query parameter.
-- `browser`: (string | optional) Name of browser.
-- `os`: (string | optional) Name of operating system.
-- `device`: (string | optional) Name of device (ex. Mobile)
-- `country`: (string | optional) Name of country.
-- `region`: (string | optional) Name of region/state/province.
-- `city`: (string | optional) Name of city.
-- `hostname`: (string | optional) Name of hostname.
-- `tag`: (string | optional) Name of tag.
-- `distinctId`: (string | optional) Name of distinct ID.
-- `segment`: (uuid | optional) UUID of segment.
-- `cohort`: (uuid | optional) UUID of cohort.
+- `path`: （字符串 | 可选）URL 名称。
+- `referrer`: （字符串 | 可选）来源页名称。
+- `title`: （字符串 | 可选）页面标题名称。
+- `query`: （字符串 | 可选）查询参数名称。
+- `browser`: （字符串 | 可选）浏览器名称。
+- `os`: （字符串 | 可选）操作系统名称。
+- `device`: （字符串 | 可选）设备名称（例如：Mobile）。
+- `country`: （字符串 | 可选）国家名称。
+- `region`: （字符串 | 可选）地区/州/省名称。
+- `city`: （字符串 | 可选）城市名称。
+- `hostname`: （字符串 | 可选）主机名。
+- `tag`: （字符串 | 可选）标签名称。
+- `distinctId`: （字符串 | 可选）唯一标识 ID。
+- `segment`: （uuid | 可选）分段的 UUID。
+- `cohort`: （uuid | 可选）群组的 UUID。
 
 ---
 
 ## GET /api/websites/:websiteId/sessions
 
-Gets website session details within a given time range.
+获取指定时间范围内的网站会话详情。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `search`: (string | optional) Search text.
-- `page`: (number | optional, default 1) Determines page.
-- `pageSize`: (number | optional, default 20) Determines how many results to return.
-- `filters`: Can accept filter parameters.
+- `startAt`: （数字）起始日期时间戳（毫秒）。
+- `endAt`: （数字）结束日期时间戳（毫秒）。
+- `search`: （字符串 | 可选）搜索文本。
+- `page`: （数字 | 可选，默认 1）页码。
+- `pageSize`: （数字 | 可选，默认 20）返回结果数。
+- `filters`: 可接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -108,15 +108,15 @@ Gets website session details within a given time range.
 
 ## GET /api/websites/:websiteId/sessions/stats
 
-Gets summarized website session statistics.
+获取汇总的网站会话统计数据。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `filters`: Can accept filter parameters.
+- `startAt`: （数字）起始日期时间戳（毫秒）。
+- `endAt`: （数字）结束日期时间戳（毫秒）。
+- `filters`: 可接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -138,26 +138,26 @@ Gets summarized website session statistics.
 }
 ```
 
-- `pageviews`: Pages hits
-- `visitors`: Number of unique visitors
-- `visits`: Number of unique visits
-- `bounces`: Number of visitors who only visit a single page
-- `totaltime`: Time spent on the website
+- `pageviews`：网页访问次数
+- `visitors`：独立访客数
+- `visits`：唯一访问次数
+- `bounces`：只访问单页的访客数（未在示例中展示）
+- `totaltime`：访问网站的总停留时间（未在示例中展示）
 
 ---
 
 ## GET /api/websites/:websiteId/sessions/weekly
 
-Get collected count of sessions by hour of weekday.
+按周中小时统计会话数。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of start date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `timezone`: Timezone (ex. America/Los_Angeles).
-- `filters`: Can accept filter parameters.
+- `startAt`: （数字）起始日期时间戳（毫秒）。
+- `endAt`: （数字）结束日期时间戳（毫秒）。
+- `timezone`: 时区（例如 America/Los_Angeles）。
+- `filters`: 可接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -175,9 +175,9 @@ Get collected count of sessions by hour of weekday.
 
 ## GET /api/websites/:websiteId/sessions/:sessionId
 
-Gets session details for a individual session
+获取单个会话详情。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -205,14 +205,14 @@ Gets session details for a individual session
 
 ## GET /api/websites/:websiteId/sessions/:sessionId/activity
 
-Gets session activity for a individual session
+获取单个会话的活动记录。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
+- `startAt`: （数字）起始日期时间戳（毫秒）。
+- `endAt`: （数字）结束日期时间戳（毫秒）。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -256,9 +256,9 @@ Gets session activity for a individual session
 
 ## GET /api/websites/:websiteId/sessions/:sessionId/properties
 
-Gets session properties for a individual session
+获取单个会话的属性。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -297,15 +297,15 @@ Gets session properties for a individual session
 
 ## GET /api/websites/:websiteId/session-data/properties
 
-Gets session data counts by property name
+按属性名称统计会话数据数量。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `filters`: Can accept filter parameters.
+- `startAt`: （数字）起始日期时间戳（毫秒）。
+- `endAt`: （数字）结束日期时间戳（毫秒）。
+- `filters`: 可接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -332,16 +332,16 @@ Gets session data counts by property name
 
 ## GET /api/websites/:websiteId/session-data/values
 
-Gets session data counts for a given property
+获取指定属性的会话数据数量。
 
-**Parameters**
+**参数**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `propertyName`: (string) Property name.
-- `filters`: Can accept filter parameters.
+- `startAt`: （数字）起始日期时间戳（毫秒）。
+- `endAt`: （数字）结束日期时间戳（毫秒）。
+- `propertyName`: （字符串）属性名称。
+- `filters`: 可接受过滤参数。
 
-**Sample response**
+**示例响应**
 
 ```json
 [

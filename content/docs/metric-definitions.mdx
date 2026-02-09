@@ -1,135 +1,126 @@
 ---
-title: Metric definitions
+title: 指标定义
 ---
 
-All default metrics Umami collects along with high level definitions.
+所有 Umami 默认收集的指标及其高层定义。
 
 ---
 
-## Event metrics
+## 事件指标
 
-Event metrics help identify a unique event for a user. Each event is stored as a unique UUID called an Event ID.
+事件指标用于识别用户的唯一事件。每个事件都存储为一个唯一的 UUID，称为事件 ID。
 
-**Website ID**
+**网站 ID**
 
-A unique UUID value to identify your website included in the payload.
+用于识别您的网站的唯一 UUID 值，包含在数据载荷中。
 
-**Hostname**
+**主机名**
 
-Location [hostname](https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname) property included in the payload.
+载荷中包含的定位 [hostname](https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname) 属性。
 
 **URL**
 
-URL [pathname](https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname)
-and [search](https://developer.mozilla.org/en-US/docs/Web/API/URL/search) property combined included in the payload.
+载荷中包含的 URL 的 [pathname](https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname)
+和 [search](https://developer.mozilla.org/en-US/docs/Web/API/URL/search) 属性组合。
 
-**Referrer**
+**来源页面**
 
-Document [referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer) property included in the payload. If the referrer
-includes the hostname, the value is replaced by the previous URL.
+载荷中包含的文档 [referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer) 属性。如果来源页面包含主机名，则该值被替换为前一个 URL。
 
-**Title**
+**标题**
 
-Document [title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title) property included in the payload.
+载荷中包含的文档 [title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title) 属性。
 
-**Query parameters**
+**查询参数**
 
-[Search](https://developer.mozilla.org/en-US/docs/Web/API/URL/search) property that is extracted from the URL
-after the payload is sent.
+从 URL 中提取的 [search](https://developer.mozilla.org/en-US/docs/Web/API/URL/search) 属性，载荷发送后提取。
 
 ---
 
-## Session metrics
+## 会话指标
 
-Session metrics help identify a unique session for a user. Each session is stored as a unique UUID called a Session ID.
+会话指标用于识别用户的唯一会话。每个会话都存储为一个唯一的 UUID，称为会话 ID。
 
-**Browser**
+**浏览器**
 
-Browser name extracted from the [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
+从 [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) 中提取的浏览器名称。
 
-`Examples: Chrome, FireFox, iOS, Safari, Edge`
+`示例：Chrome, FireFox, iOS, Safari, Edge`
 
-**OS**
+**操作系统**
 
-Operating system name extracted from the [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent).
+从 [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) 中提取的操作系统名称。
 
-`Examples: Windows 10, macOS, Linux, Android, iOS`
+`示例：Windows 10, macOS, Linux, Android, iOS`
 
-**Device**
+**设备**
 
-Device name that is identified from the combination of **OS** and **screen**.
+结合 **操作系统** 和 **屏幕** 识别出的设备名称。
 
-`Examples: Laptop, desktop, mobile, tablet`
+`示例：笔记本电脑、台式机、手机、平板`
 
-**Screen**
+**屏幕**
 
-[Screen](https://developer.mozilla.org/en-US/docs/Web/API/Screen) width and height property
-included in the payload.
+载荷中包含的 [屏幕](https://developer.mozilla.org/en-US/docs/Web/API/Screen) 宽度和高度属性。
 
-`Examples: 1920x1080, 1280x960`
+`示例：1920x1080，1280x960`
 
-**Language**
+**语言**
 
-Navigator [language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) property included in the payload.
+载荷中包含的导航器 [语言](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) 属性。
 
-`Examples: English, Chinese, German, French`
-
----
-
-## Location metrics
-
-Location metrics come from different sources depending on the headers. The IP address sending the request is used to
-gather these metrics, but is never stored.
-
-- `Cloudflare`: [HTTP request headers](https://developers.cloudflare.com/fundamentals/reference/http-request-headers/#docs-content)
-- `Vercel`: [Geolocation headers](https://vercel.com/guides/geo-ip-headers-geolocation-vercel-functions)
-- `MaxMind`: [Geolite Database](https://dev.maxmind.com/geoip/geolocate-an-ip).
-
-**Country**
-
-Name of country following ISO-3166 standards.
-
-`Examples: United States, China, Germany, France`
-
-**Region**
-
-Name of region (subdivisions) following ISO-3166-2 standards.
-
-`Examples: California, Ontario, Bayern, Île-de-France`
-
-**City**
-
-Name of city.
-
-`Examples: San Francisco, Toronto, Munich, Paris`
+`示例：英语，中文，德语，法语`
 
 ---
 
-## Calculated metrics
+## 地理位置指标
 
-Calculated metrics are a combination of total and unique aggregates per website.
+地理位置指标来自于不同来源，取决于请求头。发送请求的 IP 地址用于获取这些指标，但不会被存储。
 
-**Views**
+- `Cloudflare`：[HTTP 请求头](https://developers.cloudflare.com/fundamentals/reference/http-request-headers/#docs-content)
+- `Vercel`：[地理位置头](https://vercel.com/guides/geo-ip-headers-geolocation-vercel-functions)
+- `MaxMind`：[Geolite 数据库](https://dev.maxmind.com/geoip/geolocate-an-ip)。
 
-The total number of events that were collected by your visitors.
+**国家**
 
-**Visits**
+遵循 ISO-3166 标准的国家名称。
 
-Unique number of visits. A visit is a more granular range within a user session. A visit is calculated
-using a hash of the session ID and rotating salt that is rotated at the start of every hour. Visits are able
-to span across hourly intervals.
+`示例：美国，中国，德国，法国`
 
-**Visitors**
+**地区**
 
-Unique number of sessions. A session is calculated using a hash of data such as Website ID,
-hostname, User-Agent, etc and a rotating salt that is rotated at the start of every month.
+遵循 ISO-3166-2 标准的地区（子地区）名称。
 
-**Bounce rate**
+`示例：加州，安大略，巴伐利亚，法兰西岛`
 
-A bounce is defined when a visit has only 1 event. A user will enter the website, initially generating a view, then leaving.
-The bounce rate is calculated by dividing the total number of bounces by unique number of visits.
+**城市**
 
-**Visit duration**
+城市名称。
 
-Total time spent on the website divided by unique number of visits. Total time is only calculated for visitors that
-visit more then one page. The difference between the first and last event create time per visit are summed into a duration time.
+`示例：旧金山，多伦多，慕尼黑，巴黎`
+
+---
+
+## 计算指标
+
+计算指标是每个网站的总计和唯一数据的组合。
+
+**浏览量**
+
+访问者产生的事件总数。
+
+**访问次数**
+
+唯一访问次数。访问是用户会话中的一个更细粒度的范围。访问次数通过使用会话 ID 和每小时轮换的盐值的哈希计算得到。访问可以跨越小时区间。
+
+**访客数**
+
+唯一会话数。会话通过结合网站 ID、主机名、User-Agent 等数据及每月轮换的盐值的哈希计算得到。
+
+**跳出率**
+
+跳出定义为访问中仅产生 1 次事件。用户进入网站，初始生成一次浏览，然后离开。跳出率通过跳出次数总数除以访问次数唯一数计算得出。
+
+**访问时长**
+
+网站总停留时间除以唯一访问次数。总时间仅计算访问多于一个页面的访客。每次访问中第一个与最后一个事件创建时间的差值被累加成访问时长。

@@ -1,40 +1,39 @@
 ---
-title: Track events
+title: 事件追踪
 ---
 
-Besides pageviews, Umami is also able to track events that occur on your website. There are two ways to record
-events in Umami, using the **data attributes** property or using **JavaScript**.
+除了页面浏览，Umami 还能够追踪发生在你网站上的事件。Umami 有两种方式来记录事件，可以通过 **数据属性（data attributes）** 或使用 **JavaScript**。
 
-## Limits
+## 限制
 
-- Event names are limited to 50 characters.
-- Event data cannot be sent without an event name.
+- 事件名称限制为 50 个字符。
+- 事件数据不能在没有事件名称的情况下发送。
 
-## Using data attributes
+## 使用数据属性
 
-To enable events, simply add a special data property to the element you want to track.
+要启用事件，只需在你想要追踪的元素上添加一个特殊的数据属性。
 
-For example, you might have a button with the following code:
+例如，你可能有一个按钮，代码如下：
 
 ```html
-<button id="signup-button">Sign up</button>
+<button id="signup-button">注册</button>
 ```
 
-Add a data property with the following format:
+添加以下格式的数据属性：
 
 ```html
 data-umami-event="{event-name}"
 ```
 
-So your button element would now look like this:
+所以你的按钮元素现在应该是：
 
 ```html
-<button id="signup-button" data-umami-event="Signup button">Sign up</button>
+<button id="signup-button" data-umami-event="Signup button">注册</button>
 ```
 
-When the user clicks on this button, Umami will record an event named `Signup button`.
+当用户点击这个按钮时，Umami 会记录一个名为 `Signup button` 的事件。
 
-You can optionally pass along **event_data** with the **data-umami-event-\*** annotation.
+你也可以通过 **data-umami-event-\*** 注解传递**事件数据（event_data）**。
 
 ```text
 data-umami-event="Signup button"
@@ -42,17 +41,16 @@ data-umami-event-email="bob@aol.com"
 data-umami-event-id="123"
 ```
 
-The additional properties will result in `{ email: 'bob@aol.com', id: '123' }` being recorded with the `Signup button` name.
+这些额外的属性会导致记录的事件数据为 `{ email: 'bob@aol.com', id: '123' }`，事件名称为 `Signup button`。
 
-### Notes
+### 注意事项
 
-- All event data will be saved as a string using this method. If you want to save event data as numeric, dates, booleans, etc. use the JavaScript method below.
-- Other event listeners inside the element will not be triggered.
+- 使用此方法，所有事件数据都会以字符串形式保存。如果你想保存数字、日期、布尔值等类型的事件数据，请使用下面的 JavaScript 方法。
+- 元素内的其他事件监听器将不会被触发。
 
-## Using JavaScript
+## 使用 JavaScript
 
-You can also record events manually using the `window.umami` object. To accomplish the same thing as the above
-data-\* method, you can do:
+你也可以使用 `window.umami` 对象手动记录事件。实现与上述数据属性方法相同的效果，可以这样写：
 
 ```js
 const button = document.getElementById('signup-button');
@@ -60,19 +58,19 @@ const button = document.getElementById('signup-button');
 button.onclick = () => umami.track('Signup button');
 ```
 
-In this case, Umami will record an event named `Signup button`.
+在这种情况下，Umami 会记录一个名为 `Signup button` 的事件。
 
-If you want to record dynamic data, see [Tracker functions](/docs/tracker-functions).
+如果你想记录动态数据，请参阅 [追踪器函数](/docs/tracker-functions)。
 
-## View events
+## 查看事件
 
-Once your events are recorded, they will be available on your website **Events** page.
+事件记录后，可以在你网站的 **事件（Events）** 页面查看。
 
 ![image](/images/docs/events-chart.png)
 
-## View event properties
+## 查看事件属性
 
-Your custom data can be accessed under the **Properties** tab on the **Events** page.
-This section will show you all the custom data properties you saved as well as a breakdown of all the values.
+你保存的自定义数据可以在 **事件** 页的 **属性（Properties）** 选项卡中访问。
+该部分将展示你保存的所有自定义数据属性以及各个值的分类情况。
 
 ![image](/images/docs/events-properties.png)

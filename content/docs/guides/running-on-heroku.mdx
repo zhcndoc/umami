@@ -1,40 +1,40 @@
 ---
-title: Running on Heroku
+title: 在 Heroku 上运行
 ---
 
-> [Heroku](https://www.heroku.com/) is a container-based cloud Platform as a Service (PaaS). Developers use Heroku to deploy, manage, and scale modern apps. The platform is elegant, flexible, and easy to use, offering developers the simplest path to getting their apps to market.
+> [Heroku](https://www.heroku.com/) 是一个基于容器的云平台即服务（PaaS）。开发者使用 Heroku 来部署、管理和扩展现代应用。该平台优雅、灵活且易于使用，为开发者提供将应用推向市场的最简单路径。
 >
-> From the ["What is Heroku?" section](https://www.heroku.com/about) of their website.
+> 摘自其官网的“[什么是 Heroku？](https://www.heroku.com/about)”部分。
 
-Heroku provides a free hosting service which works with Umami as well as databases through add-ons.
-You don't need to have a database set up before this setup guide.
+Heroku 提供免费的托管服务，支持 Umami 以及通过插件支持数据库。
+在按照本指南设置之前，无需提前配置数据库。
 
-## Setup
+## 设置
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/umami-software/umami)
+[![部署](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/umami-software/umami)
 
-_Automate all steps using the button above_
+_使用上方按钮自动完成所有步骤_
 
-### Website
+### 网站
 
-1. Fork a copy of the [Umami repository](https://github.com/umami-software/umami).
-1. Create an account on [Heroku](https://heroku.com/).
-1. From the dashboard page click **New > Create new app**.
-1. Choose an **App name** and then click **Create app**.
-1. Under **Deployment method** click **GitHub** and follow the instructions to connect Heroku to GitHub.
-1. Search for the repository and click **Connect**.
+1. Fork 一份 [Umami 仓库](https://github.com/umami-software/umami) 的副本。
+1. 在 [Heroku](https://heroku.com/) 上创建一个账户。
+1. 在仪表盘页面点击 **New > Create new app**。
+1. 选择一个 **应用名称**，然后点击 **Create app**。
+1. 在 **Deployment method** 下点击 **GitHub**，并按照指示将 Heroku 连接到 GitHub。
+1. 搜索仓库并点击 **Connect**。
 
-### Database
+### 数据库
 
-1. Navigate to the **Resources** tab and click on the **Find more add-ons** button.
-1. Search for **Heroku Postgres** and follow its instructions to install the add-on.
-1. The add-on will set the `DATABASE_URL` automatically; you should not have to manually set it.
-1. You will need to set up the database tables by following the **Create database tables** section of the [Install](/docs/install) docs.
-   You can find temporary connection details by following the **Resources > Heroku Postgres > Settings > Database Credentials** path.
-   To run commands found in the docs click **More > Run Console**.
+1. 进入 **Resources** 选项卡并点击 **Find more add-ons** 按钮。
+1. 搜索 **Heroku Postgres** 并按照其指示安装插件。
+1. 插件会自动设置 `DATABASE_URL`；你无需手动设置。
+1. 需要按照 [安装](/docs/install) 文档中的 **创建数据库表** 部分来设置数据库表。
+   你可以通过路径 **Resources > Heroku Postgres > Settings > Database Credentials** 找到临时连接详情。
+   执行文档中命令时，点击 **More > Run Console**。
 
-### Build and Deploy
+### 构建与部署
 
-1. With the environment variables and database set up, click the **Deploy > Manual Deploy > Deploy Branch** button.
-1. Once the build has finished, the website should be live. Follow the **Open app** button at the top of the dashboard to view it.
-1. Follow the **Getting started** guide starting from the [Login](/docs/login) step.
+1. 环境变量和数据库设置完毕后，点击 **Deploy > Manual Deploy > Deploy Branch** 按钮。
+1. 构建完成后，网站应当已上线。点击仪表盘顶部的 **Open app** 按钮访问网站。
+1. 按照 [登录](/docs/login) 步骤开始使用 **快速入门** 指南。

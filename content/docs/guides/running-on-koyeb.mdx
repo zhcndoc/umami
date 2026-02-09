@@ -1,20 +1,20 @@
 ---
-title: Running on Koyeb
+title: 在 Koyeb 上运行
 ---
 
-[Koyeb](https://www.koyeb.com) is a developer-friendly serverless platform to deploy apps globally. The platform lets you seamlessly run Docker containers, web apps, and APIs with git-based deployment, native autoscaling, free SSL, a global edge network, and built-in service mesh and discovery.
+[Koyeb](https://www.koyeb.com) 是一个面向开发者的无服务器平台，可以全球部署应用。该平台让你可以无缝运行 Docker 容器、网络应用和 API，支持基于 git 的部署、原生自动扩展、免费 SSL、全球边缘网络，以及内置的服务网格和服务发现。
 
-## Setup
+## 设置
 
-In this guide, you need to have a PostgreSQL database server running and accepting remote connections. If you do not already have a database, you can check out the **Managed database** section under [Hosting](/docs/guides/hosting).
+在本指南中，你需要有一个正在运行且支持远程连接的 PostgreSQL 数据库服务器。如果你还没有数据库，可以查看[托管](/docs/guides/hosting)章节下的**托管数据库**部分。
 
-> You will need to set up the database tables by following the **Create database tables** section of the [Install](/docs/install) docs.
+> 你需要按照[安装](/docs/install)文档中的**创建数据库表**部分来设置数据库表。
 
-To deploy Umami, we use the [Koyeb CLI](https://github.com/koyeb/koyeb-cli), you can also perform the setup using the [Koyeb control panel](https://app.koyeb.com).
+部署 Umami 时，我们使用 [Koyeb CLI](https://github.com/koyeb/koyeb-cli)，你也可以使用 [Koyeb 控制面板](https://app.koyeb.com)完成设置。
 
-### Create Koyeb Secrets
+### 创建 Koyeb Secrets
 
-Create one Koyeb secrets to securely store your `DATABASE_URL`. In the terminal execute the following command:
+创建一个 Koyeb Secret 来安全存储你的 `DATABASE_URL`。在终端执行以下命令：
 
 ```shell
 $ koyeb secret create umami-database-url
@@ -23,15 +23,15 @@ Enter your secret: postgres://<user>:<password>@<host>:<port>/<db-name>?sslmode=
 $ openssl rand -hex 32 | koyeb secret create umami-hash-salt --value-from-stdin
 ```
 
-### Deploy Umami
+### 部署 Umami
 
-Once you’ve created the secrets, you can deploy Umami. In your terminal run the following command to create a new Koyeb App and deploy the Umami service:
+创建好 Secret 后，你就可以部署 Umami 了。在终端运行下面的命令来创建一个新的 Koyeb 应用并部署 Umami 服务：
 
 ```shell
 koyeb app init umami --docker docker.umami.is/umami-software/umami:postgresql-latest --ports 3000:http --routes /:3000 --env DATABASE_URL=@umami-database-url
 ```
 
-Your Umami service is being deployed. To retrieve the Umami URL run:
+你的 Umami 服务正在部署中。要获取 Umami 的 URL，请运行：
 
 ```shell
 $ koyeb app get umami
@@ -39,4 +39,4 @@ ID                                  	NAME     	DOMAINS                         	
 30de8301-05b1-4131-a842-28e608900000	umami   	umami-<YOUR_KOYEB_ORG>.koyeb.app	2021-07-06 11:58:01.143967 +0000 UTC
 ```
 
-Open the URL to access Umami and follow the **Getting started** guide starting from the [Login](/docs/login) step.
+打开该 URL 即可访问 Umami，并按照**入门**指南，从[登录](/docs/login)步骤开始。

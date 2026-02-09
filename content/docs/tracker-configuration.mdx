@@ -1,13 +1,12 @@
 ---
-title: Tracker configuration
+title: 跟踪器配置
 ---
 
-The Umami tracker provides several properties that allow you to configure its behavior.
+Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-host-url
 
-By default, Umami will send data to wherever the script is located. You can override this to send data
-to another location.
+默认情况下，Umami 会将数据发送到脚本所在的位置。你可以覆盖此设置，将数据发送到其他位置。
 
 ```html
 <script
@@ -20,8 +19,7 @@ to another location.
 
 ### data-auto-track
 
-By default, Umami tracks all pageviews and events for you automatically. You can disable this behavior and
-track events yourself using the [tracker functions](/docs/tracker-functions).
+默认情况下，Umami 会自动跟踪所有页面浏览和事件。你可以禁用此行为，并使用 [跟踪器函数](/docs/tracker-functions) 自行跟踪事件。
 
 ```html
 <script
@@ -34,9 +32,8 @@ track events yourself using the [tracker functions](/docs/tracker-functions).
 
 ### data-domains
 
-If you want the tracker to only run on specific domains, you can add them to your tracker script. This is a comma delimited list of domain names. Each value matches against `window.location.hostname`, so you should double check if your website uses `www` or not. <br/>
-Helps if you are working in a staging/development environment. <br/>
-
+如果你希望跟踪器只在特定域名上运行，可以将这些域名添加到跟踪脚本中。域名列表使用逗号分隔。每个值会匹配 `window.location.hostname`，因此请确认你的网站是否使用 `www`。<br/>
+这在你处于预发布/开发环境时非常有用。<br/>
 
 ```html
 <script
@@ -49,7 +46,7 @@ Helps if you are working in a staging/development environment. <br/>
 
 ### data-tag
 
-If you want the tracker to collect events under a specific tag. Events can be filtered in the dashboard by a specific tag.
+如果你想让跟踪器将事件归类到特定标签下。仪表盘中可以根据标签筛选事件。
 
 ```html
 <script
@@ -62,7 +59,7 @@ If you want the tracker to collect events under a specific tag. Events can be fi
 
 ### data-exclude-search
 
-If you don't want to collect search parameters from the URL.
+如果你不想收集 URL 中的搜索参数。
 
 ```html
 <script
@@ -75,7 +72,7 @@ If you don't want to collect search parameters from the URL.
 
 ### data-exclude-hash
 
-If you don't want to collect the hash value from the URL.
+如果你不想收集 URL 中的哈希值。
 
 ```html
 <script
@@ -88,7 +85,7 @@ If you don't want to collect the hash value from the URL.
 
 ### data-do-not-track
 
-Respect user's [Do Not Track](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/doNotTrack) browser setting.
+尊重用户的浏览器 [禁止追踪](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/doNotTrack) 设置。
 
 ```html
 <script
@@ -101,11 +98,11 @@ Respect user's [Do Not Track](https://developer.mozilla.org/en-US/docs/Web/API/N
 
 ### data-before-send
 
-Allows you to specify a function that will be called before data is sent.
-You can then inspect and modify the payload or cancel the send entirely.
-The function will take two parameters, type and payload.
-To continue with sending, you return a payload object.
-To cancel the send, return a false-y value.
+允许你指定一个函数，在数据发送之前被调用。  
+你可以检查并修改数据负载，或者完全取消发送。  
+该函数将接收两个参数，type 和 payload。  
+如果继续发送，返回一个数据负载对象。  
+如果取消发送，则返回假值。
 
 ```javascript
 function beforeSendHandler(type, payload) {

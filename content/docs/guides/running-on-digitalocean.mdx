@@ -1,45 +1,43 @@
 ---
-title: Running on DigitalOcean
+title: 在 DigitalOcean 上运行
 ---
 
-[DigitalOcean](https://m.do.co/c/c9ebc1c0928d) is an affordable cloud hosting provider that will let you host
-your own Umami setup. In this setup guide we are going to install
-[Ubuntu](https://ubuntu.com/), a [PostgreSQL](https://www.postgresql.org/) or [MySQL](https://www.mysql.com/) database,
-an [Nginx](https://www.nginx.com/) webserver, [Node.js](https://nodejs.org/) and Umami.
-DigitalOcean also has a [NodeJS droplet build](https://marketplace.digitalocean.com/apps/nodejs) that comes with Node.js, Ubuntu and Nginx which can get you started quicker.
+[DigitalOcean](https://m.do.co/c/c9ebc1c0928d) 是一家经济实惠的云托管服务提供商，可以让你托管自己的 Umami 设置。在本安装指南中，我们将安装
+[Ubuntu](https://ubuntu.com/)，一个 [PostgreSQL](https://www.postgresql.org/) 或 [MySQL](https://www.mysql.com/) 数据库，
+一个 [Nginx](https://www.nginx.com/) 网络服务器，[Node.js](https://nodejs.org/) 和 Umami。
+DigitalOcean 还提供了一个带有 Node.js、Ubuntu 和 Nginx 的 [NodeJS droplet 构建](https://marketplace.digitalocean.com/apps/nodejs)，能让你更快开始。
 
-For personal use, you can start with a single $5 a month cloud server
-and scale up as needed. You can use this **[link](https://m.do.co/c/c9ebc1c0928d)**
-to get a $100 credit for the first 60 days.
+个人使用的话，你可以从每月仅需 5 美元的云服务器开始，根据需要逐步扩展。你可以使用此 **[链接](https://m.do.co/c/c9ebc1c0928d)** 
+在前 60 天内获得 100 美元的额度。
 
-Note, these steps can be repeated on any cloud hosting provider that offers Ubuntu.
+请注意，这些步骤可重复用于任何提供 Ubuntu 的云托管服务。
 
-## Install Ubuntu
+## 安装 Ubuntu
 
-- [Initial server setup with Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
+- [Ubuntu 20.04 的初始服务器设置](https://www.digitalocean.com/community/tutorials/initial-server-setup-with-ubuntu-20-04)
 
-## Install database (PostgreSQL or MySQL)
+## 安装数据库（PostgreSQL 或 MySQL）
 
-- [How to install PostgreSQL on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart)
-- [How to install MySQL on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04)
+- [如何在 Ubuntu 20.04 上安装 PostgreSQL](https://www.digitalocean.com/community/tutorials/how-to-install-postgresql-on-ubuntu-20-04-quickstart)
+- [如何在 Ubuntu 20.04 上安装 MySQL](https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-20-04)
 
-## Install Nginx
+## 安装 Nginx
 
-- [How to install Nginx on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04)
+- [如何在 Ubuntu 20.04 上安装 Nginx](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04)
 
-## Install Node.js
+## 安装 Node.js
 
-- [How to install Node.js on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04)
+- [如何在 Ubuntu 20.04 上安装 Node.js](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04)
 
-## Install Umami
+## 安装 Umami
 
-- See [Install](/docs/install) under **Getting started**
+- 请参阅 **Getting started** 中的 [安装](/docs/install)
 
-## Running Umami
+## 运行 Umami
 
-You can simply run `npm start` to start Umami, but it's highly recommended you use a process manager like [PM2](https://pm2.keymetrics.io/) which will handle restarts for you.
+你可以简单地运行 `npm start` 来启动 Umami，但强烈建议你使用像 [PM2](https://pm2.keymetrics.io/) 这样的进程管理器，来帮助你处理自动重启。
 
-To run with PM2:
+使用 PM2 运行：
 
 ```shell
 npm install pm2 -g
@@ -48,11 +46,11 @@ pm2 start npm --name umami -- start
 pm2 save
 ```
 
-## Proxying with Nginx
+## 使用 Nginx 代理
 
-With Umami now running, you can proxy requests to a domain or subdomain from Nginx to Umami.
+当 Umami 运行起来后，你可以将域名或子域名的请求从 Nginx 代理到 Umami。
 
-The following config will send all requests from `umami.yourdomain.com` to your local Umami instance.
+下面的配置会将所有来自 `umami.yourdomain.com` 的请求发送到本地的 Umami 实例。
 
 ```nginx
 server {
@@ -67,8 +65,8 @@ server {
 }
 ```
 
-The following config will allow you to host Umami at a subpath for your domain (eg: website.com/stats).
-This requires setting the enviroment variable `BASE_PATH=/stats` in your `.env` file.
+下面的配置允许你在域名的子路径下托管 Umami（例如 website.com/stats）。
+这需要在你的 `.env` 文件中设置环境变量 `BASE_PATH=/stats`。
 
 ```nginx
 server {
@@ -88,10 +86,10 @@ server {
 }
 ```
 
-## Adding an SSL certificate (optional)
+## 添加 SSL 证书（可选）
 
-- [How To Secure Nginx with Let's Encrypt on Ubuntu 20.04](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04)
+- [如何在 Ubuntu 20.04 上使用 Let's Encrypt 保护 Nginx](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04)
 
-## Finish
+## 完成
 
-That's it! You're now self-hosting Umami on your own server.
+就是这样！你现在已经在自己的服务器上自托管了 Umami。

@@ -1,39 +1,39 @@
 ---
-title: Node Client
+title: Node 客户端
 ---
 
-## Overview
+## 概述
 
-The Umami node client allows you to send data to Umami on the server side.
+Umami Node 客户端允许你在服务器端向 Umami 发送数据。
 
-## Installation
+## 安装
 
 ```shell
 npm install @umami/node
 ```
 
-## Usage
+## 使用方法
 
 ```js
 import umami from '@umami/node';
 
 umami.init({
-  websiteId: '50429a93-8479-4073-be80-d5d29c09c2ec', // Your website id
-  hostUrl: 'https://umami.mywebsite.com', // URL to your Umami instance
+  websiteId: '50429a93-8479-4073-be80-d5d29c09c2ec', // 你的网站 ID
+  hostUrl: 'https://umami.mywebsite.com', // 你的 Umami 实例的 URL
 });
 
 umami.track({ url: '/home' });
 ```
 
-If using Umami Cloud, you can use `https://cloud.umami.is` as the host URL.
+如果使用 Umami Cloud，你可以使用 `https://cloud.umami.is` 作为 host URL。
 
-The properties you can send using the `.track` function are:
+通过 `.track` 函数你可以发送的属性有：
 
-- **hostname**: Hostname of server
-- **language**: Client language (eg. en-US)
-- **referrer**: Page referrer
-- **screen**: Screen dimensions (eg. 1920x1080)
-- **title**: Page title
-- **url**: Page url
-- **name**: Event name (for custom events)
-- **data**: Event data properties
+- **hostname**：服务器主机名
+- **language**：客户端语言（例如 en-US）
+- **referrer**：页面来源
+- **screen**：屏幕尺寸（例如 1920x1080）
+- **title**：页面标题
+- **url**：页面 URL
+- **name**：事件名称（用于自定义事件）
+- **data**：事件数据属性

@@ -1,85 +1,81 @@
 ---
-title: Tracker functions
+title: 追踪器功能
 ---
 
-The Umami tracker exposes a function that you can call on your website if you want
-more control over your tracking. By default everything is automatically collected, but you can
-disable this using `data-auto-track="false"` and sending the data yourself.
-See [Tracker configuration](/docs/tracker-configuration).
+Umami 追踪器提供了一个函数，如果你想要对追踪进行更多控制，可以在你的网站上调用该函数。默认情况下，一切数据都会自动收集，但你可以通过设置 `data-auto-track="false"` 来禁用自动收集，并自行发送数据。详见[追踪器配置](/docs/tracker-configuration)。
 
-## Functions
+## 函数
 
 ```js
-// Tracks the current page
+// 追踪当前页面
 umami.track();
 
-// Custom payload
+// 自定义负载
 umami.track(payload: object);
 
-// Custom event
+// 自定义事件
 umami.track(event_name: string);
 
-// Custom event with data
+// 带数据的自定义事件
 umami.track(event_name: string, data: object);
 
-// Assign ID to current session
+// 为当前会话分配 ID
 umami.identify(unique_id: string);
 
-// Session data
+// 会话数据
 umami.identify(unique_id: string, data: object);
 
-// Session data without ID
+// 无 ID 的会话数据
 umami.identify(data: object);
 ```
 
-## Pageviews
+## 页面浏览量
 
-Track a page view.
+追踪页面浏览。
 
 ```js
 umami.track();
 ```
 
-By default the tracker automatically collects the following properties:
+默认情况下，追踪器会自动收集以下属性：
 
-- `hostname`: Hostname of server
-- `language`: Browser language
-- `referrer`: Page referrer
-- `screen`: Screen dimensions (eg. 1920x1080)
-- `title`: Page title
-- `url`: Page url
-- `website`: Website ID (required)
+- `hostname`：服务器主机名
+- `language`：浏览器语言
+- `referrer`：页面来源
+- `screen`：屏幕尺寸（例如 1920x1080）
+- `title`：页面标题
+- `url`：页面 URL
+- `website`：网站 ID（必填）
 
-If you wish to send your own custom payload, pass in an object to the function:
-
-```js
-umami.track({ website: 'e676c9b4-11e4-4ef1-a4d7-87001773e9f2', url: '/home', title: 'Home page' });
-```
-
-The above will only send the properties `website`, `url` and `title`. If you want to include existing properties, pass in a function:
+如果你希望发送自定义负载，可以向函数传入一个对象：
 
 ```js
-umami.track(props => ({ ...props, url: '/home', title: 'Home page' }));
+umami.track({ website: 'e676c9b4-11e4-4ef1-a4d7-87001773e9f2', url: '/home', title: '主页' });
 ```
 
-## Events
+上述代码仅会发送 `website`、`url` 和 `title` 这几个属性。如果想包含已有属性，可以传入一个函数：
 
-Track an event with a given name.
+```js
+umami.track(props => ({ ...props, url: '/home', title: '主页' }));
+```
+
+## 事件
+
+追踪一个具有指定名称的事件。
 
 ```js
 umami.track('signup-button');
 ```
 
-## Event Data
+## 事件数据
 
-Track an event with dynamic data.
+追踪一个带有动态数据的事件。
 
 ```js
 umami.track('signup-button', { name: 'newsletter', id: 123 });
 ```
 
-When tracking events, the default properties are included in the payload.
-This is equivalent to running:
+追踪事件时，默认属性会包含在负载中。相当于执行了：
 
 ```js
 umami.track(props => ({
@@ -92,32 +88,32 @@ umami.track(props => ({
 }));
 ```
 
-## Event Data Limits
+## 事件数据限制
 
-Event Data can work with any JSON data. There are a few rules in place to maintain performance.
+事件数据可以包含任意 JSON 数据。为了保证性能，制定了一些规则：
 
-- Numbers have a max precision of 4.
-- Strings have a max length of 500.
-- Arrays are converted to a String, with the same max length of 500.
-- Objects have a max of 50 properties. Arrays are considered 1 property.
+- 数字的最大精度为 4 位。
+- 字符串最大长度为 500。
+- 数组会被转换成字符串（最大长度同样为 500）。
+- 对象最多包含 50 个属性。数组被视为 1 个属性。
 
-## Sessions
+## 会话
 
-Pass in your own ID to identify a user.
+传入自己的 ID 来标识用户。
 
 ```js
 umami.identify('unique_id');
 ```
 
-## Session Data
+## 会话数据
 
-Save data about the current session.
+保存当前会话的数据。
 
 ```js
 umami.identify('unique_id', { name: 'Bob', email: 'bob@aol.com' });
 ```
 
-To save data without a unique ID, pass in only a JSON object.
+如果不提供唯一 ID，只传入一个 JSON 对象：
 
 ```js
 umami.identify({ name: 'Bob', email: 'bob@aol.com' });

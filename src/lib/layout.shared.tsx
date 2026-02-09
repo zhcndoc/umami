@@ -7,10 +7,10 @@ export function baseOptions(): BaseLayoutProps {
       title: (
         <>
           <Logo className="w-4 h-4" />
-          <b>umami</b>
+          <b>Umami 中文文档</b>
         </>
       ),
-      url: 'https://umami.is/?ref=docs',
+      url: '/docs',
     },
     githubUrl: 'https://github.com/umami-software/umami',
   };

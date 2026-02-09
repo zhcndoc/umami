@@ -1,36 +1,35 @@
 ---
-title: Running on Forge
+title: 在 Forge 上运行
 ---
 
-[Forge](https://forge.laravel.com/) is a paid server management services, tailored to hosting Laravel apps on Server Providers like DigitalOcean,
-Linode, Vultr, Amazon, Hetzner and more.
+[Forge](https://forge.laravel.com/) 是一个付费的服务器管理服务，专为在 DigitalOcean、Linode、Vultr、Amazon、Hetzner 等服务器提供商上托管 Laravel 应用而设计。
 
-If you have a Forge Account and a connected server bucket, you can easily set up an Umami installation.
+如果您拥有 Forge 账户及已连接的服务器集群，您可以轻松设置 Umami 安装。
 
-## Prerequisites
+## 先决条件
 
-1. Configure the (sub) domain you would like to have Umami available on. Usually, you do this by configuring you DNS config with an A-Record that points to your bucket IP-Address.
+1. 配置您想要让 Umami 可用的（子）域名。通常，您可以通过在 DNS 配置中添加指向集群 IP 地址的 A 记录来完成此操作。
 
-## Setup
+## 设置
 
-1. Select your desired Server in Forge.
-2. Go to **Sites** > **New Site**
-   - Enter the domain name
-   - Project Type: Static HTML
-   - Check **Create Database**, enter a Database Name
-   - Click **Add**
-3. To install the Repository, fork the [https://github.com/umami-software/umami](https://github.com/umami-software/umami) project to your GitHub account or install from the official repository.
-   - Enter the Repository path: `umami-software/umami`
-   - Uncheck **Install Composer Dependencies**
-   - Click **Install Repository**
-4. Update the deployment script and add the following after the `git pull origin $FORGE_SITE_BRANCH` command.
+1. 选择您在 Forge 中想要使用的服务器。
+2. 进入 **Sites** > **New Site**
+   - 输入域名
+   - 项目类型：Static HTML
+   - 勾选 **Create Database**，填写数据库名
+   - 点击 **Add**
+3. 要安装仓库，将 [https://github.com/umami-software/umami](https://github.com/umami-software/umami) 项目 Fork 到您的 GitHub 账户，或直接从官方仓库安装。
+   - 输入仓库路径：`umami-software/umami`
+   - 取消勾选 **Install Composer Dependencies**
+   - 点击 **Install Repository**
+4. 更新部署脚本，在 `git pull origin $FORGE_SITE_BRANCH` 命令后添加以下内容。
 
    ```shell
    yarn install
    yarn build
    ```
 
-   Remove these lines, since we don't have artisan or use php:
+   删除以下内容，因为我们没有 artisan 也不使用 php：
 
    ```shell
    ( flock -w 10 9 || exit 1
@@ -41,21 +40,21 @@ If you have a Forge Account and a connected server bucket, you can easily set up
    fi
    ```
 
-5. In Forge, go to your Server page, click **Database** and add a user to the just created database.
-6. Create the database-connection string and add it to your `.env` file:
+5. 在 Forge 中，进入您的服务器页，点击 **Database** 并为刚创建的数据库添加用户。
+6. 创建数据库连接字符串并添加到您的 `.env` 文件中：
 
    ```dotenv
    DATABASE_URL=mysql://user:password@localhost:3306/dbname
    ```
 
-   The connection url is in the following format:
+   连接 URL 格式示例如下：
 
    ```dotenv
    DATABASE_URL=postgresql://username:mypassword@localhost:5432/mydb
    DATABASE_URL=mysql://username:mypassword@localhost:3306/mydb
    ```
 
-7. Perform the initial project setup, via SSH:
+7. 通过 SSH 执行初始项目设置：
 
    ```shell
    yarn install
@@ -63,8 +62,8 @@ If you have a Forge Account and a connected server bucket, you can easily set up
    yarn build
    ```
 
-8. Go to your Umami-Site and click on **SSL** in the left menu and add an SSL-Certificate.
-9. Click **Edit files** > **Edit Nginx Configuration** and overwrite the following block:
+8. 进入您的 Umami 站点，点击左侧菜单的 **SSL** 并添加 SSL 证书。
+9. 点击 **Edit files** > **Edit Nginx Configuration** 并覆盖以下配置块：
 
    ```nginx
    location / {
@@ -78,11 +77,11 @@ If you have a Forge Account and a connected server bucket, you can easily set up
    }
    ```
 
-   This configuration will route the traffic to the node-server that Umami runs on.
+   该配置将把请求流量路由到 Umami 运行的 Node 服务器。
 
-10. In Forge, go to your Server page, click **Daemons** and add **New Daemon** to keep the Umami Node-Server up and running.
-    - Command: `yarn start`
-    - Directory: `/home/forge/umami.yourdomain.tld`
-    - Click **Create**
+10. 在 Forge 中，进入您的服务器页，点击 **Daemons** 并添加 **New Daemon**，以确保 Umami Node 服务器持续运行。
+    - 命令：`yarn start`
+    - 目录：`/home/forge/umami.yourdomain.tld`
+    - 点击 **Create**
 
-You should now be able to reach your Umami project.
+现在您应该可以访问您的 Umami 项目了。

@@ -1,32 +1,32 @@
 ---
-title: Attribution
+title: 归因
 ---
 
-Umami Attribution helps track the effectiveness of marketing channels, measures campaign performance, and identifies which sources drive the most valuable traffic.
-By linking attribution data with traffic and engagement metrics, businesses can make informed decisions to enhance marketing ROI and drive sustainable growth.
+Umami 归因帮助跟踪营销渠道的效果，衡量活动表现，并识别哪些来源带来了最有价值的流量。
+通过将归因数据与流量和参与度指标关联，企业可以做出明智的决策，以提升营销投资回报率（ROI）并推动可持续增长。
 
-The insight works by choosing a Viewed page or Triggered event you want to track attribution for and displays referrer, paid ads, and UTM data through a specific attribution model.
+该洞察通过选择要追踪归因的浏览页面或触发事件，并通过特定的归因模型展示来源、付费广告和 UTM 数据来实现。
 
-## Models
+## 模型
 
-- **First-Click**: Credit for a conversion to the very first interaction a user had with your conversion event.
-- **Last-Click**: Credit for a conversion to the final interaction before conversion event.
+- **首次点击**：将转化归功于用户与转化事件的首次互动。
+- **末次点击**：将转化归功于转化事件前的最后一次互动。
 
-## Parameters
+## 参数
 
-- `Model`: (required) The attribution model applied to the insight.
-- `Type`: (required) Viewed page or Triggered event.
-- `Conversion Step`: (required) Viewed page or Triggered event user must hit to count as a conversion.
+- `Model`：（必填）应用于洞察的归因模型。
+- `Type`：（必填）浏览页面或触发事件。
+- `Conversion Step`：（必填）用户必须达到的浏览页面或触发事件，才算作转化。
 
-## Create a insight
+## 创建洞察
 
-### Step 1: Choose a Model, Type, and Conversion step.
+### 第一步：选择模型、类型和转化步骤。
 
 ![image](/images/docs/attribution-model.png)
 
-- **Viewed page** : The user must reach this specific URL. (example: `/pricing`)
-- **Triggered event** : The user must generate this specific event . (example: `checkout-cart`)
+- **浏览页面** ：用户必须访问此特定 URL。（示例：`/pricing`）
+- **触发事件** ：用户必须生成此特定事件。（示例：`checkout-cart`）
 
-### Step 2: Run insight
+### 第二步：运行洞察
 
 ![image](/images/docs/attribution-details.png)

@@ -1,37 +1,37 @@
 ---
-title: Running on Sevalla
+title: 在 Sevalla 上运行
 ---
 
-[Sevalla](https://sevalla.com) is a developer-focused PaaS that offers [one-click templates](https://docs.sevalla.com/templates/overview), managed databases, and global deployments powered by GKE and Cloudflare, without dealing with complex infrastructure.
+[Sevalla](https://sevalla.com) 是一个面向开发者的 PaaS，提供[一键模板](https://docs.sevalla.com/templates/overview)、托管数据库以及由 GKE 和 Cloudflare 驱动的全球部署，无需处理复杂基础设施。
 
-Sevalla supports Git-based deployments, Dockerfiles, container images, and most popular frameworks out of the box. This guide walks you through deploying Umami on Sevalla using their one-click template or by deploying manually with your own GitHub repository.
+Sevalla 支持基于 Git 的部署、Dockerfile、容器镜像，并开箱即支持大多数流行框架。本指南将带你通过 Sevalla 的一键模板或使用你自己的 GitHub 仓库手动部署 Umami。
 
-To get started, [create a Sevalla account](https://sevalla.com), and you’ll receive **$50 in free usage credits** to try things out.
+开始前，请[创建一个 Sevalla 账户](https://sevalla.com)，你将获得 **50 美元免费使用额度** 来体验服务。
 
-## Method 1: One-click deployment (recommended)
+## 方法一：一键部署（推荐）
 
-Sevalla provides an official Umami template that provisions an Umami app and a PostgreSQL database with a single click.
+Sevalla 提供了官方 Umami 模板，能够一键创建 Umami 应用和 PostgreSQL 数据库。
 
 [![Deploy on Sevalla](https://sevalla.com//deploy-on-sevalla.svg)](https://app.sevalla.com/template/umami)
 
-Click the button above to get started easily. Your app will be live within a few minutes. Then click the **Visit App** button and log in using the [default credentials](https://umami.is/docs/login).
+点击上方按钮轻松开始。几分钟内应用即上线。然后点击 **访问应用** 按钮，使用[默认凭据](https://umami.is/docs/login)登录。
 
-## Method 2: Manual deployment
+## 方法二：手动部署
 
-If you prefer more control, you can manually deploy from your own GitHub repo or from the public Umami repo.
+如果你想要更多掌控权，可以从你自己的 GitHub 仓库或公共 Umami 仓库手动部署。
 
-### Set up Sevalla project
+### 设置 Sevalla 项目
 
-1. Go to **Applications** \> **New Application**
-2. Choose **GitHub repo** (if you’ve forked [Umami](https://github.com/umami-software/umami)), or **Public repo** and paste: `https://github.com/umami-software/umami`
-3. Set the branch to `master`, enter an app name, choose a region (same as your database), and select a pod size based on your needs.
-4. Click **Create**, but skip the deploy step for now, so it does not fail since we have not added the database.
+1. 进入 **Applications** \> **New Application**
+2. 选择 **GitHub repo**（如果你已经 Fork 了 [Umami](https://github.com/umami-software/umami)），或者选择 **Public repo**，粘贴地址：`https://github.com/umami-software/umami`
+3. 设置分支为 `master`，填写应用名称，选择区域（与数据库一致），并根据需求选择 pod 大小。
+4. 点击 **Create**，但此时跳过部署步骤，避免因未添加数据库导致失败。
 
-### Database and deploy
+### 配置数据库并部署
 
-1. Go to **Databases** \> **Add database**
-2. Choose **PostgreSQL** (recommended), select the **same region** as your app, pick a size, and click **Create**.
-3. Once created, scroll to **Connected Applications**, click **Add Connection**, select your Umami app, and enable **“Add environment variables”.**
-4. Set the variable name as `DATABASE_URL` (It may be prefilled as `DB_URL`, change it to `DATABASE_URL`)
-5. Click **Add connection.** This links your app and DB with the correct environment variable.
-6. Go back to your application and click **Deploy**. Once the build is complete, visit your app’s URL and log in using the [default credentials](https://umami.is/docs/login).
+1. 进入 **Databases** \> **Add database**
+2. 选择 **PostgreSQL**（推荐），选择与你应用相同的区域，选择大小，点击 **Create**。
+3. 创建完成后，滚动至 **Connected Applications**，点击 **Add Connection**，选择你的 Umami 应用，勾选 **“Add environment variables”**。
+4. 设置变量名为 `DATABASE_URL`（如自动填写为 `DB_URL`，需改为 `DATABASE_URL`）
+5. 点击 **Add connection**。此操作将用正确的环境变量连接你的应用和数据库。
+6. 返回你的应用，点击 **Deploy**。构建完成后，访问应用 URL 并使用[默认凭据](https://umami.is/docs/login)登录。

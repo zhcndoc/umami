@@ -1,10 +1,10 @@
 ---
-title: Teams
+title: 团队
 ---
 
-Operations around Team management.
+团队管理相关操作。
 
-**Endpoints**
+**接口列表**
 
 ```text
 GET /api/teams
@@ -25,14 +25,14 @@ GET /api/teams/:teamId/websites
 
 ## GET /api/teams
 
-Returns all teams.
+返回所有团队。
 
-**Parameters**
+**参数**
 
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+- `page`：（可选数字，默认 1）指定页码。
+- `pageSize`：（可选字符串）指定返回结果数量。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -87,13 +87,13 @@ Returns all teams.
 
 ## POST /api/teams
 
-Creates a team.
+创建一个团队。
 
-**Parameters**
+**参数**
 
-- `name`: (string) The team's name.
+- `name`：（字符串）团队名称。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -101,7 +101,7 @@ Creates a team.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 [
@@ -129,13 +129,13 @@ Creates a team.
 
 ## POST /api/teams/join
 
-Join a team.
+加入一个团队。
 
-**Parameters**
+**参数**
 
-- `accessCode`: (string) The team's access code.
+- `accessCode`：（字符串）团队访问码。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -143,7 +143,7 @@ Join a team.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -160,9 +160,9 @@ Join a team.
 
 ## GET /api/teams/:teamId
 
-Get a team.
+获取团队信息。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -198,14 +198,14 @@ Get a team.
 
 ## POST /api/teams/:teamId
 
-Update a team.
+更新团队信息。
 
-**Parameters**
+**参数**
 
-- `name`: (string | optional) The team's name.
-- `accessCode`: (string | optional) The team's access code.
+- `name`：（字符串 | 可选）团队名称。
+- `accessCode`：（字符串 | 可选）团队访问码。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -213,7 +213,7 @@ Update a team.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -231,9 +231,9 @@ Update a team.
 
 ## DELETE /api/teams/:teamId
 
-Delete a team.
+删除团队。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -245,15 +245,15 @@ Delete a team.
 
 ## GET /api/teams/:teamId/users
 
-Get all users that belong to a team.
+获取属于团队的所有用户。
 
-**Parameters**
+**参数**
 
-- `search`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+- `search`：（可选字符串）搜索内容。
+- `page`：（可选数字，默认 1）指定页码。
+- `pageSize`：（可选字符串）指定返回结果数量。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -293,14 +293,14 @@ Get all users that belong to a team.
 
 ## POST /api/teams/:teamId/users
 
-Add a user to a team.
+向团队添加用户。
 
-**Parameters**
+**参数**
 
-- `userId`: ID of user to be added.
-- `role`: Team role for user (`team-member`| `team-view-only` | `team-manager`).
+- `userId`：要添加用户的ID。
+- `role`：用户在团队中的角色（`team-member` | `team-view-only` | `team-manager`）。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -309,7 +309,7 @@ Add a user to a team.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -326,9 +326,9 @@ Add a user to a team.
 
 ## GET /api/teams/:teamId/users/:userId
 
-Get a user belonging to a team.
+获取团队中的指定用户。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -345,13 +345,13 @@ Get a user belonging to a team.
 
 ## POST /api/teams/:teamId/users/:userId
 
-Update a user's role on a team.
+更新团队中用户的角色。
 
-**Parameters**
+**参数**
 
-- `role`: Team role for user (`team-member`| `team-view-only` | `team-manager`).
+- `role`：用户在团队中的角色（`team-member` | `team-view-only` | `team-manager`）。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -359,7 +359,7 @@ Update a user's role on a team.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -376,9 +376,9 @@ Update a user's role on a team.
 
 ## DELETE /api/teams/:teamId/users/:userId
 
-Remove a user from a team.
+从团队中移除用户。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -390,15 +390,15 @@ Remove a user from a team.
 
 ## GET /api/teams/:teamId/websites
 
-Get all websites that belong to a team.
+获取属于团队的所有网站。
 
-**Parameters**
+**参数**
 
-- `search`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+- `search`：（可选字符串）搜索内容。
+- `page`：（可选数字，默认 1）指定页码。
+- `pageSize`：（可选字符串）指定返回结果数量。
 
-**Sample response**
+**示例响应**
 
 ```json
 {

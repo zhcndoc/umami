@@ -1,10 +1,10 @@
 ---
-title: Me
+title: 我
 ---
 
-All information about your session.
+关于您会话的所有信息。
 
-**Endpoints**
+**接口**
 
 ```text
 GET /api/me
@@ -16,9 +16,9 @@ GET /api/me/websites
 
 ## GET /api/me
 
-Get information based on your auth token.
+根据您的认证令牌获取信息。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -35,13 +35,13 @@ Get information based on your auth token.
 }
 ```
 
----S
+---
 
 ## GET /api/me/teams
 
-Get all your teams.
+获取您所有的团队。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -84,20 +84,20 @@ Get all your teams.
 
 ## /api/me/websites
 
-Get all your websites.
+获取您所有的网站。
 
-**Parameters**
+**参数**
 
-- `includeTeams`: (boolean) Set to true if you want to include websites where you are the team owner.
+- `includeTeams`：（布尔值）如果您想包含您作为团队管理员拥有的网站，请设置为 true。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
   "data": [
     {
       "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "name": "My Website",
+      "name": "我的网站",
       "domain": "mywebsite.com",
       "shareId": null,
       "resetAt": null,

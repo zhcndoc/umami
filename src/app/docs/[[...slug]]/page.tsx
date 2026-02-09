@@ -28,6 +28,7 @@ export default async function Page(props: PageProps<'/docs/[[...slug]]'>) {
             a: createRelativeLink(source, page),
           })}
         />
+        <div className="wwads-cn wwads-horizontal w-full my-4" data-id="354"></div>
       </DocsBody>
     </DocsPage>
   );
@@ -45,7 +46,7 @@ export async function generateMetadata(
   if (!page) notFound();
 
   return {
-    title: page.data.title,
+    title: `${page.data.title} - Umami 中文文档`,
     description: page.data.description,
     openGraph: {
       images: getPageImage(page).url,

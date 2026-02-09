@@ -1,45 +1,45 @@
 ---
-title: Funnel
+title: 漏斗分析
 ---
 
-Umami Funnel helps you understand the conversion and drop-off rate of users.
-By analyzing the funnel, users can make informed decisions to optimize the website's user experience and achieve better conversion rates.
+Umami 漏斗帮助您理解用户的转化率和流失率。  
+通过分析漏斗，用户可以做出明智的决策来优化网站的用户体验并实现更好的转化率。
 
-The insights works by displaying the counts of users that reach each URL or event and the drop off rate from the previous step.
-The funnel uses specific order criteria, which requires step completion in a required order.
-The user may navigate to other URLs or events in between the funnel steps, but must complete the funnel steps in order to be counted as a conversion.
+该洞察通过显示达到每个 URL 或事件的用户数量及相较于上一步骤的流失率来工作。  
+漏斗采用特定的顺序条件，要求步骤必须按顺序完成。  
+用户可以在漏斗步骤之间浏览其他 URL 或事件，但必须按顺序完成漏斗步骤才被计为转化。
 
-## Parameters
+## 参数
 
-- `Window`: (required) Amount of minutes a user has between funnel steps to be counted as a conversion.
-- `Steps`: (required) Sequential step conditions used in the funnel. Minimum of two is required to run the insight.
+- `Window`：（必填）用户在漏斗步骤间被计为转化的时间窗口（以分钟计）。
+- `Steps`：（必填）漏斗中使用的顺序步骤条件。至少需要两个步骤才能运行该洞察。
 
-## Create a insight
+## 创建洞察
 
-### Step 1: Click on the add Funnel button
+### 第一步：点击“添加漏斗”按钮
 
 ![image](/images/docs/funnel-add.png)
 
-### Step 2: Fill out the form details and click the **Save** button.
+### 第二步：填写表单详情并点击**保存**按钮。
 
 ![image](/images/docs/funnel-add-form.png)
 
-### Choose your steps
+### 选择您的步骤
 
-Click the **Add** button, choose the step type (Viewed page or Triggered event) and type in the step condition on the funnel.
+点击**添加**按钮，选择步骤类型（查看页面或触发事件），并填写漏斗中的步骤条件。
 
 ![image](/images/docs/funnel-steps.png)
 
-Continue to add steps until your desired funnel conditions are completed. Umami supports specific URLs, events, and URL wildcards as steps.
+继续添加步骤直到完成您期望的漏斗条件。Umami 支持指定 URL、事件和 URL 通配符作为步骤。
 
-- **Specific URL** : The user must reach this specific URL. (example: `/`)
-- **Event** : The user must generate this specific event . (example: `live-demo-button`)
-- **URL wildcards** : The user must reach any URL that meets the wildcard criteria. Only `Ends with` search is available. (example: `/docs*`)
+- **指定 URL** ：用户必须访问该具体 URL。（例如：`/`）
+- **事件** ：用户必须触发该具体事件。（例如：`live-demo-button`）
+- **URL 通配符** ：用户必须访问符合通配符条件的任意 URL。仅支持“以……结尾”搜索。（例如：`/docs*`）
 
-### Step 3: Run insight
+### 第三步：运行洞察
 
 ![image](/images/docs/funnel-details.png)
 
-To Edit or Delete a funnel click on the ellipsis for that specific funnel.
+要编辑或删除某个漏斗，点击对应漏斗的省略号。
 
 ![image](/images/docs/funnel-edit.png)

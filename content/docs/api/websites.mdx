@@ -1,10 +1,10 @@
 ---
-title: Websites
+title: 网站
 ---
 
-Operations around Website management and statistics.
+网站管理和统计相关操作。
 
-**Endpoints**
+**端点**
 
 ```text
 GET /api/websites
@@ -19,16 +19,16 @@ POST /api/websites/:websiteId/reset
 
 ## GET /api/websites
 
-Returns all user websites.
+返回所有用户网站。
 
-**Parameters**
+**参数**
 
-- `includeTeams`: (boolean) Set to true if you want to include websites where you are the team owner.
-- `search`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+- `includeTeams`：（布尔）如果要包括您作为团队所有者的网站，请设置为 true。
+- `search`：（可选字符串）搜索文本。
+- `page`：（可选数字，默认1）指定页码。
+- `pageSize`：（可选字符串）指定返回结果的数量。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -61,17 +61,17 @@ Returns all user websites.
 
 ## POST /api/websites
 
-Creates a website.
+创建一个网站。
 
-**Parameters**
+**参数**
 
-- `name`: (string) The name of the website in Umami.
-- `domain`: (string) The full domain of the tracked website.
-- `shareId`: (string | optional) A unique string to enable a share url. Set `null` to unshare.
-- `teamId`: (string | optional) The ID of the team the website will be created under.
-- `id`: (string | optional) Force a UUID assignment to the website.
+- `name`：（字符串）网站在 Umami 中的名称。
+- `domain`：（字符串）被跟踪网站的完整域名。
+- `shareId`：（字符串 | 可选）一个唯一字符串，用于启用分享 URL。设为 `null` 取消分享。
+- `teamId`：（字符串 | 可选）网站将归属的团队 ID。
+- `id`：（字符串 | 可选）强制为网站分配指定 UUID。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -80,7 +80,7 @@ Creates a website.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -102,9 +102,9 @@ Creates a website.
 
 ## GET /api/websites/:websiteId
 
-Gets a website by ID.
+根据 ID 获取网站。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -126,15 +126,15 @@ Gets a website by ID.
 
 ## POST /api/websites/:websiteId
 
-Updates a website.
+更新网站。
 
-**Parameters**
+**参数**
 
-- `name`: (string) The name of the website in Umami.
-- `domain`: (string) The full domain of the tracked website.
-- `shareId`: (string | optional) A unique string to enable a share url. Set `null` to unshare.
+- `name`：（字符串）网站在 Umami 中的名称。
+- `domain`：（字符串）被跟踪网站的完整域名。
+- `shareId`：（字符串 | 可选）一个唯一字符串，用于启用分享 URL。设为 `null` 取消分享。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -143,7 +143,7 @@ Updates a website.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -165,9 +165,9 @@ Updates a website.
 
 ## DELETE /api/websites/:websiteId
 
-Deletes a website.
+删除网站。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -179,9 +179,9 @@ Deletes a website.
 
 ## POST /api/websites/:websiteId/reset
 
-Resets a website by removing all data related to the website.
+重置网站，删除与该网站相关的所有数据。
 
-**Sample response**
+**示例响应**
 
 ```json
 {

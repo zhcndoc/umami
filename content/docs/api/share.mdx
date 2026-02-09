@@ -1,10 +1,10 @@
 ---
-title: Share
+title: 分享
 ---
 
-Operations around Share page management.
+分享页面管理相关操作。
 
-**Endpoints**
+**端点**
 
 ```text
 POST /api/share
@@ -19,17 +19,17 @@ POST api/websites/:websiteId/shares
 
 ## POST /api/share
 
-Creates a share page.
+创建一个分享页面。
 
-**Parameters**
+**参数**
 
-- `entityId`: (string) ID of entity to be added (websiteId, pixelId, linkId, etc.).
+- `entityId`: (string) 需要添加的实体 ID（websiteId、pixelId、linkId 等）。
 - `shareType`: (number) (`website: 1` | `link:2` | `pixel: 3`)
-- `name`: (string) Name of the share page.
-- `slug`: (string) Slug of the share page.
-- `parameters`: (object) Parameters for share page.
+- `name`: (string) 分享页面名称。
+- `slug`: (string) 分享页面的 slug。
+- `parameters`: (object) 分享页面的参数。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -41,7 +41,7 @@ Creates a share page.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -63,9 +63,9 @@ Creates a share page.
 
 ## GET /api/share/id/:shareId
 
-Gets a share page by ID.
+根据 ID 获取分享页面。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -87,15 +87,15 @@ Gets a share page by ID.
 
 ## POST /api/share/id/:shareId
 
-Updates a share page.
+更新分享页面。
 
-**Parameters**
+**参数**
 
-- `name`: (string) Name of the share page.
-- `slug`: (string) Slug of the share page.
-- `parameters`: (object) Parameters for share page.
+- `name`: (string) 分享页面名称。
+- `slug`: (string) 分享页面的 slug。
+- `parameters`: (object) 分享页面的参数。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -105,7 +105,7 @@ Updates a share page.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -129,9 +129,9 @@ Updates a share page.
 
 ## DELETE /api/share/id/:shareId
 
-Deletes a share page.
+删除分享页面。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -143,9 +143,9 @@ Deletes a share page.
 
 ## GET api/websites/:websiteId/shares
 
-Gets all share pages that belong to a website.
+获取属于某个网站的所有分享页面。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -185,14 +185,14 @@ Gets all share pages that belong to a website.
 
 ## POST api/websites/:websiteId/shares
 
-Creates a share page belonging to a website.
+创建属于某个网站的分享页面。
 
-**Parameters**
+**参数**
 
-- `name`: (string) Name of the share page.
-- `parameters`: (object) Parameters for share page.
+- `name`: (string) 分享页面名称。
+- `parameters`: (object) 分享页面的参数。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -201,7 +201,7 @@ Creates a share page belonging to a website.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {

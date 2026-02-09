@@ -1,33 +1,33 @@
 ---
-title: Running on PlanetScale
+title: 在 PlanetScale 上运行
 ---
 
-[PlanetScale](https://planetscale.com/) is a MySQL-compatible serverless database platform powered by [Vitess](https://vitess.io/).
+[PlanetScale](https://planetscale.com/) 是一个兼容 MySQL 的无服务器数据库平台，由 [Vitess](https://vitess.io/) 提供支持。
 
-## Setup
+## 设置
 
-1. Follow [Install](https://umami.is/docs/install) documentation up to "Configure umami" section.
-2. Create a database on [PlanetScale](https://app.planetscale.com/) called `umami-db` and copy the `DATABASE_URL` string from "Connect" > "Connect with Prisma" > ".env" tab.
-3. Add the `DATABASE_URL` to your `.env` file:
+1. 按照 [安装](https://umami.is/docs/install) 文档中“配置 umami”章节之前的步骤操作。
+2. 在 [PlanetScale](https://app.planetscale.com/) 上创建一个名为 `umami-db` 的数据库，并从“Connect” > “Connect with Prisma” > “.env”标签页复制 `DATABASE_URL` 字符串。
+3. 将 `DATABASE_URL` 添加到你的 `.env` 文件中：
 
    ```dotenv
    DATABASE_URL=mysql://username:password@host/umami-db?sslaccept=strict
    ```
 
-4. Run `yarn run build-db && yarn run update-db`
-5. Visit the `umami-db` dashboard and make sure the Tables are created and then promote it to production if you want.
-6. You should now be able to build and start Umami (`yarn build` followed by `yarn start`).
-7. Follow the **Getting started** guide starting from the [Login](/docs/login) step and be sure to change the default password.
+4. 运行 `yarn run build-db && yarn run update-db`
+5. 访问 `umami-db` 仪表盘，确保表已创建，如果需要的话，可以将其提升为生产环境。
+6. 现在你应该可以构建并启动 Umami（执行 `yarn build`，然后执行 `yarn start`）。
+7. 按照 **入门** 指南，从 [登录](/docs/login) 步骤开始操作，并务必更改默认密码。
 
-### Troubleshooting
+### 故障排除
 
-If are getting an error like the following example:
+如果你遇到如下示例错误：
 
 ```text
 PrismaClientInitializationError: Can't reach database server at `host.aws-region.psdb.cloud`:`3306`
 ```
 
-You can try add a connection timeout query parameter on your `DATABASE_URL`:
+你可以尝试在 `DATABASE_URL` 中添加连接超时查询参数：
 
 ```dotenv
 DATABASE_URL=mysql://username:password@host/umami-db?sslaccept=strict&connect_timeout=300

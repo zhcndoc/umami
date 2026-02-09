@@ -11,15 +11,15 @@
     "ip-filters",
     "notifications",
     "delete-account",
-    "---Billing---",
+    "---账单---",
     "subscription",
     "usage",
     "---API---",
     "api-key",
-    "---Data---",
+    "---数据---",
     "export-data",
     "import-data",
-    "---Changelog---",
+    "---更新日志---",
     "api-changelog"
   ],
   "defaultOpen": true

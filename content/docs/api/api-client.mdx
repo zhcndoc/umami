@@ -1,24 +1,24 @@
 ---
-title: API client
+title: API 客户端
 ---
 
-## Overview
+## 概述
 
-Umami API Client is built in TypeScript and contains functions to call every API endpoint available in Umami.
+Umami API 客户端使用 TypeScript 构建，包含调用 Umami 中所有可用 API 端点的函数。
 
-## Requirements
+## 要求
 
-- [Node.js](https://nodejs.org/) version 18.18 or newer
+- [Node.js](https://nodejs.org/) 版本 18.18 或更高
 
-## Installation
+## 安装
 
 ```shell
 npm install @umami/api-client
 ```
 
-## Configure
+## 配置
 
-The following environment variables are required to call your own API.
+调用您自己的 API 需要以下环境变量。
 
 ```dotenv
 UMAMI_API_CLIENT_USER_ID
@@ -26,18 +26,18 @@ UMAMI_API_CLIENT_SECRET
 UMAMI_API_CLIENT_ENDPOINT
 ```
 
-To access Umami Cloud, these environment variables are required.
+访问 Umami Cloud 需要以下环境变量。
 
 ```dotenv
 UMAMI_API_KEY
 UMAMI_API_CLIENT_ENDPOINT
 ```
 
-More details on accessing Umami Cloud can be found under [API key](/docs/cloud/api-key).
+有关访问 Umami Cloud 的更多详情，请参见 [API 密钥](/docs/cloud/api-key)。
 
-## Usage
+## 使用方法
 
-Import the configured api-client and query using the available class methods.
+导入已配置的 api-client，并使用可用的类方法进行查询。
 
 ```js
 import { getClient } from '@umami/api-client';
@@ -47,7 +47,7 @@ const client = getClient();
 const { ok, data, status, error } = await client.getWebsites();
 ```
 
-The result will come back in the following format.
+结果将以以下格式返回。
 
 ```typescript
 {
@@ -58,9 +58,9 @@ The result will come back in the following format.
 }
 ```
 
-## API Client function mapping
+## API 客户端函数映射
 
-### Me
+### Me（我的信息）
 
 ```text
 getMe() ⇒ GET /me
@@ -68,7 +68,7 @@ updateMyPassword(data) ⇒ POST /me/password
 getMyWebsites() ⇒ GET /me/websites
 ```
 
-### Users
+### Users（用户）
 
 ```text
 getUsers() ⇒ GET /users
@@ -80,7 +80,7 @@ getUserWebsites(id) ⇒ GET /users/{id}/websites
 getUserUsage(id, data) ⇒ GET /users/{id}/usage
 ```
 
-### Teams
+### Teams（团队）
 
 ```text
 getTeams() ⇒ GET /teams
@@ -96,7 +96,7 @@ createTeamWebsites(id, data) ⇒ GET /teams/{id}/websites
 deleteTeamWebsite(teamId, websiteId) ⇒ DEL /teams/{teamId}/websites/{websiteId}
 ```
 
-### Websites
+### Websites（网站）
 
 ```text
 getWebsites() ⇒ GET /websites
@@ -112,7 +112,7 @@ resetWebsite(id) ⇒ GET /websites/{id}/reset
 getWebsiteStats(id, data) ⇒ GET /websites/{id}/stats
 ```
 
-### Event Data
+### Event Data（事件数据）
 
 ```text
 getEventDataEvents(id, data) ⇒ GET /event-data/events
@@ -120,20 +120,20 @@ getEventDataFields(id, data) ⇒ GET /event-data/fields
 getEventDataStats(id, data) ⇒ GET /event-data/stats
 ```
 
-## Environment Variables
+## 环境变量
 
-**UMAMI_API_CLIENT_USER_ID = &lt;user uuid&gt;**
+**UMAMI_API_CLIENT_USER_ID = &lt;用户 UUID&gt;**
 
-The `USER_ID` of the User performing the API calls. Permission restrictions will apply based on application settings.
+执行 API 调用的用户的 `USER_ID`。权限限制将根据应用设置生效。
 
-**UMAMI_API_CLIENT_SECRET = &lt;random string&gt;**
+**UMAMI_API_CLIENT_SECRET = &lt;随机字符串&gt;**
 
-A random string used to generate unique values. This needs to match the `APP_SECRET` used in the Umami application.
+用于生成唯一值的随机字符串。此值需与 Umami 应用中使用的 `APP_SECRET` 匹配。
 
-**UMAMI_API_CLIENT_ENDPOINT = &lt;API endpoint&gt;**
+**UMAMI_API_CLIENT_ENDPOINT = &lt;API 端点&gt;**
 
-The endpoint of your Umami API. Example: `https://{yourserver}/api/`
+您的 Umami API 端点地址。例如：`https://{yourserver}/api/`
 
-**UMAMI_API_KEY = &lt;API Key string&gt;**
+**UMAMI_API_KEY = &lt;API 密钥字符串&gt;**
 
-A unique string provided by Umami Cloud.
+Umami Cloud 提供的唯一字符串。

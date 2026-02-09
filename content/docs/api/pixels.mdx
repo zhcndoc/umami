@@ -1,10 +1,10 @@
 ---
-title: Pixels
+title: 像素管理
 ---
 
-Operations around Pixels management.
+关于像素管理的操作。
 
-**Endpoints**
+**接口列表**
 
 ```text
 GET /api/pixels
@@ -17,15 +17,15 @@ DELETE /api/pixels/:pixelId
 
 ## GET /api/pixels
 
-Returns all user pixels.
+返回所有用户的像素。
 
-**Parameters**
+**参数**
 
-- `search`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+- `search`：（可选字符串）搜索文本。
+- `page`：（可选数字，默认 1）指定页码。
+- `pageSize`：（可选字符串）指定返回结果数量。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -51,9 +51,9 @@ Returns all user pixels.
 
 ## GET /api/pixels/:pixelId
 
-Gets a pixel by ID.
+根据 ID 获取指定像素。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -72,14 +72,14 @@ Gets a pixel by ID.
 
 ## POST /api/pixels/:pixelId
 
-Updates a pixel.
+更新指定像素。
 
-**Parameters**
+**参数**
 
-- `name`: (optional string) The pixel's name.
-- `slug`: (optional string | minimum 8 char) The link's URL slug.
+- `name`：（可选字符串）像素名称。
+- `slug`：（可选字符串，最少 8 个字符）链接的 URL 别名。
 
-**Request body**
+**请求体**
 
 ```json
 {
@@ -88,7 +88,7 @@ Updates a pixel.
 }
 ```
 
-**Sample response**
+**示例响应**
 
 ```json
 {
@@ -107,9 +107,9 @@ Updates a pixel.
 
 ## DELETE /api/pixels/:pixelId
 
-Deletes a pixel.
+删除指定像素。
 
-**Sample response**
+**示例响应**
 
 ```json
 {

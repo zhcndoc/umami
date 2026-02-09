@@ -34,7 +34,7 @@ export function DocumentationLink({ icon }: { icon: ReactNode }) {
 
   return (
     <NavLink href="/docs" icon={icon} isActive={isActive}>
-      Documentation
+      文档
     </NavLink>
   );
 }
@@ -45,7 +45,7 @@ export function GuidesLink({ icon }: { icon: ReactNode }) {
 
   return (
     <NavLink href="/docs/guides" icon={icon} isActive={isActive}>
-      Guides
+      指南
     </NavLink>
   );
 }
@@ -56,7 +56,7 @@ export function ApiLink({ icon }: { icon: ReactNode }) {
 
   return (
     <NavLink href="/docs/api" icon={icon} isActive={isActive}>
-      API Reference
+      API 参考
     </NavLink>
   );
 }

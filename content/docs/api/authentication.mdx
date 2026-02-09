@@ -1,14 +1,12 @@
 ---
-title: Authentication
+title: 认证
 ---
 
-The following authentication method is only for self-hosted Umami. For **Umami Cloud**, you simply
-need to generate an [API key](/docs/cloud/api-key).
+以下认证方法仅适用于自托管的 Umami。对于 **Umami Cloud**，您只需生成一个 [API 密钥](/docs/cloud/api-key)。
 
 ## POST /api/auth/login
 
-First you need to get a _token_ in order to make API requests. You need to make a
-`POST` request to the `/api/auth/login` endpoint with the following data:
+首先，您需要获取一个 _token_ 以进行 API 请求。您需要向 `/api/auth/login` 端点发送一个包含以下内容的 `POST` 请求：
 
 ```json
 {
@@ -17,7 +15,7 @@ First you need to get a _token_ in order to make API requests. You need to make 
 }
 ```
 
-If successful you should get a response like the following:
+如果成功，您应该会收到如下响应：
 
 ```json
 {
@@ -32,13 +30,13 @@ If successful you should get a response like the following:
 }
 ```
 
-Save the token value and send an `Authorization` header with all your data requests with the value `Bearer <token>`. Your request header should look something like this:
+保存 token 值，并在所有数据请求中通过 `Authorization` 头发送，格式为 `Bearer <token>`。您的请求头应该如下所示：
 
 ```http request
 Authorization: Bearer eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A
 ```
 
-For example, with `curl` it would look like this:
+例如，使用 `curl` 时如下所示：
 
 ```shell
 curl https://{yourserver}/api/websites
@@ -46,15 +44,15 @@ curl https://{yourserver}/api/websites
    -H "Authorization: Bearer <token>"
 ```
 
-The authorization token is expected with every API call that requires permissions.
+带权限的 API 调用均需包含此授权 token。
 
 ---
 
 ## POST /api/auth/verify
 
-You can verify if the token is still valid.
+您可以验证 token 是否仍然有效。
 
-**Sample response**
+**示例响应**
 
 ```json
 {
