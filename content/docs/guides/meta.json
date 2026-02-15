@@ -10,6 +10,7 @@
     "measure-campaigns",
     "---Hosting---",
     "hosting",
+    "running-on-bunny",
     "running-on-caprover",
     "running-on-digitalocean",
     "running-on-northflank",
