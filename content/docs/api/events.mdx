@@ -8,6 +8,7 @@ Operations around Events and Event data.
 
 ```text
 GET /api/websites/:websiteId/events
+GET /api/websites/:websiteId/event-data
 GET /api/websites/:websiteId/event-data/:eventId
 GET /api/websites/:websiteId/event-data/events
 GET /api/websites/:websiteId/event-data/fields
@@ -107,6 +108,71 @@ Gets website event details within a given time range.
   "page": 1,
   "pageSize": 20
 }
+```
+
+---
+
+## GET /api/websites/:websiteId/event-data
+
+Gets event data for a website within a given time range, grouped by event.
+
+**Parameters**
+
+- `startAt`: (number) Timestamp (in ms) of starting date.
+- `endAt`: (number) Timestamp (in ms) of end date.
+- `filters`: Can accept filter parameters.
+
+**Sample response**
+
+```json
+[
+  {
+    "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "eventName": "button-click",
+    "eventProperties": [
+      {
+        "dataKey": "id",
+        "stringValue": "signup-btn",
+        "numberValue": null,
+        "dateValue": null,
+        "dataType": 1,
+        "createdAt": "2025-10-15T16:26:28Z"
+      },
+      {
+        "dataKey": "name",
+        "stringValue": "Sign Up",
+        "numberValue": null,
+        "dateValue": null,
+        "dataType": 1,
+        "createdAt": "2025-10-15T16:26:28Z"
+      }
+    ]
+  },
+  {
+    "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+    "eventName": "revenue-demo",
+    "eventProperties": [
+      {
+        "dataKey": "currency",
+        "stringValue": "USD",
+        "numberValue": null,
+        "dateValue": null,
+        "dataType": 1,
+        "createdAt": "2025-10-10T12:31:03Z"
+      },
+      {
+        "dataKey": "revenue",
+        "stringValue": "40.0000",
+        "numberValue": 40,
+        "dateValue": null,
+        "dataType": 2,
+        "createdAt": "2025-10-10T12:31:03Z"
+      }
+    ]
+  }
+]
 ```
 
 ---
