@@ -22,16 +22,14 @@ HTTP requests to the API without leaking any secrets to prompts.
 
 ## 2. Generate and Configure the API Token
 
-1. Follow the [authentication docs](../api/authentication) to obtain an API token or key.
-2. Point Latchkey to your instance, for example:
+1. Follow the [authentication docs](../api/authentication) to obtain an API token or an API key.
+2. If you don't use Umami Cloud, point Latchkey to your instance. For example:
 
     ```bash
     latchkey services register my-umami \
         --service-family umami \
-        --base-api-url=http://203.0.113.1:8000/api/v1
+        --base-api-url=http://203.0.113.1:3000/api/
     ```
-
-    (This step is not necessary for Umami Cloud.)
 
 3. Insert the API token:
 
@@ -39,9 +37,16 @@ HTTP requests to the API without leaking any secrets to prompts.
     latchkey auth set my-umami -H "Authorization: Bearer <your_token>"
     ```
 
+    Alternatively, for Umami Cloud:
+
+    ```bash
+    latchkey auth set umami -H "x-umami-api-key: <your_api_key>"
+    ```
+
+
 ## 3. Configure the AI Agent
 
-Using `skills.sh`:
+Using [skills.sh](https://skills.sh/):
 
 ```bash
 npx skills add imbue-ai/latchkey
@@ -68,7 +73,7 @@ or
 
 > What does my audience look like on weekends vs. weekdays?
 
-or even just
+or even
 
 > Tell me what's working on our blog and what isn't.
 
