@@ -3,8 +3,8 @@ title: Setting a Base Path for Docker
 ---
 
 By default, Umami is served from the root path (`/`). If you need to host Umami under a subpath (e.g. `/umami`),
-you can bake a `BASE_PATH` into the Docker image at build time. This is useful when running Umami behind a reverse
-proxy alongside other applications on the same domain.
+you can use the pre-built base path image variant. This is useful when running Umami behind a reverse proxy alongside
+other applications on the same domain.
 
 ## How it works
 
@@ -17,52 +17,55 @@ ARG BASE_PATH=""
 ENV BASE_PATH=$BASE_PATH
 ```
 
-The resulting image is tagged with a label so you can inspect which base path it was built with:
+The resulting image is labeled so you can inspect which base path it was built with:
 
 ```shell
 docker inspect <image> --format '{{ index .Config.Labels "org.opencontainers.image.base-path" }}'
 ```
 
-## Building the image manually
+## Pre-built image variants
 
-Pass `BASE_PATH` as a build argument when running `docker build`:
+Every release automatically builds two image variants via a build matrix in the CI pipeline:
+
+| Variant | Base path | Tag suffix | Example tag |
+| --- | --- | --- | --- |
+| Standard | _(none)_ | _(none)_ | `umamisoftware/umami:3.0.0` |
+| Base path | `/umami` | `-base` | `umamisoftware/umami:3.0.0-base` |
+
+Both variants are pushed to [Docker Hub](https://hub.docker.com/r/umamisoftware/umami) and
+[GHCR](https://github.com/umami-software/umami/pkgs/container/umami) on every release.
+
+To use the base path variant, pull the image with the `-base` suffix:
 
 ```shell
-docker build --build-arg BASE_PATH=/umami -t umami:custom .
+docker pull umamisoftware/umami:latest-base
 ```
 
-Then run the container as usual. Umami will be available at `http://localhost:3000/umami`.
+## Running the base path image
+
+Run the container as usual. Umami will be available at `http://localhost:3000/umami`.
 
 ```shell
-docker run -e DATABASE_URL=postgresql://user:password@host:5432/umami -p 3000:3000 umami:custom
+docker run -e DATABASE_URL=postgresql://user:password@host:5432/umami -p 3000:3000 umamisoftware/umami:latest-base
 ```
 
-## Building via GitHub Actions
+## Building a custom image
 
-The official `cd.yml` workflow supports building base-path variants through `workflow_dispatch` inputs.
+If you need a different subpath, pass `BASE_PATH` as a build argument when running `docker build`:
+
+```shell
+docker build --build-arg BASE_PATH=/analytics -t umami:custom .
+```
+
+## Triggering a release build
+
+The workflow runs automatically on every version tag push and builds both variants. You can also trigger it
+manually from **Actions → Create docker images → Run workflow** with these inputs:
 
 | Input | Description |
 | --- | --- |
-| `base_path` | The subpath to bake in (e.g. `/umami`). Leave empty for the standard image. |
-| `tag_suffix` | A suffix appended to all image tags to distinguish the variant (e.g. `-umami-path`). Required when `base_path` is set. |
 | `version` | Optional version override (e.g. `3.0.0`). Defaults to the triggering tag. |
-| `include_latest` | Whether to also push a `latest<suffix>` tag. |
-
-To trigger a custom build from the GitHub UI:
-
-1. Go to **Actions → Create docker images → Run workflow**.
-2. Set `base_path` to your desired subpath, e.g. `/umami`.
-3. Set `tag_suffix` to a unique suffix, e.g. `-umami-path`.
-4. Click **Run workflow**.
-
-The workflow will push images to both GHCR and Docker Hub with the suffix appended to every tag:
-
-```
-ghcr.io/umami-software/umami:3.0.0-umami-path
-ghcr.io/umami-software/umami:3.0-umami-path
-ghcr.io/umami-software/umami:3-umami-path
-ghcr.io/umami-software/umami:latest-umami-path
-```
+| `include_latest` | Whether to also push a `latest` / `latest-base` tag. |
 
 ## Reverse proxy configuration
 
