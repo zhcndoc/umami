@@ -1,0 +1,85 @@
+---
+title: Setting a Base Path for Docker
+---
+
+By default, Umami is served from the root path (`/`). If you need to host Umami under a subpath (e.g. `/umami`),
+you can bake a `BASE_PATH` into the Docker image at build time. This is useful when running Umami behind a reverse
+proxy alongside other applications on the same domain.
+
+## How it works
+
+The `BASE_PATH` build argument is declared in the Dockerfile and passed into the Next.js build. Because Next.js
+bakes the base path into the compiled output, the value **cannot be changed at runtime** — it must be set when the
+image is built.
+
+```dockerfile
+ARG BASE_PATH=""
+ENV BASE_PATH=$BASE_PATH
+```
+
+The resulting image is tagged with a label so you can inspect which base path it was built with:
+
+```shell
+docker inspect <image> --format '{{ index .Config.Labels "org.opencontainers.image.base-path" }}'
+```
+
+## Building the image manually
+
+Pass `BASE_PATH` as a build argument when running `docker build`:
+
+```shell
+docker build --build-arg BASE_PATH=/umami -t umami:custom .
+```
+
+Then run the container as usual. Umami will be available at `http://localhost:3000/umami`.
+
+```shell
+docker run -e DATABASE_URL=postgresql://user:password@host:5432/umami -p 3000:3000 umami:custom
+```
+
+## Building via GitHub Actions
+
+The official `cd.yml` workflow supports building base-path variants through `workflow_dispatch` inputs.
+
+| Input | Description |
+| --- | --- |
+| `base_path` | The subpath to bake in (e.g. `/umami`). Leave empty for the standard image. |
+| `tag_suffix` | A suffix appended to all image tags to distinguish the variant (e.g. `-umami-path`). Required when `base_path` is set. |
+| `version` | Optional version override (e.g. `3.0.0`). Defaults to the triggering tag. |
+| `include_latest` | Whether to also push a `latest<suffix>` tag. |
+
+To trigger a custom build from the GitHub UI:
+
+1. Go to **Actions → Create docker images → Run workflow**.
+2. Set `base_path` to your desired subpath, e.g. `/umami`.
+3. Set `tag_suffix` to a unique suffix, e.g. `-umami-path`.
+4. Click **Run workflow**.
+
+The workflow will push images to both GHCR and Docker Hub with the suffix appended to every tag:
+
+```
+ghcr.io/umami-software/umami:3.0.0-umami-path
+ghcr.io/umami-software/umami:3.0-umami-path
+ghcr.io/umami-software/umami:3-umami-path
+ghcr.io/umami-software/umami:latest-umami-path
+```
+
+## Reverse proxy configuration
+
+When hosting under a subpath you will need to configure your reverse proxy to forward requests correctly.
+
+**Nginx example**
+
+```nginx
+location /umami/ {
+    proxy_pass http://localhost:3000/umami/;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+}
+```
+
+**Notes**
+
+- The trailing slash on both `location` and `proxy_pass` is important.
+- The tracking script URL will also include the base path (e.g. `/umami/script.js`).
+- Update any existing website configurations in Umami to use the full script URL with the subpath.
