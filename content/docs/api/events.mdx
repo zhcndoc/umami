@@ -120,59 +120,66 @@ Gets event data for a website within a given time range, grouped by event.
 
 - `startAt`: (number) Timestamp (in ms) of starting date.
 - `endAt`: (number) Timestamp (in ms) of end date.
+- `page`: (number | optional, default 1) Determines page.
+- `pageSize`: (number | optional, default 20) Determines how many results to return.
 - `filters`: Can accept filter parameters.
 
 **Sample response**
 
 ```json
-[
-  {
-    "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "eventName": "button-click",
-    "eventProperties": [
-      {
-        "dataKey": "id",
-        "stringValue": "signup-btn",
-        "numberValue": null,
-        "dateValue": null,
-        "dataType": 1,
-        "createdAt": "2025-10-15T16:26:28Z"
-      },
-      {
-        "dataKey": "name",
-        "stringValue": "Sign Up",
-        "numberValue": null,
-        "dateValue": null,
-        "dataType": 1,
-        "createdAt": "2025-10-15T16:26:28Z"
-      }
-    ]
-  },
-  {
-    "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-    "eventName": "revenue-demo",
-    "eventProperties": [
-      {
-        "dataKey": "currency",
-        "stringValue": "USD",
-        "numberValue": null,
-        "dateValue": null,
-        "dataType": 1,
-        "createdAt": "2025-10-10T12:31:03Z"
-      },
-      {
-        "dataKey": "revenue",
-        "stringValue": "40.0000",
-        "numberValue": 40,
-        "dateValue": null,
-        "dataType": 2,
-        "createdAt": "2025-10-10T12:31:03Z"
-      }
-    ]
-  }
-]
+{
+  "data": [
+    {
+      "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "eventName": "button-click",
+      "eventProperties": [
+        {
+          "dataKey": "id",
+          "stringValue": "signup-btn",
+          "numberValue": null,
+          "dateValue": null,
+          "dataType": 1,
+          "createdAt": "2025-10-15T16:26:28Z"
+        },
+        {
+          "dataKey": "name",
+          "stringValue": "Sign Up",
+          "numberValue": null,
+          "dateValue": null,
+          "dataType": 1,
+          "createdAt": "2025-10-15T16:26:28Z"
+        }
+      ]
+    },
+    {
+      "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "eventName": "revenue-demo",
+      "eventProperties": [
+        {
+          "dataKey": "currency",
+          "stringValue": "USD",
+          "numberValue": null,
+          "dateValue": null,
+          "dataType": 1,
+          "createdAt": "2025-10-10T12:31:03Z"
+        },
+        {
+          "dataKey": "revenue",
+          "stringValue": "40.0000",
+          "numberValue": 40,
+          "dateValue": null,
+          "dataType": 2,
+          "createdAt": "2025-10-10T12:31:03Z"
+        }
+      ]
+    }
+  ],
+  "count": 2,
+  "page": 1,
+  "pageSize": 20
+}
 ```
 
 ---
