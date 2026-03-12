@@ -29,8 +29,10 @@ Returns all teams.
 
 **Parameters**
 
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional) Determines how many results to return. |
 
 **Sample response**
 
@@ -91,7 +93,9 @@ Creates a team.
 
 **Parameters**
 
-- `name`: (string) The team's name.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | The team's name. |
 
 **Request body**
 
@@ -133,7 +137,9 @@ Join a team.
 
 **Parameters**
 
-- `accessCode`: (string) The team's access code.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `accessCode` | string | The team's access code. |
 
 **Request body**
 
@@ -202,8 +208,10 @@ Update a team.
 
 **Parameters**
 
-- `name`: (string | optional) The team's name.
-- `accessCode`: (string | optional) The team's access code.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | (optional) The team's name. |
+| `accessCode` | string | (optional) The team's access code. |
 
 **Request body**
 
@@ -249,9 +257,11 @@ Get all users that belong to a team.
 
 **Parameters**
 
-- `search`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `search` | string | (optional) Search text. |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional) Determines how many results to return. |
 
 **Sample response**
 
@@ -297,8 +307,10 @@ Add a user to a team.
 
 **Parameters**
 
-- `userId`: ID of user to be added.
-- `role`: Team role for user (`team-member`| `team-view-only` | `team-manager`).
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `userId` | string | ID of user to be added. |
+| `role` | string | Team role for user (`team-member` \| `team-view-only` \| `team-manager`). |
 
 **Request body**
 
@@ -349,7 +361,9 @@ Update a user's role on a team.
 
 **Parameters**
 
-- `role`: Team role for user (`team-member`| `team-view-only` | `team-manager`).
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `role` | string | Team role for user (`team-member` \| `team-view-only` \| `team-manager`). |
 
 **Request body**
 
@@ -394,9 +408,11 @@ Get all websites that belong to a team.
 
 **Parameters**
 
-- `search`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `search` | string | (optional) Search text. |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional) Determines how many results to return. |
 
 **Sample response**
 

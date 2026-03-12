@@ -25,10 +25,12 @@ Creates a user.
 
 **Parameters**
 
-- `username`: (string) The user's username.
-- `password`: (string) The user's password.
-- `role`: (string) Choose from (`admin` | `user` | `view-only`).
-- `id`: (string | optional) Force a UUID assignment to the user.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `username` | string | The user's username. |
+| `password` | string | The user's password. |
+| `role` | string | Choose from (`admin` \| `user` \| `view-only`). |
+| `id` | string | (optional) Force a UUID assignment to the user. |
 
 **Request body**
 
@@ -75,9 +77,11 @@ Updates a user.
 
 **Parameters**
 
-- `username`: (optional string) The user's username.
-- `password`: (optional string) The user's password.
-- `role`: (optional string) Select from `admin`, `user`, `view-only`.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `username` | string | (optional) The user's username. |
+| `password` | string | (optional) The user's password. |
+| `role` | string | (optional) Select from `admin`, `user`, `view-only`. |
 
 **Request body**
 
@@ -122,10 +126,12 @@ Gets all websites that belong to a user.
 
 **Parameters**
 
-- `includeTeams`: (boolean) Set to true if you want to include websites where you are the team owner.
-- `search`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `includeTeams` | boolean | Set to true to include websites where you are the team owner. |
+| `search` | string | (optional) Search text. |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional) Determines how many results to return. |
 
 **Sample response**
 
@@ -164,8 +170,10 @@ Gets all teams that belong to a user.
 
 **Parameters**
 
-- `page`: (number | optional, default 1) Determines page.
-- `pageSize`: (string | optional) Determines how many results to return.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional) Determines how many results to return. |
 
 **Sample response**
 

@@ -4,6 +4,30 @@ title: Umami API
 
 This page documents changes made to **api.umami.is**.
 
+## 2026-03-11
+
+**Websites**
+
+- `GET /api/websites/:websiteId/daterange`: **New** — returns the earliest and latest date range of collected data for a website.
+
+**Events**
+
+- `GET /api/websites/:websiteId/events/stats`: **New** — returns event statistics with optional period-over-period comparison.
+
+**Links**
+
+- `POST /api/links`: **New** — creates a link.
+
+**Pixels**
+
+- `POST /api/pixels`: **New** — creates a pixel.
+
+**Reports**
+
+- `POST /api/reports/goal`: Renamed from `POST /api/reports/goals` (singular path).
+- `POST /api/reports/performance`: **New** — performance report type supporting LCP, INP, CLS, FCP, and TTFB metrics.
+- `POST /api/reports/revenue`: Added `compare` parameter. Response now includes `arpu` and `comparison` in the `total` object, and new `region`, `referrer`, and `channel` breakdown arrays.
+
 ## 2026-03-02
 
 **Events**

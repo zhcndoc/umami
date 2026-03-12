@@ -23,10 +23,12 @@ Returns all user websites.
 
 **Parameters**
 
-- `includeTeams`: (boolean) Set to true if you want to include websites where you are the team owner.
-- `search`: (optional string) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `includeTeams` | boolean | Set to true to include websites where you are the team owner. |
+| `search` | string | (optional) Search text. |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional) Determines how many results to return. |
 
 **Sample response**
 
@@ -65,11 +67,13 @@ Creates a website.
 
 **Parameters**
 
-- `name`: (string) The name of the website in Umami.
-- `domain`: (string) The full domain of the tracked website.
-- `shareId`: (string | optional) A unique string to enable a share url. Set `null` to unshare.
-- `teamId`: (string | optional) The ID of the team the website will be created under.
-- `id`: (string | optional) Force a UUID assignment to the website.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | The name of the website in Umami. |
+| `domain` | string | The full domain of the tracked website. |
+| `shareId` | string | (optional) A unique string to enable a share URL. Set `null` to unshare. |
+| `teamId` | string | (optional) The ID of the team the website will be created under. |
+| `id` | string | (optional) Force a UUID assignment to the website. |
 
 **Request body**
 
@@ -130,9 +134,11 @@ Updates a website.
 
 **Parameters**
 
-- `name`: (string) The name of the website in Umami.
-- `domain`: (string) The full domain of the tracked website.
-- `shareId`: (string | optional) A unique string to enable a share url. Set `null` to unshare.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | The name of the website in Umami. |
+| `domain` | string | The full domain of the tracked website. |
+| `shareId` | string | (optional) A unique string to enable a share URL. Set `null` to unshare. |
 
 **Request body**
 

@@ -25,21 +25,30 @@ All Endpoints marked with `filters` can now be filtered with the parameters belo
 
 **Parameters**
 
-- `path`: (string | optional) Name of URL.
-- `referrer`: (string | optional) Name of referrer.
-- `title`: (string | optional) Name of page title.
-- `query`: (string | optional) Name of query parameter.
-- `browser`: (string | optional) Name of browser.
-- `os`: (string | optional) Name of operating system.
-- `device`: (string | optional) Name of device (ex. Mobile)
-- `country`: (string | optional) Name of country.
-- `region`: (string | optional) Name of region/state/province.
-- `city`: (string | optional) Name of city.
-- `hostname`: (string | optional) Name of hostname.
-- `tag`: (string | optional) Name of tag.
-- `distinctId`: (string | optional) Name of distinct ID.
-- `segment`: (uuid | optional) UUID of segment.
-- `cohort`: (uuid | optional) UUID of cohort.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `path` | string | (optional) Name of URL. |
+| `referrer` | string | (optional) Name of referrer. |
+| `title` | string | (optional) Name of page title. |
+| `query` | string | (optional) Name of query parameter. |
+| `browser` | string | (optional) Name of browser. |
+| `os` | string | (optional) Name of operating system. |
+| `device` | string | (optional) Name of device (ex. Mobile). |
+| `country` | string | (optional) Name of country. |
+| `region` | string | (optional) Name of region/state/province. |
+| `city` | string | (optional) Name of city. |
+| `hostname` | string | (optional) Name of hostname. |
+| `language` | string | (optional) Visitor browser language (ex. en-US). |
+| `tag` | string | (optional) Name of tag. |
+| `event` | string | (optional) Name of event. |
+| `distinctId` | string | (optional) Name of distinct ID. |
+| `utmSource` | string | (optional) UTM source. |
+| `utmMedium` | string | (optional) UTM medium. |
+| `utmCampaign` | string | (optional) UTM campaign name. |
+| `utmContent` | string | (optional) UTM content. |
+| `utmTerm` | string | (optional) UTM term. |
+| `segment` | uuid | (optional) UUID of segment. |
+| `cohort` | uuid | (optional) UUID of cohort. |
 
 ---
 
@@ -49,12 +58,14 @@ Gets website session details within a given time range.
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `search`: (string | optional) Search text.
-- `page`: (number | optional, default 1) Determines page.
-- `pageSize`: (number | optional, default 20) Determines how many results to return.
-- `filters`: Can accept filter parameters.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of starting date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
+| `search` | string | (optional) Search text. |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional, default 20) Determines how many results to return. |
+| `filters` | - | Can accept filter parameters. |
 
 **Sample response**
 
@@ -112,9 +123,11 @@ Gets summarized website session statistics.
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `filters`: Can accept filter parameters.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of starting date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
+| `filters` | - | Can accept filter parameters. |
 
 **Sample response**
 
@@ -152,10 +165,12 @@ Get collected count of sessions by hour of weekday.
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of start date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `timezone`: Timezone (ex. America/Los_Angeles).
-- `filters`: Can accept filter parameters.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of start date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
+| `timezone` | string | Timezone (ex. America/Los_Angeles). |
+| `filters` | - | Can accept filter parameters. |
 
 **Sample response**
 
@@ -209,8 +224,10 @@ Gets session activity for a individual session
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of starting date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
 
 **Sample response**
 
@@ -301,9 +318,11 @@ Gets session data counts by property name
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `filters`: Can accept filter parameters.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of starting date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
+| `filters` | - | Can accept filter parameters. |
 
 **Sample response**
 
@@ -336,10 +355,12 @@ Gets session data counts for a given property
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `propertyName`: (string) Property name.
-- `filters`: Can accept filter parameters.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of starting date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
+| `propertyName` | string | Property name. |
+| `filters` | - | Can accept filter parameters. |
 
 **Sample response**
 
