@@ -8,24 +8,24 @@ This page documents changes made to **api.umami.is**.
 
 **Websites**
 
-- `GET /api/websites/:websiteId/daterange`: **New** — returns the earliest and latest date range of collected data for a website.
+- `GET /api/websites/:websiteId/daterange`: **Added** — returns the earliest and latest date range of collected data for a website.
 
 **Events**
 
-- `GET /api/websites/:websiteId/events/stats`: **New** — returns event statistics with optional period-over-period comparison.
+- `GET /api/websites/:websiteId/events/stats`: **Added** — returns event statistics with optional period-over-period comparison.
 
 **Links**
 
-- `POST /api/links`: **New** — creates a link.
+- `POST /api/links`: **Added** — creates a link.
 
 **Pixels**
 
-- `POST /api/pixels`: **New** — creates a pixel.
+- `POST /api/pixels`: **Added** — creates a pixel.
 
 **Reports**
 
 - `POST /api/reports/goal`: Renamed from `POST /api/reports/goals` (singular path).
-- `POST /api/reports/performance`: **New** — performance report type supporting LCP, INP, CLS, FCP, and TTFB metrics.
+- `POST /api/reports/performance`: **Added** — performance report type supporting LCP, INP, CLS, FCP, and TTFB metrics.
 - `POST /api/reports/revenue`: Added `compare` parameter. Response now includes `arpu` and `comparison` in the `total` object, and new `region`, `referrer`, and `channel` breakdown arrays.
 
 ## 2026-03-02
@@ -88,7 +88,7 @@ This page documents changes made to **api.umami.is**.
 
 - `GET /websites/[id]/pageviews`: Fixed `region` parameter to optional.
 - `GET /websites/[id]/events`: Changed result set to website event details within a given time range.
-- `GET /websites/[id]/events/series`: **New** event metrics endpoint (previously `GET /websites/[id]/events`).
+- `GET /websites/[id]/events/series`: **Added** event metrics endpoint (previously `GET /websites/[id]/events`).
 
 **Event Data**
 
