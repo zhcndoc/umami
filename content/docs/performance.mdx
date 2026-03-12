@@ -5,6 +5,27 @@ title: Performance
 **Performance** tracks real-user [Core Web Vitals](https://web.dev/articles/vitals) collected directly from your visitors' browsers.
 Use it to identify slow pages, spot regressions over time, and compare performance across devices and browsers.
 
+## Use Cases
+
+- Identify slow-loading pages that may be hurting user experience or SEO rankings.
+- Compare Core Web Vitals across different devices, browsers, and regions.
+- Validate the impact of performance improvements over time.
+
+## Usage
+
+Add the **data-performance** attribute to your tracking script to enable automatic collection of Core Web Vitals.
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/umami.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+  data-performance="true"
+></script>
+```
+
+Once enabled, Umami will automatically capture performance metrics from your visitors' browsers and report them under the **Performance** tab for that website.
+
 ## Metrics
 
 | Metric | Description |

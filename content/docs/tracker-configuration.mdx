@@ -49,14 +49,27 @@ Helps if you are working in a staging/development environment. <br/>
 
 ### data-tag
 
-If you want the tracker to collect events under a specific tag. Events can be filtered in the dashboard by a specific tag.
+Group events under a named tag for filtering and A/B testing. See [Tags](/docs/tags) for more details.
 
 ```html
 <script
   defer
   src="http://mywebsite.com/umami.js"
   data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
-  data-tag="umami-eu"
+  data-tag="homepage-layout-a"
+></script>
+```
+
+### data-performance
+
+Enable automatic collection of [Core Web Vitals](https://web.dev/articles/vitals) from your visitors' browsers. See [Performance](/docs/performance) for more details.
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/umami.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+  data-performance="true"
 ></script>
 ```
 
