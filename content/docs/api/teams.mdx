@@ -29,8 +29,10 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `page`：（可选数字，默认 1）指定页码。
-- `pageSize`：（可选字符串）指定返回结果数量。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `page` | number | （可选，默认 1）确定页码。 |
+| `pageSize` | number | （可选）确定返回多少结果。 |
 
 **示例响应**
 
@@ -91,7 +93,9 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `name`：（字符串）团队名称。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | 团队名称。 |
 
 **请求体**
 
@@ -133,7 +137,9 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `accessCode`：（字符串）团队访问码。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `accessCode` | string | 团队访问码。 |
 
 **请求体**
 
@@ -202,8 +208,10 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `name`：（字符串 | 可选）团队名称。
-- `accessCode`：（字符串 | 可选）团队访问码。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | （可选）团队名称。 |
+| `accessCode` | string | （可选）团队访问码。 |
 
 **请求体**
 
@@ -249,9 +257,11 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `search`：（可选字符串）搜索内容。
-- `page`：（可选数字，默认 1）指定页码。
-- `pageSize`：（可选字符串）指定返回结果数量。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `search` | string | （可选）搜索文本。 |
+| `page` | number | （可选，默认 1）确定页码。 |
+| `pageSize` | number | （可选）确定返回多少结果。 |
 
 **示例响应**
 
@@ -297,8 +307,10 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `userId`：要添加用户的ID。
-- `role`：用户在团队中的角色（`team-member` | `team-view-only` | `team-manager`）。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `userId` | string | 要添加的用户 ID。 |
+| `role` | string | 用户的团队角色（`team-member` \| `team-view-only` \| `team-manager`）。 |
 
 **请求体**
 
@@ -349,7 +361,9 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `role`：用户在团队中的角色（`team-member` | `team-view-only` | `team-manager`）。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `role` | string | 用户的团队角色（`team-member` \| `team-view-only` \| `team-manager`）。 |
 
 **请求体**
 
@@ -394,9 +408,11 @@ GET /api/teams/:teamId/websites
 
 **参数**
 
-- `search`：（可选字符串）搜索内容。
-- `page`：（可选数字，默认 1）指定页码。
-- `pageSize`：（可选字符串）指定返回结果数量。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `search` | string | （可选）搜索文本。 |
+| `page` | number | （可选，默认 1）确定页码。 |
+| `pageSize` | number | （可选）确定返回多少结果。 |
 
 **示例响应**
 

@@ -10,21 +10,20 @@ title: 发送统计数据
 
 **参数说明**
 
-`payload`
-
-- `hostname`：（字符串）主机名。
-- `screen`：（字符串）屏幕分辨率（例如 "1920x1080"）
-- `language`：（字符串）访客语言（例如 "en-US"）
-- `url`：（字符串）页面 URL。
-- `referrer`：（字符串）来源 URL。
-- `title`：（字符串）页面标题。
-- `tag`：（字符串）额外标签描述。
-- `id`：（字符串）会话标识符。
-- `website`：（字符串）网站 ID。
-- `name`：（字符串）事件名称。
-- `data`：（对象 | 可选）事件的额外数据。
-
-`type`：（字符串）目前唯一支持的类型为 `event`。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `payload.hostname` | string | 主机名。 |
+| `payload.screen` | string | 屏幕分辨率（例如 "1920x1080"）。 |
+| `payload.language` | string | 访问者语言（例如 "en-US"）。 |
+| `payload.url` | string | 页面 URL。 |
+| `payload.referrer` | string | 引荐来源 URL。 |
+| `payload.title` | string | 页面标题。 |
+| `payload.tag` | string | 额外的标签描述。 |
+| `payload.id` | string | 会话标识符。 |
+| `payload.website` | string | 网站 ID。 |
+| `payload.name` | string | 事件名称。 |
+| `payload.data` | object | （可选）事件的附加数据。 |
+| `type` | string | 目前唯一可用的类型是 `event`。 |
 
 **示例负载**
 

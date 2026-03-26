@@ -1,0 +1,75 @@
+---
+title: 回放
+---
+
+**回放** 让你可以查看网站真实访客会话的录制内容——每一次点击、滚动和导航都被完整记录下来。
+使用回放来了解用户实际如何与页面互动、诊断令人困惑的用户体验、复现错误，并基于真实行为证据验证设计变更。
+
+## 启用回放
+
+登录 Umami，并在侧边栏中点击 **网站**。
+
+![image](/images/docs/navbar.png)
+
+点击你想要编辑的网站对应的 **编辑** 按钮。
+
+![image](/images/docs/website-edit.png)
+
+进入 **回放** 部分并点击开关。
+
+![image](/images/docs/replay-edit.png)
+
+| 选项 | 属性 | 描述 | 默认值 |
+| --- | --- | --- | --- |
+| 采样率 | `data-sample-rate` | 需要记录的会话比例，范围从 `0` 到 `1`。例如，`0.15` 表示记录 15% 的会话。 | `0.15` |
+| 遮罩级别 | `data-mask-level` | 隐私遮罩级别。`moderate` 会遮罩所有输入字段；`strict` 会遮罩所有输入和页面上的所有文本。 | `moderate` |
+| 最大时长 | `data-max-duration` | 录制的最长时长，单位为毫秒。达到后会自动停止录制。 | `300000`（5 分钟） |
+| 阻止选择器 | `data-block-selector` | 用于完全排除不参与录制的元素的 CSS 选择器（例如，`.sensitive-widget`）。 | 无 |
+
+你还需要更新你的跟踪脚本，以启用回放收集。
+
+```html
+<script 
+  defer src="http://localhost:3000/recorder.js" 
+  data-website-id="my-website-id" 
+  data-sample-rate="0.15" 
+  data-mask-level="moderate" 
+  data-max-duration="300000"
+></script>
+```
+
+>    **注意**
+>
+>    - 只有在启用该功能后开始的会话才会被记录。现有会话历史不会补录。
+>    - 会话回放会保留 **30 天**。 
+
+## 访问回放
+
+**方法 1：** 可在 **回放** 页面访问回放。
+
+![image](/images/docs/replay-details.png)
+
+**方法 2：** 也可以通过 **回放** 选项卡中的会话资料访问回放。
+
+![image](/images/docs/replay-session.png)
+
+点击播放按钮会打开回放播放器。播放器会实时重现访客的会话，包括：
+
+![image](/images/docs/replay-player.png)
+
+- 鼠标移动和点击
+- 滚动行为
+- 页面导航
+- 表单交互（输入内容默认会被遮罩）
+
+## 保存回放
+
+你可以将单个回放标记为已保存，以便快速访问并轻松重看重要会话。
+
+打开一个回放，点击播放器工具栏中的 **保存** 按钮，并为其命名。
+
+![image](/images/docs/replay-save.png)
+
+已保存的回放会被标记，并可在 **已保存** 选项卡中访问。
+
+![image](/images/docs/replay-save-detail.png)

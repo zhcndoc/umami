@@ -46,14 +46,27 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-tag
 
-如果你想让跟踪器将事件归类到特定标签下。仪表盘中可以根据标签筛选事件。
+将事件按名称标签分组，以便进行筛选和 A/B 测试。更多详情请参见 [标签](/docs/tags)。
 
 ```html
 <script
   defer
   src="http://mywebsite.com/umami.js"
   data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
-  data-tag="umami-eu"
+  data-tag="homepage-layout-a"
+></script>
+```
+
+### data-performance
+
+启用从访问者浏览器自动收集 [Core Web Vitals](https://web.dev/articles/vitals)。更多详情请参见 [性能](/docs/performance)。
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/umami.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+  data-performance="true"
 ></script>
 ```
 
@@ -85,7 +98,7 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-do-not-track
 
-尊重用户的浏览器 [禁止追踪](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/doNotTrack) 设置。
+尊重用户浏览器的 [禁止追踪](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/doNotTrack) 设置。
 
 ```html
 <script

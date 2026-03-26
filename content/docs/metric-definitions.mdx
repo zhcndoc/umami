@@ -10,30 +10,16 @@ title: 指标定义
 
 事件指标用于识别用户的唯一事件。每个事件都存储为一个唯一的 UUID，称为事件 ID。
 
-**网站 ID**
-
-用于识别您的网站的唯一 UUID 值，包含在数据载荷中。
-
-**主机名**
-
-载荷中包含的定位 [hostname](https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname) 属性。
-
-**URL**
-
-载荷中包含的 URL 的 [pathname](https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname)
-和 [search](https://developer.mozilla.org/en-US/docs/Web/API/URL/search) 属性组合。
-
-**来源页面**
-
-载荷中包含的文档 [referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer) 属性。如果来源页面包含主机名，则该值被替换为前一个 URL。
-
-**标题**
-
-载荷中包含的文档 [title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title) 属性。
-
-**查询参数**
-
-从 URL 中提取的 [search](https://developer.mozilla.org/en-US/docs/Web/API/URL/search) 属性，载荷发送后提取。
+| Metric | Description |
+| --- | --- |
+| Website ID | 用于标识你网站的唯一 UUID 值，包含在负载中。 |
+| Hostname | 负载中包含的 Location [hostname](https://developer.mozilla.org/en-US/docs/Web/API/Location/hostname) 属性。 |
+| URL | 负载中包含的 URL [pathname](https://developer.mozilla.org/en-US/docs/Web/API/URL/pathname) 和 [search](https://developer.mozilla.org/en-US/docs/Web/API/URL/search) 属性的组合。 |
+| Query parameters | 请求发送后从 URL 中提取的 [search](https://developer.mozilla.org/en-US/docs/Web/API/URL/search) 属性。 |
+| Referrer | 负载中包含的 Document [referrer](https://developer.mozilla.org/en-US/docs/Web/API/Document/referrer) 属性。如果 referrer 包含 hostname，则该值会替换为前一个 URL。 |
+| Title | 负载中包含的 Document [title](https://developer.mozilla.org/en-US/docs/Web/API/Document/title) 属性。 |
+| Event Name | 页面上触发的自定义事件名称（例如 `signup-button`）。 |
+| Tag | 通过 tracker 的 `data-tag` 属性附加到事件上的可选标签。 |
 
 ---
 
@@ -41,35 +27,14 @@ title: 指标定义
 
 会话指标用于识别用户的唯一会话。每个会话都存储为一个唯一的 UUID，称为会话 ID。
 
-**浏览器**
-
-从 [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) 中提取的浏览器名称。
-
-`示例：Chrome, FireFox, iOS, Safari, Edge`
-
-**操作系统**
-
-从 [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) 中提取的操作系统名称。
-
-`示例：Windows 10, macOS, Linux, Android, iOS`
-
-**设备**
-
-结合 **操作系统** 和 **屏幕** 识别出的设备名称。
-
-`示例：笔记本电脑、台式机、手机、平板`
-
-**屏幕**
-
-载荷中包含的 [屏幕](https://developer.mozilla.org/en-US/docs/Web/API/Screen) 宽度和高度属性。
-
-`示例：1920x1080，1280x960`
-
-**语言**
-
-载荷中包含的导航器 [语言](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) 属性。
-
-`示例：英语，中文，德语，法语`
+| Metric | Description | Examples |
+| --- | --- | --- |
+| Browser | 从 [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) 中提取的浏览器名称。 | Chrome, Firefox, iOS, Safari, Edge |
+| OS | 从 [User-Agent](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/User-Agent) 中提取的操作系统名称。 | Windows 10, macOS, Linux, Android, iOS |
+| Device | 由 **OS** 和 **screen** 的组合识别出的设备名称。 | Laptop, desktop, mobile, tablet |
+| Screen | 负载中包含的 [Screen](https://developer.mozilla.org/en-US/docs/Web/API/Screen) 宽度和高度属性。 | 1920x1080, 1280x960 |
+| Language | 负载中包含的 Navigator [language](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/language) 属性。 | English, Chinese, German, French |
+| Distinct ID | 通过 `umami.identify()` 分配给访问者的自定义标识符。参见 [Distinct IDs](/docs/distinct-ids)。 | `user-123`, `abc@example.com` |
 
 ---
 
@@ -81,23 +46,54 @@ title: 指标定义
 - `Vercel`：[地理位置头](https://vercel.com/guides/geo-ip-headers-geolocation-vercel-functions)
 - `MaxMind`：[Geolite 数据库](https://dev.maxmind.com/geoip/geolocate-an-ip)。
 
-**国家**
+| Metric | Description | Examples |
+| --- | --- | --- |
+| Country | 符合 ISO-3166 标准的国家名称。 | United States, China, Germany, France |
+| Region | 符合 ISO-3166-2 标准的地区（细分区域）名称。 | California, Ontario, Bayern, Île-de-France |
+| City | 城市名称。 | San Francisco, Toronto, Munich, Paris |
 
-遵循 ISO-3166 标准的国家名称。
+---
 
-`示例：美国，中国，德国，法国`
+## UTM parameters
 
-**地区**
+UTM parameters are extracted from the URL query string and stored with each event.
 
-遵循 ISO-3166-2 标准的地区（子地区）名称。
+| Metric | Description |
+| --- | --- |
+| UTM Source | 标识流量来源（例如 `google`、`newsletter`）。映射到 `utm_source`。 |
+| UTM Medium | 标识营销媒介（例如 `cpc`、`email`）。映射到 `utm_medium`。 |
+| UTM Campaign | 标识活动名称。映射到 `utm_campaign`。 |
+| UTM Content | 标识特定广告或链接内容。映射到 `utm_content`。 |
+| UTM Term | 标识付费搜索关键词。映射到 `utm_term`。 |
 
-`示例：加州，安大略，巴伐利亚，法兰西岛`
+---
 
-**城市**
+## Ad click IDs
 
-城市名称。
+Ad click IDs are automatically captured from URL query parameters when present. They are used to attribute conversions back to paid ad campaigns.
 
-`示例：旧金山，多伦多，慕尼黑，巴黎`
+| Metric | Description |
+| --- | --- |
+| gclid | Google Click ID，由 Google Ads 添加。 |
+| fbclid | Facebook Click ID，由 Meta Ads 添加。 |
+| msclkid | Microsoft Click ID，由 Microsoft Advertising 添加。 |
+| ttclid | TikTok Click ID，由 TikTok Ads 添加。 |
+| li_fat_id | LinkedIn First-Party Ad Tracking ID，由 LinkedIn Ads 添加。 |
+| twclid | Twitter/X Click ID，由 X Ads 添加。 |
+
+---
+
+## Core Web Vitals
+
+Core Web Vitals 是从浏览器收集并与每个事件一同存储的性能指标。
+
+| Metric | Description |
+| --- | --- |
+| LCP | [Largest Contentful Paint](https://web.dev/articles/lcp) — 最大可见元素渲染完成所用时间（ms）。 |
+| INP | [Interaction to Next Paint](https://web.dev/articles/inp) — 页面对用户交互的响应能力（ms）。 |
+| CLS | [Cumulative Layout Shift](https://web.dev/articles/cls) — 衡量视觉稳定性；得分为 0 表示没有意外的布局偏移。 |
+| FCP | [First Contentful Paint](https://web.dev/articles/fcp) — 首个内容在屏幕上渲染完成所用时间（ms）。 |
+| TTFB | [Time to First Byte](https://web.dev/articles/ttfb) — 从请求发出到从服务器接收到第一个字节所用时间（ms）。 |
 
 ---
 
@@ -105,22 +101,10 @@ title: 指标定义
 
 计算指标是每个网站的总计和唯一数据的组合。
 
-**浏览量**
-
-访问者产生的事件总数。
-
-**访问次数**
-
-唯一访问次数。访问是用户会话中的一个更细粒度的范围。访问次数通过使用会话 ID 和每小时轮换的盐值的哈希计算得到。访问可以跨越小时区间。
-
-**访客数**
-
-唯一会话数。会话通过结合网站 ID、主机名、User-Agent 等数据及每月轮换的盐值的哈希计算得到。
-
-**跳出率**
-
-跳出定义为访问中仅产生 1 次事件。用户进入网站，初始生成一次浏览，然后离开。跳出率通过跳出次数总数除以访问次数唯一数计算得出。
-
-**访问时长**
-
-网站总停留时间除以唯一访问次数。总时间仅计算访问多于一个页面的访客。每次访问中第一个与最后一个事件创建时间的差值被累加成访问时长。
+| Metric | Definition |
+| --- | --- |
+| Views | 由访问者收集到的事件总数。 |
+| Visitors | 会话的唯一数量。会话通过 Website ID、hostname、User-Agent 等数据的哈希值以及每月初轮换的盐值计算得出。 |
+| Visits | 访问次数的唯一数量。一次访问是在用户会话中更细粒度的范围。访问通过会话 ID 的哈希值以及每小时初轮换的盐值计算得出。访问可以跨越小时区间。 |
+| Bounce rate | 当一次访问只有 1 个事件时，定义为一次跳出。用户进入网站时会先生成一次浏览，然后离开。跳出率通过用跳出总数除以访问次数的唯一数量来计算。 |
+| Visit duration | 网站上花费的总时间除以访问次数的唯一数量。总时间只针对访问了多个页面的访客计算。每次访问中第一个和最后一个事件创建时间之间的差值会累计为持续时间。 |

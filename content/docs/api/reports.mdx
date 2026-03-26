@@ -15,8 +15,9 @@ DELETE /api/reports/:reportId
 POST /api/reports/attribution
 POST /api/reports/breakdown
 POST /api/reports/funnel
-POST /api/reports/goals
+POST /api/reports/goal
 POST /api/reports/journey
+POST /api/reports/performance
 POST /api/reports/retention
 POST /api/reports/revenue
 POST /api/reports/utm
@@ -28,23 +29,30 @@ POST /api/reports/utm
 
 现在所有报告都可以通过请求体中的 filters 属性进行过滤。
 
-**参数**
-
-- `path`：（字符串 | 可选）URL 名称。
-- `referrer`：（字符串 | 可选）引荐来源名称。
-- `title`：（字符串 | 可选）页面标题名称。
-- `query`：（字符串 | 可选）查询参数名称。
-- `browser`：（字符串 | 可选）浏览器名称。
-- `os`：（字符串 | 可选）操作系统名称。
-- `device`：（字符串 | 可选）设备名称（例如 Mobile）。
-- `country`：（字符串 | 可选）国家名称。
-- `region`：（字符串 | 可选）地区/州/省名称。
-- `city`：（字符串 | 可选）城市名称。
-- `hostname`：（字符串 | 可选）主机名。
-- `tag`：（字符串 | 可选）标签名称。
-- `distinctId`：（字符串 | 可选）唯一 ID。
-- `segment`：（uuid | 可选）分段的 UUID。
-- `cohort`：（uuid | 可选）群组的 UUID。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `path` | string | URL 的名称。 |
+| `referrer` | string | 引荐来源名称。 |
+| `title` | string | 页面标题名称。 |
+| `query` | string | 查询参数名称。 |
+| `browser` | string | 浏览器名称。 |
+| `os` | string | 操作系统名称。 |
+| `device` | string | 设备名称（例如：Mobile）。 |
+| `country` | string | 国家/地区名称。 |
+| `region` | string | 地区/州/省名称。 |
+| `city` | string | 城市名称。 |
+| `language` | string | 浏览器语言名称。 |
+| `hostname` | string | 主机名名称。 |
+| `tag` | string | 标签名称。 |
+| `event` | string | 事件名称。 |
+| `distinctId` | string | distinct ID 的名称。 |
+| `utmSource` | string | UTM 来源。 |
+| `utmMedium` | string | UTM 媒介。 |
+| `utmCampaign` | string | UTM 活动名称。 |
+| `utmContent` | string | UTM 内容。 |
+| `utmTerm` | string | UTM 术语。 |
+| `segment` | uuid | 分段的 UUID。 |
+| `cohort` | uuid | 同组群的 UUID。 |
 
 **请求体**
 
@@ -72,10 +80,12 @@ POST /api/reports/utm
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
-- `page`： （可选数字，默认 1）分页。
-- `pageSize`： （可选字符串）返回结果数量。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 你的网站 ID。 |
+| `type` | string | 报告类型（`attribution` \| `breakdown` \| `funnel` \| `goal` \| `journey` \| `retention` \| `revenue` \| `utm`）。 |
+| `page` | number | （可选，默认 1）确定页码。 |
+| `pageSize` | number | （可选）确定返回多少条结果。 |
 
 **示例响应**
 
@@ -125,11 +135,13 @@ POST /api/reports/utm
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型 `attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`。
-- `name`： （字符串）报告名称。
-- `description`：（字符串 | 可选）报告描述。
-- `parameters`：（对象）报告参数。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 你的网站 ID。 |
+| `type` | string | 报告类型（`attribution` \| `breakdown` \| `funnel` \| `goal` \| `journey` \| `retention` \| `revenue` \| `utm`）。 |
+| `name` | string | 报告名称。 |
+| `description` | string | （可选）报告描述。 |
+| `parameters` | object | 报告参数。 |
 
 **请求体**
 
@@ -194,11 +206,13 @@ POST /api/reports/utm
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型 `attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`。
-- `name`： （字符串）报告名称。
-- `description`：（字符串 | 可选）报告描述。
-- `parameters`：（对象）报告参数。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 你的网站 ID。 |
+| `type` | string | 报告类型（`attribution` \| `breakdown` \| `funnel` \| `goal` \| `journey` \| `retention` \| `revenue` \| `utm`）。 |
+| `name` | string | 报告名称。 |
+| `description` | string | （可选）报告描述。 |
+| `parameters` | object | 报告参数。 |
 
 **请求体**
 
@@ -252,14 +266,16 @@ POST /api/reports/utm
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
-- `filters`：可接受过滤参数。
-- `startDate` ：（数字）开始日期的时间戳（毫秒）。
-- `endDate` ：（数字）结束日期的时间戳（毫秒）。
-- `model` ：（字符串）归因模型（`firstClick` | `lastClick`）。
-- `type` ：（数组）转化类型（`path` | `event`）。
-- `step`： （字符串）转化步骤。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 你的网站 ID。 |
+| `type` | string | 报告类型（`attribution`）。 |
+| `filters` | object | 可接受过滤参数。 |
+| `startDate` | string | 开始日期。 |
+| `endDate` | string | 结束日期。 |
+| `model` | string | 归因模型（`firstClick` \| `lastClick`）。 |
+| `type` | string | 转化类型（`path` \| `event`）。 |
+| `step` | string | 转化步骤。 |
 
 **请求体**
 
@@ -368,16 +384,19 @@ POST /api/reports/utm
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
-- `filters`：可接受过滤参数。
-- `startDate` ：（数字）开始日期的时间戳（毫秒）。
-- `endDate` ：（数字）结束日期的时间戳（毫秒）。
-- `fields`： （数组）列字段列表。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 你的网站 ID。 |
+| `type` | string | 报告类型（`breakdown`）。 |
+| `filters` | object | 可接受过滤参数。 |
+| `startDate` | string | 开始日期。 |
+| `endDate` | string | 结束日期。 |
+| `fields` | array | 列字段列表。 |
 
 **可用字段**
 
-`path` | `title` | `query` | `referrer` | `browser` | `os` | `device` | `country` | `region` | `city` | `hostname` | `tag` | `event`
+`path` | `title` | `query` | `referrer` | `browser` | `os` | `device` | `country` | `region` | `city` | `hostname` | `tag` | `event` | `distinctId` | 
+`utmSource` | `utmMedium` | `utmCampaign` | `utmContent` | `utmTerm` |
 
 **请求体**
 
@@ -445,13 +464,15 @@ POST /api/reports/utm
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
-- `filters`：可接受过滤参数。
-- `startDate` ：（数字）开始日期的时间戳（毫秒）。
-- `endDate` ：（数字）结束日期的时间戳（毫秒）。
-- `steps` ：（数组 | 至少两个）事件类型（`path` | `event`）和转化步骤。
-- `window` ：（数字）漏斗步骤之间被视为转化的时间窗口（天数）。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 你的网站 ID。 |
+| `type` | string | 报告类型（`funnel`）。 |
+| `filters` | object | 可接受过滤参数。 |
+| `startDate` | string | 开始日期。 |
+| `endDate` | string | 结束日期。 |
+| `steps` | array | 至少需要两个。每个步骤都有一个 `type`（`path` \| `event`）和一个 `value`。 |
+| `window` | number | 漏斗步骤之间被视为一次转化的天数窗口。 |
 
 **请求体**
 
@@ -499,19 +520,21 @@ POST /api/reports/utm
 
 ---
 
-## POST /api/reports/goals
+## POST /api/reports/goal
 
 跟踪您的页面浏览量和事件目标。
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
-- `filters`：可接受过滤参数。
-- `startDate` ：（数字）开始日期的时间戳（毫秒）。
-- `endDate` ：（数字）结束日期的时间戳（毫秒）。
-- `type` ：（数组）转化类型（`path` | `event`）。
-- `value`： （字符串）转化步骤值。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 您的网站 ID。 |
+| `type` | string | 报告类型（`goal`）。 |
+| `filters` | object | 可接受筛选参数。 |
+| `startDate` | string | 开始日期。 |
+| `endDate` | string | 结束日期。 |
+| `type` | string | 转化类型（`path` \| `event`）。 |
+| `value` | string | 转化步骤值。 |
 
 **请求体**
 
@@ -542,18 +565,20 @@ POST /api/reports/utm
 
 ## POST /api/reports/journey
 
-了解用户如何在您的网站上导航。
+了解用户如何在您的网站中导航。
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
-- `filters`：可接受过滤参数。
-- `startDate` ：（数字）开始日期的时间戳（毫秒）。
-- `endDate` ：（数字）结束日期的时间戳（毫秒）。
-- `steps`：（数字）步骤数，范围 3 至 7。
-- `startStep` ：（字符串）起始步骤 URL 或事件名称。
-- `endStep` ：（字符串 | 可选）结束步骤 URL 或事件名称。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 您的网站 ID。 |
+| `type` | string | 报告类型（`journey`）。 |
+| `filters` | object | 可接受筛选参数。 |
+| `startDate` | string | 开始日期。 |
+| `endDate` | string | 结束日期。 |
+| `steps` | number | 步骤数，从 3 到 7。 |
+| `startStep` | string | 起始步骤 URL 或事件名称。 |
+| `endStep` | string | （可选）结束步骤 URL 或事件名称。 |
 
 **请求体**
 
@@ -613,18 +638,216 @@ POST /api/reports/utm
 
 ---
 
+## POST /api/reports/performance
+
+获取给定日期范围的 Core Web Vitals 性能指标。
+
+**参数**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 您的网站 ID。 |
+| `type` | string | 报告类型（`performance`）。 |
+| `filters` | object | 可接受筛选参数。 |
+| `startDate` | string | 开始日期。 |
+| `endDate` | string | 结束日期。 |
+| `unit` | string | （可选）时间单位（`year` \| `month` \| `hour` \| `day`）。 |
+| `timezone` | string | （可选）时区（例如 America/Los_Angeles）。 |
+| `metric` | string | （可选）要关注的指标（`lcp` \| `inp` \| `cls` \| `fcp` \| `ttfb`）。 |
+
+**请求体**
+
+```json
+{
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "performance",
+  "filters": {},
+  "parameters": {
+    "startDate": "2025-10-01T07:00:00.000Z",
+    "endDate": "2025-10-22T06:59:59.999Z",
+    "timezone": "America/Los_Angeles",
+    "metric": "lcp"
+  }
+}
+```
+
+**示例响应**
+
+```json
+{
+    "chart": [
+        {
+            "t": "2026-03-11T16:00:00Z",
+            "p50": 24748,
+            "p75": 24748,
+            "p95": 24748
+        },
+        {
+            "t": "2026-03-11T17:00:00Z",
+            "p50": 920,
+            "p75": 920,
+            "p95": 920
+        },
+        {
+            "t": "2026-03-11T21:00:00Z",
+            "p50": 1408,
+            "p75": 1408,
+            "p95": 1408
+        }
+    ],
+    "summary": {
+        "lcp": {
+            "p50": 1408,
+            "p75": 13078,
+            "p95": 22413.9
+        },
+        "inp": {
+            "p50": 48,
+            "p75": 56,
+            "p95": 86.3
+        },
+        "cls": {
+            "p50": 0.0015,
+            "p75": 0.0067,
+            "p95": 0.0231
+        },
+        "fcp": {
+            "p50": 720,
+            "p75": 10264,
+            "p95": 17899.1
+        },
+        "ttfb": {
+            "p50": 274.7,
+            "p75": 9062.2,
+            "p95": 16092.2
+        },
+        "count": 28
+    },
+    "pages": [
+        {
+            "name": "/analytics/websites",
+            "p50": 1408,
+            "p75": 1408,
+            "p95": 1408,
+            "count": 1
+        }
+    ],
+    "pageTitles": [
+        {
+            "name": "Websites | Umami",
+            "p50": 1408,
+            "p75": 13078,
+            "p95": 22413.9,
+            "count": 8
+        },
+        {
+            "name": "Pixels | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 2
+        },
+        {
+            "name": "Settings | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 1
+        },
+        {
+            "name": "Board | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 6
+        },
+        {
+            "name": "Links | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 2
+        },
+        {
+            "name": "Boards | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 2
+        },
+        {
+            "name": "Design Board | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 3
+        },
+        {
+            "name": "Edit Link | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 1
+        },
+        {
+            "name": "Edit Pixel | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 1
+        },
+        {
+            "name": "Edit Board | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 2
+        }
+    ],
+    "devices": [
+        {
+            "name": "laptop",
+            "p50": 12834,
+            "p75": 18791,
+            "p95": 23556.6,
+            "count": 27
+        },
+        {
+            "name": "desktop",
+            "p50": 1408,
+            "p75": 1408,
+            "p95": 1408,
+            "count": 1
+        }
+    ],
+    "browsers": [
+        {
+            "name": "chrome",
+            "p50": 1408,
+            "p75": 13078,
+            "p95": 22413.9,
+            "count": 28
+        }
+    ]
+}
+```
+
+---
+
 ## POST /api/reports/retention
 
 通过跟踪用户回访频率来衡量网站粘性。
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
-- `filters`：可接受过滤参数。
-- `startDate` ：（数字）开始日期的时间戳（毫秒）。
-- `endDate` ：（数字）结束日期的时间戳（毫秒）。
-- `timezone`： 时区（例如 America/Los_Angeles）。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 您的网站 ID。 |
+| `type` | string | 报告类型（`retention`）。 |
+| `filters` | object | 可接受筛选参数。 |
+| `startDate` | string | 开始日期。 |
+| `endDate` | string | 结束日期。 |
+| `timezone` | string | 时区（例如 America/Los_Angeles）。 |
 
 **请求体**
 
@@ -684,13 +907,16 @@ POST /api/reports/utm
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
-- `filters`：可接受过滤参数。
-- `startDate` ：（数字）开始日期的时间戳（毫秒）。
-- `endDate` ：（数字）结束日期的时间戳（毫秒）。
-- `timezone`： 时区（例如 America/Los_Angeles）。
-- `currency`： （字符串）货币代码（ISO 4217）。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 您的网站 ID。 |
+| `type` | string | 报告类型（`revenue`）。 |
+| `filters` | object | 可接受筛选参数。 |
+| `startDate` | string | 开始日期。 |
+| `endDate` | string | 结束日期。 |
+| `timezone` | string | 时区（例如 America/Los_Angeles）。 |
+| `currency` | string | 货币代码（ISO 4217）。 |
+| `compare` | string | （可选）比较周期（`prev` \| `yoy`）。 |
 
 **请求体**
 
@@ -712,43 +938,145 @@ POST /api/reports/utm
 
 ```json
 {
-  "chart": [
-    {
-      "x": "revenue-demo",
-      "t": "2025-10-14T07:00:00Z",
-      "y": 400
+    "chart": [
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T08:00:00Z",
+            "y": 70,
+            "count": 2
+        },
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T09:00:00Z",
+            "y": 40,
+            "count": 2
+        },
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T10:00:00Z",
+            "y": 80,
+            "count": 2
+        },
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T11:00:00Z",
+            "y": 70,
+            "count": 2
+        },
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T12:00:00Z",
+            "y": 50,
+            "count": 3
+        },
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T13:00:00Z",
+            "y": 10,
+            "count": 1
+        }
+    ],
+    "total": {
+        "sum": 320,
+        "count": 12,
+        "unique_count": 12,
+        "total_sessions": 1300,
+        "average": 26.666666666666668,
+        "arpu": 0.24615384615384617,
+        "comparison": {
+            "sum": 2470,
+            "count": 66,
+            "unique_count": 66,
+            "total_sessions": 2994,
+            "average": 37.42424242424242,
+            "arpu": 0.8249832999331997
+        }
     },
-    {
-      "x": "revenue-demo",
-      "t": "2025-10-15T07:00:00Z",
-      "y": 480
-    },
-    {
-      "x": "revenue-demo",
-      "t": "2025-10-16T07:00:00Z",
-      "y": 490
-    }
-  ],
-  "country": [
-    {
-      "name": "US",
-      "value": 1050
-    },
-    {
-      "name": "FR",
-      "value": 1040
-    },
-    {
-      "name": "GB",
-      "value": 720
-    }
-  ],
-  "total": {
-    "sum": 3870,
-    "count": 131,
-    "unique_count": 131,
-    "average": 29.541984732824428
-  }
+    "country": [
+        {
+            "name": "GB",
+            "value": 100
+        },
+        {
+            "name": "FR",
+            "value": 100
+        },
+        {
+            "name": "DE",
+            "value": 60
+        },
+        {
+            "name": "US",
+            "value": 40
+        },
+        {
+            "name": "CN",
+            "value": 20
+        }
+    ],
+    "region": [
+        {
+            "country": "FR",
+            "name": "FR-IDF",
+            "value": 100
+        },
+        {
+            "country": "GB",
+            "name": "GB-ENG",
+            "value": 100
+        },
+        {
+            "country": "DE",
+            "name": "DE-HE",
+            "value": 60
+        },
+        {
+            "country": "US",
+            "name": "US-CA",
+            "value": 40
+        },
+        {
+            "country": "CN",
+            "name": "CN-GD",
+            "value": 20
+        }
+    ],
+    "referrer": [
+        {
+            "name": "chatgpt.com",
+            "value": 100
+        },
+        {
+            "name": "github.com",
+            "value": 100
+        },
+        {
+            "name": "google.com",
+            "value": 60
+        },
+        {
+            "name": "reddit.com",
+            "value": 60
+        }
+    ],
+    "channel": [
+        {
+            "name": "referral",
+            "value": 100
+        },
+        {
+            "name": "organicSearch",
+            "value": 100
+        },
+        {
+            "name": "paidSearch",
+            "value": 60
+        },
+        {
+            "name": "organicSocial",
+            "value": 60
+        }
+    ]
 }
 ```
 
@@ -760,11 +1088,13 @@ POST /api/reports/utm
 
 **参数**
 
-- `websiteId` ：（字符串）您网站的ID。
-- `type`： （字符串）报告类型（`attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`）。
-- `filters`：可接受过滤参数。
-- `startDate` ：（数字）开始日期的时间戳（毫秒）。
-- `endDate` ：（数字）结束日期的时间戳（毫秒）。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | 您的网站 ID。 |
+| `type` | string | 报告类型（`utm`）。 |
+| `filters` | object | 可接受筛选参数。 |
+| `startDate` | string | 开始日期。 |
+| `endDate` | string | 结束日期。 |
 
 **请求体**
 

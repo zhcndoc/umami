@@ -4,6 +4,36 @@ title: Umami API
 
 此页面记录了对 **api.umami.is** 所做的更改。
 
+## 2026-03-11
+
+**网站**
+
+- `GET /api/websites/:websiteId/daterange`: **新增** — 返回某网站所收集数据的最早和最晚日期范围。
+
+**事件**
+
+- `GET /api/websites/:websiteId/events/stats`: **新增** — 返回事件统计信息，可选支持按前后期间进行比较。
+
+**链接**
+
+- `POST /api/links`: **新增** — 创建一个链接。
+
+**像素**
+
+- `POST /api/pixels`: **新增** — 创建一个像素。
+
+**报告**
+
+- `POST /api/reports/goal`: 已从 `POST /api/reports/goals` 重命名（单数路径）。
+- `POST /api/reports/performance`: **新增** — 支持 LCP、INP、CLS、FCP 和 TTFB 指标的性能报告类型。
+- `POST /api/reports/revenue`: 新增 `compare` 参数。响应现在在 `total` 对象中包含 `arpu` 和 `comparison`，并新增 `region`、`referrer` 和 `channel` 分解数组。
+
+## 2026-03-02
+
+**事件**
+
+- `GET /api/websites/:websiteId/event-data`: **新增**
+
 ## 2026-02-04
 
 **分享**
@@ -56,9 +86,9 @@ title: Umami API
 
 **网站**
 
-- `GET /websites/[id]/pageviews`：修正了 `region` 参数为可选。
-- `GET /websites/[id]/events`：更改结果集为指定时间范围内的网站事件详情。
-- `GET /websites/[id]/events/series`：**新增** 事件指标端点（之前使用 `GET /websites/[id]/events`）。
+- `GET /websites/[id]/pageviews`: 已修复 `region` 参数为可选。
+- `GET /websites/[id]/events`: 更改结果集为给定时间范围内的网站事件详情。
+- `GET /websites/[id]/events/series`: **新增** 事件指标端点（之前为 `GET /websites/[id]/events`）。
 
 **事件数据**
 

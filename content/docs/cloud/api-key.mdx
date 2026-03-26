@@ -8,7 +8,7 @@ title: API 密钥
 
 ## 创建您的密钥
 
-登录后，点击侧边导航栏下拉菜单，然后点击 **设置**。
+登录后，点击侧边导航中的个人资料按钮，然后点击 **设置**。
 
 ![image](/images/cloud/navbar-settings.png)
 
@@ -46,6 +46,14 @@ UMAMI_API_CLIENT_ENDPOINT=https://api.umami.is/v1
 ```
 
 更多关于使用 API 客户端的详细信息，请参见 [API 客户端](/docs/api/api-client)。
+
+## 区域
+
+默认情况下，区域将与拥有该 API 密钥的账户区域一致。您可以通过在 API 调用的第一个路径中添加区域来指定区域。
+
+`https://api.umami.is/v1/us`
+
+`https://api.umami.is/v1/eu`
 
 ## 限制
 

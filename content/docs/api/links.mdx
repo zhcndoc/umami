@@ -8,6 +8,7 @@ title: 链接
 
 ```text
 GET /api/links
+POST /api/links
 GET /api/links/:linkId
 POST /api/links/:linkId
 DELETE /api/links/:linkId
@@ -21,9 +22,11 @@ DELETE /api/links/:linkId
 
 **参数**
 
-- `search`：（可选字符串）搜索文本。
-- `page`：（可选数字，默认 1）指定页码。
-- `pageSize`：（可选字符串）指定返回结果数量。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `search` | string | （可选）搜索文本。 |
+| `page` | number | （可选，默认 1）确定页码。 |
+| `pageSize` | number | （可选）确定返回结果数量。 |
 
 **示例响应**
 
@@ -45,6 +48,47 @@ DELETE /api/links/:linkId
   "count": 1,
   "page": 1,
   "pageSize": 20
+}
+```
+
+---
+
+## POST /api/links
+
+创建链接。
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | 链接名称。 |
+| `url` | string | 链接的目标 URL。 |
+| `slug` | string | 链接的 URL slug（最少 8 个字符）。 |
+| `teamId` | string | （可选）将在其下创建链接的团队 ID。 |
+
+**Request body**
+
+```json
+{
+  "name": "umami",
+  "url": "https://www.umami.is",
+  "slug": "umami123"
+}
+```
+
+**Sample response**
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "umami",
+  "url": "https://www.umami.is",
+  "slug": "umami123",
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "teamId": null,
+  "createdAt": "2025-10-27T18:49:39.383Z",
+  "updatedAt": "2025-10-27T18:49:39.383Z",
+  "deletedAt": null
 }
 ```
 
@@ -78,9 +122,11 @@ DELETE /api/links/:linkId
 
 **参数**
 
-- `name`：（可选字符串）链接名称。
-- `url`：（可选字符串）链接目标 URL。
-- `slug`：（可选字符串 | 最少 8 个字符）链接的 URL slug。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | （可选）链接名称。 |
+| `url` | string | （可选）链接的目标 URL。 |
+| `slug` | string | （可选）链接的 URL slug（最少 8 个字符）。 |
 
 **请求体**
 

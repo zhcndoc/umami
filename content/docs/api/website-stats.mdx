@@ -8,6 +8,7 @@ title: 网站统计
 
 ```text
 GET /api/websites/:websiteId/active
+GET /api/websites/:websiteId/daterange
 GET /api/websites/:websiteId/events/series
 GET /api/websites/:websiteId/metrics
 GET /api/websites/:websiteId/metrics/expanded
@@ -21,23 +22,30 @@ GET /api/websites/:websiteId/stats
 
 所有标记为 `filters` 的端点现在可以使用以下参数进行过滤。
 
-**参数**
-
-- `path`：（字符串 | 可选）URL 名称。
-- `referrer`：（字符串 | 可选）来源名称。
-- `title`：（字符串 | 可选）页面标题名称。
-- `query`：（字符串 | 可选）查询参数名称。
-- `browser`：（字符串 | 可选）浏览器名称。
-- `os`：（字符串 | 可选）操作系统名称。
-- `device`：（字符串 | 可选）设备名称（例如 手机）。
-- `country`：（字符串 | 可选）国家名称。
-- `region`：（字符串 | 可选）地区/州/省名称。
-- `city`：（字符串 | 可选）城市名称。
-- `hostname`：（字符串 | 可选）主机名。
-- `tag`：（字符串 | 可选）标签名称。
-- `distinctId`：（字符串 | 可选）独特 ID。
-- `segment`：（uuid | 可选）分段 UUID。
-- `cohort`：（uuid | 可选）用户群组 UUID。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `path` | string | URL 的名称。 |
+| `referrer` | string | 引荐来源的名称。 |
+| `title` | string | 页面标题的名称。 |
+| `query` | string | 查询参数的名称。 |
+| `browser` | string | 浏览器名称。 |
+| `os` | string | 操作系统名称。 |
+| `device` | string | 设备名称（例如：移动设备）。 |
+| `country` | string | 国家名称。 |
+| `region` | string | 地区/州/省名称。 |
+| `city` | string | 城市名称。 |
+| `language` | string | 浏览器语言的名称。 |
+| `hostname` | string | 主机名的名称。 |
+| `tag` | string | 标签名称。 |
+| `event` | string | 事件名称。 |
+| `distinctId` | string | distinct ID 的名称。 |
+| `utmSource` | string | UTM 来源。 |
+| `utmMedium` | string | UTM 媒介。 |
+| `utmCampaign` | string | UTM 活动名称。 |
+| `utmContent` | string | UTM 内容。 |
+| `utmTerm` | string | UTM 术语。 |
+| `segment` | uuid | 分段的 UUID。 |
+| `cohort` | uuid | 同群组的 UUID。 |
 
 ---
 
@@ -45,11 +53,13 @@ GET /api/websites/:websiteId/stats
 
 单位参数用于对返回的数据进行分组。如果超过最大值，单位会自动转换为下一个较大的适用时间单位。
 
-- `minute`：最多 60 分钟。
-- `hour`：最多 30 天。
-- `day`：最多 6 个月。
-- `month`：无限制。
-- `year`：无限制。
+| Unit | Maximum |
+| --- | --- |
+| `minute` | 最多 60 分钟。 |
+| `hour` | 最多 30 天。 |
+| `day` | 最多 6 个月。 |
+| `month` | 无限制。 |
+| `year` | 无限制。 |
 
 ---
 
@@ -69,17 +79,34 @@ GET /api/websites/:websiteId/stats
 
 ---
 
+## GET /api/websites/:websiteId/daterange
+
+获取网站可用数据的日期范围。
+
+**示例响应**
+
+```json
+{
+    "startDate": "2025-12-06T00:00:00Z",
+    "endDate": "2026-03-11T21:00:00Z"
+}
+```
+
+---
+
 ## GET /api/websites/:websiteId/events/series
 
 获取给定时间范围内的事件。
 
 **参数**
 
-- `startAt`：（数字）起始日期的时间戳（毫秒）。
-- `endAt`：（数字）结束日期的时间戳（毫秒）。
-- `unit`：时间单位（`year` | `month` | `hour` | `day`）。
-- `timezone`：时区（例如 America/Los_Angeles）。
-- `filters`：可接受过滤参数。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | 开始日期的时间戳（毫秒）。 |
+| `endAt` | number | 结束日期的时间戳（毫秒）。 |
+| `unit` | string | 时间单位（`year` \| `month` \| `hour` \| `day`）。 |
+| `timezone` | string | 时区（例如 America/Los_Angeles）。 |
+| `filters` | object | 可以接受过滤参数。 |
 
 **示例响应**
 
@@ -113,9 +140,11 @@ GET /api/websites/:websiteId/stats
 ]
 ```
 
-- `x`：事件名称。
-- `t`：时间戳。
-- `y`：事件数量。
+| Field | Description |
+| --- | --- |
+| `x` | 事件名称。 |
+| `t` | 时间戳。 |
+| `y` | 事件数量。 |
 
 ---
 
@@ -125,12 +154,14 @@ GET /api/websites/:websiteId/stats
 
 **参数**
 
-- `startAt`：（数字）起始日期的时间戳（毫秒）。
-- `endAt`：（数字）结束日期的时间戳（毫秒）。
-- `type`：指标类型。
-- `filters`：可接受过滤参数。
-- `limit`：（可选，默认 500）返回的行数。
-- `offset`：（可选，默认 0）跳过的行数。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | 开始日期的时间戳（毫秒）。 |
+| `endAt` | number | 结束日期的时间戳（毫秒）。 |
+| `type` | string | 指标类型。 |
+| `filters` | object | 可以接受过滤参数。 |
+| `limit` | number | （可选，默认 500）返回的行数。 |
+| `offset` | number | （可选，默认 0）跳过的行数。 |
 
 **可用类型**
 
@@ -171,8 +202,10 @@ GET /api/websites/:websiteId/stats
 ]
 ```
 
-- `x`：根据指标类型，唯一值。
-- `y`：访客数量。
+| Field | Description |
+| --- | --- |
+| `x` | 唯一值，取决于指标类型。 |
+| `y` | 访客数量。 |
 
 ## GET /api/websites/:websiteId/metrics/expanded
 
@@ -180,12 +213,14 @@ GET /api/websites/:websiteId/stats
 
 **参数**
 
-- `startAt`：（数字）起始日期的时间戳（毫秒）。
-- `endAt`：（数字）结束日期的时间戳（毫秒）。
-- `type`：指标类型。
-- `filters`：可接受过滤参数。
-- `limit`：（可选，默认 500）返回的行数。
-- `offset`：（可选，默认 0）跳过的行数。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | 开始日期的时间戳（毫秒）。 |
+| `endAt` | number | 结束日期的时间戳（毫秒）。 |
+| `type` | string | 指标类型。 |
+| `filters` | object | 可以接受过滤参数。 |
+| `limit` | number | （可选，默认 500）返回的行数。 |
+| `offset` | number | （可选，默认 0）跳过的行数。 |
 
 **可用类型**
 
@@ -238,12 +273,14 @@ GET /api/websites/:websiteId/stats
 ]
 ```
 
-- `name`：根据指标类型，唯一值。
-- `pageviews`：页面浏览量
-- `visitors`：独立访客数
-- `visits`：独立访问数
-- `bounces`：仅访问单个页面的访客数
-- `totaltime`：网站停留时间（单位未注明，通常毫秒）
+| Field | Description |
+| --- | --- |
+| `name` | 唯一值，取决于指标类型。 |
+| `pageviews` | 页面访问量。 |
+| `visitors` | 独立访客数量。 |
+| `visits` | 独立访问次数。 |
+| `bounces` | 仅访问单个页面的访客数量。 |
+| `totaltime` | 网站上的停留时间。 |
 
 ---
 
@@ -253,12 +290,14 @@ GET /api/websites/:websiteId/stats
 
 **参数**
 
-- `startAt`：（数字）起始日期的时间戳（毫秒）。
-- `endAt`：（数字）结束日期的时间戳（毫秒）。
-- `unit`：时间单位（year | month | hour | day）。
-- `timezone`：时区（例如 America/Los_Angeles）。
-- `compare`：（字符串 | 可选）对比值 `prev`| `yoy`。
-- `filters`：可接受过滤参数。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | 开始日期的时间戳（毫秒）。 |
+| `endAt` | number | 结束日期的时间戳（毫秒）。 |
+| `unit` | string | 时间单位（`year` \| `month` \| `hour` \| `day`）。 |
+| `timezone` | string | 时区（例如 America/Los_Angeles）。 |
+| `compare` | string | （可选）比较周期（`prev` \| `yoy`）。 |
+| `filters` | object | 可以接受过滤参数。 |
 
 **示例响应**
 
@@ -306,9 +345,11 @@ GET /api/websites/:websiteId/stats
 
 **参数**
 
-- `startAt`：（数字）起始日期的时间戳（毫秒）。
-- `endAt`：（数字）结束日期的时间戳（毫秒）。
-- `filters`：可接受过滤参数。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | 开始日期的时间戳（毫秒）。 |
+| `endAt` | number | 结束日期的时间戳（毫秒）。 |
+| `filters` | object | 可以接受过滤参数。 |
 
 **示例响应**
 
@@ -329,8 +370,10 @@ GET /api/websites/:websiteId/stats
 }
 ```
 
-- `pageviews`：页面浏览量
-- `visitors`：独立访客数
-- `visits`：独立访问数
-- `bounces`：仅访问单个页面的访客数
-- `totaltime`：网站停留时间
+| Field | Description |
+| --- | --- |
+| `pageviews` | 页面访问量。 |
+| `visitors` | 独立访客数量。 |
+| `visits` | 独立访问次数。 |
+| `bounces` | 仅访问单个页面的访客数量。 |
+| `totaltime` | 网站上的停留时间。 |

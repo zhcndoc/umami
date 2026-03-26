@@ -23,10 +23,12 @@ POST /api/websites/:websiteId/reset
 
 **参数**
 
-- `includeTeams`：（布尔）如果要包括您作为团队所有者的网站，请设置为 true。
-- `search`：（可选字符串）搜索文本。
-- `page`：（可选数字，默认1）指定页码。
-- `pageSize`：（可选字符串）指定返回结果的数量。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `includeTeams` | boolean | 设置为 true 以包含你作为团队所有者的网站。 |
+| `search` | string | （可选）搜索文本。 |
+| `page` | number | （可选，默认 1）确定页码。 |
+| `pageSize` | number | （可选）确定返回多少结果。 |
 
 **示例响应**
 
@@ -35,7 +37,7 @@ POST /api/websites/:websiteId/reset
   "data": [
     {
       "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-      "name": "Example",
+      "name": "示例",
       "domain": "example.com",
       "shareId": null,
       "resetAt": null,
@@ -65,11 +67,13 @@ POST /api/websites/:websiteId/reset
 
 **参数**
 
-- `name`：（字符串）网站在 Umami 中的名称。
-- `domain`：（字符串）被跟踪网站的完整域名。
-- `shareId`：（字符串 | 可选）一个唯一字符串，用于启用分享 URL。设为 `null` 取消分享。
-- `teamId`：（字符串 | 可选）网站将归属的团队 ID。
-- `id`：（字符串 | 可选）强制为网站分配指定 UUID。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | 网站在 Umami 中的名称。 |
+| `domain` | string | 被跟踪网站的完整域名。 |
+| `shareId` | string | （可选）用于启用分享 URL 的唯一字符串。设置为 `null` 可取消分享。 |
+| `teamId` | string | （可选）网站将创建所属团队的 ID。 |
+| `id` | string | （可选）强制为网站分配一个 UUID。 |
 
 **请求体**
 
@@ -109,7 +113,7 @@ POST /api/websites/:websiteId/reset
 ```json
 {
   "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-  "name": "Example",
+  "name": "示例",
   "domain": "example.com",
   "shareId": null,
   "resetAt": null,
@@ -130,9 +134,11 @@ POST /api/websites/:websiteId/reset
 
 **参数**
 
-- `name`：（字符串）网站在 Umami 中的名称。
-- `domain`：（字符串）被跟踪网站的完整域名。
-- `shareId`：（字符串 | 可选）一个唯一字符串，用于启用分享 URL。设为 `null` 取消分享。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | 网站在 Umami 中的名称。 |
+| `domain` | string | 被跟踪网站的完整域名。 |
+| `shareId` | string | （可选）用于启用分享 URL 的唯一字符串。设置为 `null` 可取消分享。 |
 
 **请求体**
 

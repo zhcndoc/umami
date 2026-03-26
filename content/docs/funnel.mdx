@@ -32,9 +32,11 @@ Umami 漏斗帮助您理解用户的转化率和流失率。
 
 继续添加步骤直到完成您期望的漏斗条件。Umami 支持指定 URL、事件和 URL 通配符作为步骤。
 
-- **指定 URL** ：用户必须访问该具体 URL。（例如：`/`）
-- **事件** ：用户必须触发该具体事件。（例如：`live-demo-button`）
-- **URL 通配符** ：用户必须访问符合通配符条件的任意 URL。仅支持“以……结尾”搜索。（例如：`/docs*`）
+| Step Type | Description | Example |
+| --- | --- | --- |
+| Specific URL | 用户必须到达此特定 URL。 | `/` |
+| Event | 用户必须生成此特定事件。 | `live-demo-button` |
+| URL wildcards | 用户必须到达任何符合通配符条件的 URL。仅支持 `Ends with` 搜索。 | `/docs*` |
 
 ### 第三步：运行洞察
 

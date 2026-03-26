@@ -8,6 +8,7 @@ title: 像素管理
 
 ```text
 GET /api/pixels
+POST /api/pixels
 GET /api/pixels/:pixelId
 POST /api/pixels/:pixelId
 DELETE /api/pixels/:pixelId
@@ -21,9 +22,11 @@ DELETE /api/pixels/:pixelId
 
 **参数**
 
-- `search`：（可选字符串）搜索文本。
-- `page`：（可选数字，默认 1）指定页码。
-- `pageSize`：（可选字符串）指定返回结果数量。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `search` | string | （可选）搜索文本。 |
+| `page` | number | （可选，默认 1）确定页码。 |
+| `pageSize` | number | （可选）确定返回多少结果。 |
 
 **示例响应**
 
@@ -44,6 +47,44 @@ DELETE /api/pixels/:pixelId
   "count": 1,
   "page": 1,
   "pageSize": 20
+}
+```
+
+---
+
+## POST /api/pixels
+
+创建一个像素。
+
+**参数**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | 像素的名称。 |
+| `slug` | string | 像素的 URL slug（至少 8 个字符）。 |
+| `teamId` | string | （可选）创建该像素时所属团队的 ID。 |
+
+**请求体**
+
+```json
+{
+  "name": "Umami Pixel",
+  "slug": "pixel123"
+}
+```
+
+**示例响应**
+
+```json
+{
+  "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "name": "Umami Pixel",
+  "slug": "pixel123",
+  "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "teamId": null,
+  "createdAt": "2025-10-27T18:50:54.079Z",
+  "updatedAt": "2025-10-27T18:50:54.079Z",
+  "deletedAt": null
 }
 ```
 
@@ -76,8 +117,10 @@ DELETE /api/pixels/:pixelId
 
 **参数**
 
-- `name`：（可选字符串）像素名称。
-- `slug`：（可选字符串，最少 8 个字符）链接的 URL 别名。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | （可选）像素的名称。 |
+| `slug` | string | （可选）像素的 URL slug（至少 8 个字符）。 |
 
 **请求体**
 

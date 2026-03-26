@@ -23,11 +23,13 @@ POST api/websites/:websiteId/shares
 
 **参数**
 
-- `entityId`: (string) 需要添加的实体 ID（websiteId、pixelId、linkId 等）。
-- `shareType`: (number) (`website: 1` | `link:2` | `pixel: 3`)
-- `name`: (string) 分享页面名称。
-- `slug`: (string) 分享页面的 slug。
-- `parameters`: (object) 分享页面的参数。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `entityId` | string | 要添加的实体 ID（websiteId、pixelId、linkId 等）。 |
+| `shareType` | number | `website: 1` \| `link: 2` \| `pixel: 3` \| `board: 4`|
+| `name` | string | 分享页面名称。 |
+| `slug` | string | 分享页面的 slug。 |
+| `parameters` | object | 分享页面的参数。 |
 
 **请求体**
 
@@ -35,7 +37,7 @@ POST api/websites/:websiteId/shares
 {
 	"entityId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 	"shareType": 1,
-	"name": "My Share Page",
+	"name": "我的分享页面",
 	"slug": "abc123defg",
 	"parameters": { "overview": true, "events": true}
 }
@@ -47,7 +49,7 @@ POST api/websites/:websiteId/shares
 {
 	"id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 	"entityId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-	"name": "My Share Page",
+	"name": "我的分享页面",
 	"shareType": 1,
 	"slug": "abc123defg",
 	"parameters": {
@@ -71,7 +73,7 @@ POST api/websites/:websiteId/shares
 {
 	"id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 	"entityId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-	"name": "My Share Page",
+	"name": "我的分享页面",
 	"shareType": 1,
 	"slug": "abc123defg",
 	"parameters": {
@@ -91,15 +93,17 @@ POST api/websites/:websiteId/shares
 
 **参数**
 
-- `name`: (string) 分享页面名称。
-- `slug`: (string) 分享页面的 slug。
-- `parameters`: (object) 分享页面的参数。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | 分享页面名称。 |
+| `slug` | string | 分享页面的 slug。 |
+| `parameters` | object | 分享页面的参数。 |
 
 **请求体**
 
 ```json
 {
-	"name": "My Updated Share Page",
+	"name": "我的更新后的分享页面",
 	"slug": "abc123defg",
 	"parameters": { "overview": true, "events": true, "funnel": true, "utm": true}
 }
@@ -111,7 +115,7 @@ POST api/websites/:websiteId/shares
 {
 	"id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 	"entityId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-	"name": "My Updated Share Page",
+	"name": "我的更新后的分享页面",
 	"shareType": 1,
 	"slug": "abc123defg",
 	"parameters": {
@@ -153,7 +157,7 @@ POST api/websites/:websiteId/shares
 		{
 			"id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 			"entityId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-			"name": "Umami Live Demo",
+			"name": "Umami 直播演示",
 			"shareType": 1,
 			"slug": "xxxxxxxxxxxxxx",
 			"parameters": {
@@ -189,14 +193,16 @@ POST api/websites/:websiteId/shares
 
 **参数**
 
-- `name`: (string) 分享页面名称。
-- `parameters`: (object) 分享页面的参数。
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `name` | string | 分享页面名称。 |
+| `parameters` | object | 分享页面的参数。 |
 
 **请求体**
 
 ```json
 {
-	"name": "My Websites Share Page",
+	"name": "我的网站分享页面",
 	"parameters": { "utm": true, "goals": true, "events": true }
 }
 ```
@@ -207,7 +213,7 @@ POST api/websites/:websiteId/shares
 {
 	"id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
 	"entityId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
-	"name": "My Websites Share Page",
+	"name": "我的网站分享页面",
 	"shareType": 1,
 	"slug": "xxxxxxxxx",
 	"parameters": {
