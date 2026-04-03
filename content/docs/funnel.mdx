@@ -11,10 +11,10 @@ The user may navigate to other URLs or events in between the funnel steps, but m
 
 ## Parameters
 
-- `Window`: (required) Amount of minutes a user has between funnel steps to be counted as a conversion.
+- `Window`: (required) Maximum number of minutes allowed between consecutive funnel steps. If a user takes longer than this between any two steps, they are not counted as a conversion. For example, a 60-minute window means users must complete each step within 60 minutes of the previous one.
 - `Steps`: (required) Sequential step conditions used in the funnel. Minimum of two is required to run the insight.
 
-## Create a insight
+## Create an insight
 
 ### Step 1: Click on the add Funnel button
 

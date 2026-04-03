@@ -4,10 +4,32 @@ title: UTM
 
 Umami UTM provides analytics on the performance of marketing campaigns by tracking the effectiveness of different marketing channels, such as social media, email, and advertising.
 
-The insight works by breaking down the 5 standard UTM parameters: source, medium, campaign, term, and content into **Views**.
+The insight works by breaking down the 5 standard UTM parameters into **Views**.
 
-## Create a insight
+## UTM parameters
+
+UTM (Urchin Tracking Module) parameters are tags added to the end of a URL that help you track where your traffic comes from.
+
+| Parameter | Description | Example |
+| --- | --- | --- |
+| `utm_source` | Identifies which site or platform sent the traffic. | `google`, `newsletter`, `twitter` |
+| `utm_medium` | Identifies the marketing medium or channel. | `cpc`, `email`, `social` |
+| `utm_campaign` | Identifies a specific campaign or promotion. | `spring_sale`, `product_launch` |
+| `utm_term` | Identifies paid search keywords. | `running+shoes`, `analytics+tool` |
+| `utm_content` | Differentiates similar content or links within the same campaign. | `header_link`, `sidebar_banner` |
+
+For example, a tagged URL might look like:
+
+```text
+https://example.com/pricing?utm_source=google&utm_medium=cpc&utm_campaign=spring_sale
+```
+
+## Create an insight
 
 ### Step 1: Run insight
 
+The UTM insight does not require any additional parameters. Simply navigate to the UTM insight and the data will be displayed for the selected date range.
+
 ![image](/images/docs/utm-details.png)
+
+The insight will display the number of views broken down by each UTM parameter, helping you identify which campaigns, sources, and mediums are driving the most traffic.

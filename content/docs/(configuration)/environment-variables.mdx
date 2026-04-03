@@ -12,7 +12,11 @@ Runtime variables are recognized when Umami is running. You can set your environ
 
 ### APP_SECRET
 
-A unique value for your installation.
+A random string used to secure authentication tokens. Each installation should have a unique value. You can generate one with:
+
+```shell
+openssl rand -hex 32
+```
 
 ```
 APP_SECRET = "random string"
@@ -119,7 +123,11 @@ Some alternatives you can use:
 
 ### GEO_DATABASE_URL
 
-The URL for downloading the geo location database.
+The URL for downloading a MaxMind-compatible GeoIP database in MMDB format. This is used for IP-based location detection when location headers from a CDN are not available.
+
+```
+GEO_DATABASE_URL = "https://example.com/GeoLite2-City.mmdb"
+```
 
 ### HOSTNAME / PORT
 
@@ -133,10 +141,10 @@ PORT = 3000
 
 ### IGNORE_IP
 
-You can provide a comma-delimited list of IP addresses and ranges to exclude from data collection.
+You can provide a comma-delimited list of IP addresses and CIDR ranges to exclude from data collection.
 
 ```
-IGNORE_IP = "IP addresses or ranges"
+IGNORE_IP = "192.168.0.1, 10.0.0.0/24, 2001:db8::/32"
 ```
 
 ### LOG_QUERY
