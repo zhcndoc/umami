@@ -8,7 +8,7 @@ All API routes in the reference section are available in Umami Cloud using an AP
 
 ## Create your key
 
-Once logged in, click on the side nav dropdown then click **Settings**.
+Once logged in, click on the side nav profile button then click **Settings**.
 
 ![image](/images/cloud/navbar-settings.png)
 
@@ -46,6 +46,14 @@ UMAMI_API_CLIENT_ENDPOINT=https://api.umami.is/v1
 ```
 
 More details on using the API client can be found in [API client](/docs/api/api-client).
+
+## Region
+
+The region will default to the region of the Account that owns the API-KEY. You can specify the region by adding the region to the API call as the first path.
+
+`https://api.umami.is/v1/us`
+
+`https://api.umami.is/v1/eu`
 
 ## Limits
 

@@ -2,7 +2,7 @@
 title: Reports
 ---
 
-Using reports throught the api.
+Using reports through the api.
 
 **Endpoints**
 
@@ -15,8 +15,9 @@ DELETE /api/reports/:reportId
 POST /api/reports/attribution
 POST /api/reports/breakdown
 POST /api/reports/funnel
-POST /api/reports/goals
+POST /api/reports/goal
 POST /api/reports/journey
+POST /api/reports/performance
 POST /api/reports/retention
 POST /api/reports/revenue
 POST /api/reports/utm
@@ -28,23 +29,30 @@ POST /api/reports/utm
 
 All reports can now be filtered with the filters property in the request body.
 
-**Parameters**
-
-- `path`: (string | optional) Name of URL.
-- `referrer`: (string | optional) Name of referrer.
-- `title`: (string | optional) Name of page title.
-- `query`: (string | optional) Name of query parameter.
-- `browser`: (string | optional) Name of browser.
-- `os`: (string | optional) Name of operating system.
-- `device`: (string | optional) Name of device (ex. Mobile)
-- `country`: (string | optional) Name of country.
-- `region`: (string | optional) Name of region/state/province.
-- `city`: (string | optional) Name of city.
-- `hostname`: (string | optional) Name of hostname.
-- `tag`: (string | optional) Name of tag.
-- `distinctId`: (string | optional) Name of distinct ID.
-- `segment`: (uuid | optional) UUID of segment.
-- `cohort`: (uuid | optional) UUID of cohort.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `path` | string | Name of URL. |
+| `referrer` | string | Name of referrer. |
+| `title` | string | Name of page title. |
+| `query` | string | Name of query parameter. |
+| `browser` | string | Name of browser. |
+| `os` | string | Name of operating system. |
+| `device` | string | Name of device (ex. Mobile). |
+| `country` | string | Name of country. |
+| `region` | string | Name of region/state/province. |
+| `city` | string | Name of city. |
+| `language` | string | Name of browser language. |
+| `hostname` | string | Name of hostname. |
+| `tag` | string | Name of tag. |
+| `event` | string | Name of event. |
+| `distinctId` | string | Name of distinct ID. |
+| `utmSource` | string | UTM source. |
+| `utmMedium` | string | UTM medium. |
+| `utmCampaign` | string | UTM campaign name. |
+| `utmContent` | string | UTM content. |
+| `utmTerm` | string | UTM term. |
+| `segment` | uuid | UUID of segment. |
+| `cohort` | uuid | UUID of cohort. |
 
 **Request body**
 
@@ -72,10 +80,12 @@ Get all reports by website ID.
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (optional string) Determines how many results to return.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`attribution` \| `breakdown` \| `funnel` \| `goal` \| `journey` \| `retention` \| `revenue` \| `utm`). |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional) Determines how many results to return. |
 
 **Sample response**
 
@@ -125,11 +135,13 @@ Creates a report.
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type `attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`.
-- `name`: (string) Name of report.
-- `description`: (string | optional) Description of report.
-- `parameters`: (object) Parameters for report.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`attribution` \| `breakdown` \| `funnel` \| `goal` \| `journey` \| `retention` \| `revenue` \| `utm`). |
+| `name` | string | Name of report. |
+| `description` | string | (optional) Description of report. |
+| `parameters` | object | Parameters for report. |
 
 **Request body**
 
@@ -194,11 +206,13 @@ Updates a report.
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type `attribution` | `breakdown` | `funnel` | `goal` | `journey` | `retention` | `revenue` | `utm`.
-- `name`: (string) Name of report.
-- `description`: (string | optional) Description of report.
-- `parameters`: (object) Parameters for report.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`attribution` \| `breakdown` \| `funnel` \| `goal` \| `journey` \| `retention` \| `revenue` \| `utm`). |
+| `name` | string | Name of report. |
+| `description` | string | (optional) Description of report. |
+| `parameters` | object | Parameters for report. |
 
 **Request body**
 
@@ -252,14 +266,16 @@ See how users engage with your marketing and what drives conversions.
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `model` : (string) Attribution model (`firstClick` | `lastClick`).
-- `type` : (array) Conversion type (`path` | `event`).
-- `step`: (string) Conversion step
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`attribution`). |
+| `filters` | object | Can accept filter parameters. |
+| `startDate` | string | Start date. |
+| `endDate` | string | End date. |
+| `model` | string | Attribution model (`firstClick` \| `lastClick`). |
+| `type` | string | Conversion type (`path` \| `event`). |
+| `step` | string | Conversion step. |
 
 **Request body**
 
@@ -368,16 +384,19 @@ Dive deeper into your data by using segments and filters.
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `fields`: (array) List of column fields.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`breakdown`). |
+| `filters` | object | Can accept filter parameters. |
+| `startDate` | string | Start date. |
+| `endDate` | string | End date. |
+| `fields` | array | List of column fields. |
 
 **Available Fields**
 
-`path` | `title` | `query` | `referrer` | `browser` | `os` | `device` | `country` | `region` | `city` | `hostname`| `tag` | `event`
+`path` | `title` | `query` | `referrer` | `browser` | `os` | `device` | `country` | `region` | `city` | `hostname` | `tag` | `event` | `distinctId` | 
+`utmSource` | `utmMedium` | `utmCampaign` | `utmContent` | `utmTerm` |
 
 **Request body**
 
@@ -445,13 +464,15 @@ Understand the conversion and drop-off rate of users.
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `steps` : (array | Minumum two required) type of event (`path` | `event`) and conversion step.
-- `window` : (number) Window of days between funnel steps to be considered a conversion.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`funnel`). |
+| `filters` | object | Can accept filter parameters. |
+| `startDate` | string | Start date. |
+| `endDate` | string | End date. |
+| `steps` | array | Minimum two required. Each step has a `type` (`path` \| `event`) and a `value`. |
+| `window` | number | Window of days between funnel steps to be considered a conversion. |
 
 **Request body**
 
@@ -499,19 +520,21 @@ Understand the conversion and drop-off rate of users.
 
 ---
 
-## POST /api/reports/goals
+## POST /api/reports/goal
 
 Track your goals for pageviews and events.
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `type` : (array) Conversion type (`path` | `event`).
-- `value`: (string) Conversion step value.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`goal`). |
+| `filters` | object | Can accept filter parameters. |
+| `startDate` | string | Start date. |
+| `endDate` | string | End date. |
+| `type` | string | Conversion type (`path` \| `event`). |
+| `value` | string | Conversion step value. |
 
 **Request body**
 
@@ -542,18 +565,20 @@ Track your goals for pageviews and events.
 
 ## POST /api/reports/journey
 
-Understand how users nagivate through your website.
+Understand how users navigate through your website.
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `steps`: (number) Number of steps from 3 to 7
-- `startStep` : (string) Starting step URL or event name.
-- `endStep` : (string | optional) Ending step URL or event name.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`journey`). |
+| `filters` | object | Can accept filter parameters. |
+| `startDate` | string | Start date. |
+| `endDate` | string | End date. |
+| `steps` | number | Number of steps from 3 to 7. |
+| `startStep` | string | Starting step URL or event name. |
+| `endStep` | string | (optional) Ending step URL or event name. |
 
 **Request body**
 
@@ -613,18 +638,216 @@ Understand how users nagivate through your website.
 
 ---
 
+## POST /api/reports/performance
+
+Get Core Web Vitals performance metrics for a given date range.
+
+**Parameters**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`performance`). |
+| `filters` | object | Can accept filter parameters. |
+| `startDate` | string | Start date. |
+| `endDate` | string | End date. |
+| `unit` | string | (optional) Time unit (`year` \| `month` \| `hour` \| `day`). |
+| `timezone` | string | (optional) Timezone (ex. America/Los_Angeles). |
+| `metric` | string | (optional) Metric to focus on (`lcp` \| `inp` \| `cls` \| `fcp` \| `ttfb`). |
+
+**Request body**
+
+```json
+{
+  "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "type": "performance",
+  "filters": {},
+  "parameters": {
+    "startDate": "2025-10-01T07:00:00.000Z",
+    "endDate": "2025-10-22T06:59:59.999Z",
+    "timezone": "America/Los_Angeles",
+    "metric": "lcp"
+  }
+}
+```
+
+**Sample response**
+
+```json
+{
+    "chart": [
+        {
+            "t": "2026-03-11T16:00:00Z",
+            "p50": 24748,
+            "p75": 24748,
+            "p95": 24748
+        },
+        {
+            "t": "2026-03-11T17:00:00Z",
+            "p50": 920,
+            "p75": 920,
+            "p95": 920
+        },
+        {
+            "t": "2026-03-11T21:00:00Z",
+            "p50": 1408,
+            "p75": 1408,
+            "p95": 1408
+        }
+    ],
+    "summary": {
+        "lcp": {
+            "p50": 1408,
+            "p75": 13078,
+            "p95": 22413.9
+        },
+        "inp": {
+            "p50": 48,
+            "p75": 56,
+            "p95": 86.3
+        },
+        "cls": {
+            "p50": 0.0015,
+            "p75": 0.0067,
+            "p95": 0.0231
+        },
+        "fcp": {
+            "p50": 720,
+            "p75": 10264,
+            "p95": 17899.1
+        },
+        "ttfb": {
+            "p50": 274.7,
+            "p75": 9062.2,
+            "p95": 16092.2
+        },
+        "count": 28
+    },
+    "pages": [
+        {
+            "name": "/analytics/websites",
+            "p50": 1408,
+            "p75": 1408,
+            "p95": 1408,
+            "count": 1
+        },
+    ],
+    "pageTitles": [
+        {
+            "name": "Websites | Umami",
+            "p50": 1408,
+            "p75": 13078,
+            "p95": 22413.9,
+            "count": 8
+        },
+        {
+            "name": "Pixels | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 2
+        },
+        {
+            "name": "Settings | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 1
+        },
+        {
+            "name": "Board | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 6
+        },
+        {
+            "name": "Links | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 2
+        },
+        {
+            "name": "Boards | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 2
+        },
+        {
+            "name": "Design Board | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 3
+        },
+        {
+            "name": "Edit Link | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 1
+        },
+        {
+            "name": "Edit Pixel | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 1
+        },
+        {
+            "name": "Edit Board | Umami",
+            "p50": null,
+            "p75": null,
+            "p95": null,
+            "count": 2
+        }
+    ],
+    "devices": [
+        {
+            "name": "laptop",
+            "p50": 12834,
+            "p75": 18791,
+            "p95": 23556.6,
+            "count": 27
+        },
+        {
+            "name": "desktop",
+            "p50": 1408,
+            "p75": 1408,
+            "p95": 1408,
+            "count": 1
+        }
+    ],
+    "browsers": [
+        {
+            "name": "chrome",
+            "p50": 1408,
+            "p75": 13078,
+            "p95": 22413.9,
+            "count": 28
+        }
+    ]
+}
+```
+
+---
+
 ## POST /api/reports/retention
 
 Measure your website stickiness by tracking how often users return.
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `timezone`: Timezone (ex. America/Los_Angeles).
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`retention`). |
+| `filters` | object | Can accept filter parameters. |
+| `startDate` | string | Start date. |
+| `endDate` | string | End date. |
+| `timezone` | string | Timezone (ex. America/Los_Angeles). |
 
 **Request body**
 
@@ -684,13 +907,16 @@ Get currency for given range. Needed for Revenue and optional in Attribution rep
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
-- `timezone`: Timezone (ex. America/Los_Angeles).
-- `currency`: (string) Currency code (ISO 4217).
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`revenue`). |
+| `filters` | object | Can accept filter parameters. |
+| `startDate` | string | Start date. |
+| `endDate` | string | End date. |
+| `timezone` | string | Timezone (ex. America/Los_Angeles). |
+| `currency` | string | Currency code (ISO 4217). |
+| `compare` | string | (optional) Comparison period (`prev` \| `yoy`). |
 
 **Request body**
 
@@ -712,43 +938,145 @@ Get currency for given range. Needed for Revenue and optional in Attribution rep
 
 ```json
 {
-  "chart": [
-    {
-      "x": "revenue-demo",
-      "t": "2025-10-14T07:00:00Z",
-      "y": 400
+    "chart": [
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T08:00:00Z",
+            "y": 70,
+            "count": 2
+        },
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T09:00:00Z",
+            "y": 40,
+            "count": 2
+        },
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T10:00:00Z",
+            "y": 80,
+            "count": 2
+        },
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T11:00:00Z",
+            "y": 70,
+            "count": 2
+        },
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T12:00:00Z",
+            "y": 50,
+            "count": 3
+        },
+        {
+            "x": "revenue-demo",
+            "t": "2026-03-11T13:00:00Z",
+            "y": 10,
+            "count": 1
+        }
+    ],
+    "total": {
+        "sum": 320,
+        "count": 12,
+        "unique_count": 12,
+        "total_sessions": 1300,
+        "average": 26.666666666666668,
+        "arpu": 0.24615384615384617,
+        "comparison": {
+            "sum": 2470,
+            "count": 66,
+            "unique_count": 66,
+            "total_sessions": 2994,
+            "average": 37.42424242424242,
+            "arpu": 0.8249832999331997
+        }
     },
-    {
-      "x": "revenue-demo",
-      "t": "2025-10-15T07:00:00Z",
-      "y": 480
-    },
-    {
-      "x": "revenue-demo",
-      "t": "2025-10-16T07:00:00Z",
-      "y": 490
-    }
-  ],
-  "country": [
-    {
-      "name": "US",
-      "value": 1050
-    },
-    {
-      "name": "FR",
-      "value": 1040
-    },
-    {
-      "name": "GB",
-      "value": 720
-    }
-  ],
-  "total": {
-    "sum": 3870,
-    "count": 131,
-    "unique_count": 131,
-    "average": 29.541984732824428
-  }
+    "country": [
+        {
+            "name": "GB",
+            "value": 100
+        },
+        {
+            "name": "FR",
+            "value": 100
+        },
+        {
+            "name": "DE",
+            "value": 60
+        },
+        {
+            "name": "US",
+            "value": 40
+        },
+        {
+            "name": "CN",
+            "value": 20
+        }
+    ],
+    "region": [
+        {
+            "country": "FR",
+            "name": "FR-IDF",
+            "value": 100
+        },
+        {
+            "country": "GB",
+            "name": "GB-ENG",
+            "value": 100
+        },
+        {
+            "country": "DE",
+            "name": "DE-HE",
+            "value": 60
+        },
+        {
+            "country": "US",
+            "name": "US-CA",
+            "value": 40
+        },
+        {
+            "country": "CN",
+            "name": "CN-GD",
+            "value": 20
+        }
+    ],
+    "referrer": [
+        {
+            "name": "chatgpt.com",
+            "value": 100
+        },
+        {
+            "name": "github.com",
+            "value": 100
+        },
+        {
+            "name": "google.com",
+            "value": 60
+        },
+        {
+            "name": "reddit.com",
+            "value": 60
+        }
+    ],
+    "channel": [
+        {
+            "name": "referral",
+            "value": 100
+        },
+        {
+            "name": "organicSearch",
+            "value": 100
+        },
+        {
+            "name": "paidSearch",
+            "value": 60
+        },
+        {
+            "name": "organicSocial",
+            "value": 60
+        }
+    ]
 }
 ```
 
@@ -760,11 +1088,13 @@ Track your campaigns through UTM parameters.
 
 **Parameters**
 
-- `websiteId` : (string) Your website id.
-- `type`: (string) Report type (`attribution`| `breakdown`| `funnel`| `goal`| `journey`| `retention`| `revenue`| `utm`).
-- `filters`: Can accept filter parameters.
-- `startDate` : (number) Date (in ms) of start date.
-- `endDate` : (number) Date (in ms) of end date.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `websiteId` | string | Your website id. |
+| `type` | string | Report type (`utm`). |
+| `filters` | object | Can accept filter parameters. |
+| `startDate` | string | Start date. |
+| `endDate` | string | End date. |
 
 **Request body**
 

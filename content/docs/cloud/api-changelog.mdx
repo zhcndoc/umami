@@ -4,6 +4,36 @@ title: Umami API
 
 This page documents changes made to **api.umami.is**.
 
+## 2026-03-11
+
+**Websites**
+
+- `GET /api/websites/:websiteId/daterange`: **Added** — returns the earliest and latest date range of collected data for a website.
+
+**Events**
+
+- `GET /api/websites/:websiteId/events/stats`: **Added** — returns event statistics with optional period-over-period comparison.
+
+**Links**
+
+- `POST /api/links`: **Added** — creates a link.
+
+**Pixels**
+
+- `POST /api/pixels`: **Added** — creates a pixel.
+
+**Reports**
+
+- `POST /api/reports/goal`: Renamed from `POST /api/reports/goals` (singular path).
+- `POST /api/reports/performance`: **Added** — performance report type supporting LCP, INP, CLS, FCP, and TTFB metrics.
+- `POST /api/reports/revenue`: Added `compare` parameter. Response now includes `arpu` and `comparison` in the `total` object, and new `region`, `referrer`, and `channel` breakdown arrays.
+
+## 2026-03-02
+
+**Events**
+
+- `GET /api/websites/:websiteId/event-data`: **Added**
+
 ## 2026-02-04
 
 **Share**
@@ -58,7 +88,7 @@ This page documents changes made to **api.umami.is**.
 
 - `GET /websites/[id]/pageviews`: Fixed `region` parameter to optional.
 - `GET /websites/[id]/events`: Changed result set to website event details within a given time range.
-- `GET /websites/[id]/events/series`: **New** event metrics endpoint (previously `GET /websites/[id]/events`).
+- `GET /websites/[id]/events/series`: **Added** event metrics endpoint (previously `GET /websites/[id]/events`).
 
 **Event Data**
 

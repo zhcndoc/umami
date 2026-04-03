@@ -2,24 +2,59 @@
 title: Filters
 ---
 
+*Available since v2.6.0 · Enhanced in v3.0.0*
+
 Umami has built-in reporting to help you gain deeper insights into parts of your data. With universal filtering, you can apply conditions across all screens/reports for consistent analysis.
 Segments let you group users based on shared attributes or behaviors. Cohorts take this further by analyzing groups of
 users over time, helping you track retention, performance, and long-term trends.
 
 ## Available filters
 
-- **Path** - URL path of the visited page.
-- **Page Title** - The HTML title of the page as seen in the browser tab.
-- **Referrer** - The source that directed the visitor to your site.
-- **Browser** - The web browser used by the visitor (e.g., Chrome, Safari, Firefox).
-- **OS** - The operating system of the visitor’s device (e.g., Windows, macOS, iOS, Android).
-- **Device** - The type of device used, such as desktop, tablet, or mobile.
-- **Country** - The visitor’s country based on geolocation.
-- **Region** - The visitor’s state, province, or region.
-- **City** - The visitor’s city location.
-- **Hostname** - The domain where the page was accessed.
-- **Tag** - A label or keyword you assign to your data.
-- **Event** - Custom events triggered by users (e.g., button clicks, form submissions, video plays).
+Filters are grouped by category in the filter panel.
+
+| Category | Filter | Description |
+| --- | --- | --- |
+| URL | Path | URL path of the visited page. |
+| URL | Query | The query string portion of the URL (e.g., `?ref=homepage`). |
+| URL | Page Title | The HTML title of the page as seen in the browser tab. |
+| Sources | Referrer | The source that directed the visitor to your site. |
+| Location | Country | The visitor’s country based on geolocation. |
+| Location | Region | The visitor’s state, province, or region. |
+| Location | City | The visitor’s city location. |
+| Environment | Browser | The web browser used by the visitor (e.g., Chrome, Safari, Firefox). |
+| Environment | OS | The operating system of the visitor’s device (e.g., Windows, macOS, iOS, Android). |
+| Environment | Device | The type of device used, such as desktop, tablet, or mobile. |
+| UTM | UTM Source | The traffic source (e.g., `google`, `newsletter`). |
+| UTM | UTM Medium | The marketing medium (e.g., `cpc`, `email`). |
+| UTM | UTM Campaign | The campaign name. |
+| UTM | UTM Content | The specific ad or link content. |
+| UTM | UTM Term | The paid search keyword. |
+| Other | Hostname | The domain where the page was accessed. |
+| Other | Distinct ID | A custom identifier you assign to a visitor. See [Distinct IDs](/docs/distinct-ids). |
+| Other | Tag | A label or keyword you assign to your data. See [Tags](/docs/tags). |
+| Other | Event | Custom events triggered by users (e.g., button clicks, form submissions, video plays). |
+
+## Match mode
+
+When applying multiple filters, use the **Match** toggle to control how conditions are combined:
+
+| Mode | Description |
+| --- | --- |
+| All | The visitor must match every condition (logical AND). |
+| Any | The visitor must match at least one condition (logical OR). |
+
+## Filter operators
+
+Each filter condition supports the following operators:
+
+| Operator | Description |
+| --- | --- |
+| Is | Exact match. |
+| Is not | Excludes an exact match. |
+| Contains | Value includes the specified string. |
+| Does not contain | Value does not include the specified string. |
+| Matches regex | Value matches the provided regular expression. |
+| Does not match regex | Value does not match the provided regular expression. |
 
 ## Universal filtering
 

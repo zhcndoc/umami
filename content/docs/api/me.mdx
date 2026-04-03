@@ -35,7 +35,7 @@ Get information based on your auth token.
 }
 ```
 
----S
+---
 
 ## GET /api/me/teams
 
@@ -82,13 +82,15 @@ Get all your teams.
 
 ---
 
-## /api/me/websites
+## GET /api/me/websites
 
 Get all your websites.
 
 **Parameters**
 
-- `includeTeams`: (boolean) Set to true if you want to include websites where you are the team owner.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `includeTeams` | boolean | Set to true to include websites where you are the team owner. |
 
 **Sample response**
 

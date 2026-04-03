@@ -1,0 +1,111 @@
+---
+title: Embed analytics in your app
+---
+
+Use Umami's share URLs and API to embed analytics dashboards or data directly into your own application, internal tools, or client portals.
+
+## Option 1: Embed a share URL in an iframe
+
+The simplest approach is to create a share URL and embed it in an iframe.
+
+### Create a share URL
+
+1. Navigate to your website in Umami.
+2. Click **Edit** on the website.
+3. Go to the **Share URL** section and create a new share.
+4. Copy the generated URL.
+
+### Embed in your app
+
+```html
+<iframe
+  src="https://your-umami.example.com/share/abc123/My-Website"
+  style="width: 100%; height: 800px; border: none;"
+  loading="lazy"
+></iframe>
+```
+
+For this to work, you may need to configure the `ALLOWED_FRAME_URLS` environment variable on your Umami instance to allow your app's domain:
+
+```dotenv
+ALLOWED_FRAME_URLS="https://your-app.example.com"
+```
+
+## Option 2: Use the API to build custom dashboards
+
+For full control over the presentation, use the Umami API to fetch data and render it in your own UI.
+
+### Authentication
+
+For self-hosted instances, get a token:
+
+```js
+const response = await fetch('https://your-umami.example.com/api/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ username: 'admin', password: 'your-password' }),
+});
+const { token } = await response.json();
+```
+
+For Umami Cloud, use your [API key](/docs/cloud/api-key) with the `x-umami-api-key` header.
+
+### Fetch website stats
+
+```js
+const stats = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/stats?startAt=${startAt}&endAt=${endAt}`,
+  {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+).then(r => r.json());
+
+// stats = { pageviews, visitors, visits, bounces, totaltime }
+```
+
+### Fetch page view time series
+
+```js
+const pageviews = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/pageviews?startAt=${startAt}&endAt=${endAt}&unit=day`,
+  {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+).then(r => r.json());
+```
+
+### Render with any charting library
+
+Use the returned data with Chart.js, Recharts, D3, or any visualization library:
+
+```tsx
+import { BarChart, Bar, XAxis, YAxis } from 'recharts';
+
+function PageviewsChart({ data }) {
+  return (
+    <BarChart data={data.pageviews}>
+      <XAxis dataKey="x" />
+      <YAxis />
+      <Bar dataKey="y" fill="#8884d8" />
+    </BarChart>
+  );
+}
+```
+
+## Option 3: Use the API client
+
+The [Umami API client](/docs/api/api-client) simplifies authentication and provides typed methods:
+
+```js
+import Umami from '@umami/api-client';
+
+const client = new Umami();
+await client.authenticate({ username: 'admin', password: 'your-password' });
+
+const stats = await client.getWebsiteStats(websiteId, {
+  startAt: Date.now() - 86400000,
+  endAt: Date.now(),
+});
+```
+
+See the [API reference](/docs/api) for all available endpoints.

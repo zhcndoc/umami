@@ -8,6 +8,7 @@ Operations around Website statistics.
 
 ```text
 GET /api/websites/:websiteId/active
+GET /api/websites/:websiteId/daterange
 GET /api/websites/:websiteId/events/series
 GET /api/websites/:websiteId/metrics
 GET /api/websites/:websiteId/metrics/expanded
@@ -21,23 +22,30 @@ GET /api/websites/:websiteId/stats
 
 All Endpoints marked with `filters` can now be filtered with the parameters below.
 
-**Parameters**
-
-- `path`: (string | optional) Name of URL.
-- `referrer`: (string | optional) Name of referrer.
-- `title`: (string | optional) Name of page title.
-- `query`: (string | optional) Name of query parameter.
-- `browser`: (string | optional) Name of browser.
-- `os`: (string | optional) Name of operating system.
-- `device`: (string | optional) Name of device (ex. Mobile)
-- `country`: (string | optional) Name of country.
-- `region`: (string | optional) Name of region/state/province.
-- `city`: (string | optional) Name of city.
-- `hostname`: (string | optional) Name of hostname.
-- `tag`: (string | optional) Name of tag.
-- `distinctId`: (string | optional) Name of distinct ID.
-- `segment`: (uuid | optional) UUID of segment.
-- `cohort`: (uuid | optional) UUID of cohort.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `path` | string | Name of URL. |
+| `referrer` | string | Name of referrer. |
+| `title` | string | Name of page title. |
+| `query` | string | Name of query parameter. |
+| `browser` | string | Name of browser. |
+| `os` | string | Name of operating system. |
+| `device` | string | Name of device (ex. Mobile). |
+| `country` | string | Name of country. |
+| `region` | string | Name of region/state/province. |
+| `city` | string | Name of city. |
+| `language` | string | Name of browser language. |
+| `hostname` | string | Name of hostname. |
+| `tag` | string | Name of tag. |
+| `event` | string | Name of event. |
+| `distinctId` | string | Name of distinct ID. |
+| `utmSource` | string | UTM source. |
+| `utmMedium` | string | UTM medium. |
+| `utmCampaign` | string | UTM campaign name. |
+| `utmContent` | string | UTM content. |
+| `utmTerm` | string | UTM term. |
+| `segment` | uuid | UUID of segment. |
+| `cohort` | uuid | UUID of cohort. |
 
 ---
 
@@ -45,11 +53,13 @@ All Endpoints marked with `filters` can now be filtered with the parameters belo
 
 The unit parameter buckets the data returned. The unit is automatically converted to the next largest applicable time unit if the maximum is exceeded.
 
-- `minute`: Up to 60 minutes.
-- `hour`: Up to 30 days.
-- `day`: Up to 6 months.
-- `month`: No limit.
-- `year`: No limit.
+| Unit | Maximum |
+| --- | --- |
+| `minute` | Up to 60 minutes. |
+| `hour` | Up to 30 days. |
+| `day` | Up to 6 months. |
+| `month` | No limit. |
+| `year` | No limit. |
 
 ---
 
@@ -69,17 +79,34 @@ Gets the number of active users on a website.
 
 ---
 
+## GET /api/websites/:websiteId/daterange
+
+Gets the date range of available data for a website.
+
+**Sample response**
+
+```json
+{
+    "startDate": "2025-12-06T00:00:00Z",
+    "endDate": "2026-03-11T21:00:00Z"
+}
+```
+
+---
+
 ## GET /api/websites/:websiteId/events/series
 
 Gets events within a given time range.
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `unit`: Time unit (`year` | `month` | `hour` | `day`).
-- `timezone`: Timezone (ex. America/Los_Angeles).
-- `filters`: Can accept filter parameters.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of starting date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
+| `unit` | string | Time unit (`year` \| `month` \| `hour` \| `day`). |
+| `timezone` | string | Timezone (ex. America/Los_Angeles). |
+| `filters` | object | Can accept filter parameters. |
 
 **Sample response**
 
@@ -113,9 +140,11 @@ Gets events within a given time range.
 ]
 ```
 
-- `x`: Event name.
-- `t`: Timestamp.
-- `y`: Number of events.
+| Field | Description |
+| --- | --- |
+| `x` | Event name. |
+| `t` | Timestamp. |
+| `y` | Number of events. |
 
 ---
 
@@ -125,12 +154,14 @@ Gets metrics for a given time range.
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `type`: Metrics type.
-- `filters`: Can accept filter parameters.
-- `limit`: (optional, default 500) Number of rows returned.
-- `offset`: (optional, default 0) Number of ows to skip.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of starting date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
+| `type` | string | Metrics type. |
+| `filters` | object | Can accept filter parameters. |
+| `limit` | number | (optional, default 500) Number of rows returned. |
+| `offset` | number | (optional, default 0) Number of rows to skip. |
 
 **Available Types**
 
@@ -171,8 +202,10 @@ Gets metrics for a given time range.
 ]
 ```
 
-- `x`: Unique value, depending on metric type.
-- `y`: Number of visitors.
+| Field | Description |
+| --- | --- |
+| `x` | Unique value, depending on metric type. |
+| `y` | Number of visitors. |
 
 ## GET /api/websites/:websiteId/metrics/expanded
 
@@ -180,12 +213,14 @@ Gets expanded metrics for a given time range.
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `type`: Metrics type.
-- `filters`: Can accept filter parameters.
-- `limit`: (optional, default 500) Number of rows returned.
-- `offset`: (optional, default 0) Number of ows to skip.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of starting date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
+| `type` | string | Metrics type. |
+| `filters` | object | Can accept filter parameters. |
+| `limit` | number | (optional, default 500) Number of rows returned. |
+| `offset` | number | (optional, default 0) Number of rows to skip. |
 
 **Available Types**
 
@@ -238,12 +273,14 @@ Gets expanded metrics for a given time range.
 ]
 ```
 
-- `name`: Unique value, depending on metric type.
-- `pageviews`: Pages hits
-- `visitors`: Number of unique visitors
-- `visits`: Number of unique visits
-- `bounces`: Number of visitors who only visit a single page
-- `totaltime`: Time spent on the website
+| Field | Description |
+| --- | --- |
+| `name` | Unique value, depending on metric type. |
+| `pageviews` | Page hits. |
+| `visitors` | Number of unique visitors. |
+| `visits` | Number of unique visits. |
+| `bounces` | Number of visitors who only visit a single page. |
+| `totaltime` | Time spent on the website. |
 
 ---
 
@@ -253,12 +290,14 @@ Gets pageviews within a given time range.
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `unit`: Time unit (year | month | hour | day).
-- `timezone`: Timezone (ex. America/Los_Angeles).
-- `compare`: (string | optional) Comparison value `prev`| `yoy`.
-- `filters`: Can accept filter parameters.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of starting date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
+| `unit` | string | Time unit (`year` \| `month` \| `hour` \| `day`). |
+| `timezone` | string | Timezone (ex. America/Los_Angeles). |
+| `compare` | string | (optional) Comparison period (`prev` \| `yoy`). |
+| `filters` | object | Can accept filter parameters. |
 
 **Sample response**
 
@@ -306,9 +345,11 @@ Gets summarized website statistics.
 
 **Parameters**
 
-- `startAt`: (number) Timestamp (in ms) of starting date.
-- `endAt`: (number) Timestamp (in ms) of end date.
-- `filters`: Can accept filter parameters.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Timestamp (in ms) of starting date. |
+| `endAt` | number | Timestamp (in ms) of end date. |
+| `filters` | object | Can accept filter parameters. |
 
 **Sample response**
 
@@ -329,8 +370,10 @@ Gets summarized website statistics.
 }
 ```
 
-- `pageviews`: Pages hits
-- `visitors`: Number of unique visitors
-- `visits`: Number of unique visits
-- `bounces`: Number of visitors who only visit a single page
-- `totaltime`: Time spent on the website
+| Field | Description |
+| --- | --- |
+| `pageviews` | Page hits. |
+| `visitors` | Number of unique visitors. |
+| `visits` | Number of unique visits. |
+| `bounces` | Number of visitors who only visit a single page. |
+| `totaltime` | Time spent on the website. |

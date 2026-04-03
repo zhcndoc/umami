@@ -4,9 +4,17 @@ title: IP Filters
 
 Umami allows blocking specific IP addresses or ranges, so you can filter incoming traffic and prevent unwanted or malicious connections. IP Filters is available starting at the **Pro** plan.
 
-## Add a IP filter
+This is useful for excluding traffic from your office, development environments, or known bot networks.
 
-Log into Umami and click on the side nav dropdown then click **Settings**.
+## Supported formats
+
+- **Single IP address**: `192.168.1.1`
+- **CIDR range**: `192.168.1.0/24` (matches all addresses from 192.168.1.0 to 192.168.1.255)
+- **IPv6 addresses**: `2001:db8::1`
+
+## Add an IP filter
+
+Log into Umami and click on the side nav profile button then click **Settings**.
 
 ![image](/images/cloud/navbar-settings.png)
 
@@ -14,7 +22,7 @@ Navigate to **IP filters** and click on the **Add IP filter** button.
 
 ![image](/images/cloud/ip-filter-add.png)
 
-Fill out the form details and click the **Save** button.
+Fill out the form details and click the **Save** button. Traffic from the blocked IP addresses will be excluded from all future data collection.
 
 ## Edit or Delete an IP filter
 

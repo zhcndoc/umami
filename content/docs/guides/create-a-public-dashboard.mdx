@@ -1,0 +1,79 @@
+---
+title: Create a public dashboard
+---
+
+Share your analytics publicly using Umami's share URLs and boards. This is useful for open-source projects, transparency reports, or sharing metrics with stakeholders who don't have Umami accounts.
+
+## Option 1: Share a website's analytics
+
+The quickest way to share analytics publicly is with a share URL.
+
+### Step 1: Create a share URL
+
+1. Navigate to your website in Umami.
+2. Click **Edit** on the website.
+3. Go to the **Share URL** section.
+4. Click **Add Share URL** and configure the views you want to share (Traffic, Behavior, Growth).
+5. Click **Save** and copy the generated URL.
+
+The share URL provides a read-only view of your website's analytics that anyone with the link can access without logging in.
+
+### Step 2: Distribute the link
+
+- Add it to your project's README.
+- Embed it on your website.
+- Share it in a Slack channel or email.
+
+Example: `https://your-umami.example.com/share/abc123/My-Website`
+
+## Option 2: Share a custom board
+
+*Requires v3.1.0*
+
+Boards let you build a custom dashboard with only the metrics and components that matter, then share it publicly.
+
+### Step 1: Create a board
+
+1. Go to **Boards** and click **Add board**.
+2. Choose a board type:
+   - **Website**: Scoped to a single website with all website-specific components.
+   - **Mixed**: Combine components from multiple websites, links, and pixels.
+3. Give it a descriptive name (e.g., "Public Stats" or "Q1 Marketing Dashboard").
+
+### Step 2: Design the board
+
+1. Click **Design** to enter design mode.
+2. Click **Add Component** and choose what to display (e.g., Website Metrics Bar, World Map, Events Chart).
+3. Drag and resize components to create the layout you want.
+4. Click **Save** when done.
+
+### Step 3: Share the board
+
+1. From the **Boards** list, click the **Share** button on your board.
+2. Copy the generated share link.
+3. Anyone with the link can view the board without logging in.
+
+## Embedding in your website
+
+Embed the share URL or board in an iframe:
+
+```html
+<iframe
+  src="https://your-umami.example.com/share/abc123/My-Website"
+  style="width: 100%; height: 800px; border: none;"
+  loading="lazy"
+  title="Analytics Dashboard"
+></iframe>
+```
+
+Remember to set the `ALLOWED_FRAME_URLS` environment variable to allow your domain:
+
+```dotenv
+ALLOWED_FRAME_URLS="https://your-website.example.com"
+```
+
+## Tips
+
+- Share URLs are permanent unless you delete them. Be mindful about what data you expose.
+- For open-source projects, linking to your public dashboard builds trust and shows project health.
+- Use boards to create focused dashboards. For example, create one board for "Marketing Metrics" (UTM sources, referrers, campaigns) and another for "Product Metrics" (feature usage events, user flows).

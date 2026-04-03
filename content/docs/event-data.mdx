@@ -2,11 +2,36 @@
 title: Event data
 ---
 
-Use custom data properties to help you further analyze your data.
-Umami allows you to attach dynamic data to your events using the two methods below.
+*Available since v2.0.0*
 
-- **[Data attributes](/docs/track-events#using-data-attributes)**
-- **[Tracker functions](/docs/tracker-functions#event-data)**
+Event data lets you attach custom properties to your tracked events for deeper analysis.
+For example, you can track which product was purchased, what button variant was clicked, or any other
+contextual information relevant to your events.
+
+Umami allows you to attach dynamic data to your events using two methods:
+
+- **[Data attributes](/docs/track-events#using-data-attributes)** - Add `data-umami-event-*` attributes directly to HTML elements. Values are always stored as strings.
+- **[Tracker functions](/docs/tracker-functions#event-data)** - Use `umami.track()` with a data object. Supports strings, numbers, and booleans.
+
+## Examples
+
+Track a button click with product details using data attributes:
+
+```html
+<button
+  data-umami-event="add-to-cart"
+  data-umami-event-product="t-shirt"
+  data-umami-event-price="29.99"
+>
+  Add to Cart
+</button>
+```
+
+Or using the tracker function:
+
+```js
+umami.track('add-to-cart', { product: 't-shirt', price: 29.99 });
+```
 
 ## Accessing event data
 
@@ -15,3 +40,5 @@ Navigate to **Websites** and click on the **View** button.
 You can access event data by clicking on the **Event data** button from the top nav.
 
 ![image](/images/docs/website-navbar.png)
+
+Event data is displayed as a breakdown of each property name and its values, along with the total count for each value. Use this to understand how your custom data is distributed across events.

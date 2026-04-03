@@ -9,7 +9,6 @@ These endpoints are only available for self-hosted instances for **admin** users
 **Endpoints**
 
 ```text
-
 GET /api/admin/users
 GET /api/admin/websites
 GET /api/admin/teams
@@ -23,11 +22,13 @@ Returns all users.
 
 **Parameters**
 
-- `search`: (string | optional) Search text.
-- `page`: (number | optional, default 1) Determines page.
-- `pageSize`: (number | optional, default 20) Determines how many results to return.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `search` | string | (optional) Search text. |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional, default 20) Determines how many results to return. |
 
-  **Sample response**
+**Sample response**
 
 ```json
 {
@@ -74,11 +75,13 @@ Returns all websites.
 
 **Parameters**
 
-- `search`: (string | optional) Search text.
-- `page`: (number | optional, default 1) Determines page.
-- `pageSize`: (number | optional, default 20) Determines how many results to return.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `search` | string | (optional) Search text. |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional, default 20) Determines how many results to return. |
 
-  **Sample response**
+**Sample response**
 
 ```json
 {
@@ -116,11 +119,13 @@ Returns all teams.
 
 **Parameters**
 
-- `search`: (string | optional) Search text.
-- `page`: (optional number, default 1) Determines page.
-- `pageSize`: (number | optional, default 20) Determines how many results to return.
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `search` | string | (optional) Search text. |
+| `page` | number | (optional, default 1) Determines page. |
+| `pageSize` | number | (optional, default 20) Determines how many results to return. |
 
-  **Sample response**
+**Sample response**
 
 ```json
 {
