@@ -105,7 +105,20 @@ Event Data can work with any JSON data. There are a few rules in place to mainta
 | Arrays | Converted to a string, max length of 500. |
 | Objects | Max of 50 properties. Arrays are considered 1 property. |
 
-## Sessions `v2.13.0`
+## Overriding Event Timestamps
+
+You can override the event timestamp by adding a UNIX timestamp in seconds to the payload:
+
+```js
+umami.track(props => ({
+  ...props,
+  name: 'signup-button',
+  timestamp: 1771523787, // new Date().getTime() / 1000
+}));
+```
+
+## Sessions
+`v2.13.0`
 
 Pass in your own ID to identify a user.
 
