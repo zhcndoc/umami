@@ -10,7 +10,7 @@ You can configure Umami with the use of environment variables. They go into the 
 
 Runtime variables are recognized when Umami is running. You can set your environment variables prior to starting the application.
 
-### APP_SECRET
+### APP_SECRET `v1.0.0`
 
 A random string used to secure authentication tokens. Each installation should have a unique value. You can generate one with:
 
@@ -23,7 +23,7 @@ APP_SECRET = "random string"
 ```
 
 
-### CLIENT_IP_HEADER
+### CLIENT_IP_HEADER `v1.24.0`
 
 HTTP header to check for the client's IP address. This is useful when you're
 behind a proxy that uses non-standard headers.
@@ -32,7 +32,7 @@ behind a proxy that uses non-standard headers.
 CLIENT_IP_HEADER = "header name"
 ```
 
-### COLLECT_API_ENDPOINT
+### COLLECT_API_ENDPOINT `v1.34.0`
 
 Allows you to send metrics to a location different than the default `/api/send`. This is to help you avoid some [ad blockers](/docs/bypass-ad-blockers).
 
@@ -40,7 +40,7 @@ Allows you to send metrics to a location different than the default `/api/send`.
 COLLECT_API_ENDPOINT = "/my-custom-route"
 ```
 
-### CORS_MAX_AGE
+### CORS_MAX_AGE `v2.0.0`
 
 How many seconds a CORS preflight should last. Default is 24 hours.
 
@@ -48,7 +48,7 @@ How many seconds a CORS preflight should last. Default is 24 hours.
 CORS_MAX_AGE = 86400
 ```
 
-### DATABASE_URL
+### DATABASE_URL `v1.0.0`
 
 ```
 DATABASE_URL = "connection string"
@@ -56,7 +56,7 @@ DATABASE_URL = "connection string"
 
 Connection string for your database. This is the only required variable.
 
-### DEBUG
+### DEBUG `v2.0.0`
 
 Console logging for specific areas of the application. Values include `umami:auth`, `umami:clickhouse`, `umami:kafka`, `umami:middleware`, and `umami:prisma`.
 
@@ -64,7 +64,7 @@ Console logging for specific areas of the application. Values include `umami:aut
 DEBUG = "umami:*"
 ```
 
-### DISABLE_BOT_CHECK
+### DISABLE_BOT_CHECK `v2.0.0`
 
 By default bots are excluded from statistics. This disables checking for bots.
 
@@ -72,7 +72,7 @@ By default bots are excluded from statistics. This disables checking for bots.
 DISABLE_BOT_CHECK = 1
 ```
 
-### DISABLE_LOGIN
+### DISABLE_LOGIN `v1.26.0`
 
 Disables the login page for the application.
 
@@ -80,7 +80,7 @@ Disables the login page for the application.
 DISABLE_LOGIN = 1
 ```
 
-### DISABLE_UPDATES
+### DISABLE_UPDATES `v1.33.0`
 
 Disables the check for new versions of Umami.
 
@@ -88,7 +88,7 @@ Disables the check for new versions of Umami.
 DISABLE_UPDATES = 1
 ```
 
-### DISABLE_TELEMETRY
+### DISABLE_TELEMETRY `v2.0.0`
 
 Umami collects completely anonymous telemetry data in order help improve the application. You can choose to disable this if you don't want to participate.
 
@@ -96,7 +96,7 @@ Umami collects completely anonymous telemetry data in order help improve the app
 DISABLE_TELEMETRY = 1
 ```
 
-### ENABLE_TEST_CONSOLE
+### ENABLE_TEST_CONSOLE `v2.0.0`
 
 Enables the internal test page, `{host}/console`. Admin access is required. Users can manually fire pageviews and events to their websites.
 
@@ -104,7 +104,7 @@ Enables the internal test page, `{host}/console`. Admin access is required. User
 ENABLE_TEST_CONSOLE = 1
 ```
 
-### FAVICON_URL
+### FAVICON_URL `v2.18.0`
 
 The URL of the service for displaying website icons.
 
@@ -121,7 +121,7 @@ Some alternatives you can use:
 - https://www.google.com/s2/favicons?domain={{domain}}
 - https://logo.clearbit.com/{{domain}}
 
-### GEO_DATABASE_URL
+### GEO_DATABASE_URL `v2.0.0`
 
 The URL for downloading a MaxMind-compatible GeoIP database in MMDB format. This is used for IP-based location detection when location headers from a CDN are not available.
 
@@ -129,7 +129,7 @@ The URL for downloading a MaxMind-compatible GeoIP database in MMDB format. This
 GEO_DATABASE_URL = "https://example.com/GeoLite2-City.mmdb"
 ```
 
-### HOSTNAME / PORT
+### HOSTNAME / PORT `v1.0.0`
 
 If you are running on an environment which requires you to bind to a specific hostname or port, such as Heroku, you can add
 these variables and start your app with `npm run start-env` instead of `npm start`.
@@ -139,7 +139,7 @@ HOSTNAME = "my.hostname.com"
 PORT = 3000
 ```
 
-### IGNORE_IP
+### IGNORE_IP `v1.0.0`
 
 You can provide a comma-delimited list of IP addresses and CIDR ranges to exclude from data collection.
 
@@ -147,7 +147,7 @@ You can provide a comma-delimited list of IP addresses and CIDR ranges to exclud
 IGNORE_IP = "192.168.0.1, 10.0.0.0/24, 2001:db8::/32"
 ```
 
-### LOG_QUERY
+### LOG_QUERY `v2.0.0`
 
 If you are running in development mode, this will log database queries to the console for debugging.
 
@@ -155,7 +155,7 @@ If you are running in development mode, this will log database queries to the co
 LOG_QUERY = 1
 ```
 
-### PRIVATE_MODE
+### PRIVATE_MODE `v2.11.0`
 
 Disables all external network calls. Note, this will also disable all website icons since they come from duckduckgo.com.
 
@@ -163,7 +163,7 @@ Disables all external network calls. Note, this will also disable all website ic
 PRIVATE_MODE = 1
 ```
 
-### REMOVE_TRAILING_SLASH
+### REMOVE_TRAILING_SLASH `v1.26.0`
 
 Removes the trailing slash from all incoming urls.
 
@@ -171,7 +171,7 @@ Removes the trailing slash from all incoming urls.
 REMOVE_TRAILING_SLASH = 1
 ```
 
-### TRACKER_SCRIPT_NAME
+### TRACKER_SCRIPT_NAME `v1.26.0`
 
 Allows you to assign a custom name to the tracker script different from the default `script.js`. This is to help you avoid some [ad blockers](/docs/bypass-ad-blockers).
 
@@ -181,7 +181,7 @@ The `.js` extension is not required. The value can also be any path you choose, 
 TRACKER_SCRIPT_NAME = "custom-script-name.js"
 ```
 
-### SKIP_LOCATION_HEADERS
+### SKIP_LOCATION_HEADERS `v2.15.0`
 
 Skips using known location headers for country/region/city detection and forces using the local geo database.
 
@@ -197,7 +197,7 @@ SKIP_LOCATION_HEADERS = 1
 
 Build time variables are only recognized during the build process. This also includes building custom Docker images. You need to set your environment variables prior to building the application.
 
-### ALLOWED_FRAME_URLS
+### ALLOWED_FRAME_URLS `v2.3.0`
 
 A space-delimited list of urls allowed to host the application in an iframe.
 
@@ -205,7 +205,7 @@ A space-delimited list of urls allowed to host the application in an iframe.
 ALLOWED_FRAME_URLS = "URLs"
 ```
 
-### BASE_PATH
+### BASE_PATH `v1.9.0`
 
 If you want to host Umami under a subdirectory. You may need to update your reverse proxy settings to correctly handle the BASE_PATH prefix.
 
@@ -213,7 +213,7 @@ If you want to host Umami under a subdirectory. You may need to update your reve
 BASE_PATH = "/custom"
 ```
 
-### DATABASE_TYPE
+### DATABASE_TYPE `v2.0.0`
 
 ```
 DATABASE_TYPE = "postgresql"
@@ -221,7 +221,7 @@ DATABASE_TYPE = "postgresql"
 
 The type of DB to be used. This is only required for the Docker build.
 
-### FORCE_SSL
+### FORCE_SSL `v1.0.0`
 
 This will send a HTTP `Strict-Transport-Security` response header with all requests. See [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security).
 
@@ -229,7 +229,7 @@ This will send a HTTP `Strict-Transport-Security` response header with all reque
 FORCE_SSL = 1
 ```
 
-### SKIP_DB_CHECK
+### SKIP_DB_CHECK `v2.0.0`
 
 Skips the `check-db` step in the build process. Used for Docker builds.
 
@@ -237,7 +237,7 @@ Skips the `check-db` step in the build process. Used for Docker builds.
 SKIP_DB_CHECK = 1
 ```
 
-### SKIP_DB_MIGRATION
+### SKIP_DB_MIGRATION `v2.0.0`
 
 Skips the Prisma migration step in the build process. Setting `SKIP_DB_CHECK` also skips this step.
 
