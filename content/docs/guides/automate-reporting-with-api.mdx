@@ -1,0 +1,135 @@
+---
+title: Automate reporting with the API
+---
+
+Pull stats from Umami programmatically to build custom reports, Slack notifications, email digests, or automated dashboards.
+
+## Authentication
+
+### Self-hosted
+
+Authenticate with username and password to get a bearer token:
+
+```js
+const { token } = await fetch('https://your-umami.example.com/api/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ username: 'admin', password: 'your-password' }),
+}).then(r => r.json());
+```
+
+Use the token in subsequent requests:
+
+```js
+const headers = { Authorization: `Bearer ${token}` };
+```
+
+### Umami Cloud
+
+Use your [API key](/docs/cloud/api-key) instead:
+
+```js
+const headers = { 'x-umami-api-key': 'your-api-key' };
+```
+
+## Example: Daily traffic summary
+
+Fetch yesterday's stats and format them for a report:
+
+```js
+const websiteId = 'your-website-id';
+const now = new Date();
+const yesterday = new Date(now);
+yesterday.setDate(now.getDate() - 1);
+yesterday.setHours(0, 0, 0, 0);
+const today = new Date(yesterday);
+today.setDate(today.getDate() + 1);
+
+const stats = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/stats` +
+    `?startAt=${yesterday.getTime()}&endAt=${today.getTime()}`,
+  { headers }
+).then(r => r.json());
+
+const report = `
+📊 Daily Report — ${yesterday.toDateString()}
+Visitors: ${stats.visitors}
+Page views: ${stats.pageviews}
+Visits: ${stats.visits}
+Bounce rate: ${((stats.bounces / stats.visits) * 100).toFixed(1)}%
+`;
+```
+
+## Example: Send to Slack
+
+```js
+await fetch('https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ text: report }),
+});
+```
+
+## Example: Top pages report
+
+```js
+const metrics = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/metrics` +
+    `?startAt=${yesterday.getTime()}&endAt=${today.getTime()}&type=path`,
+  { headers }
+).then(r => r.json());
+
+const topPages = metrics
+  .sort((a, b) => b.y - a.y)
+  .slice(0, 10)
+  .map((p, i) => `${i + 1}. ${p.x} — ${p.y} views`)
+  .join('\n');
+```
+
+## Example: Weekly comparison
+
+Compare this week vs. last week to detect trends:
+
+```js
+const thisWeek = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/stats` +
+    `?startAt=${thisWeekStart}&endAt=${thisWeekEnd}`,
+  { headers }
+).then(r => r.json());
+
+const lastWeek = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/stats` +
+    `?startAt=${lastWeekStart}&endAt=${lastWeekEnd}`,
+  { headers }
+).then(r => r.json());
+
+const change = ((thisWeek.visitors - lastWeek.visitors) / lastWeek.visitors * 100).toFixed(1);
+console.log(`Visitors: ${thisWeek.visitors} (${change > 0 ? '+' : ''}${change}% vs last week)`);
+```
+
+## Running on a schedule
+
+Use a cron job, GitHub Actions, or a serverless function to run your reporting script on a schedule:
+
+**Cron (Linux/Mac):**
+
+```bash
+# Run daily at 8am
+0 8 * * * node /path/to/daily-report.js
+```
+
+**GitHub Actions:**
+
+```yaml
+on:
+  schedule:
+    - cron: '0 8 * * *'
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node scripts/daily-report.js
+```
+
+See the full [API reference](/docs/api) for all available endpoints.
