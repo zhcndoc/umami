@@ -85,7 +85,7 @@ pm2 save
 
 ## Installing with Docker
 
-Umami ships with a docker compose that contains the application and a PostgreSQL database.
+Umami ships with a docker compose file that contains the application and a PostgreSQL database.
 
 To build the Docker container and start up with a Postgres database, run:
 
@@ -93,8 +93,15 @@ To build the Docker container and start up with a Postgres database, run:
 docker-compose up -d
 ```
 
+This will create a PostgreSQL database and start the Umami application on `http://localhost:3000`.
+The default login credentials are username **admin** and password **umami**.
+
+> **Important**: Change the default password immediately after your first login.
+
 Alternatively, if you want to use prebuilt images, you can pull the Umami Docker image with PostgreSQL support:
 
 ```shell
 docker pull docker.umami.is/umami-software/umami:postgresql-latest
 ```
+
+When using a prebuilt image, you need to provide your own database and set the `DATABASE_URL` environment variable. See [Environment variables](/docs/environment-variables) for configuration options.

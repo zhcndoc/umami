@@ -1,0 +1,55 @@
+---
+title: Track file downloads
+---
+
+Track when users download files like PDFs, ZIPs, images, or other assets from your website using Umami custom events.
+
+## Using data attributes
+
+Add `data-umami-event` attributes to your download links:
+
+```html
+<a
+  href="/files/report.pdf"
+  data-umami-event="file-download"
+  data-umami-event-file="report.pdf"
+>
+  Download Report (PDF)
+</a>
+```
+
+Each click will record an event named `file-download` with a `file` property containing the filename.
+
+## Tracking all downloads automatically
+
+Use this script to automatically track clicks on any link pointing to common file types:
+
+```html
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const fileExtensions = /\.(pdf|zip|tar|gz|rar|doc|docx|xls|xlsx|ppt|pptx|csv|mp3|mp4|dmg|exe|iso)$/i;
+
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if (fileExtensions.test(a.href) && !a.getAttribute('data-umami-event')) {
+        var filename = a.href.split('/').pop().split('?')[0];
+        a.setAttribute('data-umami-event', 'file-download');
+        a.setAttribute('data-umami-event-file', filename);
+      }
+    });
+  });
+</script>
+```
+
+This finds all links to downloadable files and adds tracking attributes automatically, without modifying each link by hand.
+
+## Viewing download data
+
+1. Navigate to your website in Umami.
+2. Click on **Events** to see the `file-download` event and its counts.
+3. Click on **Event data** to view a breakdown by the `file` property, showing which files are downloaded most.
+
+## Tips
+
+- Use consistent event names (e.g., always `file-download`) so all downloads are grouped together.
+- Use the `file` property to distinguish between different files rather than creating a separate event name for each file.
+- If downloads are served from a different domain (like a CDN), the tracking still works since the event fires on the click, not the destination.

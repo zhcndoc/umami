@@ -1,0 +1,125 @@
+---
+title: Track a single-page application
+---
+
+Single-page applications (SPAs) built with React, Next.js, Vue, Nuxt, Angular, and similar frameworks work with Umami out of the box. The tracker script automatically detects client-side navigation and records page views without any extra configuration.
+
+## Basic setup
+
+Add the Umami tracker script to your application's `<head>` just like any other website. The script handles both traditional page loads and client-side route changes.
+
+### Next.js (App Router)
+
+Add the script to your root layout:
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <head>
+        <script
+          defer
+          src="https://your-umami.example.com/script.js"
+          data-website-id="your-website-id"
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+Alternatively, use the Next.js `Script` component:
+
+```tsx
+import Script from 'next/script';
+
+<Script
+  src="https://your-umami.example.com/script.js"
+  data-website-id="your-website-id"
+  strategy="afterInteractive"
+/>
+```
+
+### React (Vite / Create React App)
+
+Add the script tag to your `index.html`:
+
+```html
+<!-- index.html -->
+<head>
+  <script
+    defer
+    src="https://your-umami.example.com/script.js"
+    data-website-id="your-website-id"
+  ></script>
+</head>
+```
+
+### Vue / Nuxt
+
+For Nuxt, add it to `nuxt.config.ts`:
+
+```ts
+export default defineNuxtConfig({
+  app: {
+    head: {
+      script: [
+        {
+          src: 'https://your-umami.example.com/script.js',
+          defer: true,
+          'data-website-id': 'your-website-id',
+        },
+      ],
+    },
+  },
+});
+```
+
+For plain Vue with Vite, add the script to `index.html` just like React.
+
+### Angular
+
+Add the script to `src/index.html`:
+
+```html
+<head>
+  <script
+    defer
+    src="https://your-umami.example.com/script.js"
+    data-website-id="your-website-id"
+  ></script>
+</head>
+```
+
+## How it works
+
+Umami's tracker script monitors the browser's History API (`pushState` and `replaceState`) and the `popstate` event. When your SPA navigates to a new route, Umami automatically sends a page view with the updated URL and title.
+
+This means you do **not** need to manually call `umami.track()` for page views in most cases.
+
+## Tracking custom events in components
+
+To track button clicks or other interactions within your components, use the [data attributes](/docs/track-events) approach or call `umami.track()` directly:
+
+```tsx
+// React example
+<button data-umami-event="signup-click" data-umami-event-plan="pro">
+  Sign Up
+</button>
+```
+
+Or with JavaScript:
+
+```tsx
+function handleCheckout() {
+  umami.track('checkout', { plan: 'pro', price: 29 });
+}
+```
+
+## Troubleshooting
+
+- **Pages not tracked after navigation**: Make sure the tracker script is loaded once in the root layout, not re-added on every route change.
+- **Duplicate page views**: Avoid calling `umami.track()` without arguments in `useEffect` or `onMounted` hooks, since the tracker already records navigation automatically.
+- **Hash-based routing**: If your app uses hash routing (`/#/page`), Umami tracks these by default. You can disable hash collection with `data-exclude-hash="true"` if needed.

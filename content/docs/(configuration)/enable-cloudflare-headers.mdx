@@ -43,4 +43,10 @@ location / {
 
 Alternatively, when Cloudflare sends only the country but adding the visitor location
 headers is not possible, you can set the `SKIP_LOCATION_HEADERS` runtime variable to `1`.
-This disables header detection and forces the usage of the internal geo database.
+This disables header detection and forces the usage of the internal geo database for region and city resolution.
+
+```dotenv
+SKIP_LOCATION_HEADERS=1
+```
+
+The local geo database is slower than using CDN headers but provides full location data without additional proxy configuration.
