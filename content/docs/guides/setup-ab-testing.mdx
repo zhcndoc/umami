@@ -1,0 +1,85 @@
+---
+title: 使用标签设置 A/B 测试
+---
+
+使用 Umami 的 `data-tag` 属性，通过标记不同的页面变体并比较它们的指标来运行简单的 A/B 测试。
+
+## 工作原理
+
+标签允许你用变体名称标记跟踪脚本。在该标签下收集的所有页面视图和事件会被分组在一起，使得使用 Umami 的过滤和细分工具轻松比较变体之间的性能变得容易。
+
+## 步骤 1：创建你的变体
+
+提供不同版本的页面，并为每个变体包含带有不同 `data-tag` 的 Umami 脚本：
+
+**变体 A：**
+
+```html
+<script
+  defer
+  src="https://your-umami.example.com/script.js"
+  data-website-id="your-website-id"
+  data-tag="homepage-v1"
+></script>
+```
+
+**变体 B：**
+
+```html
+<script
+  defer
+  src="https://your-umami.example.com/script.js"
+  data-website-id="your-website-id"
+  data-tag="homepage-v2"
+></script>
+```
+
+## 步骤 2：将用户分配至变体
+
+如何在变体之间分割流量取决于你的应用程序。常见方法：
+
+- **服务器端路由**：使用你的后端或边缘中间件提供不同的 HTML 模板。
+- **功能标志**：使用功能标志服务控制用户看到哪个变体，并相应地设置 `data-tag`。
+- **JavaScript**：基于 cookie 或随机分配动态设置标签。
+
+### 动态标签示例
+
+```html
+<script>
+  var variant = document.cookie.includes('ab=v2') ? 'homepage-v2' : 'homepage-v1';
+  var el = document.createElement('script');
+  el.setAttribute('src', 'https://your-umami.example.com/script.js');
+  el.setAttribute('data-website-id', 'your-website-id');
+  el.setAttribute('data-tag', variant);
+  document.head.appendChild(el);
+</script>
+```
+
+## 步骤 3：比较结果
+
+一旦两个变体都收集了数据，使用 Umami 的过滤功能进行比较。
+
+### 按标签过滤
+
+1. 在 Umami 中打开你的网站。
+2. 点击 **过滤** 按钮。
+3. 选择 **标签** 并输入变体名称（例如 `homepage-v1`）。
+4. 注意关键指标：访客数、跳出率、访问时长以及任何转化事件。
+5. 清除过滤条件并对 `homepage-v2` 重复操作。
+
+### 使用细分
+
+1. 打开 **细分** 洞察。
+2. 选择 **标签** 作为字段。
+3. 运行洞察以并排查看每个变体的访客数、视图数、跳出率和访问时长。
+
+### 衡量转化差异
+
+1. 为你的转化事件创建一个 [目标](/docs/goals)（例如 `signup`）。
+2. 按每个标签过滤以比较变体之间的转化率。
+
+## 提示
+
+- 运行测试足够长的时间以获得有意义的样本量。每个变体几百名访客是合理的最低限度。
+- 保持变体名称具有描述性：`pricing-short-form` 对比 `pricing-long-form` 比 `v1` 对比 `v2` 更有用。
+- 一次只测试一个更改，以隔离导致差异的原因。

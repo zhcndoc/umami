@@ -1,0 +1,124 @@
+---
+title: 发送服务器端事件
+---
+
+使用 Umami API 跟踪来自后端服务的事件。这对于记录发生在浏览器之外的操作非常有用，例如 webhook 事件、支付完成或后台作业结果。
+
+## 何时使用服务器端跟踪
+
+- **支付 webhook**：记录由 Stripe、PayPal 或其他支付处理器确认的购买。
+- **API 操作**：跟踪用户通过您的 API 执行操作时（例如移动应用事件）。
+- **后台作业**：记录来自 cron 作业、电子邮件发送或数据处理管道的事件。
+- **导入历史数据**：从另一个分析平台回填事件。
+
+## 使用 Node 客户端
+
+对于 Node.js 后端，最简单的方法是使用 [Umami Node 客户端](/docs/api/node-client)：
+
+```bash
+npm install @umami/node
+```
+
+```js
+import Umami from '@umami/node';
+
+const umami = new Umami({
+  hostUrl: 'https://your-umami.example.com',
+  websiteId: 'your-website-id',
+});
+
+// 跟踪页面视图
+await umami.track({ url: '/api/checkout', title: 'Checkout API' });
+
+// 跟踪自定义事件
+await umami.track('payment-received', {
+  revenue: 49.99,
+  currency: 'USD',
+  plan: 'pro',
+});
+```
+
+## 直接使用 API
+
+向 `/api/send` 发送带有事件负载的 POST 请求：
+
+```bash
+curl -X POST https://your-umami.example.com/api/send \
+  -H "Content-Type: application/json" \
+  -H "User-Agent: Mozilla/5.0 (Server)" \
+  -d '{
+    "payload": {
+      "hostname": "example.com",
+      "language": "en-US",
+      "url": "/checkout",
+      "website": "your-website-id",
+      "name": "payment-received",
+      "data": {
+        "revenue": 49.99,
+        "currency": "USD"
+      }
+    },
+    "type": "event"
+  }'
+```
+
+> **重要**：需要有效的 `User-Agent` 头。没有该头的请求将被拒绝。
+
+### Python 示例
+
+```python
+import requests
+
+requests.post('https://your-umami.example.com/api/send', json={
+    'payload': {
+        'hostname': 'example.com',
+        'language': 'en-US',
+        'url': '/checkout',
+        'website': 'your-website-id',
+        'name': 'payment-received',
+        'data': {
+            'revenue': 49.99,
+            'currency': 'USD',
+        },
+    },
+    'type': 'event',
+}, headers={
+    'User-Agent': 'MyApp/1.0',
+})
+```
+
+## 批量发送
+
+对于导入批量数据，使用 `/api/batch` 端点一次性发送多个事件：
+
+```bash
+curl -X POST https://your-umami.example.com/api/batch \
+  -H "Content-Type: application/json" \
+  -H "User-Agent: Mozilla/5.0 (Server)" \
+  -d '{
+    "events": [
+      {
+        "payload": {
+          "hostname": "example.com",
+          "url": "/page-1",
+          "website": "your-website-id"
+        },
+        "type": "event"
+      },
+      {
+        "payload": {
+          "hostname": "example.com",
+          "url": "/page-2",
+          "website": "your-website-id"
+        },
+        "type": "event"
+      }
+    ]
+  }'
+```
+
+## 提示
+
+- 服务器端事件与客户端事件出现在同一个仪表板中。如果需要，使用事件名称或属性来区分它们。
+- 跟踪来自支付 webhook 的收入时，使用 `revenue` 和 `currency` 属性，以便数据显示在 [收入](/docs/revenue) 洞察中。
+- 对于高流量的后端，将事件批量在一起以减少 HTTP 请求的数量。

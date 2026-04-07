@@ -14,7 +14,7 @@ Umami 追踪器可以通过 Google Tag Manager 安装。
 ></script>
 ```
 
-但是，Google Tag Manager 会移除追踪器上的属性。因此，你需要使用以下代码替代：
+但是，Google Tag Manager 会从 script 标签中剥离自定义的 `data-*` 属性。为了解决这个问题，请在 GTM 中使用 **自定义 HTML** 标签动态创建 script 元素：
 
 ```javascript
 <script>
@@ -26,3 +26,11 @@ Umami 追踪器可以通过 Google Tag Manager 安装。
 })();
 </script>
 ```
+
+### GTM 设置步骤
+
+1. 在 Google Tag Manager 中，前往 **标签** 并点击 **新建**。
+2. 选择 **自定义 HTML** 作为标签类型。
+3. 粘贴上面的代码，将 `src` 和 `data-website-id` 值替换为你自己的值。你可以在 Umami 网站设置中的 **追踪代码** 下找到这些值。
+4. 将触发器设置为 **所有页面**。
+5. 保存并发布你的更改。

@@ -2,14 +2,16 @@
 title: 过滤器
 ---
 
-Umami 内置报表功能，帮助您更深入地洞察数据的各个部分。通过通用过滤，您可以在所有页面/报表中应用条件，实现一致性的分析。  
-细分可让您基于共享属性或行为对用户进行分组。群组分析更进一步，能够对用户群体进行时间维度的分析，帮助您跟踪用户留存、绩效及长期趋势。
+*自 v2.6.0 起可用 · 于 v3.0.0 增强*
+
+Umami 内置了报告功能，帮助您深入了解数据的各个部分。通过通用过滤，您可以在所有屏幕/报表中应用条件，以便进行一致的分析。
+细分功能让您可以根据共享属性或行为对用户进行分组。群组功能在此基础上更进一步，随时间分析用户群，帮助您跟踪留存率、性能和长期趋势。
 
 ## 可用的过滤器
 
 过滤器在过滤面板中按类别分组。
 
-| Category | Filter | Description |
+| 类别 | 过滤器 | 描述 |
 | --- | --- | --- |
 | URL | Path | 访问页面的 URL 路径。 |
 | URL | Query | URL 的查询字符串部分（例如，`?ref=homepage`）。 |
@@ -27,64 +29,64 @@ Umami 内置报表功能，帮助您更深入地洞察数据的各个部分。�
 | UTM | UTM Content | 具体广告或链接内容。 |
 | UTM | UTM Term | 付费搜索关键词。 |
 | Other | Hostname | 访问该页面的域名。 |
-| Other | Distinct ID | 您为访问者分配的自定义标识符。请参见 [Distinct IDs](/docs/distinct-ids)。 |
-| Other | Tag | 您为数据分配的标签或关键词。请参见 [Tags](/docs/tags)。 |
+| Other | Distinct ID | 您为访问者分配的自定义标识符。请参见 [独立 ID](/docs/distinct-ids)。 |
+| Other | Tag | 您为数据分配的标签或关键词。请参见 [标签](/docs/tags)。 |
 | Other | Event | 用户触发的自定义事件（例如按钮点击、表单提交、视频播放）。 |
 
-## Match 模式
+## 匹配模式
 
-应用多个过滤器时，使用 **Match** 开关来控制条件如何组合：
+应用多个过滤器时，使用 **匹配** 开关来控制条件如何组合：
 
-| Mode | Description |
+| 模式 | 描述 |
 | --- | --- |
-| All | 访问者必须匹配每个条件（逻辑 AND）。 |
-| Any | 访问者至少必须匹配一个条件（逻辑 OR）。 |
+| 全部 | 访问者必须匹配每个条件（逻辑 AND）。 |
+| 任意 | 访问者至少必须匹配一个条件（逻辑 OR）。 |
 
 ## 过滤器运算符
 
 每个过滤条件都支持以下运算符：
 
-| Operator | Description |
+| 运算符 | 描述 |
 | --- | --- |
-| Is | 精确匹配。 |
-| Is not | 排除精确匹配。 |
-| Contains | 值包含指定字符串。 |
-| Does not contain | 值不包含指定字符串。 |
-| Matches regex | 值匹配所提供的正则表达式。 |
-| Does not match regex | 值不匹配所提供的正则表达式。 |
+| 等于 | 精确匹配。 |
+| 不等于 | 排除精确匹配。 |
+| 包含 | 值包含指定字符串。 |
+| 不包含 | 值不包含指定字符串。 |
+| 匹配正则 | 值匹配所提供的正则表达式。 |
+| 不匹配正则 | 值不匹配所提供的正则表达式。 |
 
 ## 通用过滤
 
 网站页面的日期范围和过滤条件现在可应用于所有页面和报表。
 
-![image](/images/docs/filter-date-range.png)
+![图像](/images/docs/filter-date-range.png)
 
-![image](/images/docs/filter-view.png)
+![图像](/images/docs/filter-view.png)
 
 ## 访问过滤器
 
-登录 Umami 后，在侧边栏点击 **Websites**。
+登录 Umami 后，在侧边栏点击 **网站**。
 
-![image](/images/docs/navbar.png)
+![图像](/images/docs/navbar.png)
 
-点击您想查看的网站的 **View**。
+点击您想查看的网站的 **查看**。
 
-![image](/images/docs/website-edit.png)
+![图像](/images/docs/website-edit.png)
 
 屏幕顶部会显示可应用于所有页面的日期和字段过滤器。
 
-![image](/images/docs/filter-access.png)
+![图像](/images/docs/filter-access.png)
 
 ## 添加过滤器
 
-**方法一:** 点击 **Filter** 按钮来应用过滤器。
+**方法一:** 点击 **过滤器** 按钮来应用过滤器。
 
-![image](/images/docs/filter-add.png)
+![图像](/images/docs/filter-add.png)
 
 **方法二:** 在概览页面的指标卡上点击任意行。
 
-![image](/images/docs/filter-card.png)
+![图像](/images/docs/filter-card.png)
 
 当前应用于每个页面的过滤器会显示在页面顶部。
 
-![image](/images/docs/filter-details.png)
+![图像](/images/docs/filter-details.png)

@@ -1,0 +1,125 @@
+---
+title: 跟踪单页应用
+---
+
+使用 React、Next.js、Vue、Nuxt、Angular 及类似框架构建的单页应用 (SPA) 可以与 Umami 开箱即用。跟踪脚本会自动检测客户端导航并记录页面浏览，无需任何额外配置。
+
+## 基本设置
+
+像其他任何网站一样，将 Umami 跟踪脚本添加到应用程序的 `<head>` 中。该脚本同时处理传统的页面加载和客户端路由更改。
+
+### Next.js (App Router)
+
+将脚本添加到您的根布局中：
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <head>
+        <script
+          defer
+          src="https://your-umami.example.com/script.js"
+          data-website-id="your-website-id"
+        />
+      </head>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+或者，使用 Next.js 的 `Script` 组件：
+
+```tsx
+import Script from 'next/script';
+
+<Script
+  src="https://your-umami.example.com/script.js"
+  data-website-id="your-website-id"
+  strategy="afterInteractive"
+/>
+```
+
+### React (Vite / Create React App)
+
+将脚本标签添加到您的 `index.html` 中：
+
+```html
+<!-- index.html -->
+<head>
+  <script
+    defer
+    src="https://your-umami.example.com/script.js"
+    data-website-id="your-website-id"
+  ></script>
+</head>
+```
+
+### Vue / Nuxt
+
+对于 Nuxt，将其添加到 `nuxt.config.ts` 中：
+
+```ts
+export default defineNuxtConfig({
+  app: {
+    head: {
+      script: [
+        {
+          src: 'https://your-umami.example.com/script.js',
+          defer: true,
+          'data-website-id': 'your-website-id',
+        },
+      ],
+    },
+  },
+});
+```
+
+对于使用 Vite 的普通 Vue，像 React 一样将脚本添加到 `index.html` 中。
+
+### Angular
+
+将脚本添加到 `src/index.html` 中：
+
+```html
+<head>
+  <script
+    defer
+    src="https://your-umami.example.com/script.js"
+    data-website-id="your-website-id"
+  ></script>
+</head>
+```
+
+## 工作原理
+
+Umami 的跟踪脚本会监控浏览器的 History API（`pushState` 和 `replaceState`）以及 `popstate` 事件。当您的 SPA 导航到新路由时，Umami 会自动发送带有更新后 URL 和标题的页面浏览记录。
+
+这意味着在大多数情况下，您**不需要**手动调用 `umami.track()` 来记录页面浏览。
+
+## 在组件中跟踪自定义事件
+
+要跟踪组件内的按钮点击或其他交互，请使用 [data 属性](/docs/track-events) 方法或直接调用 `umami.track()`：
+
+```tsx
+// React 示例
+<button data-umami-event="signup-click" data-umami-event-plan="pro">
+  Sign Up
+</button>
+```
+
+或使用 JavaScript：
+
+```tsx
+function handleCheckout() {
+  umami.track('checkout', { plan: 'pro', price: 29 });
+}
+```
+
+## 故障排除
+
+- **导航后未跟踪页面**：确保跟踪脚本仅在根布局中加载一次，不要在每次路由更改时重新添加。
+- **重复的页面浏览**：避免在 `useEffect` 或 `onMounted` 钩子中无参数调用 `umami.track()`，因为跟踪器已经自动记录导航。
+- **基于哈希的路由**：如果您的应用使用哈希路由（`/#/page`），Umami 默认会跟踪这些。如果需要，您可以使用 `data-exclude-hash="true"` 禁用哈希收集。

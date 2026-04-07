@@ -2,9 +2,11 @@
 title: 唯一标识符
 ---
 
-唯一标识符（Distinct ID）是分配给用户的唯一标识，无论是匿名还是登录状态。
-这使你能够将多个会话中的操作（页面浏览、点击、转化）关联到同一个用户。
-若想获得更全面的会话识别方式，请查看 [会话数据](/docs/tracker-functions#session-data)。
+*自 v2.18.0 版本起可用*
+
+Distinct ID 是分配给用户的唯一标识符，无论是匿名状态还是登录时。
+这使您能够将操作（页面浏览、点击、转化）与单个用户在多个会话中进行关联。
+如需更全面的会话识别方式，请参阅 [会话数据](/docs/tracker-functions#session-data)。
 
 ## 使用场景
 
@@ -15,7 +17,13 @@ title: 唯一标识符
 
 ## 使用方法
 
-在数据负载中添加 **id** 属性。该属性最多支持 50 个字符。
+您可以使用 `umami.identify()` 跟踪器函数设置 Distinct ID：
+
+```js
+umami.identify({ id: 'bob@aol.com' });
+```
+
+或者在使用 [发送统计信息](/docs/api/sending-stats) API 时，直接将 **id** 属性添加到事件 payload 中：
 
 ```json
 {
@@ -33,12 +41,14 @@ title: 唯一标识符
 }
 ```
 
+**id** 属性有 50 个字符的限制。如果您的标识符较长，请考虑使用哈希值或缩短版本。
+
 ## 搜索
 
 进入 **Sessions（会话）** 查看访客活动。
 
 ![image](/images/docs/traffic-navbar.png)
 
-搜索特定的 **唯一标识符（Distinct ID）**，即可查看该时间段内所有相关会话。
+搜索特定的 **Distinct ID** 以查看该时间范围内所有关联的会话。
 
 ![image](/images/docs/distinct-id-search.png)

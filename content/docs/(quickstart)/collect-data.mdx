@@ -18,4 +18,7 @@ title: 收集数据
 
 ### 故障排除
 
-- 如果您的网站是使用 [Next.js](https://nextjs.org/) 构建的，请使用 [next/script](https://nextjs.org/docs/app/api-reference/components/script) 组件插入上述代码块。
+- **数据未显示？** 打开浏览器开发者工具 (F12) 并检查 Network（网络）标签页中是否有发送到您的 Umami 实例的请求。确保脚本加载没有错误。
+- **广告拦截器** 可能会阻止追踪脚本加载。请参阅 [绕过广告拦截器](/docs/bypass-ad-blockers) 获取解决方案。
+- **Next.js** - 使用 [next/script](https://nextjs.org/docs/app/api-reference/components/script) 组件插入追踪代码，而不是普通的 `<script>` 标签。
+- **单页应用程序** - Umami 自动追踪单页应用程序中的页面导航。无需额外配置。

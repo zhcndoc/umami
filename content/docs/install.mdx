@@ -66,8 +66,8 @@ pnpm start
 ```
 
 默认情况下，应用会启动在 `http://localhost:3000`。
-你需要要么从你的 web 服务器[代理请求](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)，
-要么更改[端口](https://nextjs.org/docs/api-reference/cli#production)，以便直接服务该应用。
+你需要要么从你的 web 服务器 [代理请求](https://docs.nginx.com/nginx/admin-guide/web-server/reverse-proxy/)，
+要么更改 [端口](https://nextjs.org/docs/api-reference/cli#production)，以便直接服务该应用。
 
 ### 运行 Umami
 
@@ -85,7 +85,7 @@ pm2 save
 
 ## 使用 Docker 安装
 
-Umami 提供了一个包含应用程序和 PostgreSQL 数据库的 docker compose 配置。
+Umami 附带了一个 Docker Compose 文件，其中包含应用程序和 PostgreSQL 数据库。
 
 要构建 Docker 容器并启用 Postgres 数据库，运行：
 
@@ -93,8 +93,15 @@ Umami 提供了一个包含应用程序和 PostgreSQL 数据库的 docker compos
 docker-compose up -d
 ```
 
-或者，如果你想使用预构建的镜像，可以拉取带 PostgreSQL 支持的 Umami Docker 镜像：
+这将创建一个 PostgreSQL 数据库，并在 `http://localhost:3000` 上启动 Umami 应用程序。
+默认登录凭据为用户名 **admin**，密码 **umami**。
+
+> **重要**：首次登录后请立即更改默认密码。
+
+或者，如果您想使用预构建的镜像，可以拉取支持 PostgreSQL 的 Umami Docker 镜像：
 
 ```shell
 docker pull docker.umami.is/umami-software/umami:postgresql-latest
 ```
+
+使用预构建镜像时，您需要提供自己的数据库并设置 `DATABASE_URL` 环境变量。有关配置选项，请参阅 [环境变量](/docs/environment-variables)。

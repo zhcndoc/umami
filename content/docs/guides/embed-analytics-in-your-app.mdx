@@ -1,0 +1,111 @@
+---
+title: 在你的应用中嵌入分析数据
+---
+
+使用 Umami 的分享链接和 API，将分析仪表板或数据直接嵌入到你自己的应用程序、内部工具或客户门户中。
+
+## 选项 1：在 iframe 中嵌入分享链接
+
+最简单的方法是创建一个分享链接并将其嵌入到 iframe 中。
+
+### 创建分享链接
+
+1. 在 Umami 中导航到你的网站。
+2. 点击网站上的 **编辑**。
+3. 进入 **分享链接** 部分并创建一个新的分享。
+4. 复制生成的 URL。
+
+### 嵌入到你的应用中
+
+```html
+<iframe
+  src="https://your-umami.example.com/share/abc123/My-Website"
+  style="width: 100%; height: 800px; border: none;"
+  loading="lazy"
+></iframe>
+```
+
+为了使此功能正常工作，你可能需要在 Umami 实例上配置 `ALLOWED_FRAME_URLS` 环境变量，以允许你的应用域名：
+
+```dotenv
+ALLOWED_FRAME_URLS="https://your-app.example.com"
+```
+
+## 选项 2：使用 API 构建自定义仪表板
+
+为了完全控制展示效果，使用 Umami API 获取数据并在你自己的 UI 中渲染。
+
+### 认证
+
+对于自托管实例，获取一个令牌：
+
+```js
+const response = await fetch('https://your-umami.example.com/api/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ username: 'admin', password: 'your-password' }),
+});
+const { token } = await response.json();
+```
+
+对于 Umami Cloud，使用你的 [API 密钥](/docs/cloud/api-key) 配合 `x-umami-api-key` 请求头。
+
+### 获取网站统计数据
+
+```js
+const stats = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/stats?startAt=${startAt}&endAt=${endAt}`,
+  {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+).then(r => r.json());
+
+// stats = { pageviews, visitors, visits, bounces, totaltime }
+```
+
+### 获取页面视图时间序列
+
+```js
+const pageviews = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/pageviews?startAt=${startAt}&endAt=${endAt}&unit=day`,
+  {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+).then(r => r.json());
+```
+
+### 使用任何图表库进行渲染
+
+将返回的数据与 Chart.js、Recharts、D3 或任何可视化库一起使用：
+
+```tsx
+import { BarChart, Bar, XAxis, YAxis } from 'recharts';
+
+function PageviewsChart({ data }) {
+  return (
+    <BarChart data={data.pageviews}>
+      <XAxis dataKey="x" />
+      <YAxis />
+      <Bar dataKey="y" fill="#8884d8" />
+    </BarChart>
+  );
+}
+```
+
+## 选项 3：使用 API 客户端
+
+[Umami API 客户端](/docs/api/api-client) 简化了认证过程并提供类型化方法：
+
+```js
+import Umami from '@umami/api-client';
+
+const client = new Umami();
+await client.authenticate({ username: 'admin', password: 'your-password' });
+
+const stats = await client.getWebsiteStats(websiteId, {
+  startAt: Date.now() - 86400000,
+  endAt: Date.now(),
+});
+```
+
+查看所有可用端点请参阅 [API 参考](/docs/api)。

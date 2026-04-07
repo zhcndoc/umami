@@ -1,0 +1,75 @@
+---
+title: 将 AI 代理连接到 API
+---
+
+如果您想将 AI 代理连接到 Umami API，例如帮助您分析事件，本指南将向您展示如何操作。
+
+
+## 1. 安装前置条件
+
+在代理运行的机器上，我们将安装
+Latchkey 工具。这将允许代理向 API 发送经过身份验证的
+HTTP 请求，而不会将任何秘密泄露给提示词。
+
+1. 确保您的系统拥有可正常工作的 `node` 安装。如果没有，您可以从 [官方页面](https://nodejs.org/en/download) 下载。
+2. 安装 Latchkey：
+
+    ```bash
+    npm install -g latchkey
+    ```
+
+## 2. 生成并配置 API 令牌
+
+1. 遵循 [身份验证文档](../api/authentication) 获取 API 令牌或 API 密钥。
+2. 如果您不使用 Umami Cloud，请将 Latchkey 指向您的实例。例如：
+
+    ```bash
+    latchkey services register my-umami \
+        --service-family umami \
+        --base-api-url=http://203.0.113.1:3000/api/
+    ```
+
+3. 插入 API 令牌：
+
+    ```bash
+    latchkey auth set my-umami -H "Authorization: Bearer <your_token>"
+    ```
+
+    或者，对于 Umami Cloud：
+
+    ```bash
+    latchkey auth set umami -H "x-umami-api-key: <your_api_key>"
+    ```
+
+
+## 3. 配置 AI 代理
+
+使用 [skills.sh](https://skills.sh/)：
+
+```bash
+npx skills add imbue-ai/latchkey
+```
+
+您也可以手动配置 AI 代理。确切步骤将根据代理而异。以 OpenCode 为例：
+
+```bash
+mkdir -p ~/.opencode/skills/latchkey
+latchkey skill-md > ~/.opencode/skills/latchkey/SKILL.md
+```
+
+
+## 4. 使用 AI 代理
+
+完成上述步骤后，您现在应该能够使用您选择的 AI 代理来处理 Umami 工作了！以下是一些针对代理的示例问题和任务：
+
+> 哪个引荐来源发送的流量质量最高（平均会话持续时间最长）？
+
+或
+
+> 我的受众在周末与工作日的表现有何不同？
+
+甚至
+
+> 告诉我我们的博客哪些内容奏效，哪些不奏效。
+
+从这里开始，就取决于您的想象力了。

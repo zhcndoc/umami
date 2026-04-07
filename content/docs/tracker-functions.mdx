@@ -2,9 +2,9 @@
 title: 追踪器功能
 ---
 
-Umami 追踪器提供了一个函数，如果你想要对追踪进行更多控制，可以在你的网站上调用该函数。默认情况下，一切数据都会自动收集，但你可以通过设置 `data-auto-track="false"` 来禁用自动收集，并自行发送数据。详见[追踪器配置](/docs/tracker-configuration)。
+Umami 追踪器提供了一个函数，如果你想要对追踪进行更多控制，可以在你的网站上调用该函数。默认情况下，一切数据都会自动收集，但你可以通过设置 `data-auto-track="false"` 来禁用自动收集，并自行发送数据。详见 [追踪器配置](/docs/tracker-configuration)。
 
-## 函数
+## 函数 `v2.0.0`
 
 ```js
 // 追踪当前页面
@@ -29,7 +29,7 @@ umami.identify(unique_id: string, data: object);
 umami.identify(data: object);
 ```
 
-## 页面浏览量
+## 页面浏览 `v2.0.0`
 
 追踪页面浏览。
 
@@ -39,7 +39,7 @@ umami.track();
 
 默认情况下，追踪器会自动收集以下属性：
 
-| Property | Description |
+| 属性 | 描述 |
 | --- | --- |
 | `hostname` | 服务器主机名 |
 | `language` | 浏览器语言 |
@@ -61,7 +61,7 @@ umami.track({ website: 'e676c9b4-11e4-4ef1-a4d7-87001773e9f2', url: '/home', tit
 umami.track(props => ({ ...props, url: '/home', title: '主页' }));
 ```
 
-## 事件
+## 事件 `v2.0.0`
 
 追踪一个具有指定名称的事件。
 
@@ -69,7 +69,7 @@ umami.track(props => ({ ...props, url: '/home', title: '主页' }));
 umami.track('signup-button');
 ```
 
-## 事件数据
+## 事件数据 `v2.0.0`
 
 追踪一个带有动态数据的事件。
 
@@ -94,14 +94,27 @@ umami.track(props => ({
 
 事件数据可以包含任意 JSON 数据。为了保证性能，制定了一些规则：
 
-| Data Type | Limit |
+| 数据类型 | 限制 |
 | --- | --- |
-| Numbers | 最大精度为 4 位。 |
-| Strings | 最大长度为 500。 |
-| Arrays | 转换为字符串后，最大长度为 500。 |
-| Objects | 最多 50 个属性。数组按 1 个属性计算。 |
+| 数字 | 最大精度为 4 位。 |
+| 字符串 | 最大长度为 500。 |
+| 数组 | 转换为字符串后，最大长度为 500。 |
+| 对象 | 最多 50 个属性。数组按 1 个属性计算。 |
+
+## 覆盖事件时间戳
+
+你可以通过在负载中添加一个秒级的 UNIX 时间戳来覆盖事件时间戳：
+
+```js
+umami.track(props => ({
+  ...props,
+  name: 'signup-button',
+  timestamp: 1771523787, // 当前时间戳（秒）
+}));
+```
 
 ## 会话
+`v2.13.0`
 
 传入自己的 ID 来标识用户。
 
@@ -109,7 +122,7 @@ umami.track(props => ({
 umami.identify('unique_id');
 ```
 
-## 会话数据
+## 会话数据 `v2.13.0`
 
 保存当前会话的数据。
 

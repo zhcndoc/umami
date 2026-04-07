@@ -4,13 +4,15 @@ title: 获取更新
 
 ## 源代码
 
-为了获取最新的更新，首先从 Git 仓库拉取更改：
+运行这些命令前，请确保您处于 Umami 项目目录中。
+
+从 Git 仓库拉取最新更改：
 
 ```shell
 git pull
 ```
 
-然后安装任何新的或更新的依赖项：
+安装任何新的或更新的依赖项：
 
 ```shell
 pnpm install
@@ -22,16 +24,29 @@ pnpm install
 pnpm build
 ```
 
-最后，启动应用：
+最后，重启应用：
 
 ```shell
 pnpm start
 ```
 
+如果您使用的是像 PM2 这样的进程管理器，请改为重启进程：
+
+```shell
+pm2 restart umami
+```
+
 ## Docker
 
-对于 Docker，只需拉取最新镜像；带有 PostgreSQL 支持：
+拉取最新镜像：
 
 ```shell
 docker pull docker.umami.is/umami-software/umami:latest
+```
+
+然后重启容器以使用新镜像。如果使用 Docker Compose：
+
+```shell
+docker compose down
+docker compose up -d
 ```

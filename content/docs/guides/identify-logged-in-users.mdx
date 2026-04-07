@@ -1,0 +1,87 @@
+---
+title: 识别已登录用户
+---
+
+使用 Umami 的独立 ID 和会话数据功能，在保持隐私的同时，将会话和设备间的分析数据与特定用户关联起来。
+
+## 何时使用
+
+- 跟踪单个用户在多次访问中的旅程。
+- 了解特定用户如何与你的产品互动。
+- 将不同设备的事件关联到同一个人。
+- 基于行为历史构建用户画像。
+
+## 步骤 1：分配独立 ID
+
+当用户登录时，使用唯一标识符调用 `umami.identify()`：
+
+```js
+// 用户登录后
+umami.identify({ id: user.id });
+```
+
+ID 可以是长达 50 个字符的任何字符串：用户 ID、电子邮件或哈希值。该会话中所有后续的页面浏览和事件都将链接到此 ID。
+
+## 步骤 2：添加会话数据（可选）
+
+你可以附加额外的属性来帮助识别和细分用户：
+
+```js
+umami.identify({
+  id: user.id,
+  name: user.name,
+  plan: user.plan,
+  company: user.company,
+});
+```
+
+会话属性会显示在访客档案中，并可用于过滤。
+
+## 步骤 3：查看用户活动
+
+导航到 Umami 仪表板中的 **会话**。使用搜索栏查找特定的独立 ID：
+
+1. 在搜索字段中输入用户的 ID。
+2. Umami 会显示所选时间范围内与该 ID 关联的所有会话。
+3. 点击任何会话以查看完整的活动历史：访问的页面、触发的事件和时间戳。
+
+## 框架示例
+
+### React（登录后）
+
+```tsx
+function useIdentifyUser(user) {
+  useEffect(() => {
+    if (user) {
+      umami.identify({ id: user.id, plan: user.plan });
+    }
+  }, [user]);
+}
+```
+
+### Next.js（App Router）
+
+```tsx
+'use client';
+import { useSession } from 'next-auth/react';
+import { useEffect } from 'react';
+
+export function Analytics() {
+  const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session?.user) {
+      umami.identify({ id: session.user.id });
+    }
+  }, [session]);
+
+  return null;
+}
+```
+
+## 隐私注意事项
+
+- 尽可能使用内部用户 ID 而不是电子邮件地址。
+- Umami 在服务器端存储会话数据。不使用 Cookie。
+- 未登录的用户保持完全匿名。
+- 如果你想要关联数据而不存储个人身份信息（PII），可以使用哈希标识符（例如电子邮件的 SHA-256）。

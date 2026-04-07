@@ -1,0 +1,76 @@
+---
+title: 跟踪表单提交
+---
+
+捕捉用户在你的网站上提交表单的时刻，例如注册表单、联系表单、新闻通讯订阅或结账流程。
+
+## 使用数据属性
+
+对于简单的表单，直接将跟踪属性添加到提交按钮：
+
+```html
+<form action="/subscribe" method="POST">
+  <input type="email" name="email" placeholder="电子邮件" />
+  <button
+    type="submit"
+    data-umami-event="form-submit"
+    data-umami-event-form="newsletter"
+  >
+    订阅
+  </button>
+</form>
+```
+
+## 使用 JavaScript 进行更多控制
+
+对于使用 JavaScript 提交（AJAX、fetch 或框架表单处理）的表单，在你的提交处理程序中调用 `umami.track()`：
+
+```js
+document.querySelector('#contact-form').addEventListener('submit', function (e) {
+  umami.track('form-submit', { form: 'contact', source: 'homepage' });
+});
+```
+
+### React 示例
+
+```tsx
+function SignupForm() {
+  async function handleSubmit(e) {
+    e.preventDefault();
+    umami.track('form-submit', { form: 'signup', plan: 'free' });
+
+    // 继续你的表单提交逻辑
+    await submitToAPI(new FormData(e.target));
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input type="email" name="email" required />
+      <button type="submit">注册</button>
+    </form>
+  );
+}
+```
+
+## 跟踪表单完成与提交
+
+如果你的表单包含多个步骤（如结账流程），跟踪每个步骤以了解用户在哪里流失：
+
+```js
+// 步骤 1：用户输入电子邮件
+umami.track('checkout-step', { step: 'email' });
+
+// 步骤 2：用户输入支付信息
+umami.track('checkout-step', { step: 'payment' });
+
+// 步骤 3：用户完成购买
+umami.track('checkout-step', { step: 'complete' });
+```
+
+然后你可以使用 [漏斗](/docs/funnel) 洞察来可视化步骤之间的流失情况。
+
+## 查看表单数据
+
+导航到 **事件** 查看提交次数，以及 **事件数据** 按表单名称、来源或你跟踪的任何其他属性细分提交情况。
+
+要衡量提交表单的访客百分比，创建一个 [目标](/docs/goals)，将 `form-submit` 事件作为转化动作。

@@ -1,0 +1,55 @@
+---
+title: 跟踪文件下载
+---
+
+使用 Umami 自定义事件，跟踪用户何时从您的网站下载文件（如 PDF、ZIP、图片或其他资源）。
+
+## 使用数据属性
+
+将 `data-umami-event` 属性添加到您的下载链接中：
+
+```html
+<a
+  href="/files/report.pdf"
+  data-umami-event="file-download"
+  data-umami-event-file="report.pdf"
+>
+  下载报告 (PDF)
+</a>
+```
+
+每次点击都会记录一个名为 `file-download` 的事件，并带有包含文件名的 `file` 属性。
+
+## 自动跟踪所有下载
+
+使用此脚本自动跟踪指向常见文件类型的任何链接的点击：
+
+```html
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const fileExtensions = /\.(pdf|zip|tar|gz|rar|doc|docx|xls|xlsx|ppt|pptx|csv|mp3|mp4|dmg|exe|iso)$/i;
+
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      if (fileExtensions.test(a.href) && !a.getAttribute('data-umami-event')) {
+        var filename = a.href.split('/').pop().split('?')[0];
+        a.setAttribute('data-umami-event', 'file-download');
+        a.setAttribute('data-umami-event-file', filename);
+      }
+    });
+  });
+</script>
+```
+
+这会找到所有可下载文件的链接并自动添加跟踪属性，无需手动修改每个链接。
+
+## 查看下载数据
+
+1. 在 Umami 中导航到您的网站。
+2. 点击 **事件** 查看 `file-download` 事件及其计数。
+3. 点击 **事件数据** 查看按 `file` 属性细分的数据，显示哪些文件被下载得最多。
+
+## 提示
+
+- 使用一致的事件名称（例如，始终使用 `file-download`），以便所有下载归为一组。
+- 使用 `file` 属性来区分不同的文件，而不是为每个文件创建单独的事件名称。
+- 如果下载来自不同的域（如 CDN），跟踪仍然有效，因为事件是在点击时触发，而不是在目的地触发。

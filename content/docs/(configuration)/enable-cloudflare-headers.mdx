@@ -14,7 +14,7 @@ title: 启用 Cloudflare 头部信息
 
 4. 启用 **Add visitor location headers（添加访客位置信息头部）** 设置。
 
-之后，您需要将[以下头部](https://github.com/umami-software/umami/blob/aaa1f9dc58feafe6af54248c5f0611112786fddf/src/lib/detect.ts#L14C2-L18C5)代理到 Umami：
+之后，您需要将 [以下头部](https://github.com/umami-software/umami/blob/aaa1f9dc58feafe6af54248c5f0611112786fddf/src/lib/detect.ts#L14C2-L18C5) 代理到 Umami：
 
 - `CF-IPCountry`
 - `CF-RegionCode`
@@ -38,4 +38,10 @@ location / {
 
 ## 强制使用本地地理数据库
 
-另外，当 Cloudflare 仅发送国家信息且无法添加访客位置信息头部时，您可以将运行时变量 `SKIP_LOCATION_HEADERS` 设置为 `1`。这将禁用头部检测，强制使用内部地理数据库。
+或者，当 Cloudflare 仅发送国家信息但无法添加访客位置头部时，您可以将 `SKIP_LOCATION_HEADERS` 运行时变量设置为 `1`。这将禁用头部检测，并强制使用内部地理数据库来解析地区和城市信息。
+
+```dotenv
+SKIP_LOCATION_HEADERS=1
+```
+
+本地地理数据库比使用 CDN 头部慢，但无需额外的代理配置即可提供完整的位置数据。

@@ -2,12 +2,36 @@
 title: UTM
 ---
 
-Umami UTM 通过跟踪不同营销渠道（如社交媒体、电子邮件和广告）的效果，提供有关营销活动表现的分析。
+*自 v2.11.0 版本起可用*
 
-该洞察通过将 5 个标准的 UTM 参数：source（来源）、medium（媒介）、campaign（活动）、term（词条）和 content（内容）细分为 **查看次数** 来实现。
+Umami UTM 通过分析不同营销渠道（如社交媒体、电子邮件和广告）的效果，提供营销活动的性能分析。
+
+该洞察通过将 5 个标准 UTM 参数分解为 **视图** 来工作。
+
+## UTM 参数
+
+UTM（Urchin Tracking Module）参数是添加到 URL 末尾的标签，可帮助您跟踪流量来源。
+
+| 参数 | 描述 | 示例 |
+| --- | --- | --- |
+| `utm_source` | 识别发送流量的网站或平台。 | `google`, `newsletter`, `twitter` |
+| `utm_medium` | 识别营销媒介或渠道。 | `cpc`, `email`, `social` |
+| `utm_campaign` | 识别特定的活动或促销。 | `spring_sale`, `product_launch` |
+| `utm_term` | 识别付费搜索关键词。 | `running+shoes`, `analytics+tool` |
+| `utm_content` | 区分同一活动内的相似内容或链接。 | `header_link`, `sidebar_banner` |
+
+例如，带标签的 URL 可能如下所示：
+
+```text
+https://example.com/pricing?utm_source=google&utm_medium=cpc&utm_campaign=spring_sale
+```
 
 ## 创建洞察
 
 ### 第一步：运行洞察
 
-![image](/images/docs/utm-details.png)
+UTM 洞察不需要任何额外参数。只需导航到 UTM 洞察，数据就会针对所选日期范围显示。
+
+![图片](/images/docs/utm-details.png)
+
+该洞察将显示按每个 UTM 参数分解的视图数量，帮助您识别哪些活动、来源和媒介带来了最多的流量。

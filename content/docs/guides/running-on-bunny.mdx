@@ -1,0 +1,63 @@
+---
+title: 在 bunny.net 上运行
+---
+
+[bunny.net](https://bunny.net) 是一个用于内容交付和边缘计算的全球平台。[Magic Containers](https://bunny.net/magic-containers/) 让您能够在 bunny.net 的全球网络内部署和运行容器化应用程序，并内置 CDN 集成。
+
+您可以使用 Magic Containers 部署 Umami 以及 PostgreSQL 数据库。
+
+## 设置
+
+### 1. 创建新应用程序
+
+1. 前往 [bunny.net 仪表板](https://dash.bunny.net) 中的 **Magic Containers** 并点击 **Add App**。
+2. 为您的应用程序命名（例如 `umami`）。
+3. 选择 **Single Region** 部署，因为这是一个带有数据库的有状态应用程序。
+
+### 2. 添加 PostgreSQL 容器
+
+1. 点击 **Add Container**。
+2. 输入名称 `postgres`。
+3. 从 **Registry** 下拉菜单中，选择 **DockerHub Public**。
+4. 将镜像设置为 `library/postgres`，标签设置为 `16-alpine`。
+
+bunny.net 将自动检测环境变量。用您的首选值更新它们：
+
+- `POSTGRES_USER` = `umami`
+- `POSTGRES_PASSWORD` = _选择一个强密码_
+- `POSTGRES_DB` = `umami`
+- `PGDATA` = `/var/lib/postgresql/data/pgdata`
+
+将 `PGDATA` 设置为挂载路径的子目录可以防止卷与 PostgreSQL 启动过程之间的权限冲突。
+
+添加一个 1 GB 的持久卷，挂载在 `/var/lib/postgresql/data`。
+
+### 3. 添加 Umami 容器
+
+1. 点击 **Add Container**。
+2. 输入名称 `umami`。
+3. 从 **Registry** 下拉菜单中，选择 **DockerHub Public**。
+4. 将镜像设置为 `umamisoftware/umami`，标签设置为 `postgresql-latest`。
+
+更新环境变量：
+
+- `DATABASE_URL` = `postgresql://umami:<your-password>@localhost:5432/umami`
+- `APP_SECRET` = _一个用于加密的随机字符串_
+- `DISABLE_TELEMETRY` = `1`
+
+将 `<your-password>` 替换为您在上一步中设置的 `POSTGRES_PASSWORD`。
+
+添加一个指向容器端口 `3000` 的 **CDN** 端点。
+
+### 4. 部署
+
+审查您的配置并点击 **Confirm and Create**。容器运行后，打开 CDN 端点 URL 以访问 Umami。
+
+使用默认凭据登录——用户名 `admin`，密码 `umami`——并在 **设置 → 个人资料** 下立即更改密码。
+
+### 注意事项
+
+- 两个容器在同一 pod 中运行并通过 `localhost` 通信。
+- 数据存储在 PostgreSQL 持久卷中，并在重新部署后保留。
+- 您可以更新 Umami 镜像标签以升级到新版本。
+- 阅读更多关于 [添加网站](/docs/add-a-website) 和 [收集数据](/docs/collect-data) 的信息。

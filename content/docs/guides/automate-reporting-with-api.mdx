@@ -1,0 +1,135 @@
+---
+title: 使用 API 自动化报告
+---
+
+以编程方式从 Umami 提取统计数据，以构建自定义报告、Slack 通知、电子邮件摘要或自动化仪表板。
+
+## 身份验证
+
+### 自托管
+
+使用用户名和密码进行身份验证以获取 bearer token：
+
+```js
+const { token } = await fetch('https://your-umami.example.com/api/auth/login', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ username: 'admin', password: 'your-password' }),
+}).then(r => r.json());
+```
+
+在后续请求中使用该 token：
+
+```js
+const headers = { Authorization: `Bearer ${token}` };
+```
+
+### Umami Cloud
+
+改用您的 [API 密钥](/docs/cloud/api-key)：
+
+```js
+const headers = { 'x-umami-api-key': 'your-api-key' };
+```
+
+## 示例：每日流量摘要
+
+获取昨天的统计数据并将其格式化为报告：
+
+```js
+const websiteId = 'your-website-id';
+const now = new Date();
+const yesterday = new Date(now);
+yesterday.setDate(now.getDate() - 1);
+yesterday.setHours(0, 0, 0, 0);
+const today = new Date(yesterday);
+today.setDate(today.getDate() + 1);
+
+const stats = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/stats` +
+    `?startAt=${yesterday.getTime()}&endAt=${today.getTime()}`,
+  { headers }
+).then(r => r.json());
+
+const report = `
+📊 Daily Report — ${yesterday.toDateString()}
+Visitors: ${stats.visitors}
+Page views: ${stats.pageviews}
+Visits: ${stats.visits}
+Bounce rate: ${((stats.bounces / stats.visits) * 100).toFixed(1)}%
+`;
+```
+
+## 示例：发送到 Slack
+
+```js
+await fetch('https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ text: report }),
+});
+```
+
+## 示例：热门页面报告
+
+```js
+const metrics = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/metrics` +
+    `?startAt=${yesterday.getTime()}&endAt=${today.getTime()}&type=path`,
+  { headers }
+).then(r => r.json());
+
+const topPages = metrics
+  .sort((a, b) => b.y - a.y)
+  .slice(0, 10)
+  .map((p, i) => `${i + 1}. ${p.x} — ${p.y} views`)
+  .join('\n');
+```
+
+## 示例：每周对比
+
+对比本周与上周以检测趋势：
+
+```js
+const thisWeek = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/stats` +
+    `?startAt=${thisWeekStart}&endAt=${thisWeekEnd}`,
+  { headers }
+).then(r => r.json());
+
+const lastWeek = await fetch(
+  `https://your-umami.example.com/api/websites/${websiteId}/stats` +
+    `?startAt=${lastWeekStart}&endAt=${lastWeekEnd}`,
+  { headers }
+).then(r => r.json());
+
+const change = ((thisWeek.visitors - lastWeek.visitors) / lastWeek.visitors * 100).toFixed(1);
+console.log(`Visitors: ${thisWeek.visitors} (${change > 0 ? '+' : ''}${change}% vs last week)`);
+```
+
+## 按计划运行
+
+使用 cron 任务、GitHub Actions 或无服务器函数按计划运行您的报告脚本：
+
+**Cron (Linux/Mac):**
+
+```bash
+# 每天早上 8 点运行
+0 8 * * * node /path/to/daily-report.js
+```
+
+**GitHub Actions:**
+
+```yaml
+on:
+  schedule:
+    - cron: '0 8 * * *'
+jobs:
+  report:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: node scripts/daily-report.js
+```
+
+查看所有可用端点的完整 [API 参考](/docs/api)。

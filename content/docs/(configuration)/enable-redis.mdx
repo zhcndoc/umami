@@ -2,14 +2,52 @@
 title: 启用 Redis
 ---
 
-Umami 支持将 [Redis](https://redis.io/) 用作缓存层以提升性能。例如，当你向服务器发送请求时，需要进行网站查找。结果可以缓存在 Redis 中，以便将来更快速地查找。
+Umami 支持 [Redis](https://redis.io/) 作为缓存层以提升性能。启用 Redis 后，
+频繁访问的数据（如网站查询和会话信息）将被缓存，从而减少数据库查询
+并提高响应速度。
 
-此外，登录认证将由 Redis 处理，而不再使用 JWT 令牌。
+此外，登录认证将由 Redis 会话处理，而非 JWT 令牌，从而提供
+服务器端会话管理。
+
+## 何时使用 Redis
+
+建议在以下情况下使用 Redis：
+
+- 您拥有高流量网站并希望减少数据库负载。
+- 您正在运行多个 Umami 实例并需要共享会话管理。
+- 您希望 API 调用具有更快的响应时间。
+
+Redis 是可选的。如果没有它，Umami 会使用直接数据库查询和基于 JWT 的认证，这在大多数用例中都能正常工作。
 
 ## 使用方法
 
-要启用 Redis，请添加一个名为 `REDIS_URL` 的环境变量，内容为连接字符串。
+要启用 Redis，请添加一个名为 `REDIS_URL` 的环境变量连接字符串。
 
 ```dotenv
 REDIS_URL=redis://username:password@your-redis-server:port
 ```
+
+如果您的 Redis 实例使用 TLS，请使用 `rediss://` 协议：
+
+```dotenv
+REDIS_URL=rediss://username:password@your-redis-server:port
+```
+
+### Docker Compose 示例
+
+要将 Redis 添加到现有的 Docker Compose 设置中，请添加一个 Redis 服务并设置 `REDIS_URL` 环境变量：
+
+```yaml
+redis:
+  image: redis:7
+  restart: always
+
+umami:
+  environment:
+    REDIS_URL: redis://redis:6379
+```
+
+## 行为
+
+如果 Redis 不可用，Umami 将回退到直接数据库查询。不会丢失任何数据，但
+响应时间可能会增加，直到 Redis 恢复。

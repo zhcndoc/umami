@@ -2,11 +2,35 @@
 title: 事件数据
 ---
 
-使用自定义数据属性帮助您更深入地分析数据。  
-Umami 允许您通过以下两种方法，将动态数据附加到事件上。
+*自 v2.0.0 起可用*
 
-- **[数据属性](/docs/track-events#using-data-attributes)**
-- **[跟踪函数](/docs/tracker-functions#event-data)**
+事件数据允许您将自定义属性附加到跟踪的事件上，以便进行更深入的分析。
+例如，您可以跟踪购买了哪个产品、点击了哪个按钮变体，或与您的事件相关的任何其他上下文信息。
+
+Umami 允许您使用两种方法将动态数据附加到事件中：
+
+- **[数据属性](/docs/track-events#using-data-attributes)** - 直接将 `data-umami-event-*` 属性添加到 HTML 元素。值始终存储为字符串。
+- **[跟踪器函数](/docs/tracker-functions#event-data)** - 使用 `umami.track()` 配合数据对象。支持字符串、数字和布尔值。
+
+## 示例
+
+使用数据属性跟踪带有产品详情的按钮点击：
+
+```html
+<button
+  data-umami-event="add-to-cart"
+  data-umami-event-product="t-shirt"
+  data-umami-event-price="29.99"
+>
+  加入购物车
+</button>
+```
+
+或使用跟踪器函数：
+
+```js
+umami.track('add-to-cart', { product: 't-shirt', price: 29.99 });
+```
 
 ## 访问事件数据
 
@@ -15,3 +39,5 @@ Umami 允许您通过以下两种方法，将动态数据附加到事件上。
 您可以通过点击顶部导航栏的 **事件数据** 按钮来访问事件数据。
 
 ![image](/images/docs/website-navbar.png)
+
+事件数据以每个属性名称及其值的细分形式显示，并包含每个值的总数。利用此功能可以了解您的自定义数据在事件中的分布情况。

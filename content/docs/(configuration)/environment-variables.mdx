@@ -10,15 +10,20 @@ title: 环境变量
 
 运行时变量在 Umami 运行时生效。你可以在启动应用之前设置这些环境变量。
 
-### APP_SECRET
+### APP_SECRET `v1.0.0`
 
-你安装实例的唯一值。
+用于保护身份验证令牌的随机字符串。每个安装都应该有一个唯一的值。你可以使用以下命令生成：
+
+```shell
+openssl rand -hex 32
+```
 
 ```
 APP_SECRET = "随机字符串"
 ```
 
-### CLIENT_IP_HEADER
+
+### CLIENT_IP_HEADER `v1.24.0`
 
 用于检测客户端 IP 地址的 HTTP 头。当你处于使用非标准头的代理之后时，这个变量很有用。
 
@@ -26,15 +31,15 @@ APP_SECRET = "随机字符串"
 CLIENT_IP_HEADER = "头名称"
 ```
 
-### COLLECT_API_ENDPOINT
+### COLLECT_API_ENDPOINT `v1.34.0`
 
-允许你将指标发送到不同于默认 `/api/send` 的位置。这有助于你避开一些[广告拦截器](/docs/bypass-ad-blockers)。
+允许你将指标发送到不同于默认 `/api/send` 的位置。这有助于你避开一些 [广告拦截器](/docs/bypass-ad-blockers)。
 
 ```
 COLLECT_API_ENDPOINT = "/my-custom-route"
 ```
 
-### CORS_MAX_AGE
+### CORS_MAX_AGE `v2.0.0`
 
 CORS 预检请求持续的秒数。默认是 24 小时。
 
@@ -42,7 +47,7 @@ CORS 预检请求持续的秒数。默认是 24 小时。
 CORS_MAX_AGE = 86400
 ```
 
-### DATABASE_URL
+### DATABASE_URL `v1.0.0`
 
 ```
 DATABASE_URL = "连接字符串"
@@ -50,7 +55,7 @@ DATABASE_URL = "连接字符串"
 
 你的数据库连接字符串。这是唯一必需的变量。
 
-### DEBUG
+### DEBUG `v2.0.0`
 
 用于特定应用区域的控制台日志。值包括 `umami:auth`、`umami:clickhouse`、`umami:kafka`、`umami:middleware` 和 `umami:prisma`。
 
@@ -58,7 +63,7 @@ DATABASE_URL = "连接字符串"
 DEBUG = "umami:*"
 ```
 
-### DISABLE_BOT_CHECK
+### DISABLE_BOT_CHECK `v2.0.0`
 
 默认情况下，机器人不计入统计。设置此变量可禁用对机器人的检查。
 
@@ -66,7 +71,7 @@ DEBUG = "umami:*"
 DISABLE_BOT_CHECK = 1
 ```
 
-### DISABLE_LOGIN
+### DISABLE_LOGIN `v1.26.0`
 
 禁用应用的登录页面。
 
@@ -74,7 +79,7 @@ DISABLE_BOT_CHECK = 1
 DISABLE_LOGIN = 1
 ```
 
-### DISABLE_UPDATES
+### DISABLE_UPDATES `v1.33.0`
 
 禁用 Umami 新版本的检查。
 
@@ -82,7 +87,7 @@ DISABLE_LOGIN = 1
 DISABLE_UPDATES = 1
 ```
 
-### DISABLE_TELEMETRY
+### DISABLE_TELEMETRY `v2.0.0`
 
 Umami 会收集完全匿名的遥测数据以帮助改进应用。如果你不想参与，可以选择禁用。
 
@@ -90,7 +95,7 @@ Umami 会收集完全匿名的遥测数据以帮助改进应用。如果你不�
 DISABLE_TELEMETRY = 1
 ```
 
-### ENABLE_TEST_CONSOLE
+### ENABLE_TEST_CONSOLE `v2.0.0`
 
 启用内部测试页 `{host}/console`。需要管理员权限。用户可以手动触发页面浏览和事件到他们的网站。
 
@@ -98,7 +103,7 @@ DISABLE_TELEMETRY = 1
 ENABLE_TEST_CONSOLE = 1
 ```
 
-### FAVICON_URL
+### FAVICON_URL `v2.18.0`
 
 网站图标显示服务的 URL。
 
@@ -115,11 +120,15 @@ FAVICON_URL = "服务 URL"
 - https://www.google.com/s2/favicons?domain={{domain}}
 - https://logo.clearbit.com/{{domain}}
 
-### GEO_DATABASE_URL
+### GEO_DATABASE_URL `v2.0.0`
 
-用于下载地理位置数据库的 URL。
+用于下载 MMDB 格式的 MaxMind 兼容 GeoIP 数据库的 URL。当 CDN 不提供位置头时，这用于基于 IP 的位置检测。
 
-### HOSTNAME / PORT
+```
+GEO_DATABASE_URL = "https://example.com/GeoLite2-City.mmdb"
+```
+
+### HOSTNAME / PORT `v1.0.0`
 
 如果你运行的环境要求绑定特定的主机名或端口，比如 Heroku，可以添加这些变量，并用 `npm run start-env` 启动应用，而不是 `npm start`。
 
@@ -128,15 +137,15 @@ HOSTNAME = "my.hostname.com"
 PORT = 3000
 ```
 
-### IGNORE_IP
+### IGNORE_IP `v1.0.0`
 
-提供用逗号分隔的 IP 地址和范围列表，用于排除数据收集。
+你可以提供一个逗号分隔的 IP 地址和 CIDR 范围列表，以排除在数据收集之外。
 
 ```
-IGNORE_IP = "IP 地址或范围"
+IGNORE_IP = "192.168.0.1, 10.0.0.0/24, 2001:db8::/32"
 ```
 
-### LOG_QUERY
+### LOG_QUERY `v2.0.0`
 
 在开发模式下，会将数据库查询日志打印到控制台以方便调试。
 
@@ -144,7 +153,7 @@ IGNORE_IP = "IP 地址或范围"
 LOG_QUERY = 1
 ```
 
-### PRIVATE_MODE
+### PRIVATE_MODE `v2.11.0`
 
 禁用所有外部网络请求。注意，这也会禁用所有网站图标，因为它们来自 duckduckgo.com。
 
@@ -152,7 +161,7 @@ LOG_QUERY = 1
 PRIVATE_MODE = 1
 ```
 
-### REMOVE_TRAILING_SLASH
+### REMOVE_TRAILING_SLASH `v1.26.0`
 
 移除所有传入 URL 的尾随斜杠。
 
@@ -160,9 +169,9 @@ PRIVATE_MODE = 1
 REMOVE_TRAILING_SLASH = 1
 ```
 
-### TRACKER_SCRIPT_NAME
+### TRACKER_SCRIPT_NAME `v1.26.0`
 
-允许你为追踪脚本分配一个不同于默认 `script.js` 的自定义名称。这有助于避开一些[广告拦截器](/docs/bypass-ad-blockers)。
+允许你为追踪脚本分配一个不同于默认 `script.js` 的自定义名称。这有助于避开一些 [广告拦截器](/docs/bypass-ad-blockers)。
 
 不必加 `.js` 后缀。该值也可以是任意路径，例如 `/path/to/tracker`。
 
@@ -170,7 +179,7 @@ REMOVE_TRAILING_SLASH = 1
 TRACKER_SCRIPT_NAME = "custom-script-name.js"
 ```
 
-### SKIP_LOCATION_HEADERS
+### SKIP_LOCATION_HEADERS `v2.15.0`
 
 跳过使用已知的定位头来检测国家/地区/城市，强制使用本地地理数据库。
 
@@ -186,7 +195,7 @@ SKIP_LOCATION_HEADERS = 1
 
 构建时变量仅在构建过程（包括自定义 Docker 镜像构建）中生效。你需要在构建应用之前设置这些环境变量。
 
-### ALLOWED_FRAME_URLS
+### ALLOWED_FRAME_URLS `v2.3.0`
 
 允许 iframe 托管应用的 URL，使用空格分隔。
 
@@ -194,7 +203,7 @@ SKIP_LOCATION_HEADERS = 1
 ALLOWED_FRAME_URLS = "URLs"
 ```
 
-### BASE_PATH
+### BASE_PATH `v1.9.0`
 
 如果你想在子目录下托管 Umami。你可能需要更新反向代理设置来正确处理 BASE_PATH 前缀。
 
@@ -202,7 +211,7 @@ ALLOWED_FRAME_URLS = "URLs"
 BASE_PATH = "/custom"
 ```
 
-### DATABASE_TYPE
+### DATABASE_TYPE `v2.0.0`
 
 ```
 DATABASE_TYPE = "postgresql"
@@ -210,7 +219,7 @@ DATABASE_TYPE = "postgresql"
 
 要使用的数据库类型。仅 Docker 构建时必需。
 
-### FORCE_SSL
+### FORCE_SSL `v1.0.0`
 
 所有请求都会发送 HTTP 的 `Strict-Transport-Security` 响应头。详见 [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)。
 
@@ -218,7 +227,7 @@ DATABASE_TYPE = "postgresql"
 FORCE_SSL = 1
 ```
 
-### SKIP_DB_CHECK
+### SKIP_DB_CHECK `v2.0.0`
 
 跳过构建过程中的 `check-db` 步骤。用于 Docker 构建。
 
@@ -226,7 +235,7 @@ FORCE_SSL = 1
 SKIP_DB_CHECK = 1
 ```
 
-### SKIP_DB_MIGRATION
+### SKIP_DB_MIGRATION `v2.0.0`
 
 跳过构建过程中的 Prisma 迁移步骤。设置 `SKIP_DB_CHECK` 也会跳过这一步。
 
