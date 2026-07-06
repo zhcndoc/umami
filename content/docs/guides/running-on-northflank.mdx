@@ -10,7 +10,7 @@ Northflank 提供免费和付费的托管计划，允许你将 Umami 与托管�
 
 ### Northflank 按钮（推荐）
 
-[![Deploy on Northflank](https://assets.northflank.com/deploy_to_northflank_smm_36700fb050.svg)](https://northflank.com/stacks/deploy-umami)
+[![部署到 Northflank](https://assets.northflank.com/deploy_to_northflank_smm_36700fb050.svg)](https://northflank.com/stacks/deploy-umami)
 
 点击上方按钮即可部署你自己的 Umami 实例，附带托管的 PostgreSQL 附加组件及所有预配置的环境变量。
 
@@ -22,12 +22,12 @@ Northflank 提供免费和付费的托管计划，允许你将 Umami 与托管�
 
 一键部署是最快速的启动方式，但你也可以使用模板配置手动部署 Umami。
 
-1. 在 [Northflank](https://northflank.com) 创建一个新项目。
-2. 为项目添加一个 **PostgreSQL 附加组件**。
-3. 使用 Docker 镜像 `umamisoftware/umami:postgresql-latest` 创建一个 **部署服务**。
-4. 公开端口 `3000`。
-5. 添加以下环境变量并将其连接到你的数据库：
-   - `DATABASE_URL` — 来自 PostgreSQL 附加组件的连接字符串  
+1. Create a new project on [Northflank](https://northflank.com).
+2. Add a **PostgreSQL addon** to the project.
+3. Create a **Deployment service** using the Docker image `docker.umami.is/umami-software/umami:postgresql-latest`.
+4. Expose port `3000` publicly.
+5. Add the following environment variables and link them to your database:
+   - `DATABASE_URL` — connection string from the PostgreSQL addon  
    - `DATABASE_TYPE=postgres`
 6. 部署服务。
 

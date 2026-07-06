@@ -11,31 +11,31 @@ title: 事件追踪
 - 事件名称限制为 50 个字符。
 - 事件数据不能在没有事件名称的情况下发送。
 
-## 使用数据属性
+## Using data attributes
 
-要启用事件，只需在你想要追踪的元素上添加一个特殊的数据属性。
+To enable events, just add a special data attribute to the element you want to track.
 
-例如，你可能有一个按钮，代码如下：
+For example, you might have a button like this:
 
 ```html
-<button id="signup-button">注册</button>
+<button id="signup-button">Sign up</button>
 ```
 
-添加以下格式的数据属性：
+Add a data attribute in the following format:
 
 ```html
 data-umami-event="{event-name}"
 ```
 
-所以你的按钮元素现在应该是：
+So your button element should now be:
 
 ```html
-<button id="signup-button" data-umami-event="Signup button">注册</button>
+<button id="signup-button" data-umami-event="Signup button">Sign up</button>
 ```
 
-当用户点击这个按钮时，Umami 会记录一个名为 `Signup button` 的事件。
+When a user clicks this button, Umami will record an event named `Signup button`.
 
-你也可以通过 **data-umami-event-\*** 注解传递**事件数据（event_data）**。
+You can also pass **event data (`event_data`)** through **data-umami-event-*** annotations.
 
 ```text
 data-umami-event="Signup button"
@@ -43,12 +43,12 @@ data-umami-event-email="bob@aol.com"
 data-umami-event-id="123"
 ```
 
-这些额外的属性会导致记录的事件数据为 `{ email: 'bob@aol.com', id: '123' }`，事件名称为 `Signup button`。
+These additional attributes will cause the recorded event data to be `{ email: 'bob@aol.com', id: '123' }`, with the event name `Signup button`.
 
-### 注意事项
+### Notes
 
-- 使用此方法，所有事件数据都会以字符串形式保存。如果你想保存数字、日期、布尔值等类型的事件数据，请使用下面的 JavaScript 方法。
-- 元素内的其他事件监听器将不会被触发。
+- With this method, all event data is saved as strings. If you want to save event data of types such as numbers, dates, or booleans, please use the JavaScript method below.
+- Other event listeners inside the element will not be triggered.
 
 ## 使用 JavaScript
 
@@ -57,10 +57,10 @@ data-umami-event-id="123"
 ```js
 const button = document.getElementById('signup-button');
 
-button.onclick = () => umami.track('Signup button');
+button.onclick = () => umami.track('Signup 按钮');
 ```
 
-在这种情况下，Umami 会记录一个名为 `Signup button` 的事件。
+在这种情况下，Umami 会记录一个名为 `Signup 按钮` 的事件。
 
 如果你想记录动态数据，请参阅 [追踪器函数](/docs/tracker-functions)。
 
@@ -76,3 +76,9 @@ button.onclick = () => umami.track('Signup button');
 该部分将展示你保存的所有自定义数据属性以及各个值的分类情况。
 
 ![image](/images/docs/events-properties.png)
+
+### 筛选
+
+使用筛选面板可按特定属性名称和值缩小事件属性的范围。这样你就可以将分析重点放在特定的一组事件上。
+
+![image](/images/docs/events-properties-filter.png)

@@ -10,7 +10,9 @@ Umami 收入功能允许您跟踪财务绩效、衡量投资回报率（ROI）�
 
 ## 配置收入
 
-要开始收集收入数据，您需要利用事件追踪并传递动态数据。这可以通过 [追踪器函数](https://umami.is/docs/tracker-functions#event-data) 或 [数据属性](https://umami.is/docs/track-events#using-data-attributes) 实现。被追踪的事件必须携带两个动态数据属性 `revenue` 和 `currency`。如果货币代码（ISO 4217）未被识别，洞察将默认使用 `USD`。
+要开始收集收入数据，您需要跟踪一个带有动态数据的事件。这可以通过 [追踪器函数](https://umami.is/docs/tracker-functions#event-data)
+或 [数据属性](https://umami.is/docs/track-events#using-data-attributes) 来完成。被跟踪的事件必须 همراه带两个动态数据
+属性 `revenue` 和 `currency`。如果货币代码（ISO 4217）未被识别，该洞察将默认使用 `USD`。
 
 ### 追踪器函数
 
@@ -18,7 +20,7 @@ Umami 收入功能允许您跟踪财务绩效、衡量投资回报率（ROI）�
 umami.track('checkout-cart', { revenue: 19.99, currency: 'USD' });
 ```
 
-追踪事件时，默认属性包含在负载中。此代码相当于执行：
+跟踪事件时，默认属性会包含在负载中。此代码相当于执行：
 
 ```js
 umami.track(props => ({
@@ -37,7 +39,7 @@ umami.track(props => ({
 
 ```html
 <button
-  id="signup-button"
+  id="checkout-button"
   data-umami-event="checkout-cart"
   data-umami-event-revenue="19.99"
   data-umami-event-currency="USD"

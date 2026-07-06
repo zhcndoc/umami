@@ -20,6 +20,10 @@ POST /api/reports/journey
 POST /api/reports/performance
 POST /api/reports/retention
 POST /api/reports/revenue
+GET /api/websites/:websiteId/revenue/chart
+GET /api/websites/:websiteId/revenue/stats
+GET /api/websites/:websiteId/revenue/metrics
+GET /api/websites/:websiteId/revenue/sessions
 POST /api/reports/utm
 ```
 
@@ -29,7 +33,7 @@ POST /api/reports/utm
 
 现在所有报告都可以通过请求体中的 filters 属性进行过滤。
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `path` | string | URL 的名称。 |
 | `referrer` | string | 引荐来源名称。 |
@@ -80,7 +84,7 @@ POST /api/reports/utm
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `websiteId` | string | 你的网站 ID。 |
 | `type` | string | 报告类型（`attribution` \| `breakdown` \| `funnel` \| `goal` \| `journey` \| `retention` \| `revenue` \| `utm`）。 |
@@ -135,7 +139,7 @@ POST /api/reports/utm
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `websiteId` | string | 你的网站 ID。 |
 | `type` | string | 报告类型（`attribution` \| `breakdown` \| `funnel` \| `goal` \| `journey` \| `retention` \| `revenue` \| `utm`）。 |
@@ -147,7 +151,7 @@ POST /api/reports/utm
 
 ```json
 {
-  "name": "触发登录按钮 ",
+  "name": "Triggered Login-button",
   "parameters": { "type": "event", "value": "login-button-header" },
   "type": "goal",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -162,7 +166,7 @@ POST /api/reports/utm
   "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "goal",
-  "name": "触发登录按钮 ",
+  "name": "Triggered Login-button",
   "description": "",
   "parameters": {
     "type": "event",
@@ -177,9 +181,9 @@ POST /api/reports/utm
 
 ## GET /api/reports/:reportId
 
-根据 ID 获取报告。
+Get a report by ID.
 
-**示例响应**
+**Example response**
 
 ```json
 {
@@ -187,7 +191,7 @@ POST /api/reports/utm
   "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "goal",
-  "name": "触发登录按钮 ",
+  "name": "Triggered Login-button",
   "description": "",
   "parameters": {
     "type": "event",
@@ -218,7 +222,7 @@ POST /api/reports/utm
 
 ```json
 {
-  "name": "触发登录按钮 ",
+  "name": "Triggered Login-button",
   "parameters": { "type": "event", "value": "login-button-header" },
   "type": "goal",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -233,7 +237,7 @@ POST /api/reports/utm
   "userId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "type": "goal",
-  "name": "触发登录按钮 ",
+  "name": "Triggered Login-button",
   "description": "",
   "parameters": {
     "type": "event",
@@ -268,12 +272,12 @@ POST /api/reports/utm
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `websiteId` | string | 你的网站 ID。 |
+| `websiteId` | string | 您的网站 ID。 |
 | `type` | string | 报告类型（`attribution`）。 |
-| `filters` | object | 可接受过滤参数。 |
+| `filters` | object | 可接受筛选参数。 |
 | `startDate` | string | 开始日期。 |
 | `endDate` | string | 结束日期。 |
-| `model` | string | 归因模型（`firstClick` \| `lastClick`）。 |
+| `model` | string | 归因模型（`first-click` \| `last-click`）。 |
 | `type` | string | 转化类型（`path` \| `event`）。 |
 | `step` | string | 转化步骤。 |
 
@@ -384,7 +388,7 @@ POST /api/reports/utm
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `websiteId` | string | 你的网站 ID。 |
 | `type` | string | 报告类型（`breakdown`）。 |
@@ -569,7 +573,7 @@ POST /api/reports/utm
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `websiteId` | string | 您的网站 ID。 |
 | `type` | string | 报告类型（`journey`）。 |
@@ -644,7 +648,7 @@ POST /api/reports/utm
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `websiteId` | string | 您的网站 ID。 |
 | `type` | string | 报告类型（`performance`）。 |
@@ -840,7 +844,7 @@ POST /api/reports/utm
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `websiteId` | string | 您的网站 ID。 |
 | `type` | string | 报告类型（`retention`）。 |
@@ -1082,17 +1086,164 @@ POST /api/reports/utm
 
 ---
 
+## GET /api/websites/:websiteId/revenue/chart
+
+返回指定日期范围和货币的收入图表数据。
+
+**参数**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | Unix 毫秒格式的开始日期。 |
+| `endAt` | number | Unix 毫秒格式的结束日期。 |
+| `timezone` | string | 时区（例如 America/Los_Angeles）。 |
+| `currency` | string | 货币代码（ISO 4217）。 |
+| `compare` | string | （可选）比较周期（`prev` \| `yoy`）。 |
+
+**示例响应**
+
+```json
+[
+  {
+    "x": "revenue-demo",
+    "t": "2026-05-01T08:00:00Z",
+    "y": 70,
+    "count": 2
+  },
+  {
+    "x": "revenue-demo",
+    "t": "2026-05-01T09:00:00Z",
+    "y": 40,
+    "count": 2
+  }
+]
+```
+
+---
+
+## GET /api/websites/:websiteId/revenue/stats
+
+返回给定日期范围内的收入统计数据，并可选对比上一周期。
+
+**参数**
+
+| 参数 | 类型 | 描述 |
+| --- | --- | --- |
+| `startAt` | number | Unix 毫秒时间戳格式的开始日期。 |
+| `endAt` | number | Unix 毫秒时间戳格式的结束日期。 |
+| `timezone` | string | 时区（例如 America/Los_Angeles）。 |
+| `currency` | string | 货币代码（ISO 4217）。 |
+| `compare` | string | （可选）对比周期（`prev` \| `yoy`）。 |
+
+**示例响应**
+
+```json
+{
+  "sum": 320,
+  "count": 12,
+  "unique_count": 12,
+  "total_sessions": 1300,
+  "average": 26.67,
+  "arpu": 0.246,
+  "comparison": {
+    "sum": 2470,
+    "count": 66,
+    "unique_count": 66,
+    "total_sessions": 2994,
+    "average": 37.42,
+    "arpu": 0.825
+  }
+}
+```
+
+---
+
+## GET /api/websites/:websiteId/revenue/metrics
+
+按指定维度拆分返回收入。
+
+**参数**
+
+| 参数 | 类型 | 描述 |
+| --- | --- | --- |
+| `startAt` | number | 开始日期，Unix 毫秒时间戳。 |
+| `endAt` | number | 结束日期，Unix 毫秒时间戳。 |
+| `timezone` | string | 时区（例如 America/Los_Angeles）。 |
+| `type` | string | 拆分类型（`country` \| `region` \| `referrer` \| `channel`）。 |
+| `currency` | string | 货币代码（ISO 4217）。 |
+
+**示例响应**
+
+```json
+[
+  { "name": "US", "value": 120 },
+  { "name": "GB", "value": 100 },
+  { "name": "DE", "value": 60 }
+]
+```
+
+---
+
+## GET /api/websites/:websiteId/revenue/sessions
+
+返回一个带分页的会话列表，其中包含收入数据。
+
+**参数**
+
+| 参数 | 类型 | 描述 |
+| --- | --- | --- |
+| `startAt` | number | Unix 毫秒时间戳的开始日期。 |
+| `endAt` | number | Unix 毫秒时间戳的结束日期。 |
+| `timezone` | string | 时区（例如 America/Los_Angeles）。 |
+| `currency` | string | 货币代码（ISO 4217）。 |
+| `page` | number | （可选）页码。 |
+| `pageSize` | number | （可选）每页结果数。 |
+| `search` | string | （可选）用于筛选会话的搜索词。 |
+
+**示例响应**
+
+```json
+{
+  "data": [
+    {
+      "id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "websiteId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "hostname": "example.com",
+      "browser": "Chrome",
+      "os": "Windows",
+      "device": "desktop",
+      "screen": "1920x1080",
+      "language": "en-US",
+      "country": "US",
+      "region": "US-CA",
+      "city": "San Francisco",
+      "firstAt": "2026-05-01T08:00:00Z",
+      "lastAt": "2026-05-01T08:15:00Z",
+      "visits": 1,
+      "views": 5,
+      "events": 2,
+      "createdAt": "2026-05-01T08:00:00Z"
+    }
+  ],
+  "count": 1,
+  "page": 1,
+  "pageSize": 20
+}
+```
+
+---
+
 ## POST /api/reports/utm
 
 通过 UTM 参数跟踪您的营销活动。
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `websiteId` | string | 您的网站 ID。 |
 | `type` | string | 报告类型（`utm`）。 |
-| `filters` | object | 可接受筛选参数。 |
+| `filters` | object | 可接受的筛选参数。 |
 | `startDate` | string | 开始日期。 |
 | `endDate` | string | 结束日期。 |
 

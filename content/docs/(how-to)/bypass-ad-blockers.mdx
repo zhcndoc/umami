@@ -2,8 +2,7 @@
 title: 绕过广告拦截器
 ---
 
-尽管 Umami 是一款注重隐私的产品，但它仍可能被某些广告拦截器阻止。广告拦截器使用由许多不同人员维护的阻止列表。
-有些列表可能过于激进，比如会阻止包含 `analytics` 这个词的任何内容，或者不论产品如何运行，一律阻止所有跟踪产品。
+尽管 Umami 是一款注重隐私的产品，它仍然可能被某些广告拦截器阻止。广告拦截器使用由许多不同人员维护的屏蔽列表。有些列表可能过于激进，例如阻止任何包含 `analytics` 一词的内容，或者仅仅因为其运作方式而直接屏蔽所有跟踪产品。
 
 以下是几种避免广告拦截器的方法。
 
@@ -42,9 +41,9 @@ app.get("/stats.js", async (req, res) => {
 <script defer src="/stats.js" data-website-id="..."></script>
 ```
 
-如果你使用的是像 [Next.js](https://nextjs.org) 这样的框架，可以使用它们的 [rewrites](https://nextjs.org/docs/pages/api-reference/next-config-js/rewrites) 功能。
+如果你使用的是像 [Next.js](https://nextjs.org) 这样的框架，可以使用它们的 [重写](https://nextjs.org/docs/pages/api-reference/next-config-js/rewrites) 功能。
 
-## 自己托管追踪脚本
+## 自行托管追踪脚本
 
 如果你无法访问网络服务器，无法代理脚本，也可以直接将整个追踪脚本托管在你自己的域名下。
 
@@ -53,7 +52,10 @@ app.get("/stats.js", async (req, res) => {
 3. 将文件上传至你的域名。
 4. 设置 `data-host-url` 属性，以便数据发送到正确的位置。详情见 [追踪器配置](https://umami.is/docs/tracker-configuration)
 
-请注意，这种方法的可靠性不及代理，如果追踪脚本发生变化，你需要重新下载并更新脚本。
+1. 在浏览器中打开脚本 URL，`https://cloud.umami.is/script.js`。
+2. 保存该文件。
+3. 将文件上传到你的域名。
+4. 设置 `data-host-url` 属性，以便将数据发送到正确的位置。参见 [追踪器配置](https://umami.is/docs/tracker-configuration)。
 
 ## 使用环境变量（自托管）
 

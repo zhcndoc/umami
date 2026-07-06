@@ -22,7 +22,7 @@ GET /api/websites/:websiteId/stats
 
 所有标记为 `filters` 的端点现在可以使用以下参数进行过滤。
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `path` | string | URL 的名称。 |
 | `referrer` | string | 引荐来源的名称。 |
@@ -53,7 +53,7 @@ GET /api/websites/:websiteId/stats
 
 单位参数用于对返回的数据进行分组。如果超过最大值，单位会自动转换为下一个较大的适用时间单位。
 
-| Unit | Maximum |
+| 单位 | 最大值 |
 | --- | --- |
 | `minute` | 最多 60 分钟。 |
 | `hour` | 最多 30 天。 |
@@ -65,9 +65,9 @@ GET /api/websites/:websiteId/stats
 
 ## GET /api/websites/:websiteId/active
 
-获取网站上的活跃用户数量。
+Get the number of active users on a website.
 
-**示例响应**
+**Example response**
 
 ```json
 {
@@ -75,7 +75,7 @@ GET /api/websites/:websiteId/stats
 }
 ```
 
-- `visitors`：最近 5 分钟内的独立访客数量
+- `visitors`: number of unique visitors in the last 5 minutes
 
 ---
 
@@ -104,9 +104,9 @@ GET /api/websites/:websiteId/stats
 | --- | --- | --- |
 | `startAt` | number | 开始日期的时间戳（毫秒）。 |
 | `endAt` | number | 结束日期的时间戳（毫秒）。 |
-| `unit` | string | 时间单位（`year` \| `month` \| `hour` \| `day`）。 |
+| `unit` | string | 时间单位（`year` \| `month` \| `day` \| `hour` \| `minute`）。 |
 | `timezone` | string | 时区（例如 America/Los_Angeles）。 |
-| `filters` | object | 可以接受过滤参数。 |
+| `filters` | object | 可接受筛选参数。 |
 
 **示例响应**
 
@@ -154,7 +154,7 @@ GET /api/websites/:websiteId/stats
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `startAt` | number | 开始日期的时间戳（毫秒）。 |
 | `endAt` | number | 结束日期的时间戳（毫秒）。 |
@@ -202,7 +202,7 @@ GET /api/websites/:websiteId/stats
 ]
 ```
 
-| Field | Description |
+| 字段 | 描述 |
 | --- | --- |
 | `x` | 唯一值，取决于指标类型。 |
 | `y` | 访客数量。 |
@@ -213,7 +213,7 @@ GET /api/websites/:websiteId/stats
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `startAt` | number | 开始日期的时间戳（毫秒）。 |
 | `endAt` | number | 结束日期的时间戳（毫秒）。 |
@@ -273,7 +273,7 @@ GET /api/websites/:websiteId/stats
 ]
 ```
 
-| Field | Description |
+| 字段 | 描述 |
 | --- | --- |
 | `name` | 唯一值，取决于指标类型。 |
 | `pageviews` | 页面访问量。 |
@@ -292,12 +292,12 @@ GET /api/websites/:websiteId/stats
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `startAt` | number | 开始日期的时间戳（毫秒）。 |
+| `startAt` | number | 起始日期的时间戳（毫秒）。 |
 | `endAt` | number | 结束日期的时间戳（毫秒）。 |
-| `unit` | string | 时间单位（`year` \| `month` \| `hour` \| `day`）。 |
+| `unit` | string | 时间单位（`year` \| `month` \| `day` \| `hour` \| `minute`）。 |
 | `timezone` | string | 时区（例如 America/Los_Angeles）。 |
-| `compare` | string | （可选）比较周期（`prev` \| `yoy`）。 |
-| `filters` | object | 可以接受过滤参数。 |
+| `compare` | string | （可选）对比周期（`prev` \| `yoy`）。 |
+| `filters` | object | 可接收筛选参数。 |
 
 **示例响应**
 
@@ -341,17 +341,17 @@ GET /api/websites/:websiteId/stats
 
 ## GET /api/websites/:websiteId/stats
 
-获取网站汇总统计数据。
+Get aggregated statistics for a website.
 
-**参数**
+**Parameters**
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `startAt` | number | 开始日期的时间戳（毫秒）。 |
-| `endAt` | number | 结束日期的时间戳（毫秒）。 |
-| `filters` | object | 可以接受过滤参数。 |
+| `startAt` | number | Timestamp for the start date (milliseconds). |
+| `endAt` | number | Timestamp for the end date (milliseconds). |
+| `filters` | object | Can accept filter parameters. |
 
-**示例响应**
+**Example response**
 
 ```json
 {
@@ -372,8 +372,8 @@ GET /api/websites/:websiteId/stats
 
 | Field | Description |
 | --- | --- |
-| `pageviews` | 页面访问量。 |
-| `visitors` | 独立访客数量。 |
-| `visits` | 独立访问次数。 |
-| `bounces` | 仅访问单个页面的访客数量。 |
-| `totaltime` | 网站上的停留时间。 |
+| `pageviews` | Pageviews. |
+| `visitors` | Number of unique visitors. |
+| `visits` | Number of unique visits. |
+| `bounces` | Number of visitors who only viewed a single page. |
+| `totaltime` | Time spent on the website. |

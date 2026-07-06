@@ -23,7 +23,9 @@ Distinct ID 是分配给用户的唯一标识符，无论是匿名状态还是�
 umami.identify({ id: 'bob@aol.com' });
 ```
 
-或者在使用 [发送统计信息](/docs/api/sending-stats) API 时，直接将 **id** 属性添加到事件 payload 中：
+`id` 属性是设置 Distinct ID 的键。
+
+或者在直接使用 [Sending stats](/docs/api/sending-stats) API 时，将 **id** 属性添加到事件载荷中：
 
 ```json
 {

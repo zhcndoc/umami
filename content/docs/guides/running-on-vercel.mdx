@@ -19,7 +19,7 @@ _使用上方按钮自动执行步骤 1-5_
 4. 给你的 Vercel 项目添加必需的环境变量 `DATABASE_URL`。这些值在 [安装](/docs/install) 的 **配置 Umami** 步骤中定义。你也可以在此时创建一个 Vercel Postgres 数据库。
 
 - 你应该为 umami 使用 `POSTGRES_PRISMA_URL`，其格式为 `postgres://user:passwd@endpoint-pooler.postgres.vercel-storage.com/verceldb?pgbouncer=true&connect_timeout=10`。
-- 用于数据库 URL 的环境变量可以在 `db/postgresql/prisma.schema` 文件中更改。
+- 数据库 URL 使用的环境变量可以在 `db/postgresql/schema.prisma` 文件中更改。
 
 5. 部署并访问你的应用，地址为 `<deploy-id>.vercel.app`。
 6. 按照 [登录](/docs/login) 步骤开始 **快速开始** 指南，并确保更改默认密码。

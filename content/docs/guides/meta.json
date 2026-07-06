@@ -4,8 +4,6 @@
   "pages": [
     "---指南---",
     "index",
-    "migrate-v1-v2",
-    "migrate-mysql-postgresql",
     "---跟踪---",
     "track-single-page-apps",
     "track-file-downloads",
@@ -35,6 +33,7 @@
     "running-on-northflank",
     "running-on-fly-io",
     "running-on-forge",
+    "running-on-helmforge",
     "running-on-heroku",
     "running-on-koyeb",
     "running-on-neon",
@@ -46,8 +45,9 @@
     "running-on-sevalla",
     "running-on-supabase",
     "running-on-vercel",
-    "---人工智能---",
-    "connecting-agents"
+    "---迁移---",
+    "migrate-v1-v2",
+    "migrate-mysql-postgresql"
   ],
   "defaultOpen": true
 }

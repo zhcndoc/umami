@@ -20,6 +20,7 @@
     "(filtering)",
     "sessions",
     "replays",
+    "heatmaps",
     "performance",
     "compare",
     "breakdown",
@@ -43,6 +44,7 @@
     "metric-definitions",
     "integrations",
     "---贡献---",
+    "contributing",
     "code-of-conduct"
   ],
   "defaultOpen": true

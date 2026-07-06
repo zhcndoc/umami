@@ -15,9 +15,9 @@ GET /api/websites/:websiteId/sessions/:sessionId/activity
 GET /api/websites/:websiteId/sessions/:sessionId/properties
 GET /api/websites/:websiteId/session-data/properties
 GET /api/websites/:websiteId/session-data/values
+GET /api/websites/:websiteId/session-data-pivot
+GET /api/websites/:websiteId/session-data/stats
 ```
-
----
 
 ## 过滤器
 
@@ -151,11 +151,11 @@ GET /api/websites/:websiteId/session-data/values
 }
 ```
 
-- `pageviews`：网页访问次数
-- `visitors`：独立访客数
-- `visits`：唯一访问次数
-- `bounces`：只访问单页的访客数（未在示例中展示）
-- `totaltime`：访问网站的总停留时间（未在示例中展示）
+- `pageviews`: 页面浏览量
+- `visitors`: 独立访客数
+- `visits`: 独立访问次数
+- `countries`: 独立国家/地区数
+- `events`: 事件数
 
 ---
 
@@ -190,7 +190,7 @@ GET /api/websites/:websiteId/session-data/values
 
 ## GET /api/websites/:websiteId/sessions/:sessionId
 
-获取单个会话详情。
+获取单个会话的详细信息
 
 **示例响应**
 
@@ -220,7 +220,7 @@ GET /api/websites/:websiteId/session-data/values
 
 ## GET /api/websites/:websiteId/sessions/:sessionId/activity
 
-获取单个会话的活动记录。
+获取单个会话的会话活动
 
 **参数**
 
@@ -273,7 +273,7 @@ GET /api/websites/:websiteId/session-data/values
 
 ## GET /api/websites/:websiteId/sessions/:sessionId/properties
 
-获取单个会话的属性。
+获取单个会话的会话属性
 
 **示例响应**
 
@@ -322,7 +322,8 @@ GET /api/websites/:websiteId/session-data/values
 | --- | --- | --- |
 | `startAt` | number | 开始日期的时间戳（毫秒）。 |
 | `endAt` | number | 结束日期的时间戳（毫秒）。 |
-| `filters` | - | 可接受过滤参数。 |
+| `propertyName` | string | （可选）将结果筛选为特定的属性名称。 |
+| `filters` | - | 可以接受筛选参数。 |
 
 **示例响应**
 
@@ -360,7 +361,8 @@ GET /api/websites/:websiteId/session-data/values
 | `startAt` | number | 开始日期的时间戳（毫秒）。 |
 | `endAt` | number | 结束日期的时间戳（毫秒）。 |
 | `propertyName` | string | 属性名称。 |
-| `filters` | - | 可接受过滤参数。 |
+| `dataType` | number | （可选）按数据类型筛选（1=字符串，2=数字，3=日期，4=布尔值）。 |
+| `filters` | - | 可接受筛选参数。 |
 
 **示例响应**
 
@@ -376,3 +378,79 @@ GET /api/websites/:websiteId/session-data/values
   }
 ]
 ```
+
+---
+
+## GET /api/websites/:websiteId/session-data-pivot
+
+以透视格式获取会话数据，每一行表示一个会话及其属性的并行数组。
+
+**参数**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | 开始日期的时间戳（毫秒）。 |
+| `endAt` | number | 结束日期的时间戳（毫秒）。 |
+| `propertyName` | string | 要进行透视的会话属性名称。 |
+| `page` | number | （可选，默认值 1）决定页码。 |
+| `pageSize` | number | （可选，默认值 20）决定返回多少结果。 |
+| `filters` | - | 可接受筛选参数。 |
+
+**示例响应**
+
+```json
+{
+  "data": [
+    {
+      "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "distinctId": "user-123",
+      "createdAt": "2025-10-15T16:26:28Z",
+      "propertyKeys": ["plan", "role"],
+      "propertyValues": ["pro", "admin"]
+    }
+  ],
+  "count": 50,
+  "page": 1,
+  "pageSize": 20
+}
+```
+
+---
+
+## GET /api/websites/:websiteId/session-data/stats
+
+获取按给定属性值分组的会话汇总活动统计。
+
+**参数**
+
+| 参数 | 类型 | 描述 |
+| --- | --- | --- |
+| `startAt` | number | 开始日期的时间戳（毫秒）。 |
+| `endAt` | number | 结束日期的时间戳（毫秒）。 |
+| `propertyName` | string | 要按其分组的属性名。 |
+| `filters` | - | 可接受筛选参数。 |
+
+**示例响应**
+
+```json
+[
+  {
+    "label": "pro",
+    "activity": 342,
+    "sessions": 89,
+    "visits": 201,
+    "views": 1450,
+    "events": 892
+  },
+  {
+    "label": "free",
+    "activity": 158,
+    "sessions": 44,
+    "visits": 91,
+    "views": 630,
+    "events": 310
+  }
+]
+```
+
+结果按 `activity` 降序排列。最多返回 100 行。

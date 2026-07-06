@@ -4,7 +4,9 @@ title: 追踪器功能
 
 Umami 追踪器提供了一个函数，如果你想要对追踪进行更多控制，可以在你的网站上调用该函数。默认情况下，一切数据都会自动收集，但你可以通过设置 `data-auto-track="false"` 来禁用自动收集，并自行发送数据。详见 [追踪器配置](/docs/tracker-configuration)。
 
-## 函数 `v2.0.0`
+## 函数
+
+`v2.0.0`
 
 ```js
 // 追踪当前页面
@@ -29,7 +31,9 @@ umami.identify(unique_id: string, data: object);
 umami.identify(data: object);
 ```
 
-## 页面浏览 `v2.0.0`
+## Pageviews
+
+`v2.0.0`
 
 追踪页面浏览。
 
@@ -61,7 +65,9 @@ umami.track({ website: 'e676c9b4-11e4-4ef1-a4d7-87001773e9f2', url: '/home', tit
 umami.track(props => ({ ...props, url: '/home', title: '主页' }));
 ```
 
-## 事件 `v2.0.0`
+## 事件
+
+`v2.0.0`
 
 追踪一个具有指定名称的事件。
 
@@ -69,12 +75,14 @@ umami.track(props => ({ ...props, url: '/home', title: '主页' }));
 umami.track('signup-button');
 ```
 
-## 事件数据 `v2.0.0`
+## 事件数据
+
+`v2.0.0`
 
 追踪一个带有动态数据的事件。
 
 ```js
-umami.track('signup-button', { name: 'newsletter', id: 123 });
+umami.track('signup-button', { plan: 'newsletter', id: 123 });
 ```
 
 追踪事件时，默认属性会包含在负载中。相当于执行了：
@@ -84,7 +92,7 @@ umami.track(props => ({
   ...props,
   name: 'signup-button',
   data: {
-    name: 'newsletter',
+    plan: 'newsletter',
     id: 123,
   },
 }));
@@ -122,7 +130,9 @@ umami.track(props => ({
 umami.identify('unique_id');
 ```
 
-## 会话数据 `v2.13.0`
+## 会话数据
+
+`v2.13.0`
 
 保存当前会话的数据。
 

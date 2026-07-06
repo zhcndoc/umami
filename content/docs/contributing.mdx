@@ -1,0 +1,48 @@
+---
+title: 贡献
+---
+
+感谢您有兴趣为 Umami 贡献！本文档概述了贡献代码的流程。
+
+## 分支
+
+Umami 使用以下长期存在的分支：
+
+- `master` — 稳定、已发布的代码。**请不要向 `master` 提交 PR。**
+- `dev` — 活跃开发中。**所有拉取请求都应以 `dev` 为目标。**
+
+功能分支和修复会合并到 `dev`，而 `dev` 会定期合并到 `master` 以进行发布。
+
+## 提交拉取请求
+
+1. Fork 仓库并基于 `dev` 创建你的分支：
+   ```bash
+   git checkout dev
+   git pull origin dev
+   git checkout -b my-feature
+   ```
+2. 进行你的更改。保持 PR 关注点明确——每个 PR 只包含一个逻辑变更。
+3. 确保项目可以正常构建并且 lint 通过：
+   ```bash
+   pnpm install
+   pnpm build
+   pnpm lint
+   ```
+4. 推送你的分支并创建一个拉取请求，**目标分支为 `dev`**。
+5. 在 PR 描述中填写变更内容以及原因。链接任何相关问题。
+
+针对 `master` 提交的 PR 将被要求重新定向到 `dev`。
+
+## 报告问题
+
+- 在提交新问题之前，请先搜索[现有问题](https://github.com/umami-software/umami/issues)。
+- 对于 bug，请包含复现步骤、预期行为与实际行为，以及你的环境信息（Umami 版本、数据库、浏览器）。
+- 对于功能请求，请先描述使用场景，再提出建议的解决方案。
+
+## 开发环境设置
+
+请参阅 [README](https://github.com/umami-software/umami/blob/master/README.md)，了解如何安装依赖项、配置数据库以及在本地运行 Umami。
+
+## 许可证
+
+通过贡献，您同意您的贡献将依据 [MIT 许可证](https://github.com/umami-software/umami/blob/master/LICENSE) 进行许可。

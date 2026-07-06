@@ -2,13 +2,14 @@
 title: 在 Forge 上运行
 ---
 
-[Forge](https://forge.laravel.com/) 是一个付费的服务器管理服务，专为在 DigitalOcean、Linode、Vultr、Amazon、Hetzner 等服务器提供商上托管 Laravel 应用而设计。
+[Forge](https://forge.laravel.com/) 是一项付费的服务器管理服务，专为在 DigitalOcean、
+Linode、Vultr、Amazon、Hetzner 等服务器提供商上托管 Laravel 应用而定制。
 
 如果您拥有 Forge 账户及已连接的服务器集群，您可以轻松设置 Umami 安装。
 
 ## 先决条件
 
-1. 配置您想要让 Umami 可用的（子）域名。通常，您可以通过在 DNS 配置中添加指向集群 IP 地址的 A 记录来完成此操作。
+1. 配置你希望 Umami 可用的（子）域名。通常，你可以通过配置 DNS 设置中的 A 记录，使其指向你的 bucket IP 地址。
 
 ## 设置
 
@@ -33,7 +34,7 @@ title: 在 Forge 上运行
 
    ```shell
    ( flock -w 10 9 || exit 1
-   echo 'Restarting FPM...'; sudo -S service $FORGE_PHP_FPM reload ) 9>/tmp/fpmlock
+   echo '重启 FPM...'; sudo -S service $FORGE_PHP_FPM reload ) 9>/tmp/fpmlock
 
    if [ -f artisan ]; then
        $FORGE_PHP artisan migrate --force

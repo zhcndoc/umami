@@ -2,35 +2,35 @@
 title: 获取更新
 ---
 
-## 源代码
+## Source Code
 
-运行这些命令前，请确保您处于 Umami 项目目录中。
+Before running these commands, make sure you are in the Umami project directory.
 
-从 Git 仓库拉取最新更改：
+Pull the latest changes from the Git repository:
 
 ```shell
 git pull
 ```
 
-安装任何新的或更新的依赖项：
+Install any new or updated dependencies:
 
 ```shell
 pnpm install
 ```
 
-重新构建项目：
+Rebuild the project:
 
 ```shell
 pnpm build
 ```
 
-最后，重启应用：
+Finally, restart the application:
 
 ```shell
 pnpm start
 ```
 
-如果您使用的是像 PM2 这样的进程管理器，请改为重启进程：
+If you are using a process manager like PM2, restart the process instead:
 
 ```shell
 pm2 restart umami
@@ -50,3 +50,13 @@ docker pull docker.umami.is/umami-software/umami:latest
 docker compose down
 docker compose up -d
 ```
+
+## 升级后刷新数据库统计信息
+
+重大升级（例如迁移到 v3）会运行模式迁移，这可能会使 PostgreSQL 的查询规划器保留过时的统计信息，导致在大型实例上仪表板查询比预期更慢。运行 `ANALYZE` 来刷新它们：
+
+```sql
+ANALYZE;
+```
+
+这可以安全地在正在运行的数据库上执行，并且会快速完成。之后，仪表板查询应恢复到预期速度。

@@ -21,7 +21,7 @@
     "export-data",
     "import-data",
     "---更新日志---",
-    "api-changelog"
+    "changelog"
   ],
   "defaultOpen": true
 }

@@ -1,0 +1,95 @@
+---
+title: 使用 HelmForge 在 Kubernetes 上运行
+---
+
+[HelmForge](https://helmforge.dev/docs/charts/umami/) 提供了一个用于在 Kubernetes 上运行 Umami 的第三方 Helm chart。
+该 chart 使用官方的 Umami 容器镜像，并且可以将 PostgreSQL 作为捆绑的子 chart 部署，或者连接到外部 PostgreSQL 数据库。
+
+## 要求
+
+- 一个可正常工作的 Kubernetes 集群。
+- 本地已安装 Helm 3。
+- 如果使用内置的 PostgreSQL 子图表，需要有一个默认的 `StorageClass`。
+- 可选：如果你想通过公共主机名公开 Umami，需要一个 Ingress 控制器。
+
+## 添加 HelmForge 仓库
+
+```shell
+helm repo add helmforge https://repo.helmforge.dev
+helm repo update
+```
+
+## 使用捆绑的 PostgreSQL 安装
+
+对于基本安装，该 chart 可以将 Umami 与 PostgreSQL 一起部署：
+
+```shell
+kubectl create namespace umami
+
+helm install umami helmforge/umami \
+  --namespace umami
+```
+
+使用端口转发在本地访问应用程序：
+
+```shell
+kubectl port-forward \
+  --namespace umami \
+  svc/umami-umami 3000:80
+```
+
+然后打开 `http://localhost:3000`。
+默认登录凭据的用户名是 **admin**，密码是 **umami**。
+
+> **重要**：请在首次登录后立即更改默认密码。
+
+## 使用外部 PostgreSQL 数据库
+
+要将 Umami 连接到现有的 PostgreSQL 数据库，请禁用捆绑的 PostgreSQL 子图表，并提供外部数据库设置：
+
+```yaml
+# values.yaml
+postgresql:
+  enabled: false
+
+database:
+  external:
+    host: postgres.example.com
+    port: "5432"
+    name: umami
+    username: umami
+    existingSecret: umami-db-credentials
+    existingSecretPasswordKey: password
+```
+
+然后使用以下命令安装 chart：
+
+```shell
+helm install umami helmforge/umami \
+  --namespace umami \
+  --values values.yaml
+```
+
+## 使用 Ingress 暴露
+
+对于公共安装，启用 Ingress：
+
+```yaml
+ingress:
+  enabled: true
+  ingressClassName: nginx
+  hosts:
+    - host: analytics.example.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls:
+    - hosts:
+        - analytics.example.com
+      secretName: umami-tls
+```
+
+## 更多信息
+
+- [HelmForge Umami 图表文档](https://helmforge.dev/docs/charts/umami/)
+- [HelmForge Umami 图表源码](https://github.com/helmforgedev/charts/tree/main/charts/umami)

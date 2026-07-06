@@ -2,9 +2,9 @@
 title: 使用 Google Tag Manager
 ---
 
-Umami 追踪器可以通过 Google Tag Manager 安装。
+Umami 跟踪器可以通过 Google Tag Manager 安装。
 
-通常，你会使用以下代码来安装 Umami 追踪器：
+通常，你会使用以下代码来安装 Umami 跟踪器：
 
 ```html
 <script
@@ -16,7 +16,7 @@ Umami 追踪器可以通过 Google Tag Manager 安装。
 
 但是，Google Tag Manager 会从 script 标签中剥离自定义的 `data-*` 属性。为了解决这个问题，请在 GTM 中使用 **自定义 HTML** 标签动态创建 script 元素：
 
-```javascript
+```html
 <script>
   (function () {
   var el = document.createElement('script');

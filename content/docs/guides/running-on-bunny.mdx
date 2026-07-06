@@ -10,13 +10,13 @@ title: 在 bunny.net 上运行
 
 ### 1. 创建新应用程序
 
-1. 前往 [bunny.net 仪表板](https://dash.bunny.net) 中的 **Magic Containers** 并点击 **Add App**。
+1. 前往 [bunny.net 仪表板](https://dash.bunny.net) 中的 **Magic Containers** 并点击 **添加应用**。
 2. 为您的应用程序命名（例如 `umami`）。
-3. 选择 **Single Region** 部署，因为这是一个带有数据库的有状态应用程序。
+3. 选择 **单区域** 部署，因为这是一个带有数据库的有状态应用程序。
 
 ### 2. 添加 PostgreSQL 容器
 
-1. 点击 **Add Container**。
+1. 点击 **添加容器**。
 2. 输入名称 `postgres`。
 3. 从 **Registry** 下拉菜单中，选择 **DockerHub Public**。
 4. 将镜像设置为 `library/postgres`，标签设置为 `16-alpine`。
@@ -34,10 +34,10 @@ bunny.net 将自动检测环境变量。用您的首选值更新它们：
 
 ### 3. 添加 Umami 容器
 
-1. 点击 **Add Container**。
+1. 点击 **添加容器**。
 2. 输入名称 `umami`。
 3. 从 **Registry** 下拉菜单中，选择 **DockerHub Public**。
-4. 将镜像设置为 `umamisoftware/umami`，标签设置为 `postgresql-latest`。
+4. 将镜像设置为 `docker.umami.is/umami-software/umami`，标签设置为 `postgresql-latest`。
 
 更新环境变量：
 

@@ -17,26 +17,23 @@ title: 回放
 
 ![image](/images/docs/website-edit.png)
 
-进入 **回放** 部分并点击开关。
+前往 **回放与热图** 部分，并点击 **回放** 开关。
 
 ![image](/images/docs/replay-edit.png)
 
-| 选项 | 属性 | 描述 | 默认值 |
-| --- | --- | --- | --- |
-| 采样率 | `data-sample-rate` | 需要记录的会话比例，范围从 `0` 到 `1`。例如，`0.15` 表示记录 15% 的会话。 | `0.15` |
-| 遮罩级别 | `data-mask-level` | 隐私遮罩级别。`moderate` 会遮罩所有输入字段；`strict` 会遮罩所有输入和页面上的所有文本。 | `moderate` |
-| 最大时长 | `data-max-duration` | 录制的最长时长，单位为毫秒。达到后会自动停止录制。 | `300000`（5 分钟） |
-| 阻止选择器 | `data-block-selector` | 用于完全排除不参与录制的元素的 CSS 选择器（例如，`.sensitive-widget`）。 | 无 |
+| 选项 | 描述 | 默认值 |
+| --- | --- | --- |
+| 采样率 | 记录会话的比例，取值从 `0` 到 `1`。例如，`0.15` 表示记录 15% 的会话。 | `0.15` |
+| 掩码级别 | 隐私掩码级别。`moderate` 会隐藏所有输入字段；`strict` 会隐藏所有输入内容以及页面上的所有文本。 | `moderate` |
+| 最大时长 | 录制的最长时长，单位为毫秒。达到后会自动停止录制。 | `300000`（5 分钟） |
+| 阻止选择器 | 用于完全排除不被录制元素的 CSS 选择器（例如 `.sensitive-widget`）。 | 无 |
 
 你还需要更新你的跟踪脚本，以启用回放收集。
 
 ```html
-<script 
-  defer src="http://localhost:3000/recorder.js" 
-  data-website-id="my-website-id" 
-  data-sample-rate="0.15" 
-  data-mask-level="moderate" 
-  data-max-duration="300000"
+<script
+  defer src="http://localhost:3000/recorder.js"
+  data-website-id="my-website-id"
 ></script>
 ```
 

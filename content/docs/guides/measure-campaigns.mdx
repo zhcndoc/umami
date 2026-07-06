@@ -11,7 +11,7 @@ title: 测量营销活动
 
 ## 第一步：设置事件跟踪
 
-如果您发送流量到安装了 Umami 的网站页面，该页面需要设置事件跟踪。这是一个关键步骤，因为 Umami 可以跟踪您网站上的事件，这对于了解活动表现至关重要。我们需要知道有多少人点击了注册按钮、安装了应用、下载了内容、完成注册等。Umami 记录事件有两种方式：使用 data 属性或者 JavaScript。有关如何使用 Umami 设置事件跟踪的更多信息，请参考[文档](/docs)。
+如果您向安装了 Umami 的网站页面发送流量，该页面需要设置事件跟踪。这是一个关键步骤，因为 Umami 可以跟踪您网站上的事件，这对于了解活动表现至关重要。我们需要知道有多少人点击了注册按钮、安装了应用、下载了内容、完成注册等。Umami 记录事件有两种方式：使用 data 属性或者 JavaScript。有关如何使用 Umami 设置事件跟踪的更多信息，请参考[文档](/docs)。
 
 ![image](/images/guides/measure-campaigns-01.png)
 
@@ -25,10 +25,9 @@ title: 测量营销活动
 
 **带 UTM 参数的 URL**：
 
-`https://website.com/?utm_source=newsletter
-&utm_medium=email&utm_campaign=sales`
+`https://website.com/?utm_source=newsletter&utm_medium=email&utm_campaign=sales`
 
-Umami 会自动捕获您添加在链接末尾的 UTM 参数。您可以在 Umami 仪表盘内查看这些数据，或构建自定义的 [UTM 报告](/docs/reports/report-utm)。Google 提供了免费的 [UTM 链接生成工具](https://ga-dev-tools.google/campaign-url-builder/)，任何人都可以使用。
+Umami 会自动捕获您添加到链接末尾的 UTM 参数。您可以在 Umami 仪表盘中查看这些数据，或者构建一个自定义的 [UTM 报告](/docs/utm)。Google 提供了一个免费的 [UTM 链接构建器](https://ga-dev-tools.google/campaign-url-builder/)，任何人都可以使用。
 
 ![image](/images/guides/measure-campaigns-02.png)
 
@@ -57,9 +56,9 @@ Umami 还允许您构建自定义报告，直接跳转到所需的具体数据�
 
 ## 示例
 
-让我们通过使用登陆页面来回顾如何衡量营销活动的影响力和有效性，因为向指定登陆页面发送流量是一种非常常见的做法：
+让我们通过使用登录页面来回顾如何衡量营销活动的影响力和有效性，因为向指定登录页面发送流量是一种非常常见的做法：
 
-1. 在 Umami 中，首先通过 URL 过滤查看登陆页面的指标。
+1. 在 Umami 中，首先通过 URL 过滤查看登录页面的指标。
 2. 接着，通过数据筛选了解流量来源的查询参数（UTM 参数），确定用户如何抵达该页面，点击了哪些链接，以及点击了哪封邮件（例如您有多封邮件并需要跟踪）。
 3. 最后，利用数据筛选了解页面上的事件。例如，有人点击了“Get Started”或“Free Trial”按钮吗？
 

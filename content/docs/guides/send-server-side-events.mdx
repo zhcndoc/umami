@@ -11,30 +11,33 @@ title: 发送服务器端事件
 - **后台作业**：记录来自 cron 作业、电子邮件发送或数据处理管道的事件。
 - **导入历史数据**：从另一个分析平台回填事件。
 
-## 使用 Node 客户端
+## Using the Node Client
 
-对于 Node.js 后端，最简单的方法是使用 [Umami Node 客户端](/docs/api/node-client)：
+For Node.js backends, the easiest way is to use the [Umami Node Client](/docs/api/node-client):
 
 ```bash
 npm install @umami/node
 ```
 
 ```js
-import Umami from '@umami/node';
+import umami from '@umami/node';
 
-const umami = new Umami({
-  hostUrl: 'https://your-umami.example.com',
+umami.init({
   websiteId: 'your-website-id',
+  hostUrl: 'https://your-umami.example.com',
 });
 
-// 跟踪页面视图
+// Track page views
 await umami.track({ url: '/api/checkout', title: 'Checkout API' });
 
 // 跟踪自定义事件
-await umami.track('payment-received', {
-  revenue: 49.99,
-  currency: 'USD',
-  plan: 'pro',
+await umami.track({
+  name: 'payment-received',
+  data: {
+    revenue: 49.99,
+    currency: 'USD',
+    plan: 'pro',
+  },
 });
 ```
 
@@ -89,36 +92,50 @@ requests.post('https://your-umami.example.com/api/send', json={
 
 ## 批量发送
 
-对于导入批量数据，使用 `/api/batch` 端点一次性发送多个事件：
+要在单个请求中发送多个事件，请向 `/api/batch` 端点 POST 一个 JSON **数组**。数组中的每个元素都与 `/api/send` 请求体的结构相同：
 
 ```bash
 curl -X POST https://your-umami.example.com/api/batch \
   -H "Content-Type: application/json" \
   -H "User-Agent: Mozilla/5.0 (Server)" \
-  -d '{
-    "events": [
-      {
-        "payload": {
-          "hostname": "example.com",
-          "url": "/page-1",
-          "website": "your-website-id"
-        },
-        "type": "event"
-      },
-      {
-        "payload": {
-          "hostname": "example.com",
-          "url": "/page-2",
-          "website": "your-website-id"
-        },
-        "type": "event"
+  -d '[
+    {
+      "type": "event",
+      "payload": {
+        "website": "your-website-id",
+        "hostname": "example.com",
+        "url": "/page-1",
+        "name": "page-view"
       }
-    ]
-  }'
+    },
+    {
+      "type": "event",
+      "payload": {
+        "website": "your-website-id",
+        "hostname": "example.com",
+        "url": "/page-2",
+        "name": "page-view"
+      }
+    }
+  ]'
 ```
+
+每一项都会转发到 `/api/send`，因此支持相同的 `type` 值（`event`、`identify`、`performance`）和负载字段。响应会汇总该批次：
+
+```json
+{
+  "size": 2,
+  "processed": 2,
+  "errors": 0,
+  "details": [],
+  "cache": "..."
+}
+```
+
+如果有任何项失败，`errors` 表示失败数量，`details` 会按数组中的 `index` 列出每个失败项。
 
 ## 提示
 
-- 服务器端事件与客户端事件出现在同一个仪表板中。如果需要，使用事件名称或属性来区分它们。
-- 跟踪来自支付 webhook 的收入时，使用 `revenue` 和 `currency` 属性，以便数据显示在 [收入](/docs/revenue) 洞察中。
-- 对于高流量的后端，将事件批量在一起以减少 HTTP 请求的数量。
+- 服务端事件会显示在与客户端事件相同的仪表板中。如有需要，可使用事件名称或属性来区分它们。
+- 在通过支付 webhook 跟踪收入时，请使用 `revenue` 和 `currency` 属性，这样数据就会显示在 [收入](/docs/revenue) 洞察中。
+- 对于高流量后端，建议对事件进行排队，并在发送时设置并发限制，以避免压垮你的实例。

@@ -17,7 +17,7 @@ title: 启用 Cloudflare 头部信息
 之后，您需要将 [以下头部](https://github.com/umami-software/umami/blob/aaa1f9dc58feafe6af54248c5f0611112786fddf/src/lib/detect.ts#L14C2-L18C5) 代理到 Umami：
 
 - `CF-IPCountry`
-- `CF-RegionCode`
+- `CF-Region-Code`
 - `CF-IPCity`
 
 例如，如果您使用 Nginx 作为反向代理，可以添加如下配置：
@@ -30,7 +30,7 @@ location / {
     proxy_set_header X-Forwarded-Host $host;
     proxy_set_header CF-Connecting-IP $remote_addr;
     proxy_set_header CF-IPCountry $http_cf_ipcountry;
-    proxy_set_header CF-RegionCode $http_cf_regioncode;
+    proxy_set_header CF-Region-Code $http_cf_regioncode;
     proxy_set_header CF-IPCity $http_cf_ipcity;
     proxy_pass http://127.0.0.1:3000;
 }

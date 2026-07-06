@@ -24,7 +24,7 @@ title: 在 CapRover 上运行
 
 ### 2. 从模板创建应用
 
-点击你的 CapRover 实例中的“Apps”部分。
+点击你的 CapRover 实例中的“Apps”部分。  
 然后选择“One-Click Apps/Databases”并搜索 Umami，你会看到三个选项：
 
 - `umami_postgresql`：使用 PostgreSQL 数据库创建 Umami。
@@ -35,43 +35,41 @@ title: 在 CapRover 上运行
 
 选择 CapRover 的 `umami_postgresql` 或 `umami_mysql` 后，会弹出设置页面，可以填写部分环境变量。大部分内容已经预配置。
 
-- `App Name` 是你在 CapRover 中显示的 Umami 实例名称。
-- `PostgreSQL or MySQL Version` 可以是 [PostgreSQL - Docker Hub](https://hub.docker.com/_/postgres) 或 [MySQL - Docker Hub](https://hub.docker.com/_/mysql) 上支持的任何版本。默认值已通过测试与 Umami 兼容。
-- `CapRover Umami Version` 指的是 CapRover Umami 的最新版本，见 [Umami release page](https://github.com/umami-software/umami/releases)。CapRover Umami 会使用官方为你选择的数据库发布的 Docker 镜像。你可以输入具体的版本号（如 `v.1.33.x`），也可以填 `latest` 使用最新版本。
-- `Database password` 是数据库使用的密码，系统会预设一个默认值。
-- 可选项：`Arguments for 'PostgreSQL initdb'`，你可以提供 PostgreSQL initdb 的参数，例如 `--data-checksums`，该选项仅对 `umami_postgresql` 生效。
+- `App Name` 是你在 CapRover 中的 Umami 实例显示名称。
+- `PostgreSQL or MySQL Version` 可以是 [PostgreSQL - Docker Hub](https://hub.docker.com/_/postgres) 或 [MYSQL - Docker Hub](https://hub.docker.com/_/mysql) 上可用的任意 PostgreSQL 或 MySQL 版本。默认值已通过测试，可与 Umami 正常配合使用。
+- `CapRover Umami Version` 指的是 [Umami release page](https://github.com/umami-software/umami/releases) 上可找到的 CapRover Umami 最新版本。CapRover Umami 将使用为你所选数据库发布的官方 Docker 镜像。你也可以不使用类似 `v.1.33.x` 的版本号，而使用 `latest` 来构建并使用最新版 Umami。
+- `Database password` 提供你数据库所使用的密码。这里通常会预先准备一个默认值供你使用。
+- 可选：`Arguments for 'PostgreSQL initdb'` 你也可以为 PostgreSQL initdb 提供参数，例如 `--data-checksums`；此选项仅在 `umami_postgresql` 中可用。
 
-填写完成后，点击“Deploy”开始部署 CapRover Umami 实例和数据库服务。
-请部署完成前不要离开页面。
+填写完成后，点击“Deploy”开始部署 CapRover Umami 实例和数据库服务。  
+请在部署完成前不要离开页面。
 
 ### 4. 不使用数据库服务设置 Umami
 
 某些情况下你可能想自行管理数据库服务，或者使用远程数据库服务为 Umami 提供数据存储。这时可以使用 `umami_only` CapRover 应用。
 
-在设置此应用前，你需先搭建好 MySQL 或 PostgreSQL 数据库服务。
+在设置此应用之前，你需要使用 MySQL 或 PostgreSQL 创建一个数据库服务。
 
 完成数据库搭建后，选择 CapRover 中的 `umami_only`，并填写以下变量：
 
-- `App Name` 是你在 CapRover 中显示的 Umami 实例名称。
-- `CapRover Umami Version` 参照 [Umami release page](https://github.com/umami-software/umami/releases) 上的最新版本。CapRover Umami 会使用官方发布的针对你选择数据库的 Docker 镜像。可填写版本号（如 `v.1.33.x`）或用 `latest` 获取最新版本。
-- `Database Type` 设为 `postgresql` 或 `mysql`，匹配你的数据库类型。
-- `Database Remote URL` 是 Umami 用于连接数据库的远程地址。如果数据库在你的 CapRover 网络内，请用 `srv-captain--appName` 的格式。
-- `Database User` 是数据库用户名。
-- `Database Table` 是你为 Umami 创建的数据库表。
-- `Database Password` 是数据库密码。
+- `App Name` 是你在 CapRover 中的 Umami 实例显示名称。
+- `CapRover Umami Version` 指的是 [Umami release page](https://github.com/umami-software/umami/releases) 上可找到的 CapRover Umami 最新版本。CapRover Umami 将使用为你所选数据库发布的官方 Docker 镜像。你也可以不使用类似 `v.1.33.x` 的版本号，而使用 `latest` 来构建并使用最新版 Umami。
+- `Database Type` 根据你的数据库服务设置为 `postgresql` 或 `mysql`。
+- `Database Remote URL` 是 Umami 用来连接数据库的远程数据库服务地址。如果你的数据库位于 CapRover 网络中，请使用 `srv-captain--appName`。
+- `Database User` 是你的数据库用户。
+- `Database Table` 是你为 Umami 应用创建的表。
+- `Database Password` 是你的数据库密码。
 
-填写完成后，点击“Deploy”开始部署 CapRover Umami 实例。
-请部署完成前不要关闭页面。
+填写完成后，点击“Deploy”开始部署 CapRover Umami 实例。  
+请在部署完成前不要关闭页面。
 
 ### 5. 最后检查
 
-现在你可以访问 `app-name.your-sub-domain.your-domain.xx` 登录你的 Umami 部署，具体见 [Login](/docs/login) 部分。
-请务必在个人资料页面立即更改密码。
+### 5. Final checkouts
 
 ### 6. 更新已有的 Umami 实例
 
-更新前先备份数据库。备份完成后，进入 CapRover 面板，选择你的 Umami 应用。
-打开 `Deployment` 标签页，向下滚动到 `Deploy via ImageName` 部分，部署你想要的版本，镜像可在 [Umami Docker Registry](https://github.com/umami-software/umami/pkgs/container/umami) 找到。
+### 6. Updating existing umami instance
 
 注意：请根据你的数据库选择正确的 Docker 镜像。通常 MySQL 镜像前缀为 `mysql_`，PostgreSQL 镜像前缀为 `postgresql_`。
 

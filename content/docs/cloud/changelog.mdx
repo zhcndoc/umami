@@ -1,0 +1,292 @@
+---
+title: 更新日志
+---
+
+此页面记录了对 **Umami Cloud (cloud.umami.is)** 和 **API (api.umami.is)** 所做的重大更改。
+
+## 2026年6月6日
+
+**云**
+
+- 收集端点已更改为 gateway.umami.is。
+
+## 2026 年 6 月 1 日
+
+**热力图**
+
+- 为热力图页面添加了路径过滤。
+
+## 2026年5月28日
+
+**API：收入**
+
+- `GET /api/websites/:websiteId/revenue/chart`：**新增** — 返回给定日期范围和货币的收入图表数据。
+- `GET /api/websites/:websiteId/revenue/stats`：**新增** — 返回收入统计数据，并可选进行同比/环比比较。
+- `GET /api/websites/:websiteId/revenue/metrics`：**新增** — 按 `type`（`country` \| `region` \| `referrer` \| `channel`）返回收入明细。
+- `GET /api/websites/:websiteId/revenue/sessions`：**新增** — 返回带有收入数据的分页会话。
+
+**API：网站**
+
+- `GET /api/websites/:websiteId/recorder`：**新增** — 返回网站的录制器配置。由跟踪器用于初始化会话回放和热力图采集。不需要身份验证。
+- `POST /api/websites/:websiteId`：`replayConfig` 现在是一个嵌套对象。`replayEnabled` 已移至 `replayConfig` 内部。
+
+## 2026年5月12日
+
+**收入**
+
+- 为收入图表添加了累计模式。
+- 提升了收入查询性能。
+
+## 2026年5月8日
+
+**事件**
+
+- 为数据网格添加了表格/卡片视图切换。
+- 更改日期范围时，事件图表标签现在会保持隐藏。
+
+## 2026年5月7日
+
+**热力图**
+
+- 新增热力图报告，包括基于快照的渲染。
+- 新增用于筛选和主题强制设置的分享页面选项。
+
+**云端**
+
+- 为网站、看板、链接、像素、团队和管理员表格添加了排序功能。
+
+## 2026年5月5日
+
+**热力图**
+
+- 新增了滚动热力图。
+
+## 2026年5月4日
+
+**API：事件**
+
+- `GET /api/websites/:websiteId/event-data-pivot`：**新增** — 以透视格式返回事件数据，属性以并行数组形式呈现。
+
+**API：会话**
+
+- `GET /api/websites/:websiteId/session-data-pivot`：**新增** — 以透视格式返回会话数据，属性以并行数组形式呈现。
+- `GET /api/websites/:websiteId/session-data/stats`：**新增** — 返回按属性值分组的会话聚合活动统计数据。
+- `GET /api/websites/:websiteId/session-data/properties`：新增 `propertyName` 参数，用于将结果过滤为特定属性。
+- `GET /api/websites/:websiteId/session-data/values`：新增 `dataType` 参数，用于按数据类型过滤结果。
+
+## 2026年4月29日
+
+**会话数据**
+
+- 添加了会话数据屏幕和过滤功能。
+
+## 2026年4月27日
+
+**热图**
+
+- 新增了点击热图。
+
+## 2026年4月24日
+
+**事件数据**
+
+- 添加了 event-data 属性过滤。
+- 新增对数组、布尔值和日期 event-data 属性的支持。
+
+## 2026年3月25日
+
+**漏斗**
+
+- 为漏斗添加了逐步筛选器。
+- 为目标报告添加了通配符支持。
+
+## 2026年3月23日
+
+**共享**
+
+- 新增了共享屏幕选项。
+
+## 2026年3月15日
+
+**性能**
+
+- 为性能报告指标添加了评级徽章。
+
+## 2026年3月11日
+
+**API: 网站**
+
+- `GET /api/websites/:websiteId/daterange`: **新增** — 返回某个网站已收集数据的最早和最晚日期范围。
+
+**API: 事件**
+
+- `GET /api/websites/:websiteId/events/stats`: **新增** — 返回事件统计数据，并可选进行环比/同比比较。
+
+**API: 链接**
+
+- `POST /api/links`: **新增** — 创建一个链接。
+
+**API: 像素**
+
+- `POST /api/pixels`: **新增** — 创建一个像素。
+
+**API: 报告**
+
+- `POST /api/reports/goal`: 已从 `POST /api/reports/goals` 重命名（单数路径）。
+- `POST /api/reports/performance`: **新增** — 性能报告类型，支持 LCP、INP、CLS、FCP 和 TTFB 指标。
+- `POST /api/reports/revenue`: 新增 `compare` 参数。响应中的 `total` 对象现在包含 `arpu` 和 `comparison`，并新增 `region`、`referrer` 和 `channel` 分解数组。
+
+## 2026年3月10日
+
+**看板**
+
+- 新增独立的看板详情和设计流程。
+- 改进了看板编辑器布局和组件选择器。
+
+## 2026年3月9日
+
+**分享**
+
+- 已在像素和链接详情页面添加分享功能。
+
+## 2026年3月4日
+
+**看板**
+
+- 为看板添加了用于自由格式内容的文本块。
+
+## 2026年3月3日
+
+**会话回放**
+
+- 添加了会话回放表格、筛选器和回放模态框。
+
+**收入**
+
+- 在收入页面添加了 AOV 和 ARPU 指标。
+
+## 2026年3月2日
+
+**API：事件**
+
+- `GET /api/websites/:websiteId/event-data`：**新增**
+
+## 2026年2月13日
+
+**看板**
+
+- 添加了个人仪表板流程和按组件的网站选择。
+
+## 2026年2月12日
+
+**看板**
+
+- 在顶部导航中添加了看板选择器。
+- 在顶部导航中添加了链接和像素选择器。
+
+## 2026年2月8日
+
+**性能**
+
+- 新增了对 LCP、INP、CLS、FCP 和 TTFB 的 Web Vitals 性能追踪。
+
+## 2026 年 2 月 4 日
+
+**API：分享**
+
+- 在[此处](/docs/api/share)添加了 `share` API 文档。
+
+## 2025年11月13日
+
+**API：实时**
+
+- `GET /api/realtime/:websiteId`：已移除 `timezone` 参数。响应将始终以 `UTC` 返回，适用于所有数据集。
+
+## 2025年10月7日
+
+**API：筛选器**
+
+- 将筛选器 `url` 更改为 `path`。
+- 将筛选器 `host` 更改为 `hostname`。
+
+**API：网站**
+
+- `GET /websites/[id]/metrics`：`type` 参数中的 `url` 已更改为 `path`。
+- `GET /websites/[id]/stats`：响应数据结构已更改。
+
+```json
+{
+  "pageviews": 34210,
+  "visitors": 9401,
+  "visits": 12726,
+  "bounces": 7918,
+  "totaltime": 5214477,
+  "comparison": {
+    "pageviews": 30818,
+    "visitors": 8776,
+    "visits": 11756,
+    "bounces": 7396,
+    "totaltime": 1704355
+  }
+}
+```
+
+**API：事件**
+
+- `GET /event-data/values`：`eventName` 查询参数已更改为 `event`。
+
+**API：报告**
+
+- `POST /reports`：`insights` 报告已更改为 `breakdown`。
+
+## 2024年9月9日
+
+**API: 网站**
+
+- `GET /websites/[id]/pageviews`：已将 `region` 参数修正为可选。
+- `GET /websites/[id]/events`：已将结果集更改为给定时间范围内的网站事件详情。
+- `GET /websites/[id]/events/series`：**新增** 事件指标端点（之前为 `GET /websites/[id]/events`）。
+
+**API: 事件数据**
+
+- `GET /event-data/events`：**已移动** 到 `/websites/[id]/event-data/events`。
+- `GET /event-data/fields`：**已移动** 到 `/websites/[id]/event-data/fields`。
+- `GET /event-data/stats`：**已移动** 到 `/websites/[id]/event-data/stats`。
+- `GET /websites/[id]/event-data/values`：**新增**。
+
+**API: 会话**
+
+- `GET /websites/:websiteId/sessions`：**新增**。
+- `GET /websites/:websiteId/sessions/stats`：**新增**。
+- `GET /websites/:websiteId/sessions/:sessionId`：**新增**。
+- `GET /websites/:websiteId/sessions/:sessionId/activity`：**新增**。
+- `GET /websites/:websiteId/sessions/:sessionId/properties`：**新增**。
+- `GET /websites/:websiteId/session-data/properties`：**新增**。
+- `GET /websites/:websiteId/session-data/values`：**新增**。
+
+## 2024年5月23日
+
+**API：网站**
+
+- `GET /websites/[id]/stats`：将 `change` 重命名为 `prev`。
+
+## 2024年3月27日
+
+**API：网站**
+
+- `GET /websites/[id]/stats`：将 `uniques` 重命名为 `visitors`。新增 `visits`。
+
+## 2024年2月16日
+
+**API：网站**
+
+- `POST /websites`：新增 `teamId` 作为可选参数。
+
+**API：团队**
+
+- `/teams/[id]/websites/[websiteId]`：**已弃用**。
+- `GET /teams/[id]/users/[userId]/index`：**已新增**。
+
+**API：报告**
+
+- `GET /reports/index`：新增 `websiteId` 和 `teamId` 作为查询参数。

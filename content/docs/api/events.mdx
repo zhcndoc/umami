@@ -16,6 +16,7 @@ GET /api/websites/:websiteId/event-data/fields
 GET /api/websites/:websiteId/event-data/properties
 GET /api/websites/:websiteId/event-data/values
 GET /api/websites/:websiteId/event-data/stats
+GET /api/websites/:websiteId/event-data-pivot
 ```
 
 ---
@@ -24,7 +25,7 @@ GET /api/websites/:websiteId/event-data/stats
 
 所有标记为 `filters` 的端点现在都可以使用以下参数进行过滤。
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `path` | string | URL 名称。 |
 | `referrer` | string | 引荐来源名称。 |
@@ -87,7 +88,7 @@ GET /api/websites/:websiteId/event-data/stats
       "device": "desktop",
       "os": "Mac OS",
       "browser": "chrome",
-      "pageTitle": "API – Docs - Umami",
+      "pageTitle": "API – 文档 - Umami",
       "eventType": 1,
       "eventName": "",
       "hasData": 0
@@ -108,7 +109,7 @@ GET /api/websites/:websiteId/event-data/stats
       "device": "desktop",
       "os": "Mac OS",
       "browser": "chrome",
-      "pageTitle": "Sessions – Docs - Umami",
+      "pageTitle": "会话 – 文档 - Umami",
       "eventType": 2,
       "eventName": "login-button-header",
       "hasData": 0
@@ -128,7 +129,7 @@ GET /api/websites/:websiteId/event-data/stats
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `startAt` | number | 起始日期的时间戳（毫秒）。 |
 | `endAt` | number | 结束日期的时间戳（毫秒）。 |
@@ -162,7 +163,7 @@ GET /api/websites/:websiteId/event-data/stats
 
 **参数**
 
-| Parameter | Type | Description |
+| 参数 | 类型 | 描述 |
 | --- | --- | --- |
 | `startAt` | number | 起始日期的时间戳（毫秒）。 |
 | `endAt` | number | 结束日期的时间戳（毫秒）。 |
@@ -232,7 +233,7 @@ GET /api/websites/:websiteId/event-data/stats
 
 ## GET /api/websites/:websiteId/event-data/:eventId
 
-获取单个事件的事件数据。
+获取单个事件的 event-data
 
 **示例响应**
 
@@ -271,18 +272,18 @@ GET /api/websites/:websiteId/event-data/stats
 
 ## GET /api/websites/:websiteId/event-data/events
 
-获取事件数据的名称、属性和计数。
+Get the names, properties, and counts of event data.
 
-**参数**
+**Parameters**
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `startAt` | number | 起始日期的时间戳（毫秒）。 |
-| `endAt` | number | 结束日期的时间戳（毫秒）。 |
-| `event` | string | （可选）事件名称过滤器。 |
-| `filters` | object | 可接受过滤参数。 |
+| `startAt` | number | Timestamp for the start date (milliseconds). |
+| `endAt` | number | Timestamp for the end date (milliseconds). |
+| `event` | string | (Optional) Event name filter. |
+| `filters` | object | Acceptable filter parameters. |
 
-**示例响应**
+**Example response**
 
 ```json
 [
@@ -311,17 +312,17 @@ GET /api/websites/:websiteId/event-data/stats
 
 ## GET /api/websites/:websiteId/event-data/fields
 
-获取指定时间范围内事件数据属性和值的计数。
+Get counts of event data properties and values within the specified time range.
 
-**参数**
+**Parameters**
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `startAt` | number | 起始日期的时间戳（毫秒）。 |
-| `endAt` | number | 结束日期的时间戳（毫秒）。 |
-| `filters` | object | 可接受过滤参数。 |
+| `startAt` | number | Timestamp of the start date (milliseconds). |
+| `endAt` | number | Timestamp of the end date (milliseconds). |
+| `filters` | object | Acceptable filter parameters. |
 
-**示例响应**
+**Example response**
 
 ```json
 [
@@ -387,17 +388,17 @@ GET /api/websites/:websiteId/event-data/stats
 
 ## GET /api/websites/:websiteId/event-data/values
 
-获取指定事件及属性的事件数据计数。
+Get the event data count for a specified event and property.
 
 **参数**
 
 | Parameter | Type | Description |
 | --- | --- | --- |
-| `startAt` | number | 起始日期的时间戳（毫秒）。 |
-| `endAt` | number | 结束日期的时间戳（毫秒）。 |
-| `event` | string | 事件名称。 |
-| `propertyName` | string | 属性名称。 |
-| `filters` | object | 可接受过滤参数。 |
+| `startAt` | number | Timestamp of the start date (milliseconds). |
+| `endAt` | number | Timestamp of the end date (milliseconds). |
+| `event` | string | Event name. |
+| `propertyName` | string | Property name. |
+| `filters` | object | Acceptable filter parameters. |
 
 **示例响应**
 
@@ -438,4 +439,42 @@ GET /api/websites/:websiteId/event-data/stats
     "records": 26
   }
 ]
+```
+
+---
+
+## GET /api/websites/:websiteId/event-data-pivot
+
+以透视格式获取某个网站的事件数据，其中每一行代表一个事件及其属性，属性以并行数组的形式呈现。
+
+**参数**
+
+| Parameter | Type | Description |
+| --- | --- | --- |
+| `startAt` | number | 开始日期的时间戳（毫秒）。 |
+| `endAt` | number | 结束日期的时间戳（毫秒）。 |
+| `eventName` | string | 要进行透视的事件名称。 |
+| `page` | number | （可选，默认 1）指定页码。 |
+| `pageSize` | number | （可选，默认 20）指定返回结果数量。 |
+| `filters` | object | 可接收筛选参数。 |
+
+**示例响应**
+
+```json
+{
+  "data": [
+    {
+      "eventId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "sessionId": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+      "eventName": "signup",
+      "urlPath": "/register",
+      "createdAt": "2025-10-15T16:26:28Z",
+      "propertyKeys": ["plan", "source"],
+      "propertyValues": ["pro", "organic"]
+    }
+  ],
+  "count": 100,
+  "page": 1,
+  "pageSize": 20
+}
 ```

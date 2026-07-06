@@ -10,7 +10,7 @@ Railway 提供免费的托管服务，你可以通过点击按钮部署 Umami，
 
 ### Railway 按钮（推荐）
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/new/template/umami-analytics)
+[![部署到 Railway](https://railway.app/button.svg)](https://railway.app/new/template/umami-analytics)
 
 点击上方按钮，即可部署自托管版本的 Umami 网站，并自动配置 PostgreSQL 数据库。
 
@@ -25,13 +25,13 @@ Railway 提供免费的托管服务，你可以通过点击按钮部署 Umami，
 ### 设置 Railway 项目
 
 1. Fork [Umami 仓库](https://github.com/umami-software/umami)。
-1. 在 [Railway](https://railway.app/) 创建账号，并连接 GitHub。
-1. 如有需要，授权 Railway 仅访问你的 Umami Fork 仓库。
-1. 在控制面板点击 **New Project > Deploy from repo**。
-1. 选择你的 Fork 仓库，分支选择 **master**。
-1. 添加第二个变量 `PORT`，值为有效端口号（例如：`3000`），点击 **Add**。
-1. 添加第三个变量 `DATABASE_TYPE`，值为 `postgres`，点击 **Add**。
-1. 添加第四个变量 `HOSTNAME`，值为 `0.0.0.0`，点击 **Add**。
+1. 在 [Railway](https://railway.app/) 上创建一个与 GitHub 关联的账户。
+1. 如果你愿意，在关联 GitHub 账户时可以仅授予 Railway 访问你的 Umami fork 仓库的权限。
+1. 从仪表盘页面点击 **New Project > Deploy from repo**。
+1. 选择你 fork 的 Umami 仓库，并选择 **master** 分支。
+1. 添加第一个变量 `PORT`，将其值设为有效端口号（例如：`3000`）。点击 **Add**。
+1. 添加第二个变量 `DATABASE_TYPE`，将其值设为 `postgres`。点击 **Add**。
+1. 添加第三个变量 `HOSTNAME`，将其值设为 `0.0.0.0`。点击 **Add**。
 1. 点击 **Deploy**。
 
 初次部署会失败，需继续执行以下步骤。

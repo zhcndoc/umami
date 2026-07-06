@@ -97,12 +97,18 @@ function PageviewsChart({ data }) {
 [Umami API 客户端](/docs/api/api-client) 简化了认证过程并提供类型化方法：
 
 ```js
-import Umami from '@umami/api-client';
+import { getClient } from '@umami/api-client';
 
-const client = new Umami();
-await client.authenticate({ username: 'admin', password: 'your-password' });
+// 通过环境变量配置：
+//   UMAMI_API_CLIENT_USER_ID
+//   UMAMI_API_CLIENT_SECRET
+//   UMAMI_API_CLIENT_ENDPOINT
+// 或者，对于 Umami Cloud：
+//   UMAMI_API_KEY
+const client = getClient();
 
-const stats = await client.getWebsiteStats(websiteId, {
+// 方法返回 { ok, data, status, error }
+const { data } = await client.getWebsiteStats(websiteId, {
   startAt: Date.now() - 86400000,
   endAt: Date.now(),
 });

@@ -1,0 +1,91 @@
+---
+title: 热力图
+---
+
+*自 v3.2.0 起可用*
+
+**热力图** 可视化访客在你的页面上点击和滚动的位置——让你无需观看单独回放，就能一目了然地了解参与模式。
+使用热力图来识别哪些元素最吸引注意力，发现无效点击，并了解访客实际会向下滚动到页面多深的位置。
+
+## 启用热图
+
+登录 Umami，然后点击侧边栏中的 **网站**。
+
+![image](/images/docs/navbar.png)
+
+点击你要编辑的网站对应的 **编辑** 按钮。
+
+![image](/images/docs/website-edit.png)
+
+进入 **回放与热图** 部分，并启用 **热图** 开关。
+
+![image](/images/docs/heatmap-edit.png)
+
+| 选项 | 描述 | 默认值 |
+| --- | --- | --- |
+| 热图采样率 | 纳入热图数据的会话比例，范围从 `0` 到 `1`。 | `0.15` |
+
+将录制器脚本添加到你的网站中。这将启用热图事件采集。
+
+```html
+<script
+  defer src="http://localhost:3000/recorder.js"
+  data-website-id="my-website-id"
+></script>
+```
+
+> **注意**
+>
+> - 只有在启用该功能后记录的会话才会收集热图数据。
+> - 热图由汇总后的会话数据生成——不会识别任何单个会话。
+
+## 页面叠加层
+
+热图会在你页面的实时预览上叠加点击点或滚动带。
+Umami 会使用其捕获的 URL 在嵌入式框架中加载实际页面——不需要截图、回放或额外服务。
+
+如果预览无法加载，热图仍会在空白画布上显示点击和滚动数据。
+
+### 允许页面预览
+
+只有当你的页面允许 Umami 仪表板通过 iframe 嵌入时，预览才会加载。大多数网站默认会阻止框架嵌入，因此你需要在要检查的页面上，通过向 `Content-Security-Policy` 的 `frame-ancestors` 指令中添加仪表板的来源来允许嵌入：
+
+```
+Content-Security-Policy: frame-ancestors 'self' https://your-umami-instance.com;
+```
+
+> **注意**
+>
+> - 请使用你访问 Umami 时所用的来源来替换 `https://your-umami-instance.com`（对于 Umami Cloud，请使用 `https://cloud.umami.is`）。
+> - 如果你的网站还发送 `X-Frame-Options: DENY` 或 `SAMEORIGIN`，请将其移除——在某些浏览器中它会覆盖 `frame-ancestors`。
+
+## 访问热图
+
+导航到一个网站并点击 **Heatmap** 选项卡。
+
+![image](/images/docs/heatmap-pages.png)
+
+使用 **Pages** 下拉菜单选择你想查看的页面。
+
+![image](/images/docs/heatmap-clicks.png)
+
+当可用时，热图覆盖层会渲染在页面的实时预览之上。
+
+## 热图类型
+
+使用类型选择器在不同视图之间切换。
+
+![image](/images/docs/heatmap-scroll.png)
+
+| 类型 | 描述 |
+| --- | --- |
+| 点击 | 显示访客点击的位置。突出显示高互动元素和无效点击。 |
+| 滚动 | 显示访客向下滚动页面的距离。可用于识别折叠线以下未被看到的内容。 |
+
+## 屏幕宽度
+
+由于响应式页面会在不同设备上呈现不同效果，热力图数据会按访客的屏幕宽度进行分组。使用 **屏幕宽度** 选择器可在可用宽度之间切换，并查看每种布局的叠加效果。
+
+![image](/images/docs/heatmap-screen-width.png)
+
+每个选项都会显示一个设备图标以及该宽度下记录的会话数量。没有数据的宽度会被禁用，视图默认显示会话数量最多的宽度。

@@ -2,8 +2,8 @@
 title: 将 MySQL 迁移到 PostgreSQL
 ---
 
-作为 Umami v3 的一部分，我们将移除对 MySQL 作为支持数据库的选项，统一采用 PostgreSQL。
-此变更确保所有环境中数据层更一致且可扩展。
+作为 Umami v3 的一部分，我们将移除对 MySQL 作为受支持数据库的选项，统一采用 PostgreSQL。
+此变更确保所有环境中的数据层更加一致且更具可扩展性。
 
 ## 数据迁移
 
@@ -28,8 +28,8 @@ PostgreSQL: postgresql://user:password@host:port/dbname
 
 ## 使用 PostgreSQL 数据库安装 Umami
 
-1. 在 PostgreSQL 服务器上安装 Umami (v2.19.0)。安装流程文档见 [这里](/docs/install)。
-1. 清空以下表。这些表的数据将由 MySQL 导入填充。
+1. 在 PostgreSQL 服务器上安装 Umami（v2.19.0）。有关安装过程的文档可在[这里](/docs/install)找到。
+2. 截断下面的表。这些表将从 MySQL 导入中填充。
 
 ```sql
 truncate table "_prisma_migrations";
@@ -88,8 +88,8 @@ FROM website_event;
 
 **注意**
 
-- 文件路径（/tmp/users.csv）是在 MySQL 服务器的文件系统上，不一定是在您的主机上。
-- 确保 MySQL 有权限写入该路径（secure_file_priv 可能会限制）。
+- 文件路径（/tmp/website_event.csv）位于 MySQL 服务器的文件系统上，不一定是在你的主机上。
+- 确保 MySQL 有权限写入该位置（secure_file_priv 可能会限制此操作）。
 
 2. 使用 `scp` 或 `cp` 将文件从 MySQL 服务器移动到可被 psql 访问的位置。
 
