@@ -26,14 +26,14 @@ title: API 密钥
 
 `https://api.umami.is/v1`
 
-只需通过自定义头部 `x-umami-api-key` 传入您的 API 密钥即可。
+在 `Authorization` 标头中使用 Bearer 身份验证方案传递您的 API 密钥。
 
 例如，使用 `curl` 命令如下：
 
 ```shell
 curl https://api.umami.is/v1/websites \
    -H "Accept: application/json" \
-   -H "x-umami-api-key: <api-key>"
+   -H "Authorization: Bearer <api-key>"
 ```
 
 ## 在 API 客户端中使用您的密钥

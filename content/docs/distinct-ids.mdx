@@ -20,7 +20,7 @@ Distinct ID 是分配给用户的唯一标识符，无论是匿名状态还是�
 您可以使用 `umami.identify()` 跟踪器函数设置 Distinct ID：
 
 ```js
-umami.identify({ id: 'bob@aol.com' });
+umami.identify('bob@aol.com');
 ```
 
 `id` 属性是设置 Distinct ID 的键。
@@ -44,6 +44,18 @@ umami.identify({ id: 'bob@aol.com' });
 ```
 
 **id** 属性有 50 个字符的限制。如果您的标识符较长，请考虑使用哈希值或缩短版本。
+
+## 会话关联
+
+设置 Distinct ID 不会将会话合并在一起——每个设备／浏览器仍然拥有自己的会话，
+这些会话根据 IP 地址、user agent 和 website ID 进行独立识别。相反，Umami 会将每个会话关联到
+Distinct ID。
+
+当您打开任何具有 Distinct ID 的会话的个人资料时，Umami 会自动查找与该 ID 关联的所有其他
+会话，并将它们的活动合并到一条时间线中，同时扩展可见日期范围以涵盖所有会话。如果访客关联到多个会话，
+个人资料会显示 **Linked IDs** 数量，让您知道当前查看的是合并后的跨设备活动，而不是单次访问。
+
+![image](/images/docs/sessions-linked-ids.png)
 
 ## 搜索
 

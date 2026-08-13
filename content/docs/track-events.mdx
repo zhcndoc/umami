@@ -11,31 +11,31 @@ title: 事件追踪
 - 事件名称限制为 50 个字符。
 - 事件数据不能在没有事件名称的情况下发送。
 
-## Using data attributes
+## 使用数据属性
 
-To enable events, just add a special data attribute to the element you want to track.
+要启用事件，只需向要追踪的元素添加一个特殊的数据属性。
 
-For example, you might have a button like this:
+例如，你可能有一个这样的按钮：
 
 ```html
 <button id="signup-button">Sign up</button>
 ```
 
-Add a data attribute in the following format:
+按照以下格式添加数据属性：
 
 ```html
 data-umami-event="{event-name}"
 ```
 
-So your button element should now be:
+现在，你的按钮元素应该是：
 
 ```html
 <button id="signup-button" data-umami-event="Signup button">Sign up</button>
 ```
 
-When a user clicks this button, Umami will record an event named `Signup button`.
+当用户点击此按钮时，Umami 会记录一个名为 `Signup button` 的事件。
 
-You can also pass **event data (`event_data`)** through **data-umami-event-*** annotations.
+你还可以通过 **data-umami-event-*** 注解传递 **事件数据（`event_data`）**。
 
 ```text
 data-umami-event="Signup button"
@@ -43,12 +43,12 @@ data-umami-event-email="bob@aol.com"
 data-umami-event-id="123"
 ```
 
-These additional attributes will cause the recorded event data to be `{ email: 'bob@aol.com', id: '123' }`, with the event name `Signup button`.
+这些附加属性会使记录的事件数据变为 `{ email: 'bob@aol.com', id: '123' }`，事件名称为 `Signup button`。
 
-### Notes
+### 注意事项
 
-- With this method, all event data is saved as strings. If you want to save event data of types such as numbers, dates, or booleans, please use the JavaScript method below.
-- Other event listeners inside the element will not be triggered.
+- 使用此方法时，所有事件数据都会保存为字符串。如果你希望保存数字、日期或布尔值等类型的事件数据，请使用下面的 JavaScript 方法
+- 元素内部的其他事件监听器不会被触发
 
 ## 使用 JavaScript
 
@@ -82,3 +82,5 @@ button.onclick = () => umami.track('Signup 按钮');
 使用筛选面板可按特定属性名称和值缩小事件属性的范围。这样你就可以将分析重点放在特定的一组事件上。
 
 ![image](/images/docs/events-properties-filter.png)
+
+在查看事件页面时，主 [筛选面板](/docs/filters#property-filters) 中也会显示 **事件属性** 选项卡。

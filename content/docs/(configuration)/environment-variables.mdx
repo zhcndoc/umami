@@ -24,7 +24,6 @@ openssl rand -hex 32
 APP_SECRET = "随机字符串"
 ```
 
-
 ### CLIENT_IP_HEADER
 
 `v1.24.0`
@@ -195,6 +194,16 @@ LOG_QUERY = 1
 PRIVATE_MODE = 1
 ```
 
+### REDIS_URL
+
+`v3.0.1`
+
+用于缓存和协调功能的可选 Redis 连接字符串。如果省略，基于 Redis 的功能将保持禁用状态。
+
+```
+REDIS_URL = "redis://localhost:6379"
+```
+
 ### REMOVE_TRAILING_SLASH
 
 `v1.26.0`
@@ -203,6 +212,16 @@ PRIVATE_MODE = 1
 
 ```
 REMOVE_TRAILING_SLASH = 1
+```
+
+### SALT_ROTATION
+
+`v3.1.0`
+
+控制用于生成会话标识符的匿名会话盐的轮换频率。默认值为 `month`。
+
+```
+SALT_ROTATION = "month"
 ```
 
 ### SKIP_LOCATION_HEADERS
@@ -227,6 +246,30 @@ SKIP_LOCATION_HEADERS = 1
 
 ```
 TRACKER_SCRIPT_NAME = "custom-script-name.js"
+```
+
+### USE_UUIDV7
+
+`v3.0.2`
+
+对于生成的随机标识符，使用 UUIDv7 而不是 UUIDv4。从分析数据派生的确定性 ID 不受影响。
+
+```
+USE_UUIDV7 = 1
+```
+
+### TWO_FACTOR_ENCRYPTION_KEY
+
+`v3.3.0`
+
+用于加密[双因素身份验证](/docs/two-factor-authentication)密钥的 64 字符十六进制字符串（256 位密钥）。任何用户启用 2FA 前都必须设置。你可以使用以下命令生成：
+
+```shell
+openssl rand -hex 32
+```
+
+```
+TWO_FACTOR_ENCRYPTION_KEY = "random hex string"
 ```
 
 ---
@@ -264,6 +307,27 @@ DATABASE_TYPE = "postgresql"
 ```
 
 要使用的数据库类型。仅 Docker 构建时必需。
+
+### DEFAULT_CURRENCY / DEFAULT_LOCALE
+
+`v3.1.0`
+
+设置应用 UI 使用的默认货币和区域设置，直到用户选择自己的偏好。
+
+```
+DEFAULT_CURRENCY = "USD"
+DEFAULT_LOCALE = "en-US"
+```
+
+### DIRECT_DATABASE_URL
+
+`v3.2.0`
+
+用于 `check-db` 期间 Prisma 迁移的直接 PostgreSQL 连接字符串。当 `DATABASE_URL` 指向不应用于迁移命令的连接池时，这很有用。
+
+```
+DIRECT_DATABASE_URL = "connection string"
+```
 
 ### FORCE_SSL
 

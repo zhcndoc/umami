@@ -29,7 +29,8 @@ const headers = { Authorization: `Bearer ${token}` };
 改用您的 [API 密钥](/docs/cloud/api-key)：
 
 ```js
-const headers = { 'x-umami-api-key': 'your-api-key' };
+const apiKey = 'your-api-key';
+const headers = { Authorization: `Bearer ${apiKey}` };
 ```
 
 ## 示例：每日流量摘要
