@@ -1,0 +1,107 @@
+---
+title: MCP
+description: 使用 Model Context Protocol 将 Claude、ChatGPT、Cursor 和其他 AI 工具连接到 Umami Cloud 分析。
+---
+
+Umami Cloud 提供远程 [Model Context Protocol](https://modelcontextprotocol.io)（MCP）服务器。它让 Claude、ChatGPT 和 Cursor 等 AI 工具能够用自然语言回答有关网站流量的问题。
+
+所有工具均为只读。MCP 服务器调用与仪表板相同的 Cloud API，因此会遵守现有的网站和团队权限。它不会直接访问您的数据。
+
+## 连接
+
+MCP 端点为：
+
+```text
+https://cloud.umami.is/mcp
+```
+
+使用 [API 密钥](/docs/cloud/api-key)进行认证。使用 Bearer 方案将其放入 `Authorization` 请求头：
+
+```text
+Authorization: Bearer api_<your-cloud-api-key>
+```
+
+支持自定义请求头的客户端也可以使用 `x-umami-api-key`。如果同时提供两个请求头，它们必须包含相同的密钥。
+
+请使用支持 API 密钥或 Bearer 请求头配置的 MCP 客户端。订阅要求和速率限制与 Cloud API 相同。
+
+## 客户端配置
+
+大多数 MCP 客户端都接受远程服务器 URL 和一组请求头。例如，在 Claude Desktop 或 Cursor 中，将以下内容添加到 MCP 配置：
+
+```json
+{
+  "mcpServers": {
+    "umami": {
+      "url": "https://cloud.umami.is/mcp",
+      "headers": {
+        "Authorization": "Bearer api_<your-cloud-api-key>"
+      }
+    }
+  }
+}
+```
+
+如果客户端仅支持本地 `stdio` 服务器，可以使用 `npx` 运行 `@umami/mcp` 包，并使用 API 密钥将其指向 Umami Cloud：
+
+```json
+{
+  "mcpServers": {
+    "umami": {
+      "command": "npx",
+      "args": ["-y", "@umami/mcp"],
+      "env": {
+        "UMAMI_API_KEY": "api_<your-cloud-api-key>"
+      }
+    }
+  }
+}
+```
+
+## 工具
+
+| Tool | Purpose |
+| --- | --- |
+| `list_websites` | 查找您可以访问的网站（先调用此工具获取 `websiteId`）。 |
+| `get_website_daterange` | 有记录数据的最早和最晚日期。 |
+| `get_website_stats` | 页面浏览量、访客数、访问次数、跳出率、时长和上一周期数据。 |
+| `get_website_traffic` | 按分钟、小时、日、月或年分组的页面浏览和访问时间序列。 |
+| `get_website_metrics` | 热门页面、引荐来源、渠道、国家/地区、浏览器、设备、UTM 和事件。 |
+| `get_realtime` | 当前活跃的访客。 |
+| `get_events` | 单个跟踪事件（分页）。 |
+| `get_event_stats` | 自定义事件总数和上一周期数据。 |
+| `get_event_series` | 按事件名称分组的自定义事件随时间变化的数量。 |
+| `get_event_properties` | 自定义事件属性名称，或某个属性的值。 |
+| `get_sessions` | 访客会话（分页）。 |
+| `get_session` | 单个会话及其活动时间线和属性。 |
+| `get_session_stats` | 会话级总数：访客数、访问次数、页面浏览量、事件和国家/地区。 |
+| `get_annotations` | 时间线上的带日期备注（用于解释变化的上线、活动等）。 |
+| `list_segments` | 已保存的细分和群组；通过 `filters.segment` 或 `filters.cohort` 传入 ID。 |
+| `list_funnels` | 带步骤的已保存漏斗。 |
+| `run_funnel` | 根据已保存的 `funnelId` 或临时页面和事件步骤运行转化漏斗。 |
+| `get_goals` | 指定日期范围内的已保存目标及其转化、访客和转化率。 |
+| `run_journey` | 访客最常经过的路径。 |
+| `run_retention` | 群组留存表。 |
+| `run_attribution` | 转化的首次点击或末次点击归因。 |
+| `get_revenue` | 收入总数、时间序列和明细。 |
+| `get_performance` | Core Web Vitals（LCP、INP、CLS、FCP、TTFB）的百分位数、趋势和明细。 |
+
+日期采用 ISO 8601 格式。结果采用分页形式，页面大小有硬性上限。
+
+## 示例提示
+
+- 显示我的网站。
+- example.com 上周有多少访客？
+- 本月排名前 10 的页面是哪些？
+- 比较本月和上个月的流量。
+- 流量来自哪里？
+- 昨天发生了哪些注册事件？
+- 上个月结账事件中，访客选择了哪些定价计划？
+- 运行我上个月的结账漏斗。
+- 本季度的目标完成情况如何？
+- 移动设备上哪些页面的 LCP 最差？
+- 流量激增当天发生了什么？
+
+## 撤销访问权限
+
+访问权限与 API 密钥绑定。要断开 AI 工具，请在 **Settings → API keys** 下删除该密钥。

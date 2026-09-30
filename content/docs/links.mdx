@@ -17,9 +17,26 @@ Umami 链接监控并记录特定 URL 上的点击，以显示访客来源以及
 
 ![image](/images/docs/link-add.png)
 
-填写表单详细信息后点击 **Save（保存）** 按钮。
+填写 **名称** 和 **目标 URL**。两个可选部分可按需展开：
+
+- **自定义预览** — 控制短链接在 Facebook、X、LinkedIn、Slack、WhatsApp、Telegram 和 Discord 等平台分享时显示的社交媒体预览卡片。将字段留空可从目标 URL 的 Open Graph 标签自动检测标题、描述和图片；也可以填写字段覆盖自动检测结果。
+- **UTM** — 点击链接时将 UTM 参数（`utm_source`、`utm_medium`、`utm_campaign`、`utm_term`、`utm_content`）附加到目标 URL，以便在分析中归因访问。
+
+点击 **保存** 按钮。
 
 ![image](/images/docs/link-add-form.png)
+
+### 自定义预览
+
+填写 **目标 URL** 后，Umami 会获取目标页面并检测其 Open Graph 元数据。检测到的值会作为 **标题**、**描述** 和 **图片 URL** 字段中的占位符提示显示，并附带检测到的图片缩略图预览。在任意字段中输入自己的值即可覆盖；清空字段后会恢复自动检测。
+
+![image](/images/docs/link-customize-preview.png)
+
+### UTM 参数
+
+通过在目标 URL 后附加 UTM 参数来跟踪活动归因。每次点击时，Umami 会将这些参数合并到目标 URL 中。目标 URL 中已有的查询参数会保留；冲突的 UTM 键会被链接级别的值覆盖。
+
+![image](/images/docs/link-utm.png)
 
 ## 收集数据
 

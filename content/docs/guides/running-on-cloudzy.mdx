@@ -1,0 +1,109 @@
+---
+title: 在 Cloudzy 上运行
+---
+
+[Cloudzy](https://cloudzy.com) 是一家独立的云托管服务商，提供 [Umami 一键部署](https://cloudzy.com/marketplace/umami)，无需从头配置服务器即可启动可直接使用的 Umami VPS。部署通常约 60 秒即可完成。
+
+Cloudzy 将 1 GB 内存列为 Umami 的最低要求，按当前价格计算，您可以以每月 3.48 美元的费用开始使用。之后如需应对更高流量或更重的工作负载，可以扩展到更大的 VPS。
+
+该镜像使用 Docker Compose 在 Ubuntu Server 24.04 LTS VPS 上部署 Umami 和 PostgreSQL，并将 Nginx 配置为 HTTPS 反向代理。
+
+
+
+
+
+## 部署 Umami
+
+[![One-Click Deploy on Cloudzy](https://design.cloudzy.com/logo/cloudzy-light-marketplace-badge-147x32.svg)](https://cloudzy.com/marketplace/umami/)
+
+_使用上方按钮部署预配置的 Umami 实例。_
+
+1. 打开 [Cloudzy Marketplace 上的 Umami](https://cloudzy.com/marketplace/umami/)，然后点击 **Deploy Umami on a VPS**。
+2. 登录 Cloudzy 或创建账户。
+3. 选择服务器位置和 VPS 计划。
+4. 检查订单并部署服务器。
+
+配置完成后，您可以在 Cloudzy 仪表板中找到 SSH 凭据。
+
+
+
+
+
+
+
+## 打开 Umami 实例
+
+在浏览器中打开以下地址，将 `<server-ip>` 替换为 VPS 的公共 IP 地址：
+```text
+https://<server-ip>
+```
+
+<Callout title="证书警告">
+
+Cloudzy 会在配置期间自动生成 SSL 证书，并将其存储在 `/etc/nginx/ssl/` 中。通过 IP 地址直接访问实例时，浏览器可能会显示证书警告。在使用该实例收集生产流量前，请配置一个使用浏览器信任证书的域名。
+
+</Callout>
+
+使用默认管理员账户登录：
+
+\- Username: `admin`
+
+\- Password: `umami`
+
+登录后，进入 **Settings → Profile** 并立即更改默认密码。更多信息请参阅[登录](https://docs.umami.is/docs/login)。
+
+
+
+
+
+## 配置生产域名
+
+IP 地址可用于确认部署是否正常。在将 Umami 跟踪脚本添加到生产网站之前：
+
+1. 为类似 `analytics.example.com` 的域名创建 DNS `A` 记录，并将其指向 VPS 的公共 IPv4 地址。
+
+2. 在 `/etc/nginx/sites-available/umami.conf` 中配置域名。
+
+3. 为该域名安装浏览器信任的 TLS 证书并重新加载 Nginx。
+
+
+初始配置期间创建的证书文件存储在 `/etc/nginx/ssl/` 中。配置域名后，将其 HTTPS 地址用于向网站添加 Umami 跟踪脚本。
+
+
+
+
+
+## 开始收集数据
+
+1. 按照[添加网站](https://docs.umami.is/docs/add-a-website)的说明在 Umami 中注册网站。
+
+2. 按照[收集数据](https://docs.umami.is/docs/collect-data)的说明向网站添加跟踪脚本。
+
+3. 访问网站，确认活动已显示在 Umami 仪表板中。
+
+
+
+
+
+## 管理实例
+
+需要检查或重启服务时，通过 SSH 连接到 VPS。Umami 堆栈位于 `/root/umami`：
+
+
+```shell
+
+cd /root/umami
+
+docker compose ps               # container status
+
+docker compose logs -f          # follow logs
+
+docker compose restart          # restart Umami and PostgreSQL
+
+systemctl restart nginx         # restart the reverse proxy
+
+```
+
+应用设置存储在 `/root/umami/.env` 中，Docker Compose 配置位于 `/root/umami/docker-compose.yaml`。PostgreSQL 数据会持久保存在 `umami\_umami-db-data` Docker 卷中。
+
+升级 Umami 前请备份数据库。当前 Docker 更新流程请参阅[获取更新](https://docs.umami.is/docs/updates)。

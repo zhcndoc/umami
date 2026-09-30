@@ -45,10 +45,11 @@ data-umami-event-id="123"
 
 这些附加属性会使记录的事件数据变为 `{ email: 'bob@aol.com', id: '123' }`，事件名称为 `Signup button`。
 
-### 注意事项
+<Callout title="注意事项">
 
 - 使用此方法时，所有事件数据都会保存为字符串。如果你希望保存数字、日期或布尔值等类型的事件数据，请使用下面的 JavaScript 方法
 - 元素内部的其他事件监听器不会被触发
+</Callout>
 
 ## 使用 JavaScript
 
@@ -83,4 +84,4 @@ button.onclick = () => umami.track('Signup 按钮');
 
 ![image](/images/docs/events-properties-filter.png)
 
-在查看事件页面时，主 [筛选面板](/docs/filters#property-filters) 中也会显示 **事件属性** 选项卡。
+在查看事件页面时，主 [筛选面板](/docs/filters#属性过滤器) 中也会显示 **事件属性** 选项卡。

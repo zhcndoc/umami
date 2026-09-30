@@ -4,6 +4,29 @@ title: 更新日志
 
 此页面记录了对 **Umami Cloud (cloud.umami.is)** 和 **API (api.umami.is)** 所做的重大更改。
 
+## 2026年9月10日
+
+**MCP**
+
+- 在 `https://cloud.umami.is/mcp` 新增远程 [Model Context Protocol](https://modelcontextprotocol.io) 服务器。连接 Claude、ChatGPT、Cursor 或其他 MCP 客户端，即可用自然语言询问网站流量。设置说明请参阅 [MCP](/docs/cloud/mcp)。
+- 使用现有的 Cloud API 密钥，通过 `Authorization: Bearer api_<key>` 请求头（或 `x-umami-api-key`）进行认证。订阅要求以及网站/团队权限与 Cloud API 相同。
+- 所有工具均为只读，涵盖统计数据、流量、指标、实时数据、事件、会话、注释、细分、漏斗、目标、用户路径、留存、归因、收入和性能。
+
+## 2026年9月3日
+
+**注释**
+
+- 新增[注释](/docs/annotations)，可将带日期的备注（部署、活动上线、服务中断）固定到网站流量图表上。可通过概览图表下方的 **Notes** 按钮使用。
+- 注释会作为标记显示在图表上，并在共享和公共看板中可见。
+
+**API：注释**
+
+- `GET /api/websites/:websiteId/annotations`：**新增** — 列出网站的注释。
+- `POST /api/websites/:websiteId/annotations`：**新增** — 创建注释。
+- `GET /api/websites/:websiteId/annotations/:annotationId`：**新增** — 返回单条注释。
+- `POST /api/websites/:websiteId/annotations/:annotationId`：**新增** — 更新注释。
+- `DELETE /api/websites/:websiteId/annotations/:annotationId`：**新增** — 删除注释。
+
 ## 2026年6月6日
 
 **云**
@@ -194,7 +217,7 @@ title: 更新日志
 
 **API：分享**
 
-- 在[此处](/docs/api/share)添加了 `share` API 文档。
+- 在[此处](/docs/api-reference/create-share)添加了 `share` API 文档。
 
 ## 2025年11月13日
 

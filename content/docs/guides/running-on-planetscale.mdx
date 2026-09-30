@@ -19,7 +19,7 @@ title: 在 PlanetScale 上运行
 6. 现在你应该可以构建并启动 Umami（执行 `yarn build`，然后执行 `yarn start`）。
 7. 按照 **入门** 指南，从 [登录](/docs/login) 步骤开始操作，并务必更改默认密码。
 
-### 故障排除
+<Callout title="故障排除" variant="warning">
 
 如果你遇到如下示例中的错误：
 
@@ -32,3 +32,5 @@ PrismaClientInitializationError: Can't reach database server at `host.aws-region
 ```dotenv
 DATABASE_URL=mysql://username:password@host/umami-db?sslaccept=strict&connect_timeout=300
 ```
+
+</Callout>

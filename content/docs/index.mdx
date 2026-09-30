@@ -2,49 +2,73 @@
 title: 介绍
 ---
 
-Umami 是一个尊重用户隐私的开源网络分析平台。无 Cookie，无跨站点追踪，无个人数据收集。开箱即用，符合 GDPR 要求。
+Umami 是一个将流量、活动、访客行为、转化和收入汇聚于一处的网站分析平台。它让您全面了解人们如何找到并使用您的网站，从首次访问到对业务重要的结果。
 
 本文档涵盖 **Umami v3**。前一版本请参见 [v2 文档](https://v2.umami.is)。
 
-## 为什么选择 Umami？
+![Umami 分析仪表板](/images/docs/screenshot.png)
 
-- **隐私优先** — 无 Cookie，无指纹识别，无个人数据。您的访客保持匿名。
-- **拥有您的数据** — 在您的基础设施上自行托管。您的分析数据永远不会离开您的服务器。
-- **轻量级** — 追踪脚本小于 2KB。不会拖慢您的网站速度。
-- **简单** — 使用 Docker 几分钟即可部署。不需要复杂配置。
+## 从头到尾理解您的网站
+
+- **衡量获客** — 查看页面浏览量、访客数、引荐来源、位置、设备和实时活动。跟踪 [UTM 活动](/docs/utm)、[链接](/docs/links) 和 [像素](/docs/pixels)，了解哪些渠道为您的网站带来访客。
+- **分析行为** — 通过[自定义事件](/docs/track-events)、[用户路径](/docs/journey)、[会话回放](/docs/replays) 和[热图](/docs/heatmaps)深入了解页面浏览之外的信息。使用[细分](/docs/segments)、[群组](/docs/cohorts) 和[留存](/docs/retention)分析指标背后的受众和模式。
+- **改善转化** — 使用[目标](/docs/goals)定义您关注的结果，构建[漏斗](/docs/funnel)找出流失点，并使用[归因](/docs/attribution)将转化与影响它们的营销活动关联起来。
+- **将流量与收入关联** — 为事件附加值，并使用[收入报告](/docs/revenue)查看哪些页面、活动和访客细分带来的价值最高。
+- **分享和扩展分析** — 使用[看板](/docs/using-boards)创建专注的仪表板，通过[团队](/docs/using-teams)协作，分享网站统计数据，或使用 [API](/docs/api)构建自己的报告和集成。
+
+## 在不牺牲洞察力的前提下保护隐私
+
+Umami 在不使用 Cookie、跨站点跟踪或自动收集个人数据的情况下提供这些能力。您可以使用托管云服务，也可以在自己的基础设施上自行托管 Umami，掌控分析数据的存储位置。
 
 ## 快速开始
 
-```bash
-docker compose up -d
-```
+选择适合您团队的设置方式：
 
-就是这么简单。打开 `http://localhost:3000`，使用 `admin` / `umami` 登录。
+<CardGroup cols={2}>
+  <Card
+    title="Umami Cloud"
+    href="https://cloud.umami.is/signup?ref=umami-docs-introduction"
+    icon="cloud"
+    cta="创建免费账户"
+  >
+    托管、更新、备份和扩展。
+  </Card>
+  <Card
+    title="自行托管"
+    href="/docs/install"
+    icon="server"
+    cta="查看安装指南"
+    arrow
+  >
+    在自己的基础设施上运行开源平台。
+  </Card>
+</CardGroup>
 
-有关详细的安装选项，请参见 [安装](/docs/install)。如需托管平台指南，请查看我们的 [部署指南](/docs/guides/hosting)。
+您也可以使用[部署指南](/docs/guides/hosting)之一，在托管平台上运行 Umami。
 
-## 功能
+Umami 运行后：
 
-**核心分析** — 页面浏览量、访客数、跳出率、会话时长、推荐来源、浏览器、操作系统、设备和国家统计。
+1. [添加网站](/docs/add-a-website)。
+2. [安装跟踪脚本](/docs/collect-data)。
+3. 打开网站仪表板，开始探索数据。
 
-**自定义事件** — 通过简单的数据属性或 JavaScript 调用跟踪按钮点击、表单提交或任何用户交互。
+## 更多资源
 
-**高级洞察** — 漏斗分析、用户路径、留存分析、目标设定、UTM 活动跟踪以及群组细分。
-
-**会话** — 查看单个访客活动和会话属性，无需识别个人信息。
-
-**团队** — 与团队协作。共享网站，分配角色并管理访问权限。
-
-**API** — 完整的 REST API，实现访问所有分析数据的编程接口。
-
-## 浏览文档
-
-- [指南](/docs/guides) — 针对 Vercel、Railway、DigitalOcean 等平台的逐步部署教程。
-- [API 参考](/docs/api) — 认证、网站、事件、会话等接口说明。
-- [云服务](/docs/cloud) — 如果您不想自行托管，可以选择托管服务。
-
-## 链接
-
-- [GitHub](https://github.com/umami-software/umami)
-- [Discord](https://discord.gg/4dz4zcXYrQ)
-- [X](https://twitter.com/umami_software)
+<CardGroup cols={2}>
+  <Card title="操作指南" href="/docs/guides" icon="map" arrow>
+    关于跟踪、集成、团队管理、托管和迁移的实用教程。
+  </Card>
+  <Card title="API 参考" href="/docs/api" icon="terminal" arrow>
+    认证并处理网站、事件、会话、报告等内容。
+  </Card>
+  <Card title="Umami Cloud" href="/docs/cloud" icon="cloud" arrow>
+    了解 Umami 的托管版本。
+  </Card>
+  <Card
+    title="GitHub 上的 Umami"
+    href="https://github.com/umami-software/umami"
+    icon="git-fork"
+  >
+    查看源代码、报告问题并参与贡献。
+  </Card>
+</CardGroup>

@@ -1,0 +1,109 @@
+---
+title: 常用端点
+---
+
+API 为应用中的所有操作提供端点，但大多数集成只会使用少量读取端点，也就是网站**概览**页面所依赖的端点。本页面列出了这些端点的快捷入口。每一行都链接到包含参数和响应的完整参考页面。
+
+以下路径均相对于您的 API 基础 URL：自托管时为 `http://<your-umami-instance>/api`，或使用 [API 密钥](/docs/cloud/api-key)获取的 Umami Cloud 基础 URL。
+
+---
+
+## 查找网站
+
+大多数统计端点都需要 `websiteId`。
+
+| 操作 | 端点 | 详情 |
+| --- | --- | --- |
+| 列出所有可访问的网站 | `GET /api/websites` | [列出网站](/docs/api-reference/list-websites) |
+| 获取单个网站 | `GET /api/websites/{websiteId}` | [获取网站](/docs/api-reference/get-website) |
+
+## 概览数字
+
+仪表板顶部的统计卡片和活跃访客数。
+
+| 操作 | 端点 | 详情 |
+| --- | --- | --- |
+| 页面浏览量、访客数、访问次数、跳出次数、总时长（含比较数据） | `GET /api/websites/{websiteId}/stats` | [获取网站摘要统计](/docs/api-reference/get-website-stats) |
+| 最近 5 分钟内活跃的访客 | `GET /api/websites/{websiteId}/active` | [获取活跃网站访客](/docs/api-reference/get-website-active) |
+
+## 随时间变化的图表
+
+| 操作 | 端点 | 详情 |
+| --- | --- | --- |
+| 页面浏览量和会话时间序列 | `GET /api/websites/{websiteId}/pageviews` | [获取页面浏览量和会话随时间的变化](/docs/api-reference/get-website-pageviews) |
+| 事件时间序列 | `GET /api/websites/{websiteId}/events/series` | [获取自定义事件随时间的数量](/docs/api-reference/get-website-event-series) |
+
+## 明细
+
+按单个维度排序的列表，例如热门页面、引荐来源、浏览器、国家/地区和事件等。通过 `type` 传入维度（`path`、`referrer`、`browser`、`os`、`device`、`country`、`event` 等）。
+
+| 操作 | 端点 | 详情 |
+| --- | --- | --- |
+| 单个维度的排序列表 | `GET /api/websites/{websiteId}/metrics?type=path` | [获取网站排序指标](/docs/api-reference/get-website-metrics) |
+| 同一列表，并显示每行的页面浏览量、访客数、访问次数、跳出次数和时长 | `GET /api/websites/{websiteId}/metrics/expanded?type=path` | [获取详细网站指标](/docs/api-reference/get-website-expanded-metrics) |
+
+## 实时数据
+
+| 操作 | 端点 | 详情 |
+| --- | --- | --- |
+| 实时国家/地区、URL、引荐来源、事件和总数（最近 30 分钟） | `GET /api/realtime/{websiteId}` | [获取网站实时活动](/docs/api-reference/get-realtime) |
+
+---
+
+## 示例
+
+获取一个网站 24 小时范围内的摘要统计。
+
+**1. 认证。** 在自托管 Umami 上，用您的凭据换取令牌：
+
+```shell
+curl -X POST http://localhost:3000/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username": "your-username", "password": "your-password"}'
+```
+
+```json
+{ "token": "eyTMjU2IiwiY...4Q0JDLUhWxnIjoiUE_A", "user": { "...": "..." } }
+```
+
+在下面的每个请求中通过 `Authorization: Bearer <token>` 发送该令牌。在 Umami Cloud 上跳过此步骤，并以相同方式传入您的 [API 密钥](/docs/cloud/api-key)：`Authorization: Bearer <api-key>`。请参阅[认证](/docs/api/authentication)。
+
+**2. 查找网站 ID。**
+
+```shell
+curl http://localhost:3000/api/websites \
+  -H "Authorization: Bearer <token>"
+```
+
+```json
+{
+  "data": [
+    { "id": "b8d3a1f0-1c2d-4e5f-8a9b-0c1d2e3f4a5b", "name": "Example", "domain": "example.com" }
+  ],
+  "count": 1
+}
+```
+
+**3. 获取概览统计。** `startAt` 和 `endAt` 是定义时间范围的毫秒级 Unix 时间戳，下面的示例值覆盖 24 小时：
+
+```shell
+curl "http://localhost:3000/api/websites/b8d3a1f0-1c2d-4e5f-8a9b-0c1d2e3f4a5b/stats?startAt=1757376000000&endAt=1757462400000" \
+  -H "Authorization: Bearer <token>"
+```
+
+```json
+{
+  "pageviews": 15171,
+  "visitors": 4415,
+  "visits": 5680,
+  "bounces": 3567,
+  "totaltime": 809968,
+  "comparison": {
+    "pageviews": 38675,
+    "visitors": 10568,
+    "visits": 14595,
+    "bounces": 9364,
+    "totaltime": 2182387
+  }
+}
+```

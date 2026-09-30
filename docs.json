@@ -1,0 +1,1835 @@
+{
+  "$schema": "./node_modules/@umami/shiso/docs.schema.json",
+  "search": {
+    "provider": "pagefind",
+    "prompt": "搜索文档……",
+    "shortcut": "k"
+  },
+  "theme": "shiso",
+  "api": {
+    "spec": "./openapi.json",
+    "directory": "api-reference"
+  },
+  "name": "umami",
+  "description": "Umami 现代隐私优先分析平台的文档。",
+  "logo": {
+    "light": "/logo.svg",
+    "dark": "/logo.svg",
+    "href": "https://umami.is/?ref=docs",
+    "target": "_blank"
+  },
+  "favicon": "/favicon.ico",
+  "colors": {
+    "primary": "#2563eb",
+    "light": "#60a5fa",
+    "dark": "#2563eb"
+  },
+  "appearance": {
+    "default": "system",
+    "strict": false
+  },
+  "styling": {
+    "eyebrows": "section"
+  },
+  "navbar": {
+    "links": [
+      {
+        "icon": "github",
+        "ariaLabel": "Umami 在 GitHub 上",
+        "href": "https://github.com/umami-software/umami"
+      }
+    ]
+  },
+  "footer": {
+    "socials": [
+      {
+        "icon": "github",
+        "ariaLabel": "Umami 在 GitHub 上",
+        "href": "https://github.com/umami-software/umami"
+      },
+      {
+        "icon": "x",
+        "ariaLabel": "Umami 在 X 上",
+        "href": "https://x.com/umami_software"
+      },
+      {
+        "icon": "discord",
+        "ariaLabel": "Umami 在 Discord 上",
+        "href": "https://umami.is/discord"
+      }
+    ]
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
+  },
+  "seo": {
+    "indexing": "all",
+    "metatags": {
+      "og:image": "https://docs.umami.is/images/docs/screenshot.png",
+      "twitter:card": "summary_large_image",
+      "twitter:image": "https://docs.umami.is/images/docs/screenshot.png"
+    }
+  },
+  "errors": {
+    "404": {
+      "redirect": false,
+      "title": "页面未找到",
+      "description": "找不到您请求的页面。返回[文档首页](/docs)。"
+    }
+  },
+  "redirects": [
+    {
+      "source": "/docs/guides/measure-campaigns",
+      "destination": "https://umami.is/guides/marketing-campaign-tracking"
+    },
+    {
+      "source": "/docs/guides/setup-conversion-goals",
+      "destination": "https://umami.is/guides/conversion-tracking"
+    },
+    {
+      "source": "/docs/guides/analyze-traffic-sources",
+      "destination": "https://umami.is/guides/marketing-attribution"
+    },
+    {
+      "source": "/docs/guides/compare-traffic-periods",
+      "destination": "https://umami.is/guides/website-traffic-analysis"
+    },
+    {
+      "source": "/docs/guides/build-a-funnel",
+      "destination": "https://umami.is/guides/conversion-funnels"
+    },
+    {
+      "source": "/docs/guides/monitor-web-vitals",
+      "destination": "https://umami.is/guides/core-web-vitals"
+    },
+    {
+      "source": "/docs/guides/core-web-vitals",
+      "destination": "https://umami.is/guides/core-web-vitals"
+    },
+    {
+      "source": "/docs/track-outbound-links",
+      "destination": "/docs/guides/track-outbound-links"
+    },
+    {
+      "source": "/docs/api/admin",
+      "destination": "/docs/api-reference/get-admin-users"
+    },
+    {
+      "source": "/docs/api/events",
+      "destination": "/docs/api-reference/get-website-events"
+    },
+    {
+      "source": "/docs/api/links",
+      "destination": "/docs/api-reference/get-links"
+    },
+    {
+      "source": "/docs/api/me",
+      "destination": "/docs/api-reference/get-me"
+    },
+    {
+      "source": "/docs/api/pixels",
+      "destination": "/docs/api-reference/get-pixels"
+    },
+    {
+      "source": "/docs/api/websites",
+      "destination": "/docs/api-reference/list-websites"
+    },
+    {
+      "source": "/docs/api/website-stats",
+      "destination": "/docs/api-reference/get-website-stats"
+    },
+    {
+      "source": "/docs/api/realtime",
+      "destination": "/docs/api-reference/get-realtime"
+    },
+    {
+      "source": "/docs/api/sessions",
+      "destination": "/docs/api-reference/get-website-sessions"
+    },
+    {
+      "source": "/docs/api/share",
+      "destination": "/docs/api-reference/create-share"
+    },
+    {
+      "source": "/docs/api/teams",
+      "destination": "/docs/api-reference/get-teams"
+    },
+    {
+      "source": "/docs/api/users",
+      "destination": "/docs/api-reference/create-user"
+    }
+  ],
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "文档",
+        "icon": "book-open",
+        "groups": [
+          {
+            "group": "Umami",
+            "collapsible": false,
+            "pages": [
+              {
+                "page": "index",
+                "title": "介绍"
+              },
+              {
+                "page": "install",
+                "title": "安装"
+              },
+              {
+                "page": "updates",
+                "title": "获取更新"
+              },
+              {
+                "page": "about",
+                "hidden": true,
+                "title": "关于"
+              },
+              {
+                "page": "faq",
+                "hidden": true,
+                "title": "常见问题"
+              }
+            ]
+          },
+          {
+            "group": "快速开始",
+            "pages": [
+              {
+                "page": "login",
+                "title": "登录"
+              },
+              {
+                "page": "add-a-website",
+                "title": "添加网站"
+              },
+              {
+                "page": "collect-data",
+                "title": "收集数据"
+              },
+              {
+                "page": "enable-share-url",
+                "title": "启用共享链接"
+              }
+            ]
+          },
+          {
+            "group": "配置",
+            "pages": [
+              {
+                "page": "environment-variables",
+                "title": "环境变量"
+              },
+              {
+                "page": "mcp",
+                "title": "启用 MCP"
+              },
+              {
+                "page": "enable-cloudflare-headers",
+                "title": "启用 Cloudflare 请求头"
+              },
+              {
+                "page": "google-tag-manager",
+                "title": "使用 Google Tag Manager"
+              },
+              {
+                "page": "enable-redis",
+                "title": "启用 Redis"
+              },
+              {
+                "page": "two-factor-authentication",
+                "title": "双因素身份验证"
+              },
+              {
+                "page": "bypass-ad-blockers",
+                "title": "绕过广告拦截器"
+              },
+              {
+                "page": "exclude-my-own-visits",
+                "title": "排除自己的访问"
+              }
+            ]
+          },
+          {
+            "group": "跟踪",
+            "pages": [
+              {
+                "page": "tracker-functions",
+                "title": "跟踪器功能"
+              },
+              {
+                "page": "tracker-configuration",
+                "title": "跟踪器配置"
+              },
+              {
+                "page": "track-events",
+                "title": "跟踪事件"
+              },
+              {
+                "page": "distinct-ids",
+                "title": "Distinct ID"
+              },
+              {
+                "page": "tags",
+                "title": "标签"
+              },
+              {
+                "page": "links",
+                "title": "链接"
+              },
+              {
+                "page": "pixels",
+                "title": "像素"
+              },
+              {
+                "page": "event-data",
+                "hidden": true,
+                "title": "事件数据"
+              }
+            ]
+          },
+          {
+            "group": "仪表板",
+            "pages": [
+              {
+                "page": "annotations",
+                "title": "注释"
+              }
+            ]
+          },
+          {
+            "group": "分析",
+            "pages": [
+              {
+                "group": "筛选",
+                "pages": [
+                  {
+                    "page": "filters",
+                    "title": "筛选器"
+                  },
+                  {
+                    "page": "segments",
+                    "title": "细分"
+                  },
+                  {
+                    "page": "cohorts",
+                    "title": "群组"
+                  }
+                ]
+              },
+              {
+                "page": "sessions",
+                "title": "会话"
+              },
+              {
+                "page": "replays",
+                "title": "回放"
+              },
+              {
+                "page": "heatmaps",
+                "title": "热图"
+              },
+              {
+                "page": "performance",
+                "title": "性能"
+              },
+              {
+                "page": "compare",
+                "title": "比较"
+              },
+              {
+                "page": "breakdown",
+                "title": "细分"
+              },
+              {
+                "page": "goals",
+                "title": "目标"
+              },
+              {
+                "page": "funnel",
+                "title": "漏斗"
+              },
+              {
+                "page": "journey",
+                "title": "用户路径"
+              },
+              {
+                "page": "retention",
+                "title": "留存"
+              },
+              {
+                "page": "utm",
+                "title": "UTM"
+              },
+              {
+                "page": "revenue",
+                "title": "收入"
+              },
+              {
+                "page": "attribution",
+                "title": "归因"
+              },
+              {
+                "page": "insights",
+                "hidden": true,
+                "title": "洞察"
+              }
+            ]
+          },
+          {
+            "group": "看板",
+            "pages": [
+              {
+                "page": "using-boards",
+                "title": "使用看板"
+              },
+              {
+                "page": "add-a-board",
+                "title": "添加看板"
+              },
+              {
+                "page": "design-a-board",
+                "title": "设计看板"
+              }
+            ]
+          },
+          {
+            "group": "团队",
+            "pages": [
+              {
+                "page": "using-teams",
+                "title": "使用团队"
+              },
+              {
+                "page": "add-a-team",
+                "title": "添加团队"
+              },
+              {
+                "page": "join-a-team",
+                "title": "加入团队"
+              },
+              {
+                "page": "manage-a-team",
+                "title": "管理团队"
+              },
+              {
+                "page": "add-a-user",
+                "hidden": true,
+                "title": "添加用户"
+              }
+            ]
+          },
+          {
+            "group": "参考",
+            "pages": [
+              {
+                "page": "metric-definitions",
+                "title": "指标定义"
+              },
+              {
+                "page": "integrations",
+                "title": "集成"
+              }
+            ]
+          },
+          {
+            "group": "参与贡献",
+            "pages": [
+              {
+                "page": "contributing",
+                "title": "参与贡献"
+              },
+              {
+                "page": "code-of-conduct",
+                "title": "行为准则"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "指南",
+        "icon": "map",
+        "groups": [
+          {
+            "group": "指南",
+            "pages": [
+              {
+                "page": "guides/index",
+                "title": "概览"
+              }
+            ]
+          },
+          {
+            "group": "跟踪",
+            "pages": [
+              {
+                "page": "guides/track-outbound-links",
+                "title": "跟踪外部链接"
+              },
+              {
+                "page": "guides/track-single-page-apps",
+                "title": "跟踪单页应用"
+              },
+              {
+                "page": "guides/track-file-downloads",
+                "title": "跟踪文件下载"
+              },
+              {
+                "page": "guides/track-form-submissions",
+                "title": "跟踪表单提交"
+              },
+              {
+                "page": "guides/identify-logged-in-users",
+                "title": "识别已登录用户"
+              },
+              {
+                "page": "guides/setup-ab-testing",
+                "title": "使用标签设置 A/B 测试"
+              }
+            ]
+          },
+          {
+            "group": "开发者",
+            "pages": [
+              {
+                "page": "guides/embed-analytics-in-your-app",
+                "title": "在应用中嵌入分析"
+              },
+              {
+                "page": "guides/send-server-side-events",
+                "title": "发送服务端事件"
+              },
+              {
+                "page": "guides/automate-reporting-with-api",
+                "title": "使用 API 自动生成报告"
+              }
+            ]
+          },
+          {
+            "group": "团队",
+            "pages": [
+              {
+                "page": "guides/setup-team-workspaces",
+                "title": "设置团队工作区"
+              },
+              {
+                "page": "guides/create-a-public-dashboard",
+                "title": "创建公共看板"
+              }
+            ]
+          },
+          {
+            "group": "托管",
+            "pages": [
+              {
+                "page": "guides/hosting",
+                "title": "托管"
+              },
+              {
+                "page": "guides/running-on-bunny",
+                "title": "在 bunny.net 上运行"
+              },
+              {
+                "page": "guides/running-on-caprover",
+                "title": "在 CapRover 上运行"
+              },
+              {
+                "page": "guides/running-on-cloudzy",
+                "title": "在 Cloudzy 上运行"
+              },
+              {
+                "page": "guides/running-on-digitalocean",
+                "title": "在 DigitalOcean 上运行"
+              },
+              {
+                "page": "guides/running-on-fly-io",
+                "title": "在 Fly.io 上运行"
+              },
+              {
+                "page": "guides/running-on-forge",
+                "title": "在 Forge 上运行"
+              },
+              {
+                "page": "guides/running-on-heroku",
+                "title": "在 Heroku 上运行"
+              },
+              {
+                "page": "guides/running-on-koyeb",
+                "title": "在 Koyeb 上运行"
+              },
+              {
+                "page": "guides/running-on-helmforge",
+                "title": "使用 HelmForge 在 Kubernetes 上运行"
+              },
+              {
+                "page": "guides/running-on-neon",
+                "title": "在 Neon Postgres 上运行"
+              },
+              {
+                "page": "guides/running-on-netlify",
+                "title": "在 Netlify 上运行"
+              },
+              {
+                "page": "guides/running-on-nodion",
+                "title": "在 Nodion 上运行"
+              },
+              {
+                "page": "guides/running-on-northflank",
+                "title": "在 Northflank 上运行"
+              },
+              {
+                "page": "guides/running-on-planetscale",
+                "title": "在 PlanetScale 上运行"
+              },
+              {
+                "page": "guides/running-on-qovery",
+                "title": "在 Qovery 上运行"
+              },
+              {
+                "page": "guides/running-on-railway",
+                "title": "在 Railway 上运行"
+              },
+              {
+                "page": "guides/running-on-sevalla",
+                "title": "在 Sevalla 上运行"
+              },
+              {
+                "page": "guides/running-on-supabase",
+                "title": "在 Supabase 上运行"
+              },
+              {
+                "page": "guides/running-on-vercel",
+                "title": "在 Vercel 上运行"
+              }
+            ]
+          },
+          {
+            "group": "迁移",
+            "pages": [
+              {
+                "page": "guides/migrate-v1-v2",
+                "title": "从 v1 迁移到 v2"
+              },
+              {
+                "page": "guides/migrate-mysql-postgresql",
+                "title": "将 MySQL 迁移到 PostgreSQL"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API 参考",
+        "icon": "terminal",
+        "groups": [
+          {
+            "group": "API",
+            "pages": [
+              {
+                "page": "api/index",
+                "title": "概览"
+              },
+              {
+                "page": "api/authentication",
+                "title": "认证"
+              },
+              {
+                "page": "api/sending-stats",
+                "title": "发送统计数据"
+              },
+              {
+                "page": "api/common-endpoints",
+                "title": "常用端点"
+              }
+            ]
+          },
+          {
+            "group": "API 端点",
+            "pages": [
+              {
+                "group": "账户",
+                "pages": [
+                  {
+                    "page": "api-reference/update-my-password",
+                    "title": "更改我的密码",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/create-my-api-key",
+                    "title": "创建 API 密钥",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-my-api-key",
+                    "title": "删除 API 密钥",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-me",
+                    "title": "获取我的认证详情",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-my-api-keys",
+                    "title": "列出我的 API 密钥",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-my-teams",
+                    "title": "列出我的团队成员身份",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-my-websites",
+                    "title": "列出我的网站",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "管理",
+                "pages": [
+                  {
+                    "page": "api-reference/get-admin-users-user-id2fa",
+                    "title": "获取用户的双因素身份验证状态",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-admin-teams",
+                    "title": "列出所有团队",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-admin-users",
+                    "title": "列出所有用户",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-admin-websites",
+                    "title": "列出所有网站",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/delete-admin-users-user-id2fa",
+                    "title": "重置用户的双因素身份验证",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/post-admin-teams-team-id2fa",
+                    "title": "设置团队的双因素身份验证要求",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/post-admin-users-user-id2fa",
+                    "title": "设置用户的双因素身份验证要求",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/post-admin2fa-global",
+                    "title": "设置所有人的双因素身份验证要求",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "注释",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-annotations",
+                    "title": "列出网站注释",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/create-website-annotation",
+                    "title": "创建网站注释",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/get-website-annotation",
+                    "title": "获取网站注释",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/update-website-annotation",
+                    "title": "更新网站注释",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-website-annotation",
+                    "title": "删除网站注释",
+                    "method": "DELETE"
+                  }
+                ]
+              },
+              {
+                "group": "认证",
+                "pages": [
+                  {
+                    "page": "api-reference/sso",
+                    "title": "创建单点登录令牌",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/get-subscription",
+                    "title": "获取订阅详情",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/login",
+                    "title": "登录",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/logout",
+                    "title": "退出登录",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/verify",
+                    "title": "验证当前登录状态",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "归因",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-attribution",
+                    "title": "获取网站归因",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "看板",
+                "pages": [
+                  {
+                    "page": "api-reference/clone-board",
+                    "title": "克隆看板",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/create-board",
+                    "title": "创建看板",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/create-board-share",
+                    "title": "为看板创建共享链接",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-board",
+                    "title": "删除看板",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-board",
+                    "title": "获取看板",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-boards",
+                    "title": "列出我的看板",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-board-shares",
+                    "title": "列出看板共享链接",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/update-board",
+                    "title": "更新看板",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "细分",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-breakdown",
+                    "title": "获取网站细分",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "收集",
+                "pages": [
+                  {
+                    "page": "api-reference/batch",
+                    "title": "发送一批跟踪请求",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/record",
+                    "title": "发送会话录制或热图数据",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/send",
+                    "title": "发送跟踪数据",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "仪表板",
+                "pages": [
+                  {
+                    "page": "api-reference/get-dashboard",
+                    "title": "获取我的仪表板",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/post-dashboard",
+                    "title": "保存我的仪表板",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "事件数据",
+                "pages": [
+                  {
+                    "page": "api-reference/get-event-data",
+                    "title": "列出带自定义属性的事件",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-pivot",
+                    "title": "以表格形式列出事件属性",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-array-series",
+                    "title": "获取事件数组值随时间的变化",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-date-series",
+                    "title": "获取事件日期值分布",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-numeric-series",
+                    "title": "获取数值事件属性随时间的变化",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-numeric-stats",
+                    "title": "获取数值事件属性统计",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-property-series",
+                    "title": "获取事件属性值随时间的变化",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-by-id",
+                    "title": "获取事件自定义属性",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-events",
+                    "title": "按事件汇总属性",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-fields",
+                    "title": "列出事件属性字段",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-properties",
+                    "title": "列出事件属性使用情况",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-stats",
+                    "title": "获取事件属性总数",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-event-data-values",
+                    "title": "列出事件属性值",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "事件",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-events",
+                    "title": "列出跟踪事件",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-event-series",
+                    "title": "获取自定义事件随时间的数量",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-event-stats",
+                    "title": "获取网站事件统计",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "漏斗",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-funnels",
+                    "title": "获取网站漏斗列表",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/create-website-funnel",
+                    "title": "创建网站漏斗",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/get-website-funnel",
+                    "title": "获取网站漏斗",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/update-website-funnel",
+                    "title": "更新网站漏斗",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-website-funnel",
+                    "title": "删除网站漏斗",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-website-funnel-stats",
+                    "title": "获取网站漏斗统计",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-saved-funnel-stats",
+                    "title": "获取网站已保存漏斗统计",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "目标",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-goals",
+                    "title": "获取网站目标列表",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/create-website-goal",
+                    "title": "创建网站目标",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/get-website-goal",
+                    "title": "获取网站目标",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/update-website-goal",
+                    "title": "更新网站目标",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-website-goal",
+                    "title": "删除网站目标",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-website-goal-stats",
+                    "title": "获取网站目标统计",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-saved-goal-stats",
+                    "title": "获取网站已保存目标统计",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "热图",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-heatmaps",
+                    "title": "获取网站热图",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "用户路径",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-journeys",
+                    "title": "获取网站用户路径",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "链接",
+                "pages": [
+                  {
+                    "page": "api-reference/create-link-share",
+                    "title": "为链接创建共享链接",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/create-link",
+                    "title": "创建跟踪链接",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-link",
+                    "title": "删除跟踪链接",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-link",
+                    "title": "获取跟踪链接",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-links-charts",
+                    "title": "获取链接访客图表",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-links",
+                    "title": "列出我的链接",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-link-shares",
+                    "title": "列出链接共享链接",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/update-link",
+                    "title": "更新跟踪链接",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "性能",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-performance-chart",
+                    "title": "获取网站性能图表",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-performance-metrics",
+                    "title": "获取网站性能指标",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-performance-stats",
+                    "title": "获取网站性能统计",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "像素",
+                "pages": [
+                  {
+                    "page": "api-reference/create-pixel-share",
+                    "title": "为跟踪像素创建共享链接",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/create-pixel",
+                    "title": "创建跟踪像素",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-pixel",
+                    "title": "删除跟踪像素",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-pixel",
+                    "title": "获取跟踪像素",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-pixels-charts",
+                    "title": "获取跟踪像素访客图表",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-pixels",
+                    "title": "列出我的跟踪像素",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-pixel-shares",
+                    "title": "列出跟踪像素共享链接",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/update-pixel",
+                    "title": "更新跟踪像素",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "留存",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-retention",
+                    "title": "获取网站留存",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "实时数据",
+                "pages": [
+                  {
+                    "page": "api-reference/get-realtime",
+                    "title": "获取网站实时活动",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "收入",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-revenue-chart",
+                    "title": "获取网站收入随时间的变化",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-revenue-metrics",
+                    "title": "按维度获取网站收入",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-revenue-stats",
+                    "title": "获取网站收入总数",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-revenue-sessions",
+                    "title": "列出带收入的会话",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "脚本",
+                "pages": [
+                  {
+                    "page": "api-reference/get-scripts-telemetry",
+                    "title": "获取安装遥测脚本",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "细分",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-segments",
+                    "title": "列出网站细分和群组",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/create-website-segment",
+                    "title": "创建网站细分或群组",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/get-website-segment",
+                    "title": "获取网站细分或群组",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/update-website-segment",
+                    "title": "更新网站细分或群组",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-website-segment",
+                    "title": "删除网站细分或群组",
+                    "method": "DELETE"
+                  }
+                ]
+              },
+              {
+                "group": "会话数据",
+                "pages": [
+                  {
+                    "page": "api-reference/get-session-data-pivot",
+                    "title": "以表格形式列出会话属性",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-session-data-array-series",
+                    "title": "获取会话数组值随时间的变化",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-session-data-date-series",
+                    "title": "获取会话日期值分布",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-session-data-numeric-series",
+                    "title": "获取数值会话属性随时间的变化",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-session-data-numeric-stats",
+                    "title": "获取数值会话属性统计",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-session-data-properties",
+                    "title": "列出会话属性使用情况",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-session-data-property-series",
+                    "title": "获取会话属性值随时间的变化",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-session-data-stats",
+                    "title": "按会话属性获取活动",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-session-data-values",
+                    "title": "列出会话属性值",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "会话回放",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-recorder-config",
+                    "title": "获取网站录制设置",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-replays",
+                    "title": "列出网站会话回放",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-replay",
+                    "title": "获取会话回放记录",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-saved-replays",
+                    "title": "列出已保存会话回放",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-replay-saved",
+                    "title": "检查回放是否已保存",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/save-website-replay",
+                    "title": "保存或取消保存会话回放",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "会话",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-sessions",
+                    "title": "列出访客会话",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-session",
+                    "title": "获取访客会话",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/delete-website-session",
+                    "title": "删除访客会话",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-website-session-stats",
+                    "title": "获取访客会话统计",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-sessions-weekly",
+                    "title": "按星期和小时获取流量",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-session-activity",
+                    "title": "获取访客会话活动",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-session-properties",
+                    "title": "获取会话自定义属性",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-session-replays",
+                    "title": "列出访客会话回放",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "共享链接",
+                "pages": [
+                  {
+                    "page": "api-reference/create-share",
+                    "title": "创建共享链接",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-share",
+                    "title": "删除共享链接",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-share",
+                    "title": "获取共享链接",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-share-by-slug",
+                    "title": "通过 slug 打开共享链接",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/update-share",
+                    "title": "更新共享链接",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "统计",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-active",
+                    "title": "获取活跃网站访客",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-metrics",
+                    "title": "获取网站排序指标",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-pageviews",
+                    "title": "获取页面浏览量和会话随时间的变化",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-stats",
+                    "title": "获取网站摘要统计",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-expanded-metrics",
+                    "title": "获取详细网站指标",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "系统",
+                "pages": [
+                  {
+                    "page": "api-reference/get-heartbeat",
+                    "title": "检查应用可用性",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "团队",
+                "pages": [
+                  {
+                    "page": "api-reference/create-team-user",
+                    "title": "添加团队成员",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/update-team-user",
+                    "title": "更改团队成员角色",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/create-team",
+                    "title": "创建团队",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-team",
+                    "title": "删除团队",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-team",
+                    "title": "获取团队",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-team-user",
+                    "title": "获取团队成员",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/join-team",
+                    "title": "加入团队",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/get-team-boards",
+                    "title": "列出团队看板",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-team-links",
+                    "title": "列出团队链接",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-team-pixels",
+                    "title": "列出团队跟踪像素",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-team-websites",
+                    "title": "列出团队网站",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-teams",
+                    "title": "列出我的团队",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-team-users",
+                    "title": "列出团队成员",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/delete-team-user",
+                    "title": "移除团队成员",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/update-team",
+                    "title": "更新团队",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "双因素身份验证",
+                "pages": [
+                  {
+                    "page": "api-reference/cancel-two-factor-setup",
+                    "title": "取消双因素身份验证设置",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/verify-two-factor",
+                    "title": "完成双因素登录",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/confirm-two-factor-setup",
+                    "title": "确认双因素身份验证设置",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/disable-two-factor",
+                    "title": "禁用双因素身份验证",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/get-two-factor-status",
+                    "title": "获取双因素身份验证状态",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/initiate-two-factor-setup",
+                    "title": "设置双因素身份验证",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "用户",
+                "pages": [
+                  {
+                    "page": "api-reference/create-user",
+                    "title": "创建用户",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-user",
+                    "title": "删除用户",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-user",
+                    "title": "获取用户",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-user-teams",
+                    "title": "列出用户团队",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-user-websites",
+                    "title": "列出用户网站",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/update-user",
+                    "title": "更新用户",
+                    "method": "POST"
+                  }
+                ]
+              },
+              {
+                "group": "UTM",
+                "pages": [
+                  {
+                    "page": "api-reference/get-website-utm-metrics",
+                    "title": "获取网站 UTM 指标",
+                    "method": "GET"
+                  }
+                ]
+              },
+              {
+                "group": "网站",
+                "pages": [
+                  {
+                    "page": "api-reference/list-websites",
+                    "title": "列出网站",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/create-website",
+                    "title": "创建网站",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/get-website",
+                    "title": "获取网站",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/update-website",
+                    "title": "更新网站",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/delete-website",
+                    "title": "删除网站",
+                    "method": "DELETE"
+                  },
+                  {
+                    "page": "api-reference/get-websites-charts",
+                    "title": "获取网站访客图表",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/get-website-date-range",
+                    "title": "获取网站可用日期范围",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/export-website",
+                    "title": "导出网站分析数据",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/reset-website",
+                    "title": "重置网站分析数据",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/get-website-shares",
+                    "title": "列出网站共享链接",
+                    "method": "GET"
+                  },
+                  {
+                    "page": "api-reference/create-website-share",
+                    "title": "为网站创建共享链接",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/transfer-website",
+                    "title": "转移网站所有权",
+                    "method": "POST"
+                  },
+                  {
+                    "page": "api-reference/get-website-values",
+                    "title": "列出网站筛选值",
+                    "method": "GET"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "group": "客户端",
+            "pages": [
+              {
+                "page": "api/api-client",
+                "title": "API 客户端"
+              },
+              {
+                "page": "api/node-client",
+                "title": "Node 客户端"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "云端",
+        "icon": "cloud",
+        "groups": [
+          {
+            "group": "云端",
+            "pages": [
+              {
+                "page": "cloud/index",
+                "title": "概览"
+              },
+              {
+                "page": "cloud/sign-up",
+                "title": "注册"
+              },
+              {
+                "page": "cloud/login",
+                "title": "登录"
+              },
+              {
+                "page": "cloud/teams",
+                "title": "团队"
+              },
+              {
+                "page": "cloud/email-reports",
+                "title": "电子邮件报告"
+              },
+              {
+                "page": "cloud/ip-filters",
+                "title": "IP 过滤器"
+              },
+              {
+                "page": "cloud/white-label",
+                "title": "白标"
+              },
+              {
+                "page": "cloud/notifications",
+                "title": "通知"
+              },
+              {
+                "page": "cloud/delete-account",
+                "title": "删除账号"
+              },
+              {
+                "page": "cloud/faq",
+                "hidden": true,
+                "title": "常见问题"
+              }
+            ]
+          },
+          {
+            "group": "账单",
+            "pages": [
+              {
+                "page": "cloud/subscription",
+                "title": "订阅"
+              },
+              {
+                "page": "cloud/usage",
+                "title": "用量"
+              }
+            ]
+          },
+          {
+            "group": "API",
+            "pages": [
+              {
+                "page": "cloud/api-key",
+                "title": "API 密钥"
+              },
+              {
+                "page": "cloud/mcp",
+                "title": "MCP"
+              }
+            ]
+          },
+          {
+            "group": "数据",
+            "pages": [
+              {
+                "page": "cloud/export-data",
+                "title": "导出数据"
+              },
+              {
+                "page": "cloud/import-data",
+                "title": "导入数据"
+              }
+            ]
+          },
+          {
+            "group": "更新日志",
+            "pages": [
+              {
+                "page": "cloud/changelog",
+                "title": "更新日志"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

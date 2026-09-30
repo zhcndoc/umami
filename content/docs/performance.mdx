@@ -1,5 +1,8 @@
 ---
 title: 性能
+related:
+  - href: https://umami.is/guides/core-web-vitals
+    title: "Core Web Vitals：测量什么以及如何改进"
 ---
 
 *自 v3.1.0 起可用*
@@ -27,6 +30,19 @@ title: 性能
 ```
 
 启用后，Umami 将自动从访问者的浏览器中捕获性能指标，并在该网站的 **性能** 选项卡下报告这些数据。
+
+如果你手动跟踪页面浏览，请保持自动跟踪启用，并添加 `data-auto-pageview="false"`，而不是 `data-auto-track="false"`。
+这种手动页面浏览配置要求 `v3.2.0` 或更高版本。
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/umami.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+  data-auto-pageview="false"
+  data-performance="true"
+></script>
+```
 
 ## 指标
 
@@ -73,6 +89,3 @@ title: 性能
 ## 页面和环境细分
 
 页面底部会显示按 **页面**（路径或标题）和 **环境**（设备或浏览器）细分的所选指标，帮助你确定哪些页面或客户端的性能不佳。
-## 相关指南
-
-有关每个指标的含义以及如何改进，请参阅 [Core Web Vitals：测量什么以及如何改进](https://umami.is/guides/core-web-vitals)。

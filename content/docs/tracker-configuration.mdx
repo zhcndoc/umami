@@ -6,7 +6,7 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-host-url
 
-`v2.0.0`
+<Badge>v2.0.0</Badge>
 
 默认情况下，Umami 会将数据发送到脚本所在的位置。你可以覆盖此设置，将数据发送到其他位置。
 
@@ -21,9 +21,9 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-auto-track
 
-`v2.0.0`
+<Badge>v2.0.0</Badge>
 
-默认情况下，Umami 会自动跟踪所有页面浏览和事件。你可以禁用此行为，并使用 [跟踪器函数](/docs/tracker-functions) 自行跟踪事件。
+默认情况下，Umami 会初始化页面浏览跟踪、点击跟踪、路径变化检测和性能跟踪等可选功能。只有在你想完全禁用跟踪器初始化并使用[跟踪器函数](/docs/tracker-functions)自行发送数据时，才将此项设为 `false`。
 
 ```html
 <script
@@ -34,9 +34,24 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 ></script>
 ```
 
+### data-auto-pageview
+
+<Badge>v3.2.0</Badge>
+
+禁用自动页面浏览跟踪，同时保持跟踪器的其余部分初始化。当你想手动调用 `umami.track()`，但仍希望启用性能跟踪等功能时，可以使用此设置。
+
+```html
+<script
+  defer
+  src="http://mywebsite.com/umami.js"
+  data-website-id="94db1cb1-74f4-4a40-ad6c-962362670409"
+  data-auto-pageview="false"
+></script>
+```
+
 ### data-domains
 
-`v2.0.0`
+<Badge>v2.0.0</Badge>
 
 如果你希望跟踪器只在特定域名上运行，你可以将它们添加到跟踪器脚本中。这是一个以逗号分隔的域名列表。每个值都会与 `window.location.hostname` 进行匹配，因此你应该仔细检查你的网站是否使用了 `www`。
 如果你正在使用预发布/开发环境，这会很有帮助。
@@ -53,7 +68,7 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-tag
 
-`v2.11.0`
+<Badge>v2.11.0</Badge>
 
 将事件按名称标签分组，以便进行筛选和 A/B 测试。更多详情请参见 [标签](/docs/tags)。
 
@@ -68,9 +83,9 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-performance
 
-`v3.1.0`
+<Badge>v3.1.0</Badge>
 
-启用从访问者浏览器自动收集 [Core Web Vitals](https://web.dev/articles/vitals)。更多详情请参见 [性能](/docs/performance)。
+启用从访问者浏览器自动收集 [Core Web Vitals](https://web.dev/articles/vitals)。如果你手动发送页面浏览，请使用 `data-auto-pageview="false"` 而不是 `data-auto-track="false"`，这样性能跟踪仍会初始化。更多详情请参见 [性能](/docs/performance)。
 
 ```html
 <script
@@ -83,7 +98,7 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-exclude-search
 
-`v2.11.0`
+<Badge>v2.11.0</Badge>
 
 如果你不想收集 URL 中的搜索参数。
 
@@ -98,7 +113,7 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-exclude-hash
 
-`v2.16.0`
+<Badge>v2.16.0</Badge>
 
 如果你不想收集 URL 中的哈希值。
 
@@ -113,7 +128,7 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-do-not-track
 
-`v2.17.0`
+<Badge>v2.17.0</Badge>
 
 尊重用户浏览器的 [禁止追踪](https://developer.mozilla.org/en-US/docs/Web/API/Navigator/doNotTrack) 设置。
 
@@ -128,7 +143,7 @@ Umami 跟踪器提供了多个属性，允许你配置其行为。
 
 ### data-before-send
 
-`v2.18.0`
+<Badge>v2.18.0</Badge>
 
 允许你指定一个函数，在数据发送之前被调用。  
 你可以检查并修改数据负载，或者完全取消发送。  

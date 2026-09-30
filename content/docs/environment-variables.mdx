@@ -1,0 +1,386 @@
+---
+title: 环境变量
+---
+
+你可以通过环境变量来配置 Umami。它们和你的 `DATABASE_URL` 一起写入同一个 `.env` 文件。
+
+---
+
+## 运行时变量
+
+运行时变量在 Umami 运行时生效。你可以在启动应用之前设置这些环境变量。
+
+### APP_SECRET
+
+<Badge>v1.0.0</Badge>
+
+用于保护身份验证令牌的随机字符串。每个安装都应该有一个唯一的值。你可以使用以下命令生成：
+
+```shell
+openssl rand -hex 32
+```
+
+```
+APP_SECRET = "随机字符串"
+```
+
+### CLIENT_IP_HEADER
+
+<Badge>v1.24.0</Badge>
+
+用于检测客户端 IP 地址的 HTTP 头。当你处于使用非标准头的代理之后时，这个变量很有用。
+
+```
+CLIENT_IP_HEADER = "头名称"
+```
+
+### COLLECT_API_ENDPOINT
+
+<Badge>v1.34.0</Badge>
+
+允许你将指标发送到不同于默认 `/api/send` 的位置。这有助于你避开一些 [广告拦截器](/docs/bypass-ad-blockers)。
+
+```
+COLLECT_API_ENDPOINT = "/my-custom-route"
+```
+
+### CORS_MAX_AGE
+
+<Badge>v2.0.0</Badge>
+
+CORS 预检请求持续的秒数。默认是 24 小时。
+
+```
+CORS_MAX_AGE = 86400
+```
+
+### DATABASE_URL
+
+<Badge>v1.0.0</Badge>
+
+```
+DATABASE_URL = "连接字符串"
+```
+
+你的数据库连接字符串。这是唯一必需的变量。
+
+### DEBUG
+
+<Badge>v2.0.0</Badge>
+
+用于特定应用区域的控制台日志。值包括 `umami:auth`、`umami:clickhouse`、`umami:kafka`、`umami:middleware` 和 `umami:prisma`。
+
+```
+DEBUG = "umami:*"
+```
+
+### DISABLE_BOT_CHECK
+
+<Badge>v2.0.0</Badge>
+
+默认情况下，机器人不计入统计。设置此变量可禁用对机器人的检查。
+
+```
+DISABLE_BOT_CHECK = 1
+```
+
+### DISABLE_LOGIN
+
+<Badge>v1.26.0</Badge>
+
+禁用应用的登录页面。
+
+```
+DISABLE_LOGIN = 1
+```
+
+### DISABLE_TELEMETRY
+
+<Badge>v2.0.0</Badge>
+
+Umami 会收集完全匿名的遥测数据以帮助改进应用。如果你不想参与，可以选择禁用。
+
+```
+DISABLE_TELEMETRY = 1
+```
+
+### DISABLE_UPDATES
+
+<Badge>v1.33.0</Badge>
+
+禁用对 Umami 新版本的检查。
+
+```
+DISABLE_UPDATES = 1
+```
+
+### ENABLE_TEST_CONSOLE
+
+<Badge>v2.0.0</Badge>
+
+启用内部测试页 `{host}/console`。需要管理员权限。用户可以手动触发页面浏览和事件到他们的网站。
+
+```
+ENABLE_TEST_CONSOLE = 1
+```
+
+### FAVICON_URL
+
+<Badge>v2.18.0</Badge>
+
+网站图标显示服务的 URL。
+
+```
+FAVICON_URL = "服务 URL"
+```
+
+默认是 `icons.duckduckgo.com`：
+
+- https://icons.duckduckgo.com/ip3/{{domain}}.ico
+
+你也可以使用以下替代：
+
+- https://www.google.com/s2/favicons?domain={{domain}}
+- https://logo.clearbit.com/{{domain}}
+
+### GEO_DATABASE_URL
+
+<Badge>v2.0.0</Badge>
+
+用于下载 MMDB 格式的 MaxMind 兼容 GeoIP 数据库的 URL。当 CDN 不提供位置头时，这用于基于 IP 的位置检测。
+
+```
+GEO_DATABASE_URL = "https://example.com/GeoLite2-City.mmdb"
+```
+
+### HOSTNAME / PORT
+
+<Badge>v1.0.0</Badge>
+
+如果你运行的环境要求绑定特定的主机名或端口，比如 Heroku，可以添加这些变量，并用 `npm run start-env` 启动应用，而不是 `npm start`。
+
+```
+HOSTNAME = "my.hostname.com"
+PORT = 3000
+```
+
+### IGNORE_IP
+
+<Badge>v1.0.0</Badge>
+
+你可以提供一个逗号分隔的 IP 地址和 CIDR 范围列表，以排除在数据收集之外。
+
+```
+IGNORE_IP = "192.168.0.1, 10.0.0.0/24, 2001:db8::/32"
+```
+
+### LOG_QUERY
+
+<Badge>v2.0.0</Badge>
+
+在开发模式下，会将数据库查询日志打印到控制台以方便调试。
+
+```
+LOG_QUERY = 1
+```
+
+### MCP_ENABLED
+
+启用 [Model Context Protocol（MCP）](/docs/mcp) 端点。MCP 默认处于禁用状态。
+
+```
+MCP_ENABLED = 1
+```
+
+### PRIVATE_MODE
+
+<Badge>v2.11.0</Badge>
+
+禁用所有外部网络请求。注意，这也会禁用所有网站图标，因为它们来自 duckduckgo.com。
+
+```
+PRIVATE_MODE = 1
+```
+
+### REDIS_URL
+
+<Badge>v3.0.1</Badge>
+
+用于缓存和协调功能的可选 Redis 连接字符串。如果省略，基于 Redis 的功能将保持禁用状态。
+
+```
+REDIS_URL = "redis://localhost:6379"
+```
+
+### REMOVE_TRAILING_SLASH
+
+<Badge>v1.26.0</Badge>
+
+移除所有传入 URL 的尾随斜杠。
+
+```
+REMOVE_TRAILING_SLASH = 1
+```
+
+### SALT_ROTATION
+
+<Badge>v3.1.0</Badge>
+
+控制用于生成会话标识符的匿名会话盐的轮换频率。默认值为 `month`。
+
+```
+SALT_ROTATION = "month"
+```
+
+### SKIP_LOCATION_HEADERS
+
+<Badge>v2.15.0</Badge>
+
+跳过使用已知的位置头来检测国家/地区/城市，强制使用本地地理数据库。
+
+这在某些环境中很有用，因为代理或 CDN 只设置了国家头（而没有地区或城市头），例如 Cloudflare 的 `CF-IPCountry`，且 Network > IP Geolocation 已切换为 On。
+
+```
+SKIP_LOCATION_HEADERS = 1
+```
+
+### TRACKER_SCRIPT_NAME
+
+<Badge>v1.26.0</Badge>
+
+允许你为追踪脚本分配一个不同于默认 `script.js` 的自定义名称。这有助于避开一些 [广告拦截器](/docs/bypass-ad-blockers)。
+
+不必加 `.js` 后缀。该值也可以是任意路径，例如 `/path/to/tracker`。
+
+```
+TRACKER_SCRIPT_NAME = "custom-script-name.js"
+```
+
+### TWO_FACTOR_ENCRYPTION_KEY
+
+<Badge>v3.3.0</Badge>
+
+用于加密[双因素身份验证](/docs/two-factor-authentication)密钥的 64 字符十六进制字符串（256 位密钥）。任何用户启用 2FA 前都必须设置。你可以使用以下命令生成：
+
+```shell
+openssl rand -hex 32
+```
+
+```
+TWO_FACTOR_ENCRYPTION_KEY = "random hex string"
+```
+
+### USE_UUIDV7
+<Badge>v3.0.2</Badge>
+
+使用 UUIDv7 而不是 UUIDv4 生成随机标识符。从分析数据派生的确定性 ID 不受影响。
+
+```
+USE_UUIDV7 = 1
+```
+
+---
+## 构建时变量
+
+构建时变量仅在构建过程（包括自定义 Docker 镜像构建）中生效。你需要在构建应用之前设置这些环境变量。
+
+### ALLOWED_FRAME_URLS
+
+<Badge>v2.3.0</Badge>
+
+允许 iframe 托管应用的 URL，使用空格分隔。
+
+```
+ALLOWED_FRAME_URLS = "URLs"
+```
+
+### BASE_PATH
+
+<Badge>v1.9.0</Badge>
+
+如果你想在子目录下托管 Umami。你可能需要更新反向代理设置来正确处理 BASE_PATH 前缀。
+
+```
+BASE_PATH = "/custom"
+```
+
+### BUILD_GEO
+
+<Badge>v3.0.0</Badge>
+
+即使在 Vercel 环境中也运行本地 GeoIP 数据库设置步骤。
+
+```
+BUILD_GEO = 1
+```
+
+### DATABASE_TYPE
+
+<Badge>v2.0.0</Badge>
+
+```
+DATABASE_TYPE = "postgresql"
+```
+
+要使用的数据库类型。仅 Docker 构建时必需。
+
+### DEFAULT_CURRENCY / DEFAULT_LOCALE
+
+<Badge>v3.1.0</Badge>
+
+设置应用 UI 使用的默认货币和区域设置，直到用户选择自己的偏好。
+
+```
+DEFAULT_CURRENCY = "USD"
+DEFAULT_LOCALE = "en-US"
+```
+
+### DIRECT_DATABASE_URL
+
+<Badge>v3.2.0</Badge>
+
+用于 `check-db` 期间 Prisma 迁移的直接 PostgreSQL 连接字符串。当 `DATABASE_URL` 指向不应用于迁移命令的连接池时，这很有用。
+
+```
+DIRECT_DATABASE_URL = "connection string"
+```
+
+### FORCE_SSL
+
+<Badge>v1.0.0</Badge>
+
+所有请求都会发送 HTTP 的 `Strict-Transport-Security` 响应头。详见 [https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)。
+
+```
+FORCE_SSL = 1
+```
+
+### SKIP_BUILD_GEO
+
+<Badge>v3.1.0</Badge>
+
+跳过构建过程中的本地 GeoIP 数据库设置步骤。
+
+```
+SKIP_BUILD_GEO = 1
+```
+
+### SKIP_DB_CHECK
+
+<Badge>v2.0.0</Badge>
+
+跳过构建过程中的 `check-db` 步骤。用于 Docker 构建。
+
+```
+SKIP_DB_CHECK = 1
+```
+
+### SKIP_DB_MIGRATION
+
+<Badge>v2.0.0</Badge>
+
+跳过构建过程中的 Prisma 迁移步骤。设置 `SKIP_DB_CHECK` 也会跳过这一步。
+
+```
+SKIP_DB_MIGRATION = 1
+```

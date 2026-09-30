@@ -22,19 +22,20 @@ Northflank 提供免费和付费的托管计划，允许你将 Umami 与托管�
 
 一键部署是最快速的启动方式，但你也可以使用模板配置手动部署 Umami。
 
-1. Create a new project on [Northflank](https://northflank.com).
-2. Add a **PostgreSQL addon** to the project.
-3. Create a **Deployment service** using the Docker image `docker.umami.is/umami-software/umami:postgresql-latest`.
-4. Expose port `3000` publicly.
-5. Add the following environment variables and link them to your database:
-   - `DATABASE_URL` — connection string from the PostgreSQL addon  
+1. 在 [Northflank](https://northflank.com) 上创建新项目。
+2. 向项目添加 **PostgreSQL 附加组件**。
+3. 使用 Docker 镜像 `docker.umami.is/umami-software/umami:postgresql-latest` 创建 **部署服务**。
+4. 将端口 `3000` 公开。
+5. 添加以下环境变量并将其连接到数据库：
+   - `DATABASE_URL` — PostgreSQL 附加组件提供的连接字符串
    - `DATABASE_TYPE=postgres`
 6. 部署服务。
 
 部署完成后，打开服务的公共 URL 以完成 Umami 设置。
 
-### 注意事项
+<Callout title="注意事项">
 
 - 数据存储在 PostgreSQL 附加组件中，且在部署过程中保持持久。
 - 你可以从仪表盘扩展服务或更新镜像版本。
 - 这里有更多关于[添加网站](https://umami.is/docs/add-a-website)和[收集数据](https://umami.is/docs/collect-data)的资料。
+</Callout>

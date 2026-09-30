@@ -34,10 +34,12 @@ title: 热力图
 ></script>
 ```
 
-> **注意**
->
-> - 只有在启用该功能后记录的会话才会收集热图数据。
-> - 热图由汇总后的会话数据生成——不会识别任何单个会话。
+<Callout title="注意">
+
+- 只有在启用该功能后记录的会话才会收集热图数据。
+- 热图由汇总后的会话数据生成——不会识别任何单个会话。
+
+</Callout>
 
 ## 页面叠加层
 
@@ -54,10 +56,12 @@ Umami 会使用其捕获的 URL 在嵌入式框架中加载实际页面——不
 Content-Security-Policy: frame-ancestors 'self' https://your-umami-instance.com;
 ```
 
-> **注意**
->
-> - 请使用你访问 Umami 时所用的来源来替换 `https://your-umami-instance.com`（对于 Umami Cloud，请使用 `https://cloud.umami.is`）。
-> - 如果你的网站还发送 `X-Frame-Options: DENY` 或 `SAMEORIGIN`，请将其移除——在某些浏览器中它会覆盖 `frame-ancestors`。
+<Callout title="注意">
+
+- 请使用你访问 Umami 时所用的来源来替换 `https://your-umami-instance.com`（对于 Umami Cloud，请使用 `https://cloud.umami.is`）。
+- 如果你的网站还发送 `X-Frame-Options: DENY` 或 `SAMEORIGIN`，请将其移除——在某些浏览器中它会覆盖 `frame-ancestors`。
+
+</Callout>
 
 ## 访问热图
 

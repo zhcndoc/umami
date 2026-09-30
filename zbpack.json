@@ -1,0 +1,7 @@
+{
+  "app_dir": "/",
+  "install_command": "npm install -g pnpm@11.28.0 && pnpm install --frozen-lockfile",
+  "build_command": "pnpm run build",
+  "output_dir": "dist/client",
+  "ignore_dockerfile": true
+}

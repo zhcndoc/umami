@@ -2,9 +2,45 @@
 title: 认证
 ---
 
-以下认证方法仅适用于自托管的 Umami。对于 **Umami Cloud**，您只需生成一个 [API 密钥](/docs/cloud/api-key)。
+自托管版 Umami 支持两种 API 请求认证方式。推荐使用 **API 密钥**。用户名和密码认证仍作为替代方案受支持。
 
-## POST /api/auth/login
+对于 **Umami Cloud**，API 密钥是唯一的认证方式。请参阅 [API 密钥](/docs/cloud/api-key)。
+
+## API 密钥（推荐）
+
+API 密钥是适合程序化访问的长期凭据。它们不会过期，并且可以单独撤销。
+
+### 创建密钥
+
+在应用中点击个人资料图标，选择 **Settings**，然后进入 **API keys** 生成密钥。点击 **Create key** 并保存其值，因为它只会显示一次。
+
+您也可以通过程序创建、列出和删除密钥：
+
+- [创建 API 密钥](/docs/api-reference/create-my-api-key)
+- [列出我的 API 密钥](/docs/api-reference/get-my-api-keys)
+- [删除 API 密钥](/docs/api-reference/delete-my-api-key)
+
+### 使用密钥
+
+使用 Bearer 认证方案，通过 `Authorization` 请求头传入密钥。
+
+```http request
+Authorization: Bearer <api-key>
+```
+
+例如，使用 `curl` 时如下所示：
+
+```shell
+curl https://{yourserver}/api/websites \
+   -H "Accept: application/json" \
+   -H "Authorization: Bearer <api-key>"
+```
+
+## 用户名和密码（替代方式）
+
+如果您愿意，仍可以通过用户名和密码换取临时令牌进行认证。
+
+### POST /api/auth/login
 
 首先，您需要获取一个 _token_ 以进行 API 请求。您需要向 `/api/auth/login` 端点发送一个包含以下内容的 `POST` 请求：
 
@@ -46,11 +82,9 @@ curl https://{yourserver}/api/websites \
 
 带权限的 API 调用均需包含此授权 token。
 
----
+### POST /api/auth/verify
 
-## POST /api/auth/verify
-
-You can verify whether the token is still valid.
+您可以验证令牌是否仍然有效。
 
 **示例响应**
 

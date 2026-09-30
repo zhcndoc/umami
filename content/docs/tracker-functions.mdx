@@ -2,11 +2,11 @@
 title: 追踪器功能
 ---
 
-Umami 追踪器提供了一个函数，如果你想要对追踪进行更多控制，可以在你的网站上调用该函数。默认情况下，一切数据都会自动收集，但你可以通过设置 `data-auto-track="false"` 来禁用自动收集，并自行发送数据。详见 [追踪器配置](/docs/tracker-configuration)。
+Umami 追踪器提供了一个函数，如果你想要对追踪进行更多控制，可以在你的网站上调用该函数。默认情况下，一切数据都会自动收集，但你可以通过设置 `data-auto-pageview="false"` 并使用 `umami.track()` 自行发送页面浏览来禁用自动页面浏览。只有在你想完全禁用跟踪器初始化时，才使用 `data-auto-track="false"`。详见[跟踪器配置](/docs/tracker-configuration)。
 
 ## 函数
 
-`v2.0.0`
+<Badge>v2.0.0</Badge>
 
 ```js
 // 追踪当前页面
@@ -33,7 +33,7 @@ umami.identify(data: object);
 
 ## Pageviews
 
-`v2.0.0`
+<Badge>v2.0.0</Badge>
 
 追踪页面浏览。
 
@@ -67,7 +67,7 @@ umami.track(props => ({ ...props, url: '/home', title: '主页' }));
 
 ## 事件
 
-`v2.0.0`
+<Badge>v2.0.0</Badge>
 
 追踪一个具有指定名称的事件。
 
@@ -77,7 +77,7 @@ umami.track('signup-button');
 
 ## 事件数据
 
-`v2.0.0`
+<Badge>v2.0.0</Badge>
 
 追踪一个带有动态数据的事件。
 
@@ -122,7 +122,8 @@ umami.track(props => ({
 ```
 
 ## 会话
-`v2.13.0`
+
+<Badge>v2.13.0</Badge>
 
 传入自己的 ID 来标识用户。
 
@@ -132,7 +133,7 @@ umami.identify('unique_id');
 
 ## 会话数据
 
-`v2.13.0`
+<Badge>v2.13.0</Badge>
 
 保存当前会话的数据。
 

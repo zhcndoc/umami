@@ -118,8 +118,9 @@ function handleCheckout() {
 }
 ```
 
-## 故障排除
+<Callout title="故障排除" variant="warning">
 
 - **导航后未跟踪页面**：确保跟踪脚本仅在根布局中加载一次，不要在每次路由更改时重新添加。
 - **重复的页面浏览**：避免在 `useEffect` 或 `onMounted` 钩子中无参数调用 `umami.track()`，因为跟踪器已经自动记录导航。
 - **基于哈希的路由**：如果您的应用使用哈希路由（`/#/page`），Umami 默认会跟踪这些。如果需要，您可以使用 `data-exclude-hash="true"` 禁用哈希收集。
+</Callout>

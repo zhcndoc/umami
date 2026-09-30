@@ -86,10 +86,12 @@ LINES TERMINATED BY '\n'
 FROM website_event;
 ```
 
-**注意**
+<Callout title="注意">
 
 - 文件路径（/tmp/website_event.csv）位于 MySQL 服务器的文件系统上，不一定是在你的主机上。
 - 确保 MySQL 有权限写入该位置（secure_file_priv 可能会限制此操作）。
+
+</Callout>
 
 2. 使用 `scp` 或 `cp` 将文件从 MySQL 服务器移动到可被 psql 访问的位置。
 
@@ -99,6 +101,8 @@ FROM website_event;
 psql -U postgres -d mydb -c "\COPY website_event FROM 'website_event.csv' CSV NULL '\N'"
 ```
 
-**注意**
+<Callout title="注意">
 
 - 如果未使用默认模式，请包含模式名。
+
+</Callout>

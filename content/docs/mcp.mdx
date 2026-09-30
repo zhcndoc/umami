@@ -1,0 +1,124 @@
+---
+title: 启用 MCP
+description: 使用 Model Context Protocol 将 AI 助手连接到自托管 Umami 分析。
+---
+
+[Model Context Protocol](https://modelcontextprotocol.io)（MCP）让 Claude、ChatGPT 和 Cursor 等 AI 工具能够用自然语言回答有关网站流量的问题。
+
+Umami 的 MCP 服务器是只读的。它调用与仪表板相同的 API，因此会遵守 API 密钥所有者现有的网站和团队权限。它不会直接访问您的数据库。
+
+## 启用 MCP 端点
+
+MCP 默认处于禁用状态。请使用包含 MCP 支持的 Umami 版本，然后将以下运行时环境变量添加到部署配置中：
+
+```dotenv
+MCP_ENABLED=1
+```
+
+修改变量后重启 Umami。对于 Docker Compose 部署，将其添加到 `umami` 服务的环境变量中，然后运行 `docker compose up -d` 重新创建容器。
+
+## 连接
+
+从个人资料菜单创建 [API 密钥](/docs/api/authentication#api-密钥推荐)：选择 **Settings**，打开 **API keys**，然后点击 **Create key**。显示密钥时请保存其值，因为它只会显示一次。
+
+您的 MCP 端点是 Umami 实例的公共 URL 加上 `/mcp`：
+
+```text
+https://analytics.example.com/mcp
+```
+
+如果实例使用 [base path](/docs/environment-variables#base_path)，请将其包含在端点中，例如 `https://analytics.example.com/umami/mcp`。
+
+使用 Bearer 方案通过 API 密钥进行认证：
+
+```text
+Authorization: Bearer umami_<your-api-key>
+```
+
+远程 MCP 端点仅接受自托管 API 密钥，不支持浏览器登录令牌。
+
+## 客户端配置
+
+请使用支持 Streamable HTTP 以及 Bearer 令牌或自定义请求头认证的 MCP 客户端。例如，使用端点和 API 密钥配置远程服务器：
+
+```json
+{
+  "mcpServers": {
+    "umami": {
+      "url": "https://analytics.example.com/mcp",
+      "headers": {
+        "Authorization": "Bearer umami_<your-api-key>"
+      }
+    }
+  }
+}
+```
+
+具体的配置界面和格式因客户端而异。请妥善保管 API 密钥：MCP 返回的分析数据会共享给 AI 应用，以便回答您的问题。
+
+### 本地 stdio 客户端
+
+对于仅支持本地 `stdio` 服务器的客户端，请使用 `npx` 运行 `@umami/mcp` 包：
+
+```json
+{
+  "mcpServers": {
+    "umami": {
+      "command": "npx",
+      "args": ["-y", "@umami/mcp"],
+      "env": {
+        "UMAMI_URL": "https://analytics.example.com",
+        "UMAMI_API_TOKEN": "umami_<your-api-key>"
+      }
+    }
+  }
+}
+```
+
+此配置连接到 Umami 的 API，而不是远程 `/mcp` 端点。请勿在 `UMAMI_URL` 中包含 `/api`。
+
+## 工具
+
+| Tool | Purpose |
+| --- | --- |
+| `list_websites` | 查找您可以访问的网站。先调用此工具获取 `websiteId`。 |
+| `get_website_daterange` | 有记录数据的最早和最晚日期。 |
+| `get_website_stats` | 页面浏览量、访客数、访问次数、跳出率、时长和上一周期数据。 |
+| `get_website_traffic` | 按分钟、小时、日、月或年分组的页面浏览和访问时间序列。 |
+| `get_website_metrics` | 热门页面、引荐来源、渠道、国家/地区、浏览器、设备、UTM 和事件。 |
+| `get_realtime` | 当前活跃的访客。 |
+| `get_events` | 单个跟踪事件。 |
+| `get_event_stats` | 自定义事件总数和上一周期数据。 |
+| `get_event_series` | 按事件名称分组的自定义事件随时间变化的数量。 |
+| `get_event_properties` | 自定义事件属性名称，或某个属性的值。 |
+| `get_sessions` | 访客会话。 |
+| `get_session` | 单个会话及其活动时间线和属性。 |
+| `get_session_stats` | 会话级总数：访客数、访问次数、页面浏览量、事件和国家/地区。 |
+| `get_annotations` | 解释变化的时间线备注。 |
+| `list_segments` | 已保存的细分和群组。 |
+| `list_funnels` | 带步骤的已保存漏斗。 |
+| `run_funnel` | 根据已保存的漏斗或临时页面和事件步骤运行转化漏斗。 |
+| `get_goals` | 指定日期范围内的已保存目标及其转化、访客和转化率。 |
+| `run_journey` | 访客最常经过的路径。 |
+| `run_retention` | 群组留存表。 |
+| `run_attribution` | 转化的首次点击或末次点击归因。 |
+| `get_revenue` | 收入总数、时间序列和明细。 |
+| `get_performance` | Core Web Vitals 的百分位数、趋势和明细。 |
+
+日期采用 ISO 8601 格式。返回单个事件或会话的结果采用分页形式，并有最大页面大小限制。
+
+## 示例提示
+
+- 显示我的网站。
+- example.com 上周有多少访客？
+- 本月排名前 10 的页面是哪些？
+- 比较本月和上个月的流量。
+- 流量来自哪里？
+- 昨天发生了哪些注册事件？
+- 运行我上个月的结账漏斗。
+- 本季度的目标完成情况如何？
+- 移动设备上哪些页面的 LCP 最差？
+
+## 撤销访问权限
+
+访问权限与 API 密钥绑定。要断开 AI 工具，请在 **Settings → API keys** 下删除该密钥。

@@ -13,7 +13,7 @@ title: 发送服务器端事件
 
 ## Using the Node Client
 
-For Node.js backends, the easiest way is to use the [Umami Node Client](/docs/api/node-client):
+对于 Node.js 后端，最简单的方法是使用 [Umami Node 客户端](/docs/api/node-client)：
 
 ```bash
 npm install @umami/node
@@ -65,7 +65,11 @@ curl -X POST https://your-umami.example.com/api/send \
   }'
 ```
 
-> **重要**：需要有效的 `User-Agent` 头。没有该头的请求将被拒绝。
+<Callout title="需要 User-Agent" variant="warning">
+
+需要有效的 `User-Agent` 头。没有该头的请求将被拒绝。
+
+</Callout>
 
 ### Python 示例
 
@@ -134,8 +138,9 @@ curl -X POST https://your-umami.example.com/api/batch \
 
 如果有任何项失败，`errors` 表示失败数量，`details` 会按数组中的 `index` 列出每个失败项。
 
-## 提示
+<Callout title="提示" variant="tip">
 
 - 服务端事件会显示在与客户端事件相同的仪表板中。如有需要，可使用事件名称或属性来区分它们。
 - 在通过支付 webhook 跟踪收入时，请使用 `revenue` 和 `currency` 属性，这样数据就会显示在 [收入](/docs/revenue) 洞察中。
 - 对于高流量后端，建议对事件进行排队，并在发送时设置并发限制，以避免压垮你的实例。
+</Callout>
